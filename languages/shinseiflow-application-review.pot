@@ -1,0 +1,2527 @@
+# Copyright (C) 2026 Casper Yeh
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: ShinseiFlow – Application Review & Approval Workflow 0.4.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shinseiflow-application-review\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-22T03:09:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: shinseiflow-application-review\n"
+
+#. Plugin Name of the plugin
+#: shinseiflow-application-review.php
+#: includes/admin-pages/page-about.php:86
+msgid "ShinseiFlow – Application Review & Approval Workflow"
+msgstr ""
+
+#. Description of the plugin
+#: shinseiflow-application-review.php
+msgid "Create application forms, review submissions, manage approval workflows, and notify applicants from WordPress."
+msgstr ""
+
+#. Author of the plugin
+#: shinseiflow-application-review.php
+#: includes/admin-pages/page-about.php:85
+msgid "Casper Yeh"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:12
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:13
+msgid "Read setup guidance and usage documentation."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:18
+msgid "Project Website"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:19
+msgid "Learn more about ShinseiFlow and its workflow."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:24
+msgid "Support"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:25
+msgid "Find help with setup and everyday use."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:30
+msgid "Report an Issue"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:31
+msgid "Share a bug report or improvement suggestion."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:38
+msgid "About ShinseiFlow"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:42
+#: includes/admin-pages/page-dashboard.php:13
+#: includes/class-tcarm-admin.php:139
+msgid "ShinseiFlow"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:43
+msgid "Application Review & Approval Workflow for WordPress"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:44
+#: includes/admin-pages/page-about.php:87
+msgid "Version"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:45
+msgid "Build application forms, review submissions, manage approval workflows, send notifications, and provide approved downloads in WordPress."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:51
+msgid "Resources"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:71
+#: includes/admin-pages/page-about.php:75
+msgid "Support Development"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:73
+msgid "ShinseiFlow is developed and maintained as an independent open-source project."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:74
+msgid "If ShinseiFlow has been helpful to you, you can support its continued development."
+msgstr ""
+
+#: includes/admin-pages/page-about.php:82
+msgid "Credits"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:85
+msgid "Developer"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:86
+msgid "Plugin"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:88
+msgid "License"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:88
+msgid "GPL-2.0-or-later"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:95
+msgid "Acknowledgements"
+msgstr ""
+
+#: includes/admin-pages/page-about.php:97
+msgid "ShinseiFlow is built on WordPress and made possible by the open-source community."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:26
+#: includes/admin-pages/page-application-detail.php:59
+#: includes/admin-pages/page-dashboard.php:23
+#: includes/class-tcarm-admin.php:80
+#: includes/class-tcarm-admin.php:109
+msgid "Applications"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:37
+msgid "The selected applications were moved to deleted items."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:39
+msgid "The application was restored from deleted items."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:41
+msgid "The application was permanently deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:43
+msgid "The application could not be permanently deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:45
+msgid "Only deleted applications can be permanently deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:47
+#: includes/admin-pages/page-application-detail.php:125
+#: includes/class-tcarm-assets.php:99
+msgid "Please select applications to permanently delete."
+msgstr ""
+
+#. translators: %d: number of deleted applications.
+#: includes/admin-pages/page-application-detail.php:50
+#, php-format
+msgid "%d applications were permanently deleted."
+msgstr ""
+
+#. translators: 1: number of deleted applications, 2: number of applications that could not be deleted.
+#: includes/admin-pages/page-application-detail.php:53
+#, php-format
+msgid "%1$d applications were permanently deleted. %2$d could not be deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:55
+msgid "No target applications were selected."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:59
+msgid "Review submitted applications and manage review workflows."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:65
+msgid "All"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:71
+msgid "Delete Application"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:384
+msgid "Application Date"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
+#: includes/admin-pages/page-display-customize.php:65
+#: includes/admin-pages/page-notifications.php:18
+msgid "Application Number"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-notifications.php:22
+msgid "Event Name"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
+msgid "Applicant"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:273
+#: includes/admin-pages/page-form-settings.php:14
+#: includes/class-tcarm-assets.php:52
+msgid "Email"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+msgid "Status"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+msgid "Edit"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
+#: includes/admin-pages/page-application-detail.php:273
+msgid "Actions"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:78
+msgid "There is no application data yet."
+msgstr ""
+
+#. translators: %d: resubmission count.
+#: includes/admin-pages/page-application-detail.php:91
+#: includes/admin-pages/page-application-detail.php:391
+#, php-format
+msgid "%d times"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:96
+#: includes/admin-pages/page-application-detail.php:242
+msgid "Details"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:124
+#: includes/class-tcarm-assets.php:98
+msgid "Please select applications to delete."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:137
+msgid "Delete this application?"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:138
+msgid "The selected applications will be moved to deleted items."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:138
+msgid "Deleted applications can be restored later. This action does not permanently delete application data."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:140
+#: includes/admin-pages/page-application-detail.php:161
+#: includes/admin-pages/page-application-detail.php:179
+#: includes/admin-pages/page-application-detail.php:197
+#: includes/admin-pages/page-application-detail.php:364
+#: includes/admin-pages/page-form-settings.php:198
+#: includes/class-tcarm-applications.php:367
+#: includes/class-tcarm-notifications.php:131
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:141
+#: includes/admin-pages/page-application-detail.php:287
+#: includes/admin-pages/page-form-settings.php:156
+#: includes/admin-pages/page-redirects.php:138
+#: includes/class-tcarm-assets.php:68
+msgid "Delete"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:158
+msgid "Restore this application?"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:159
+msgid "Restore this application from deleted items?"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:162
+#: includes/admin-pages/page-application-detail.php:247
+msgid "Restore"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:176
+msgid "Permanently delete this application?"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:177
+msgid "This application will be permanently deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:177
+#: includes/admin-pages/page-application-detail.php:195
+msgid "This action cannot be undone."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:177
+#: includes/admin-pages/page-application-detail.php:195
+msgid "Do you want to continue?"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:180
+#: includes/admin-pages/page-application-detail.php:198
+#: includes/admin-pages/page-application-detail.php:216
+#: includes/admin-pages/page-application-detail.php:253
+msgid "Permanently Delete"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:194
+msgid "Permanently delete the selected applications?"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:195
+msgid "The selected applications will be permanently deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:212
+msgid "Deleted Applications"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:213
+msgid "Review and restore applications moved to deleted items. The data has not been permanently deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:224
+msgid "Original Status"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:224
+msgid "Deleted At"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:224
+msgid "Deleted By"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:227
+msgid "There are no deleted applications."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:271
+msgid "Blocked Submissions"
+msgstr ""
+
+#. translators: %d: number of blocked submissions in the past 7 days.
+#: includes/admin-pages/page-application-detail.php:271
+#, php-format
+msgid "Past 7 days: %d. Only minimal contact information is stored to help follow up on false positives."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:273
+msgid "Date and Time"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:273
+#: includes/admin-pages/page-form-settings.php:126
+#: includes/class-tcarm-assets.php:49
+msgid "Type"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:273
+msgid "Reason"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:273
+msgid "Name"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:273
+msgid "Phone"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:273
+msgid "IP"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:276
+msgid "There is no blocked history yet."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:300
+msgid "Application not found"
+msgstr ""
+
+#. translators: %s: application code.
+#: includes/admin-pages/page-application-detail.php:307
+#, php-format
+msgid "Application Details: %s"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:315
+msgid "← Back to Applications"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:317
+msgid "This application has been deleted."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:327
+msgid "The notification email was resent."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:329
+msgid "Failed to resend the notification email. Please check the email settings."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:331
+msgid "The selected notification email cannot be resent in the current status."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:341
+msgid "The application content was updated."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:344
+msgid "The application content could not be saved."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:350
+msgid "Application Content"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:350
+msgid "Displayed according to the sections and order configured in Form Settings."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:352
+msgid "Edit Application Content"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:361
+msgid "Application Content Edit Actions"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:362
+msgid "You are editing the application content. Changes are not applied until you save."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:365
+#: includes/admin-pages/page-form-settings.php:199
+#: includes/class-tcarm-applications.php:366
+#: includes/class-tcarm-assets.php:42
+msgid "Save"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:379
+msgid "Review Summary"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:379
+msgid "Check the current status and publication status."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:382
+#: includes/admin-pages/page-notifications.php:23
+msgid "Current Status"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:386
+msgid "Updated Date"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:388
+msgid "Edit Resubmission"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:393
+#: includes/admin-pages/page-notifications.php:101
+msgid "None"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:396
+msgid "Last Edited At"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:404
+msgid "Last Reviewed At"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:416
+#: includes/admin-pages/page-display-customize.php:94
+msgid "Review Actions"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:416
+msgid "Select approve or reject based on the review result."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:422
+msgid "Message to Applicant"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:422
+msgid "Enter the message to send to the applicant, such as the rejection reason."
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:424
+msgid "Approve"
+msgstr ""
+
+#: includes/admin-pages/page-application-detail.php:425
+msgid "Reject"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:9
+#: includes/class-tcarm-admin.php:79
+#: includes/class-tcarm-admin.php:108
+msgid "Home"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:14
+msgid "Application Review & Approval Workflow"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:15
+msgid "A WordPress plugin for managing application submissions, review workflows, notifications, and applicant communication."
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:17
+msgid "View Applications"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:18
+msgid "Go to Form Settings"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:24
+#: includes/admin-pages/page-display-customize.php:66
+#: includes/class-tcarm-applications.php:724
+msgid "Pending Review"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:25
+#: includes/admin-pages/page-display-customize.php:67
+#: includes/class-tcarm-applications.php:725
+msgid "Approved"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:29
+msgid "Frontend Page Setup Status"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:29
+msgid "Review shortcode pages and destination URLs."
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:42
+#: includes/class-tcarm-settings.php:764
+msgid "Application Form Page"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:43
+#: includes/class-tcarm-settings.php:765
+msgid "Application Status Page"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:44
+msgid "Application Review Page"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:45
+#: includes/class-tcarm-settings.php:767
+msgid "Edit and Resubmit Page"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:46
+#: includes/class-tcarm-settings.php:768
+msgid "Top Page"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:46
+msgid "Back to Top link"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:51
+msgid "Item"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:51
+msgid "Shortcode / Purpose"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:51
+msgid "Current URL"
+msgstr ""
+
+#: includes/admin-pages/page-dashboard.php:61
+msgid "Not set"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:9
+msgid "Frontend Common"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:10
+msgid "Frontend Shortcode Wrapper"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:11
+msgid "Forms and Search Forms"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:12
+msgid "Cards and Sections"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:13
+msgid "Card Heading"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:14
+msgid "Card Description"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:16
+msgid "Page-specific Wrapper"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:17
+#: includes/admin-pages/page-security.php:64
+#: includes/admin-pages/page-translation.php:91
+msgid "Application Form"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:18
+msgid "Application Content Review"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:19
+msgid "Submission Complete Page"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:20
+msgid "Submission Complete Page Form Frame"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:21
+msgid "Submission Complete Section"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:22
+#: includes/admin-pages/page-translation.php:120
+msgid "Application Status"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:23
+msgid "Edit and Resubmit"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:24
+msgid "Edit Resubmission Complete Page"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:26
+msgid "Application Flow"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:27
+msgid "Entire Step Area"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:28
+msgid "Step Card Common"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:29
+msgid "Input Step"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:30
+msgid "Review Step"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:31
+msgid "Submission Complete Step"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:32
+msgid "Admin Review Step"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:33
+msgid "Current Step"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:34
+msgid "Step Icon"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:35
+msgid "Step Icon Text"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:36
+msgid "Step Number"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:37
+msgid "Step Label"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:39
+msgid "Form Field"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:40
+msgid "Input Item"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:41
+msgid "Label"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:42
+msgid "Required Badge"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:43
+msgid "Input Field"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:44
+#: includes/admin-pages/page-form-settings.php:13
+#: includes/class-tcarm-assets.php:51
+msgid "Textarea"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:45
+#: includes/class-tcarm-applications.php:391
+msgid "Select"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:46
+#: includes/admin-pages/page-form-settings.php:18
+#: includes/class-tcarm-assets.php:55
+msgid "Checkbox"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:47
+msgid "Supplemental Description"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:48
+msgid "Input Error"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:50
+msgid "Button"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:51
+msgid "Button Area"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:52
+msgid "Button Common"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:53
+msgid "Primary Button"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:54
+msgid "Secondary Button"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:55
+msgid "Download Button"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:57
+msgid "Notices and Status"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:58
+msgid "Notice Box Common"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:59
+msgid "Information"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:60
+msgid "Success"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:61
+msgid "Notice"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:62
+msgid "Error"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:63
+msgid "Status Badge Common"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:64
+msgid "Application Number Label"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:68
+#: includes/class-tcarm-applications.php:726
+msgid "Rejected"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:69
+#: includes/admin-pages/page-notifications.php:28
+msgid "Rejection Reason"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:70
+#: includes/admin-pages/page-notifications.php:14
+msgid "Additional Confirmation Request"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:72
+msgid "Review and Application Content Display"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:73
+msgid "Review List"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:74
+msgid "Review Row"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:75
+msgid "Review Label"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:76
+msgid "Review Value"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:77
+msgid "Details Table"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:79
+msgid "Files and Downloads"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:80
+msgid "Attachment List"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:81
+msgid "Attachment Item"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:82
+msgid "Attachment Image Preview"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:83
+msgid "Download Section"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:84
+msgid "Download List"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:85
+msgid "Download Item"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:86
+msgid "Download Title"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:87
+msgid "Download Description"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:89
+#: includes/admin-pages/page-display-customize.php:140
+msgid "Admin Screen"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:90
+msgid "Admin Screen Wrapper"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:91
+msgid "Settings Card"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:92
+msgid "Settings Input Row"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:93
+msgid "Application Details Page"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:95
+#: includes/class-tcarm-applications.php:1119
+msgid "Submission and Response History"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:106
+msgid "Purpose"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:106
+msgid "CSS Class"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:114
+msgid "CSS Example"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:134
+#: includes/admin-pages/page-display-customize.php:138
+#: includes/admin-pages/page-display-customize.php:174
+#: includes/class-tcarm-admin.php:86
+#: includes/class-tcarm-admin.php:115
+msgid "Display Customization"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:134
+msgid "Configure CSS applied to frontend pages and this plugin's admin screens."
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:139
+msgid "Frontend"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:143
+msgid "Frontend Custom CSS"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:145
+msgid "Enter CSS applied to frontend pages such as the application form, status page, and download file display."
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:149
+msgid "Admin Custom CSS"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:151
+msgid "Enter CSS applied only to this plugin's admin screens. It is not applied to the entire WordPress admin area."
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:155
+#: includes/admin-pages/page-display-customize.php:157
+msgid "CSS Class List"
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:158
+msgid "Main CSS classes available for custom CSS. You can reference them while editing CSS on the left."
+msgstr ""
+
+#: includes/admin-pages/page-display-customize.php:185
+#: includes/admin-pages/page-download-files.php:98
+#: includes/admin-pages/page-notifications.php:164
+#: includes/admin-pages/page-redirects.php:55
+#: includes/admin-pages/page-redirects.php:221
+#: includes/admin-pages/page-security.php:105
+msgid "Save Settings"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:13
+#: includes/admin-pages/page-download-files.php:87
+#: includes/class-tcarm-admin.php:82
+#: includes/class-tcarm-admin.php:111
+msgid "Download File Settings"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:13
+msgid "Configure files that approved applicants can download from the application status page."
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:15
+msgid "Display names and descriptions are shown in the frontend download area. File URLs are not shown directly on the frontend and are served only after the download process validates them."
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:31
+msgid "+ Add File"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:59
+msgid "Delete file setting"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:61
+#: includes/admin-pages/page-form-settings.php:154
+msgid "Display Name"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:62
+msgid "Example: Document (Color)"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:63
+#: includes/admin-pages/page-form-settings.php:139
+#: includes/class-tcarm-assets.php:61
+msgid "Description"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:64
+msgid "Example: A document that can be used for printed materials, websites, and related purposes."
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:65
+msgid "File"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:68
+msgid "Select media or enter a file URL"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:70
+msgid "Select from Media Library"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:71
+msgid "Clear"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:73
+msgid "When selected from the media library, the attachment ID is retained. Attachment ID:"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:75
+msgid "Enabled"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:76
+msgid "Show on the frontend"
+msgstr ""
+
+#: includes/admin-pages/page-download-files.php:77
+msgid "Sort Order"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:12
+#: includes/class-tcarm-assets.php:50
+msgid "Text"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:16
+msgid "Phone Number"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:17
+#: includes/admin-pages/page-redirects.php:122
+#: includes/class-tcarm-assets.php:54
+msgid "Date"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:19
+msgid "File Upload"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:20
+#: includes/class-tcarm-assets.php:57
+msgid "Dropdown"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:40
+#: includes/admin-pages/page-translation.php:179
+#: includes/class-tcarm-assets.php:102
+msgid "Please select the target language."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:41
+#: includes/admin-pages/page-translation.php:180
+#: includes/class-tcarm-ai-translation.php:119
+#: includes/class-tcarm-assets.php:103
+msgid "There are no empty fields to translate."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:42
+#: includes/admin-pages/page-translation.php:181
+#: includes/class-tcarm-assets.php:104
+msgid "Translating..."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:43
+#: includes/admin-pages/page-translation.php:182
+#: includes/class-tcarm-assets.php:105
+msgid "AI translation failed."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:44
+#: includes/admin-pages/page-translation.php:183
+#: includes/class-tcarm-assets.php:106
+msgid "Translations were inserted into empty fields in the current language tab. Please review before saving."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:45
+#: includes/admin-pages/page-translation.php:184
+#: includes/class-tcarm-assets.php:107
+msgid "There were no empty fields available for translation."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:60
+#: includes/class-tcarm-admin.php:81
+#: includes/class-tcarm-admin.php:110
+msgid "Form Settings"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:67
+msgid "Application Form Fields"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:68
+msgid "Large cards are form sections, and small cards are individual fields. They are arranged to match the frontend flow with earlier items on the left."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:75
+msgid "Form Field Language Switcher"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:81
+#: includes/admin-pages/page-translation.php:225
+msgid "Translate from Japanese"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:85
+msgid "Japanese is the primary form configuration. Other languages only set section names, display labels, placeholders, and descriptions for the same field structure."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:91
+msgid "No form fields have been configured yet."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:97
+#: includes/admin-pages/page-form-settings.php:116
+#: includes/admin-pages/page-form-settings.php:276
+#: includes/class-tcarm-assets.php:47
+msgid "Drag to reorder"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:100
+#: includes/admin-pages/page-form-settings.php:189
+msgid "Edit Section Name"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:107
+msgid "Delete Section"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:131
+msgid "Display Label"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:134
+#: includes/class-tcarm-assets.php:59
+msgid "Placeholder"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:135
+#: includes/class-tcarm-assets.php:60
+msgid "Example: Enter placeholder text"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:140
+#: includes/class-tcarm-assets.php:62
+msgid "Example: Enter helper text"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:145
+#: includes/admin-pages/page-form-settings.php:308
+#: includes/class-tcarm-assets.php:63
+msgid "Required"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:148
+msgid "Dropdown Choices"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:149
+msgid "Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:155
+msgid "Saved Value"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:160
+msgid "+ Add Choice"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:164
+msgid "Delete Field"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:169
+#: includes/admin-pages/page-form-settings.php:251
+#: includes/class-tcarm-assets.php:74
+msgid "This section does not have any fields yet."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:171
+msgid "+ Add Field"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:178
+msgid "Add a New Section"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:179
+msgid "Click the button to generate a section ID automatically. Editors only need to edit the section name."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:181
+#: includes/admin-pages/page-form-settings.php:319
+msgid "+ Add Section"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:190
+#: includes/class-tcarm-assets.php:45
+msgid "Close"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:193
+#: includes/admin-pages/page-form-settings.php:216
+msgid "Section Name"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:218
+msgid "Japanese:"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:221
+msgid "Translated Section Name"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:235
+msgid "Field type:"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:238
+msgid "Translated Display Label"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:241
+msgid "Translated Placeholder"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:244
+msgid "Translated Description"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:262
+msgid "Consent Item Settings"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:263
+msgid "Manage consent items shown at the bottom of the application form. Large cards are shown as consent sections, and each card body is displayed with scrolling on the frontend."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:270
+msgid "No consent items have been configured yet."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:280
+msgid "Edit Consent Item Name"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:288
+msgid "Delete Consent Item"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:292
+msgid "Consent Text to Display"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:293
+#: includes/class-tcarm-assets.php:86
+msgid "Enter consent text or an explanation. Leave blank if you only use a URL."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:296
+msgid "Checkbox Text"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:297
+msgid "Example: I agree to the terms."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:300
+#: includes/class-tcarm-assets.php:81
+msgid "https://... or /privacy/"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:302
+msgid "Link Text"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:303
+msgid "Example: Open document"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:307
+#: includes/class-tcarm-assets.php:84
+msgid "Show consent checkbox"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:316
+msgid "Add a New Consent Section"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:317
+msgid "Add items as needed for terms, privacy handling, consent to publish submitted content, and related confirmations."
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:323
+msgid "Save Form Settings"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:10
+#: includes/class-tcarm-notifications.php:10
+msgid "Applicant Auto Reply"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:11
+msgid "Admin Submission Notification"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:12
+msgid "Approval Notification"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:13
+msgid "Rejection Notification"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:15
+msgid "Resubmission Received Notification (Admin)"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:19
+msgid "Application Number (Compatibility)"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:20
+msgid "Applicant Name"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:21
+msgid "Email Address"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:24
+msgid "Application Status URL"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:25
+msgid "Application Content Review URL"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:26
+msgid "Edit Resubmission URL"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:27
+msgid "Admin Screen URL"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:29
+msgid "Additional Confirmation Request Content"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:30
+msgid "Resubmission Count"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:31
+msgid "Site Name"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:33
+#: includes/admin-pages/page-notifications.php:57
+msgid "Email Notifications"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:40
+msgid "The test email was sent."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:42
+msgid "Failed to send the test email. Please check the sending settings."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:44
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:57
+msgid "Configure sender and recipient settings for applicant and admin notification emails."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:60
+msgid "Admin Recipients"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:65
+#: includes/admin-pages/page-notifications.php:69
+msgid "To specify multiple recipients, separate them with commas. Example: info@example.com, staff@example.com"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:76
+msgid "Sending Settings"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:76
+msgid "Configure sender and sending method for notification emails. If SMTP is not used, emails are sent using WordPress default mail."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:79
+msgid "Sending Method"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:81
+msgid "WordPress Default Mail"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:82
+msgid "SMTP"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:85
+msgid "From Name"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:88
+msgid "From Email Address"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:90
+msgid "When using SMTP, set an email address that is allowed to send from the SMTP account."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:92
+msgid "SMTP Host"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:95
+msgid "SMTP Port"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:97
+msgid "Usually use TLS (587) or SSL (465)."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:99
+msgid "Encryption"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:107
+msgid "Use SMTP authentication"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:109
+msgid "SMTP Username"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:112
+msgid "SMTP Password"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:113
+msgid "Saved (enter only to change)"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:114
+msgid "The saved password is not displayed. Enter a value only when changing it."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:118
+msgid "Test Send"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:119
+msgid "Send a test email using the current sending settings. The test email does not include application data or personal information."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:120
+msgid "Test Recipient Email Address"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:123
+msgid "Send Test Email"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:129
+msgid "Email Templates"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:129
+msgid "Edit notification messages such as submission receipt, review results, and additional confirmation requests by switching tabs."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:131
+msgid "Email Template"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:141
+msgid "Subject"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:144
+msgid "Body"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:150
+#: includes/admin-pages/page-notifications.php:151
+msgid "Available Variables"
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:152
+msgid "Copy these variables into the subject or body."
+msgstr ""
+
+#: includes/admin-pages/page-notifications.php:158
+msgid "Click a button to copy the variable."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:9
+msgid "Basic Settings"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:16
+msgid "Frontend Page Settings"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:16
+msgid "Configure application form, status lookup, content review, and edit pages for each language."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:18
+msgid "Selecting fixed pages is recommended. Languages without settings fall back to the Japanese setting or existing settings."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:32
+msgid "Attachment Settings"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:32
+msgid "Common rules for attachments that can be uploaded through the application form."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:35
+msgid "Enable file upload fields"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:36
+msgid "Allowed Extensions"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:38
+msgid "Specify values separated by commas. Example:"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:38
+msgid ". For safety, svg, html, php, and similar file types cannot be used."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:40
+msgid "Maximum File Size"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:43
+msgid "Maximum Upload Count"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:44
+msgid "items"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:72
+msgid "Application Number Settings"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:73
+msgid "Configure the format of application numbers issued automatically for new submissions."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:76
+msgid "This setting applies only to newly submitted applications. Already issued application numbers will not change. Up to 32 characters can be used."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:78
+msgid "Preview"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:91
+msgid "Add Row"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:120
+msgid "Fixed Text"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:121
+msgid "Static Text"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:123
+msgid "Random Letters"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:124
+msgid "Random Digits"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:125
+msgid "Sequence"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:151
+#: includes/admin-pages/page-redirects.php:171
+msgid "Permission Settings"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:152
+msgid "Only WordPress administrators can change permission settings."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:172
+msgid "Configure role groups that can use this plugin."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:175
+msgid "Grant access to this plugin's admin screens to the role groups selected here. Only WordPress administrators can change permission settings."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:178
+msgid "Role groups that can use this plugin"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:192
+msgid "Administrators can always use this plugin."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:197
+msgid "The plugin-specific capability is removed from unselected role groups. Administrators are always enabled for safety."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:208
+msgid "Personal Information and Data Storage"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:232
+msgid "About Personal Information and Data Storage"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:233
+msgid "Admin-facing notes about application data, attachments, notification history, and external service usage."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:236
+msgid "This plugin stores information entered in application forms, uploaded files, review history, notification history, and related data for receiving applications, reviewing content, sending notifications, operations, spam prevention, and troubleshooting."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:240
+msgid "Main Information Stored"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:242
+msgid "Applicant information: Information entered or selected by the applicant based on Form Settings."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:243
+msgid "Application content information: Content entered or selected by the applicant based on Form Settings."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:244
+msgid "Attachments: Files uploaded during application submission or resubmission."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:245
+msgid "Review information: Review status, approval or rejection results, review messages, rejection reasons, and related information."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:246
+msgid "Notification and sending history: Submission receipts, auto replies, admin notifications, approval notifications, rejection notifications, resubmission notifications, submission and response history, and related records."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:247
+msgid "Security-related information: Depending on settings and operations, submission times and information related to spam prevention or troubleshooting may be stored."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:252
+msgid "Purpose of Use"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:253
+msgid "Saved information is used for receiving applications, reviewing content, review workflows, notifications, operations, spam prevention, and troubleshooting."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:257
+msgid "About External Services"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:259
+msgid "When Cloudflare Turnstile is enabled, an external service verification is performed as spam protection during form submission."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:260
+msgid "The AI translation feature is an admin tool used to assist with translating form fields and related settings. It does not normally send applicant-submitted content to AI translation automatically."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:261
+msgid "Analytics services such as Google Analytics may be used separately depending on site settings."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:266
+msgid "Sample Text for Privacy Policy"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:268
+msgid "This text is an example. The actual privacy policy should be reviewed and adjusted by the site operator."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:284
+msgid "Data Deletion on Uninstall"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:285
+msgid "Configure whether data saved by this plugin should be deleted when the plugin is deleted."
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:291
+msgid "Delete plugin data on uninstall"
+msgstr ""
+
+#: includes/admin-pages/page-redirects.php:293
+msgid "When enabled, settings data and application-related data saved by this plugin are deleted when the plugin is deleted from the WordPress admin screen. Deactivating the plugin alone does not delete data. Files in the media library and notification email template bodies are not included in automatic deletion."
+msgstr ""
+
+#: includes/admin-pages/page-security.php:9
+#: includes/class-tcarm-admin.php:84
+#: includes/class-tcarm-admin.php:113
+msgid "Security Settings"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:18
+msgid "Spam Protection Settings"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:18
+msgid "Basic settings to help prevent automated form posts and repeated submissions in a short time."
+msgstr ""
+
+#: includes/admin-pages/page-security.php:26
+msgid "Enable simple bot protection using a hidden field and submission timing"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:27
+msgid "Detect likely automated bot submissions using a hidden field that normal users cannot see and the elapsed time from form display to submission. Submissions are recorded in the blocked history when the hidden field contains a value or when the form is submitted immediately after display."
+msgstr ""
+
+#: includes/admin-pages/page-security.php:35
+msgid "Enable short-term submission and lookup rate limits"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:36
+msgid "Limit repeated submissions, resubmissions, and status lookups from the same IP address or email address within a short time. Limited attempts are saved to the blocked history with the reason, date and time, IP address, and minimal contact information."
+msgstr ""
+
+#: includes/admin-pages/page-security.php:44
+msgid "Cloudflare Turnstile Settings"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:44
+#: includes/admin-pages/page-security.php:57
+msgid "Add Turnstile verification to application, lookup, and edit forms when needed."
+msgstr ""
+
+#: includes/admin-pages/page-security.php:53
+msgid "Enable Turnstile verification"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:54
+msgid "ON"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:54
+msgid "OFF"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:63
+msgid "Turnstile Scope"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:65
+msgid "Application Status Lookup Form"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:66
+msgid "Edit and Resubmit Form"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:87
+msgid "Download Link Settings"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:87
+msgid "Set the expiration time for download links issued to approved applicants. After a link expires, a new link is issued when the applicant checks the application status page again."
+msgstr ""
+
+#: includes/admin-pages/page-security.php:90
+msgid "Download Link Expiration"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:93
+msgid "10 minutes"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:94
+msgid "30 minutes"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:95
+msgid "1 hour"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:96
+msgid "24 hours"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:97
+msgid "No expiration"
+msgstr ""
+
+#: includes/admin-pages/page-security.php:99
+msgid "30 minutes is recommended in most cases. If set to no expiration, copied download URLs may remain usable for a long time."
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:26
+msgid "Common Buttons"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:45
+msgid "Common Labels"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:68
+msgid "Application Statuses"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:78
+msgid "Application Steps"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:103
+msgid "Application Review"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:111
+msgid "Submission Complete"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:135
+msgid "Application Edit"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:143
+msgid "Downloads"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:188
+#: includes/class-tcarm-admin.php:87
+#: includes/class-tcarm-admin.php:116
+msgid "Multilingual Settings"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:195
+msgid "Display Language Settings"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:196
+msgid "Select languages shown in admin multilingual input fields and AI translation targets."
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:207
+msgid "If no languages are selected, English is enabled when saving. Existing translation data for disabled languages is not deleted."
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:215
+msgid "Translation String Settings"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:215
+msgid "Configure the text shown on the frontend according to the shortcode"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:215
+msgid "parameter."
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:217
+msgid "Empty items fall back to the English default strings."
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:219
+msgid "Translation Language Switcher"
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:231
+msgid "There are no target languages for translation. Enable target languages in Display Language Settings."
+msgstr ""
+
+#: includes/admin-pages/page-translation.php:256
+msgid "Save Multilingual Settings"
+msgstr ""
+
+#: includes/class-tcarm-admin.php:78
+msgid "Application Management"
+msgstr ""
+
+#: includes/class-tcarm-admin.php:83
+#: includes/class-tcarm-admin.php:112
+msgid "Notification Email Settings"
+msgstr ""
+
+#: includes/class-tcarm-admin.php:85
+#: includes/class-tcarm-admin.php:114
+msgid "General Settings"
+msgstr ""
+
+#: includes/class-tcarm-admin.php:88
+#: includes/class-tcarm-admin.php:117
+msgid "Privacy and Data Retention"
+msgstr ""
+
+#: includes/class-tcarm-admin.php:89
+#: includes/class-tcarm-admin.php:118
+msgid "About"
+msgstr ""
+
+#: includes/class-tcarm-admin.php:127
+msgid "ShinseiFlow Admin Menu"
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:14
+msgid "AI Translation Settings"
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:14
+msgid "Configure the AI provider, API key, and model used by translation helper tools."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:17
+msgid "AI Provider"
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:23
+msgid "API Key"
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:24
+msgid "Configured (enter only to change)"
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:25
+msgid "Enter the API key for the selected AI provider. Saved API keys are not displayed."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:27
+msgid "Model"
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:80
+#: includes/class-tcarm-applications.php:745
+#: includes/class-tcarm-applications.php:763
+#: includes/class-tcarm-applications.php:796
+#: includes/class-tcarm-applications.php:931
+msgid "You do not have permission."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:88
+msgid "Please configure the API key for the selected AI provider."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:95
+msgid "There are no target languages for translation."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:127
+msgid "Failed to call the AI translation API. Please check your settings."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:156
+#: includes/class-tcarm-ai-translation.php:209
+msgid "Invalid target language."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:178
+#: includes/class-tcarm-ai-translation.php:238
+msgid "AI translation request failed."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:183
+#: includes/class-tcarm-ai-translation.php:243
+msgid "AI translation API returned an error."
+msgstr ""
+
+#: includes/class-tcarm-ai-translation.php:268
+msgid "Could not read the AI translation result. Please try again."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:314
+msgid "Consent Items"
+msgstr ""
+
+#: includes/class-tcarm-applications.php:314
+msgid "Consent items confirmed when the application was submitted."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:320
+msgid "Agreed"
+msgstr ""
+
+#: includes/class-tcarm-applications.php:320
+msgid " (Optional)"
+msgstr ""
+
+#: includes/class-tcarm-applications.php:400
+msgid "The current file will be replaced only if you select a new file. If no file is selected, the current file is kept."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:651
+msgid "File attachments are disabled."
+msgstr ""
+
+#. translators: %d: maximum number of files.
+#: includes/class-tcarm-applications.php:656
+#, php-format
+msgid "You can upload up to %d files."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:663
+msgid "Could not create the attachment storage directory."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:668
+#: includes/class-tcarm-applications.php:702
+msgid "Could not upload the file."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:674
+msgid "This file type cannot be uploaded."
+msgstr ""
+
+#. translators: %s: comma-separated allowed file extensions.
+#: includes/class-tcarm-applications.php:679
+#, php-format
+msgid "Allowed file types are: %s."
+msgstr ""
+
+#. translators: %s: maximum file size.
+#: includes/class-tcarm-applications.php:684
+#, php-format
+msgid "File size must be %s or less."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:688
+msgid "Could not verify the file type. Please upload an allowed image or PDF file."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:727
+msgid "Additional Information Requested"
+msgstr ""
+
+#: includes/class-tcarm-applications.php:728
+msgid "Published"
+msgstr ""
+
+#: includes/class-tcarm-applications.php:750
+#: includes/class-tcarm-applications.php:801
+#: includes/class-tcarm-applications.php:936
+#: includes/class-tcarm-shortcodes.php:50
+#: includes/class-tcarm-shortcodes.php:55
+#: includes/class-tcarm-shortcodes.php:135
+#: includes/class-tcarm-shortcodes.php:141
+#: includes/class-tcarm-shortcodes.php:146
+msgid "Invalid request."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:806
+#: includes/class-tcarm-applications.php:941
+#: includes/class-tcarm-notifications.php:268
+msgid "Application not found."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:824
+#: includes/class-tcarm-applications.php:849
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:964
+msgid "Could not update the application content."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:1119
+msgid "Review the history of application receipt, notifications, review actions, and public integrations."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:1122
+msgid "There is no history yet."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:1132
+msgid "Actor: "
+msgstr ""
+
+#: includes/class-tcarm-applications.php:1147
+#: includes/class-tcarm-notifications.php:172
+#: includes/class-tcarm-notifications.php:261
+msgid "Permission denied."
+msgstr ""
+
+#: includes/class-tcarm-applications.php:1154
+msgid "Invalid status."
+msgstr ""
+
+#: includes/class-tcarm-assets.php:14
+msgid ""
+"Deactivating the plugin will not delete saved application data, uploaded files, review information, or settings.\n"
+"\n"
+"This information may include personal data and application details.\n"
+"\n"
+"If you want to delete data, enable data deletion under Privacy and Data Retention before deleting the plugin.\n"
+"\n"
+"Do you want to deactivate the plugin?"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:43
+msgid "Please save your changes."
+msgstr ""
+
+#: includes/class-tcarm-assets.php:44
+msgid "Menu"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:46
+msgid "Show description"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:48
+msgid "New field"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:53
+msgid "Phone number"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:56
+msgid "File upload"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:58
+msgid "Display label"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:64
+msgid "Dropdown choices"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:65
+msgid "Set display labels and saved values. A blank first option is shown automatically as the placeholder."
+msgstr ""
+
+#: includes/class-tcarm-assets.php:66
+msgid "Display name"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:67
+msgid "Saved value"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:69
+msgid "Add choice"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:70
+msgid "Delete field"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:71
+msgid "New section"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:72
+msgid "Edit section name"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:73
+msgid "Delete section"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:75
+msgid "Add field"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:76
+msgid "New consent item"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:77
+msgid "Edit consent item name"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:78
+msgid "Delete consent item"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:79
+msgid "Checkbox text"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:80
+msgid "I agree to the terms."
+msgstr ""
+
+#: includes/class-tcarm-assets.php:82
+msgid "Link text"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:83
+msgid "Example: Terms of Use"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:85
+msgid "Consent text to display"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:87
+msgid "Section name"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:88
+msgid "Consent item name"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:89
+msgid "Delete this field?"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:90
+msgid "Delete this section?"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:91
+msgid "Fields in this section will also be deleted. Continue?"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:92
+msgid "Delete this consent item?"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:93
+msgid "Please enter a section name."
+msgstr ""
+
+#: includes/class-tcarm-assets.php:94
+msgid "Please copy this"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:95
+msgid " was copied."
+msgstr ""
+
+#: includes/class-tcarm-assets.php:96
+msgid "Select download file"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:97
+msgid "Use this file"
+msgstr ""
+
+#: includes/class-tcarm-assets.php:100
+#: includes/class-tcarm-notifications.php:114
+msgid "Recipient: "
+msgstr ""
+
+#: includes/class-tcarm-assets.php:101
+#: includes/class-tcarm-notifications.php:115
+msgid "—"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:13
+#: includes/class-tcarm-notifications.php:25
+#: includes/class-tcarm-notifications.php:31
+#: includes/class-tcarm-notifications.php:37
+msgid "To Applicant"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:16
+msgid "Admin Reception Notice"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:19
+#: includes/class-tcarm-notifications.php:43
+msgid "To Administrator"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:22
+msgid "Approval Notice"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:28
+msgid "Rejection Notice"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:34
+msgid "Additional Information Request"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:40
+msgid "Resubmission Notice (Admin)"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:80
+msgid "Resend Notification Email"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:80
+msgid "Resend notification emails according to the current status when the applicant or administrator did not receive them."
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:83
+msgid "There are currently no notification emails available for resend."
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:90
+msgid "Email to resend"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:98
+#: includes/class-tcarm-notifications.php:129
+msgid "Recipient:"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:99
+#: includes/class-tcarm-notifications.php:132
+msgid "Resend"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:127
+msgid "Resend notification email?"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:128
+msgid "The selected notification email will be resent. Do you want to continue?"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:129
+msgid "Email type:"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:182
+msgid "Email Delivery Test"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:183
+msgid "This is a test email for the application management system email delivery settings."
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:183
+msgid "If you received this email, the email delivery settings are working correctly."
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:286
+msgid "Failed to resend email. No recipient is configured."
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:292
+msgid "Email resent. Recipient:"
+msgstr ""
+
+#: includes/class-tcarm-notifications.php:296
+msgid "Failed to resend email. Recipient:"
+msgstr ""
+
+#. translators: %s: consent item label.
+#: includes/class-tcarm-plugin.php:131
+#, php-format
+msgid "You must agree to %s."
+msgstr ""
+
+#: includes/class-tcarm-plugin.php:155
+msgid "I agree to the content."
+msgstr ""
+
+#. translators: %s: consent item label.
+#: includes/class-tcarm-plugin.php:159
+#, php-format
+msgid "Open %s"
+msgstr ""
+
+#: includes/class-tcarm-settings.php:705
+#: includes/class-tcarm-settings.php:809
+msgid "Shortcode to place: "
+msgstr ""
+
+#: includes/class-tcarm-settings.php:713
+#: includes/class-tcarm-settings.php:817
+msgid "Select a page"
+msgstr ""
+
+#: includes/class-tcarm-settings.php:721
+#: includes/class-tcarm-settings.php:825
+msgid "Current URL: "
+msgstr ""
+
+#: includes/class-tcarm-settings.php:723
+#: includes/class-tcarm-settings.php:827
+msgid "Current URL: Not set"
+msgstr ""
+
+#: includes/class-tcarm-settings.php:766
+msgid "Submitted Content Page"
+msgstr ""
+
+#: includes/class-tcarm-settings.php:768
+msgid "Back to top link"
+msgstr ""
+
+#: includes/class-tcarm-settings.php:778
+msgid "Frontend page settings language tabs"
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:18
+msgid "Could not verify your input. Please wait a moment and try again."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:22
+#: includes/class-tcarm-shortcodes.php:59
+#: includes/class-tcarm-shortcodes.php:150
+msgid "The submission was too fast. Please check your input and try again."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:29
+#: includes/class-tcarm-shortcodes.php:67
+msgid "Robot prevention verification failed. Please try again."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:77
+#: includes/class-tcarm-shortcodes.php:171
+msgid "Too many submissions were made. Please wait a while and try again."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:138
+msgid "This application cannot be edited."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:153
+msgid "Robot prevention verification failed."
+msgstr ""
+
+#. translators: %s: field label.
+#: includes/class-tcarm-shortcodes.php:254
+#, php-format
+msgid "%s is required."
+msgstr ""
+
+#. translators: %s: field label.
+#: includes/class-tcarm-shortcodes.php:259
+#, php-format
+msgid "The selected value for %s is invalid."
+msgstr ""
+
+#. translators: %s: field label.
+#: includes/class-tcarm-shortcodes.php:263
+#: includes/class-tcarm-shortcodes.php:267
+#, php-format
+msgid "%s has an invalid format."
+msgstr ""
+
+#. translators: %s: field label.
+#: includes/class-tcarm-shortcodes.php:271
+#, php-format
+msgid "Please enter %s using numbers, hyphens, plus signs, parentheses, and spaces."
+msgstr ""
+
+#. translators: %s: field label.
+#: includes/class-tcarm-shortcodes.php:275
+#, php-format
+msgid "Please enter %s in YYYY-MM-DD format."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:540
+msgid "No form fields have been configured."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:993
+msgid "This file cannot be downloaded."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:997
+msgid "The download link has expired. Please check again from the application status page."
+msgstr ""
+
+#: includes/class-tcarm-shortcodes.php:1002
+#: includes/class-tcarm-shortcodes.php:1019
+#: includes/class-tcarm-shortcodes.php:1024
+msgid "File not found."
+msgstr ""
