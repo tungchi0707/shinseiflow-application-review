@@ -1,26 +1,21 @@
-# Chinese (Traditional) translations for ShinseiFlow – Application Review & Approval Workflow.
-# Copyright (C) 2026 Casper Yeh
-# This file is distributed under the same license as the ShinseiFlow – Application Review & Approval Workflow project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ShinseiFlow – Application Review & Approval Workflow 0.4.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shinseiflow-application-review\n"
-"POT-Creation-Date: 2026-07-22 03:21+0000\n"
-"PO-Revision-Date: 2026-07-22 03:21+0000\n"
 "Last-Translator: \n"
-"Language: zh_Hant\n"
 "Language-Team: Traditional Chinese\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-22 03:21+0000\n"
+"PO-Revision-Date: 2026-07-22 03:21+0000\n"
+"Language: zh_Hant\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.18.0\n"
 
 #. Plugin Name of the plugin
-#: includes/admin-pages/page-about.php:86 shinseiflow-application-review.php
+#: shinseiflow-application-review.php
+#: includes/admin-pages/page-about.php:86
 msgid "ShinseiFlow – Application Review & Approval Workflow"
 msgstr "ShinseiFlow – 申請審核與核准工作流程"
 
@@ -30,7 +25,8 @@ msgid "Create application forms, review submissions, manage approval workflows, 
 msgstr "在 WordPress 中建立申請表單、審核送出的內容、管理核准流程並通知申請者。"
 
 #. Author of the plugin
-#: includes/admin-pages/page-about.php:85 shinseiflow-application-review.php
+#: shinseiflow-application-review.php
+#: includes/admin-pages/page-about.php:85
 msgid "Casper Yeh"
 msgstr "Casper Yeh"
 
@@ -70,7 +66,9 @@ msgstr "提交錯誤回報或改進建議。"
 msgid "About ShinseiFlow"
 msgstr "關於 ShinseiFlow"
 
-#: includes/admin-pages/page-about.php:42 includes/admin-pages/page-dashboard.php:13 includes/class-tcarm-admin.php:139
+#: includes/admin-pages/page-about.php:42
+#: includes/admin-pages/page-dashboard.php:13
+#: includes/class-tcarm-admin.php:139
 msgid "ShinseiFlow"
 msgstr "ShinseiFlow"
 
@@ -78,21 +76,21 @@ msgstr "ShinseiFlow"
 msgid "Application Review & Approval Workflow for WordPress"
 msgstr "WordPress 申請審核與核准工作流程"
 
-#: includes/admin-pages/page-about.php:44 includes/admin-pages/page-about.php:87
+#: includes/admin-pages/page-about.php:44
+#: includes/admin-pages/page-about.php:87
 msgid "Version"
 msgstr "版本"
 
 #: includes/admin-pages/page-about.php:45
-msgid ""
-"Build application forms, review submissions, manage approval workflows, send notifications, and provide approved "
-"downloads in WordPress."
+msgid "Build application forms, review submissions, manage approval workflows, send notifications, and provide approved downloads in WordPress."
 msgstr "在 WordPress 中建立申請表單、審查提交內容、管理核准流程、傳送通知，並提供核准後的檔案下載。"
 
 #: includes/admin-pages/page-about.php:51
 msgid "Resources"
 msgstr "相關資源"
 
-#: includes/admin-pages/page-about.php:71 includes/admin-pages/page-about.php:75
+#: includes/admin-pages/page-about.php:71
+#: includes/admin-pages/page-about.php:75
 msgid "Support Development"
 msgstr "支持開發"
 
@@ -132,8 +130,11 @@ msgstr "致謝"
 msgid "ShinseiFlow is built on WordPress and made possible by the open-source community."
 msgstr "ShinseiFlow 建構於 WordPress 之上，並受惠於開放原始碼社群的支持。"
 
-#: includes/admin-pages/page-application-detail.php:26 includes/admin-pages/page-application-detail.php:59
-#: includes/admin-pages/page-dashboard.php:23 includes/class-tcarm-admin.php:80 includes/class-tcarm-admin.php:109
+#: includes/admin-pages/page-application-detail.php:26
+#: includes/admin-pages/page-application-detail.php:59
+#: includes/admin-pages/page-dashboard.php:23
+#: includes/class-tcarm-admin.php:80
+#: includes/class-tcarm-admin.php:109
 msgid "Applications"
 msgstr "申請列表"
 
@@ -157,19 +158,21 @@ msgstr "無法永久刪除申請。"
 msgid "Only deleted applications can be permanently deleted."
 msgstr "只有已刪除的申請可以永久刪除。"
 
-#: includes/admin-pages/page-application-detail.php:47 includes/admin-pages/page-application-detail.php:125
+#: includes/admin-pages/page-application-detail.php:47
+#: includes/admin-pages/page-application-detail.php:125
 #: includes/class-tcarm-assets.php:99
 msgid "Please select applications to permanently delete."
 msgstr "請選擇要永久刪除的申請。"
 
 #. translators: %d: number of deleted applications.
 #: includes/admin-pages/page-application-detail.php:50
-#, python-format
+#, python-format,php-format
 msgid "%d applications were permanently deleted."
 msgstr "已永久刪除 %d 件申請。"
 
 #. translators: 1: number of deleted applications, 2: number of applications that could not be deleted.
 #: includes/admin-pages/page-application-detail.php:53
+#, php-format
 msgid "%1$d applications were permanently deleted. %2$d could not be deleted."
 msgstr "已永久刪除 %1$d 件申請。%2$d 件無法刪除。"
 
@@ -189,25 +192,32 @@ msgstr "全部"
 msgid "Delete Application"
 msgstr "刪除 申請"
 
-#: includes/admin-pages/page-application-detail.php:75 includes/admin-pages/page-application-detail.php:384
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:384
 msgid "Application Date"
 msgstr "申請日期"
 
-#: includes/admin-pages/page-application-detail.php:75 includes/admin-pages/page-application-detail.php:224
-#: includes/admin-pages/page-display-customize.php:65 includes/admin-pages/page-notifications.php:18
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
+#: includes/admin-pages/page-display-customize.php:65
+#: includes/admin-pages/page-notifications.php:17
 msgid "Application Number"
 msgstr "申請編號"
 
-#: includes/admin-pages/page-application-detail.php:75 includes/admin-pages/page-notifications.php:22
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-notifications.php:21
 msgid "Event Name"
 msgstr "活動名稱"
 
-#: includes/admin-pages/page-application-detail.php:75 includes/admin-pages/page-application-detail.php:224
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
 msgid "Applicant"
 msgstr "申請者"
 
-#: includes/admin-pages/page-application-detail.php:75 includes/admin-pages/page-application-detail.php:273
-#: includes/admin-pages/page-form-settings.php:14 includes/class-tcarm-assets.php:52
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:273
+#: includes/admin-pages/page-form-settings.php:14
+#: includes/class-tcarm-assets.php:52
 msgid "Email"
 msgstr "電子郵件"
 
@@ -219,7 +229,8 @@ msgstr "狀態"
 msgid "Edit"
 msgstr "編輯"
 
-#: includes/admin-pages/page-application-detail.php:75 includes/admin-pages/page-application-detail.php:224
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
 #: includes/admin-pages/page-application-detail.php:273
 msgid "Actions"
 msgstr "操作"
@@ -229,16 +240,19 @@ msgid "There is no application data yet."
 msgstr "目前沒有申請資料。"
 
 #. translators: %d: resubmission count.
-#: includes/admin-pages/page-application-detail.php:91 includes/admin-pages/page-application-detail.php:391
-#, python-format
+#: includes/admin-pages/page-application-detail.php:91
+#: includes/admin-pages/page-application-detail.php:391
+#, python-format,php-format
 msgid "%d times"
 msgstr "%d 次"
 
-#: includes/admin-pages/page-application-detail.php:96 includes/admin-pages/page-application-detail.php:242
+#: includes/admin-pages/page-application-detail.php:96
+#: includes/admin-pages/page-application-detail.php:242
 msgid "Details"
 msgstr "詳細資料"
 
-#: includes/admin-pages/page-application-detail.php:124 includes/class-tcarm-assets.php:98
+#: includes/admin-pages/page-application-detail.php:124
+#: includes/class-tcarm-assets.php:98
 msgid "Please select applications to delete."
 msgstr "請選擇要刪除的申請。"
 
@@ -254,15 +268,21 @@ msgstr "選取的申請將移至刪除項目。"
 msgid "Deleted applications can be restored later. This action does not permanently delete application data."
 msgstr "已刪除的申請之後可以還原。此操作不會永久刪除申請資料。"
 
-#: includes/admin-pages/page-application-detail.php:140 includes/admin-pages/page-application-detail.php:161
-#: includes/admin-pages/page-application-detail.php:179 includes/admin-pages/page-application-detail.php:197
-#: includes/admin-pages/page-application-detail.php:364 includes/admin-pages/page-form-settings.php:198
-#: includes/class-tcarm-applications.php:367 includes/class-tcarm-notifications.php:131
+#: includes/admin-pages/page-application-detail.php:140
+#: includes/admin-pages/page-application-detail.php:161
+#: includes/admin-pages/page-application-detail.php:179
+#: includes/admin-pages/page-application-detail.php:197
+#: includes/admin-pages/page-application-detail.php:364
+#: includes/admin-pages/page-form-settings.php:198
+#: includes/class-tcarm-applications.php:367
+#: includes/class-tcarm-notifications.php:123
 msgid "Cancel"
 msgstr "取消"
 
-#: includes/admin-pages/page-application-detail.php:141 includes/admin-pages/page-application-detail.php:287
-#: includes/admin-pages/page-form-settings.php:156 includes/admin-pages/page-redirects.php:138
+#: includes/admin-pages/page-application-detail.php:141
+#: includes/admin-pages/page-application-detail.php:287
+#: includes/admin-pages/page-form-settings.php:156
+#: includes/admin-pages/page-redirects.php:138
 #: includes/class-tcarm-assets.php:68
 msgid "Delete"
 msgstr "刪除"
@@ -275,7 +295,8 @@ msgstr "要還原此申請嗎？"
 msgid "Restore this application from deleted items?"
 msgstr "要從刪除項目還原此申請嗎？"
 
-#: includes/admin-pages/page-application-detail.php:162 includes/admin-pages/page-application-detail.php:247
+#: includes/admin-pages/page-application-detail.php:162
+#: includes/admin-pages/page-application-detail.php:247
 msgid "Restore"
 msgstr "還原"
 
@@ -287,16 +308,20 @@ msgstr "要永久刪除此申請嗎？"
 msgid "This application will be permanently deleted."
 msgstr "此申請將被永久刪除。"
 
-#: includes/admin-pages/page-application-detail.php:177 includes/admin-pages/page-application-detail.php:195
+#: includes/admin-pages/page-application-detail.php:177
+#: includes/admin-pages/page-application-detail.php:195
 msgid "This action cannot be undone."
 msgstr "此操作無法復原。"
 
-#: includes/admin-pages/page-application-detail.php:177 includes/admin-pages/page-application-detail.php:195
+#: includes/admin-pages/page-application-detail.php:177
+#: includes/admin-pages/page-application-detail.php:195
 msgid "Do you want to continue?"
 msgstr "要繼續嗎？"
 
-#: includes/admin-pages/page-application-detail.php:180 includes/admin-pages/page-application-detail.php:198
-#: includes/admin-pages/page-application-detail.php:216 includes/admin-pages/page-application-detail.php:253
+#: includes/admin-pages/page-application-detail.php:180
+#: includes/admin-pages/page-application-detail.php:198
+#: includes/admin-pages/page-application-detail.php:216
+#: includes/admin-pages/page-application-detail.php:253
 msgid "Permanently Delete"
 msgstr "完全刪除"
 
@@ -338,7 +363,7 @@ msgstr "已封鎖的送出"
 
 #. translators: %d: number of blocked submissions in the past 7 days.
 #: includes/admin-pages/page-application-detail.php:271
-#, python-format
+#, python-format,php-format
 msgid "Past 7 days: %d. Only minimal contact information is stored to help follow up on false positives."
 msgstr "過去 7 天：%d。僅儲存最少的聯絡資訊，以協助追蹤誤判。"
 
@@ -346,7 +371,8 @@ msgstr "過去 7 天：%d。僅儲存最少的聯絡資訊，以協助追蹤誤�
 msgid "Date and Time"
 msgstr "日期與時間"
 
-#: includes/admin-pages/page-application-detail.php:273 includes/admin-pages/page-form-settings.php:126
+#: includes/admin-pages/page-application-detail.php:273
+#: includes/admin-pages/page-form-settings.php:126
 #: includes/class-tcarm-assets.php:49
 msgid "Type"
 msgstr "類型"
@@ -377,7 +403,7 @@ msgstr "找不到申請"
 
 #. translators: %s: application code.
 #: includes/admin-pages/page-application-detail.php:307
-#, python-format
+#, python-format,php-format
 msgid "Application Details: %s"
 msgstr "申請詳細資料：%s"
 
@@ -429,8 +455,10 @@ msgstr "申請內容編輯操作"
 msgid "You are editing the application content. Changes are not applied until you save."
 msgstr "你正在編輯申請內容。儲存前變更不會套用。"
 
-#: includes/admin-pages/page-application-detail.php:365 includes/admin-pages/page-form-settings.php:199
-#: includes/class-tcarm-applications.php:366 includes/class-tcarm-assets.php:42
+#: includes/admin-pages/page-application-detail.php:365
+#: includes/admin-pages/page-form-settings.php:199
+#: includes/class-tcarm-applications.php:366
+#: includes/class-tcarm-assets.php:42
 msgid "Save"
 msgstr "儲存"
 
@@ -442,7 +470,8 @@ msgstr "審核摘要"
 msgid "Check the current status and publication status."
 msgstr "確認目前狀態與公開狀態。"
 
-#: includes/admin-pages/page-application-detail.php:382 includes/admin-pages/page-notifications.php:23
+#: includes/admin-pages/page-application-detail.php:382
+#: includes/admin-pages/page-notifications.php:22
 msgid "Current Status"
 msgstr "目前狀態"
 
@@ -454,7 +483,8 @@ msgstr "更新日期"
 msgid "Edit Resubmission"
 msgstr "編輯再申請"
 
-#: includes/admin-pages/page-application-detail.php:393 includes/admin-pages/page-notifications.php:101
+#: includes/admin-pages/page-application-detail.php:393
+#: includes/admin-pages/page-notifications.php:99
 msgid "None"
 msgstr "無"
 
@@ -466,7 +496,8 @@ msgstr "最後編輯時間"
 msgid "Last Reviewed At"
 msgstr "最後審核時間"
 
-#: includes/admin-pages/page-application-detail.php:416 includes/admin-pages/page-display-customize.php:94
+#: includes/admin-pages/page-application-detail.php:416
+#: includes/admin-pages/page-display-customize.php:94
 msgid "Review Actions"
 msgstr "審核操作"
 
@@ -490,7 +521,9 @@ msgstr "許可"
 msgid "Reject"
 msgstr "不許可"
 
-#: includes/admin-pages/page-dashboard.php:9 includes/class-tcarm-admin.php:79 includes/class-tcarm-admin.php:108
+#: includes/admin-pages/page-dashboard.php:9
+#: includes/class-tcarm-admin.php:79
+#: includes/class-tcarm-admin.php:108
 msgid "Home"
 msgstr "首頁"
 
@@ -510,12 +543,14 @@ msgstr "查看申請"
 msgid "Go to Form Settings"
 msgstr "前往表單設定"
 
-#: includes/admin-pages/page-dashboard.php:24 includes/admin-pages/page-display-customize.php:66
+#: includes/admin-pages/page-dashboard.php:24
+#: includes/admin-pages/page-display-customize.php:66
 #: includes/class-tcarm-applications.php:724
 msgid "Pending Review"
 msgstr "待審核"
 
-#: includes/admin-pages/page-dashboard.php:25 includes/admin-pages/page-display-customize.php:67
+#: includes/admin-pages/page-dashboard.php:25
+#: includes/admin-pages/page-display-customize.php:67
 #: includes/class-tcarm-applications.php:725
 msgid "Approved"
 msgstr "已許可"
@@ -528,11 +563,13 @@ msgstr "前台頁面設定狀態"
 msgid "Review shortcode pages and destination URLs."
 msgstr "確認短代碼頁面與目的 URL。"
 
-#: includes/admin-pages/page-dashboard.php:42 includes/class-tcarm-settings.php:764
+#: includes/admin-pages/page-dashboard.php:42
+#: includes/class-tcarm-settings.php:762
 msgid "Application Form Page"
 msgstr "申請表單頁面"
 
-#: includes/admin-pages/page-dashboard.php:43 includes/class-tcarm-settings.php:765
+#: includes/admin-pages/page-dashboard.php:43
+#: includes/class-tcarm-settings.php:763
 msgid "Application Status Page"
 msgstr "申請狀態頁面"
 
@@ -540,11 +577,13 @@ msgstr "申請狀態頁面"
 msgid "Application Review Page"
 msgstr "申請內容確認頁面"
 
-#: includes/admin-pages/page-dashboard.php:45 includes/class-tcarm-settings.php:767
+#: includes/admin-pages/page-dashboard.php:45
+#: includes/class-tcarm-settings.php:765
 msgid "Edit and Resubmit Page"
 msgstr "修正再申請頁面"
 
-#: includes/admin-pages/page-dashboard.php:46 includes/class-tcarm-settings.php:768
+#: includes/admin-pages/page-dashboard.php:46
+#: includes/class-tcarm-settings.php:766
 msgid "Top Page"
 msgstr "首頁"
 
@@ -596,7 +635,8 @@ msgstr "卡片說明"
 msgid "Page-specific Wrapper"
 msgstr "頁面專用包裝"
 
-#: includes/admin-pages/page-display-customize.php:17 includes/admin-pages/page-security.php:64
+#: includes/admin-pages/page-display-customize.php:17
+#: includes/admin-pages/page-security.php:64
 #: includes/admin-pages/page-translation.php:91
 msgid "Application Form"
 msgstr "申請表單"
@@ -617,7 +657,8 @@ msgstr "送出完成頁面的表單框"
 msgid "Submission Complete Section"
 msgstr "送出完成區段"
 
-#: includes/admin-pages/page-display-customize.php:22 includes/admin-pages/page-translation.php:120
+#: includes/admin-pages/page-display-customize.php:22
+#: includes/admin-pages/page-translation.php:120
 msgid "Application Status"
 msgstr "申請狀態"
 
@@ -697,16 +738,19 @@ msgstr "必填標章"
 msgid "Input Field"
 msgstr "輸入欄位"
 
-#: includes/admin-pages/page-display-customize.php:44 includes/admin-pages/page-form-settings.php:13
+#: includes/admin-pages/page-display-customize.php:44
+#: includes/admin-pages/page-form-settings.php:13
 #: includes/class-tcarm-assets.php:51
 msgid "Textarea"
 msgstr "多行文字欄位"
 
-#: includes/admin-pages/page-display-customize.php:45 includes/class-tcarm-applications.php:391
+#: includes/admin-pages/page-display-customize.php:45
+#: includes/class-tcarm-applications.php:391
 msgid "Select"
 msgstr "選擇"
 
-#: includes/admin-pages/page-display-customize.php:46 includes/admin-pages/page-form-settings.php:18
+#: includes/admin-pages/page-display-customize.php:46
+#: includes/admin-pages/page-form-settings.php:18
 #: includes/class-tcarm-assets.php:55
 msgid "Checkbox"
 msgstr "核取方塊"
@@ -775,15 +819,17 @@ msgstr "狀態標章共用"
 msgid "Application Number Label"
 msgstr "申請編號標籤"
 
-#: includes/admin-pages/page-display-customize.php:68 includes/class-tcarm-applications.php:726
+#: includes/admin-pages/page-display-customize.php:68
+#: includes/class-tcarm-applications.php:726
 msgid "Rejected"
 msgstr "不許可"
 
-#: includes/admin-pages/page-display-customize.php:69 includes/admin-pages/page-notifications.php:28
+#: includes/admin-pages/page-display-customize.php:69
+#: includes/admin-pages/page-notifications.php:27
 msgid "Rejection Reason"
 msgstr "不許可原因"
 
-#: includes/admin-pages/page-display-customize.php:70 includes/admin-pages/page-notifications.php:14
+#: includes/admin-pages/page-display-customize.php:70
 msgid "Additional Confirmation Request"
 msgstr "補充確認要求"
 
@@ -847,7 +893,8 @@ msgstr "下載標題"
 msgid "Download Description"
 msgstr "下載說明"
 
-#: includes/admin-pages/page-display-customize.php:89 includes/admin-pages/page-display-customize.php:140
+#: includes/admin-pages/page-display-customize.php:89
+#: includes/admin-pages/page-display-customize.php:140
 msgid "Admin Screen"
 msgstr "管理畫面"
 
@@ -867,7 +914,8 @@ msgstr "設定輸入列"
 msgid "Application Details Page"
 msgstr "申請詳細頁面"
 
-#: includes/admin-pages/page-display-customize.php:95 includes/class-tcarm-applications.php:1119
+#: includes/admin-pages/page-display-customize.php:95
+#: includes/class-tcarm-applications.php:1120
 msgid "Submission and Response History"
 msgstr "送出與回應歷史"
 
@@ -883,8 +931,11 @@ msgstr "CSS 類別"
 msgid "CSS Example"
 msgstr "CSS 範例"
 
-#: includes/admin-pages/page-display-customize.php:134 includes/admin-pages/page-display-customize.php:138
-#: includes/admin-pages/page-display-customize.php:174 includes/class-tcarm-admin.php:86 includes/class-tcarm-admin.php:115
+#: includes/admin-pages/page-display-customize.php:134
+#: includes/admin-pages/page-display-customize.php:138
+#: includes/admin-pages/page-display-customize.php:174
+#: includes/class-tcarm-admin.php:86
+#: includes/class-tcarm-admin.php:115
 msgid "Display Customization"
 msgstr "顯示自訂"
 
@@ -912,7 +963,8 @@ msgstr "管理畫面自訂 CSS"
 msgid "Enter CSS applied only to this plugin's admin screens. It is not applied to the entire WordPress admin area."
 msgstr "輸入只套用於此外掛管理畫面的 CSS。不會套用到整個 WordPress 管理後台。"
 
-#: includes/admin-pages/page-display-customize.php:155 includes/admin-pages/page-display-customize.php:157
+#: includes/admin-pages/page-display-customize.php:155
+#: includes/admin-pages/page-display-customize.php:157
 msgid "CSS Class List"
 msgstr "CSS 類別列表"
 
@@ -920,14 +972,19 @@ msgstr "CSS 類別列表"
 msgid "Main CSS classes available for custom CSS. You can reference them while editing CSS on the left."
 msgstr "可用於自訂 CSS 的主要 CSS 類別。你可以在左側編輯 CSS 時參考。"
 
-#: includes/admin-pages/page-display-customize.php:185 includes/admin-pages/page-download-files.php:98
-#: includes/admin-pages/page-notifications.php:164 includes/admin-pages/page-redirects.php:55
-#: includes/admin-pages/page-redirects.php:221 includes/admin-pages/page-security.php:105
+#: includes/admin-pages/page-display-customize.php:185
+#: includes/admin-pages/page-download-files.php:98
+#: includes/admin-pages/page-notifications.php:162
+#: includes/admin-pages/page-redirects.php:55
+#: includes/admin-pages/page-redirects.php:221
+#: includes/admin-pages/page-security.php:105
 msgid "Save Settings"
 msgstr "儲存設定"
 
-#: includes/admin-pages/page-download-files.php:13 includes/admin-pages/page-download-files.php:87
-#: includes/class-tcarm-admin.php:82 includes/class-tcarm-admin.php:111
+#: includes/admin-pages/page-download-files.php:13
+#: includes/admin-pages/page-download-files.php:87
+#: includes/class-tcarm-admin.php:82
+#: includes/class-tcarm-admin.php:111
 msgid "Download File Settings"
 msgstr "下載檔案設定"
 
@@ -936,9 +993,7 @@ msgid "Configure files that approved applicants can download from the applicatio
 msgstr "設定已許可申請者可從申請狀態頁面下載的檔案。"
 
 #: includes/admin-pages/page-download-files.php:15
-msgid ""
-"Display names and descriptions are shown in the frontend download area. File URLs are not shown directly on the "
-"frontend and are served only after the download process validates them."
+msgid "Display names and descriptions are shown in the frontend download area. File URLs are not shown directly on the frontend and are served only after the download process validates them."
 msgstr "顯示名稱與說明會顯示在前台下載區。檔案 URL 不會直接顯示在前台，只有在下載流程完成驗證後才會提供。"
 
 #: includes/admin-pages/page-download-files.php:31
@@ -949,7 +1004,8 @@ msgstr "+ 新增檔案"
 msgid "Delete file setting"
 msgstr "刪除檔案設定"
 
-#: includes/admin-pages/page-download-files.php:61 includes/admin-pages/page-form-settings.php:154
+#: includes/admin-pages/page-download-files.php:61
+#: includes/admin-pages/page-form-settings.php:154
 msgid "Display Name"
 msgstr "顯示名稱"
 
@@ -957,7 +1013,8 @@ msgstr "顯示名稱"
 msgid "Example: Document (Color)"
 msgstr "範例：文件（彩色）"
 
-#: includes/admin-pages/page-download-files.php:63 includes/admin-pages/page-form-settings.php:139
+#: includes/admin-pages/page-download-files.php:63
+#: includes/admin-pages/page-form-settings.php:139
 #: includes/class-tcarm-assets.php:61
 msgid "Description"
 msgstr "說明"
@@ -998,7 +1055,8 @@ msgstr "顯示於前台"
 msgid "Sort Order"
 msgstr "排序"
 
-#: includes/admin-pages/page-form-settings.php:12 includes/class-tcarm-assets.php:50
+#: includes/admin-pages/page-form-settings.php:12
+#: includes/class-tcarm-assets.php:50
 msgid "Text"
 msgstr "文字"
 
@@ -1006,7 +1064,8 @@ msgstr "文字"
 msgid "Phone Number"
 msgstr "電話號碼"
 
-#: includes/admin-pages/page-form-settings.php:17 includes/admin-pages/page-redirects.php:122
+#: includes/admin-pages/page-form-settings.php:17
+#: includes/admin-pages/page-redirects.php:122
 #: includes/class-tcarm-assets.php:54
 msgid "Date"
 msgstr "日期"
@@ -1015,41 +1074,51 @@ msgstr "日期"
 msgid "File Upload"
 msgstr "檔案上傳"
 
-#: includes/admin-pages/page-form-settings.php:20 includes/class-tcarm-assets.php:57
+#: includes/admin-pages/page-form-settings.php:20
+#: includes/class-tcarm-assets.php:57
 msgid "Dropdown"
 msgstr "下拉選單"
 
-#: includes/admin-pages/page-form-settings.php:40 includes/admin-pages/page-translation.php:179
+#: includes/admin-pages/page-form-settings.php:40
+#: includes/admin-pages/page-translation.php:179
 #: includes/class-tcarm-assets.php:102
 msgid "Please select the target language."
 msgstr "請選擇目標語言。"
 
-#: includes/admin-pages/page-form-settings.php:41 includes/admin-pages/page-translation.php:180
-#: includes/class-tcarm-ai-translation.php:119 includes/class-tcarm-assets.php:103
+#: includes/admin-pages/page-form-settings.php:41
+#: includes/admin-pages/page-translation.php:180
+#: includes/class-tcarm-ai-translation.php:119
+#: includes/class-tcarm-assets.php:103
 msgid "There are no empty fields to translate."
 msgstr "沒有可翻譯的空白欄位。"
 
-#: includes/admin-pages/page-form-settings.php:42 includes/admin-pages/page-translation.php:181
+#: includes/admin-pages/page-form-settings.php:42
+#: includes/admin-pages/page-translation.php:181
 #: includes/class-tcarm-assets.php:104
 msgid "Translating..."
 msgstr "翻譯中..."
 
-#: includes/admin-pages/page-form-settings.php:43 includes/admin-pages/page-translation.php:182
+#: includes/admin-pages/page-form-settings.php:43
+#: includes/admin-pages/page-translation.php:182
 #: includes/class-tcarm-assets.php:105
 msgid "AI translation failed."
 msgstr "AI 翻譯失敗。"
 
-#: includes/admin-pages/page-form-settings.php:44 includes/admin-pages/page-translation.php:183
+#: includes/admin-pages/page-form-settings.php:44
+#: includes/admin-pages/page-translation.php:183
 #: includes/class-tcarm-assets.php:106
 msgid "Translations were inserted into empty fields in the current language tab. Please review before saving."
 msgstr "翻譯已插入目前語言分頁的空白欄位。請在儲存前確認。"
 
-#: includes/admin-pages/page-form-settings.php:45 includes/admin-pages/page-translation.php:184
+#: includes/admin-pages/page-form-settings.php:45
+#: includes/admin-pages/page-translation.php:184
 #: includes/class-tcarm-assets.php:107
 msgid "There were no empty fields available for translation."
 msgstr "沒有可插入翻譯的空白欄位。"
 
-#: includes/admin-pages/page-form-settings.php:60 includes/class-tcarm-admin.php:81 includes/class-tcarm-admin.php:110
+#: includes/admin-pages/page-form-settings.php:60
+#: includes/class-tcarm-admin.php:81
+#: includes/class-tcarm-admin.php:110
 msgid "Form Settings"
 msgstr "表單設定"
 
@@ -1058,35 +1127,35 @@ msgid "Application Form Fields"
 msgstr "申請表單欄位"
 
 #: includes/admin-pages/page-form-settings.php:68
-msgid ""
-"Large cards are form sections, and small cards are individual fields. They are arranged to match the frontend flow "
-"with earlier items on the left."
+msgid "Large cards are form sections, and small cards are individual fields. They are arranged to match the frontend flow with earlier items on the left."
 msgstr "大型卡片是表單區段，小型卡片是個別欄位。排列方式對應前台流程，越左側代表越前面的項目。"
 
 #: includes/admin-pages/page-form-settings.php:75
 msgid "Form Field Language Switcher"
 msgstr "表單欄位語言切換"
 
-#: includes/admin-pages/page-form-settings.php:81 includes/admin-pages/page-translation.php:225
+#: includes/admin-pages/page-form-settings.php:81
+#: includes/admin-pages/page-translation.php:225
 msgid "Translate from Japanese"
 msgstr "從日文翻譯"
 
 #: includes/admin-pages/page-form-settings.php:85
-msgid ""
-"Japanese is the primary form configuration. Other languages only set section names, display labels, placeholders, and"
-" descriptions for the same field structure."
+msgid "Japanese is the primary form configuration. Other languages only set section names, display labels, placeholders, and descriptions for the same field structure."
 msgstr "日文是主要表單設定。其他語言只針對相同欄位結構設定區段名稱、顯示標籤、預留文字與說明。"
 
 #: includes/admin-pages/page-form-settings.php:91
 msgid "No form fields have been configured yet."
 msgstr "尚未設定表單欄位。"
 
-#: includes/admin-pages/page-form-settings.php:97 includes/admin-pages/page-form-settings.php:116
-#: includes/admin-pages/page-form-settings.php:276 includes/class-tcarm-assets.php:47
+#: includes/admin-pages/page-form-settings.php:97
+#: includes/admin-pages/page-form-settings.php:116
+#: includes/admin-pages/page-form-settings.php:276
+#: includes/class-tcarm-assets.php:47
 msgid "Drag to reorder"
 msgstr "拖曳以重新排序"
 
-#: includes/admin-pages/page-form-settings.php:100 includes/admin-pages/page-form-settings.php:189
+#: includes/admin-pages/page-form-settings.php:100
+#: includes/admin-pages/page-form-settings.php:189
 msgid "Edit Section Name"
 msgstr "編輯區段名稱"
 
@@ -1098,19 +1167,23 @@ msgstr "刪除區段"
 msgid "Display Label"
 msgstr "顯示標籤"
 
-#: includes/admin-pages/page-form-settings.php:134 includes/class-tcarm-assets.php:59
+#: includes/admin-pages/page-form-settings.php:134
+#: includes/class-tcarm-assets.php:59
 msgid "Placeholder"
 msgstr "預留文字"
 
-#: includes/admin-pages/page-form-settings.php:135 includes/class-tcarm-assets.php:60
+#: includes/admin-pages/page-form-settings.php:135
+#: includes/class-tcarm-assets.php:60
 msgid "Example: Enter placeholder text"
 msgstr "範例：輸入預留文字"
 
-#: includes/admin-pages/page-form-settings.php:140 includes/class-tcarm-assets.php:62
+#: includes/admin-pages/page-form-settings.php:140
+#: includes/class-tcarm-assets.php:62
 msgid "Example: Enter helper text"
 msgstr "範例：輸入輔助說明"
 
-#: includes/admin-pages/page-form-settings.php:145 includes/admin-pages/page-form-settings.php:308
+#: includes/admin-pages/page-form-settings.php:145
+#: includes/admin-pages/page-form-settings.php:308
 #: includes/class-tcarm-assets.php:63
 msgid "Required"
 msgstr "必填"
@@ -1120,9 +1193,7 @@ msgid "Dropdown Choices"
 msgstr "下拉選單選項"
 
 #: includes/admin-pages/page-form-settings.php:149
-msgid ""
-"Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the"
-" placeholder."
+msgid "Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder."
 msgstr "設定前台顯示的標籤與儲存值。第一個空白選項會自動作為 placeholder 顯示。"
 
 #: includes/admin-pages/page-form-settings.php:155
@@ -1137,7 +1208,8 @@ msgstr "+ 新增選項"
 msgid "Delete Field"
 msgstr "刪除欄位"
 
-#: includes/admin-pages/page-form-settings.php:169 includes/admin-pages/page-form-settings.php:251
+#: includes/admin-pages/page-form-settings.php:169
+#: includes/admin-pages/page-form-settings.php:251
 #: includes/class-tcarm-assets.php:74
 msgid "This section does not have any fields yet."
 msgstr "此區段尚未有任何欄位。"
@@ -1154,15 +1226,18 @@ msgstr "新增區段"
 msgid "Click the button to generate a section ID automatically. Editors only need to edit the section name."
 msgstr "點擊按鈕即可自動產生區段 ID。編輯者只需要編輯區段名稱。"
 
-#: includes/admin-pages/page-form-settings.php:181 includes/admin-pages/page-form-settings.php:319
+#: includes/admin-pages/page-form-settings.php:181
+#: includes/admin-pages/page-form-settings.php:319
 msgid "+ Add Section"
 msgstr "+ 新增區段"
 
-#: includes/admin-pages/page-form-settings.php:190 includes/class-tcarm-assets.php:45
+#: includes/admin-pages/page-form-settings.php:190
+#: includes/class-tcarm-assets.php:45
 msgid "Close"
 msgstr "關閉"
 
-#: includes/admin-pages/page-form-settings.php:193 includes/admin-pages/page-form-settings.php:216
+#: includes/admin-pages/page-form-settings.php:193
+#: includes/admin-pages/page-form-settings.php:216
 msgid "Section Name"
 msgstr "區段名稱"
 
@@ -1195,9 +1270,7 @@ msgid "Consent Item Settings"
 msgstr "同意項目設定"
 
 #: includes/admin-pages/page-form-settings.php:263
-msgid ""
-"Manage consent items shown at the bottom of the application form. Large cards are shown as consent sections, and each"
-" card body is displayed with scrolling on the frontend."
+msgid "Manage consent items shown at the bottom of the application form. Large cards are shown as consent sections, and each card body is displayed with scrolling on the frontend."
 msgstr "管理顯示在申請表單底部的同意項目。大型卡片會作為同意區段顯示，各卡片內容會在前台以可捲動方式顯示。"
 
 #: includes/admin-pages/page-form-settings.php:270
@@ -1216,7 +1289,8 @@ msgstr "刪除同意項目"
 msgid "Consent Text to Display"
 msgstr "要顯示的同意文字"
 
-#: includes/admin-pages/page-form-settings.php:293 includes/class-tcarm-assets.php:86
+#: includes/admin-pages/page-form-settings.php:293
+#: includes/class-tcarm-assets.php:86
 msgid "Enter consent text or an explanation. Leave blank if you only use a URL."
 msgstr "輸入同意文字或說明。若只使用 URL，請留空。"
 
@@ -1228,7 +1302,8 @@ msgstr "核取方塊文字"
 msgid "Example: I agree to the terms."
 msgstr "範例：我同意條款。"
 
-#: includes/admin-pages/page-form-settings.php:300 includes/class-tcarm-assets.php:81
+#: includes/admin-pages/page-form-settings.php:300
+#: includes/class-tcarm-assets.php:81
 msgid "https://... or /privacy/"
 msgstr "https://... 或 /privacy/"
 
@@ -1240,7 +1315,8 @@ msgstr "連結文字"
 msgid "Example: Open document"
 msgstr "範例：開啟文件"
 
-#: includes/admin-pages/page-form-settings.php:307 includes/class-tcarm-assets.php:84
+#: includes/admin-pages/page-form-settings.php:307
+#: includes/class-tcarm-assets.php:84
 msgid "Show consent checkbox"
 msgstr "顯示同意核取方塊"
 
@@ -1256,7 +1332,8 @@ msgstr "可依需求新增使用條款、隱私處理、提交內容公開同意
 msgid "Save Form Settings"
 msgstr "儲存表單設定"
 
-#: includes/admin-pages/page-notifications.php:10 includes/class-tcarm-notifications.php:10
+#: includes/admin-pages/page-notifications.php:10
+#: includes/class-tcarm-notifications.php:10
 msgid "Applicant Auto Reply"
 msgstr "申請者自動回覆"
 
@@ -1272,197 +1349,186 @@ msgstr "許可通知"
 msgid "Rejection Notification"
 msgstr "不許可通知"
 
-#: includes/admin-pages/page-notifications.php:15
+#: includes/admin-pages/page-notifications.php:14
 msgid "Resubmission Received Notification (Admin)"
 msgstr "再申請受理通知（管理者）"
 
-#: includes/admin-pages/page-notifications.php:19
+#: includes/admin-pages/page-notifications.php:18
 msgid "Application Number (Compatibility)"
 msgstr "申請編號（相容）"
 
-#: includes/admin-pages/page-notifications.php:20
+#: includes/admin-pages/page-notifications.php:19
 msgid "Applicant Name"
 msgstr "申請者姓名"
 
-#: includes/admin-pages/page-notifications.php:21
+#: includes/admin-pages/page-notifications.php:20
 msgid "Email Address"
 msgstr "電子郵件地址"
 
-#: includes/admin-pages/page-notifications.php:24
+#: includes/admin-pages/page-notifications.php:23
 msgid "Application Status URL"
 msgstr "申請狀態 URL"
 
-#: includes/admin-pages/page-notifications.php:25
+#: includes/admin-pages/page-notifications.php:24
 msgid "Application Content Review URL"
 msgstr "申請內容確認 URL"
 
-#: includes/admin-pages/page-notifications.php:26
+#: includes/admin-pages/page-notifications.php:25
 msgid "Edit Resubmission URL"
 msgstr "修正再申請 URL"
 
-#: includes/admin-pages/page-notifications.php:27
+#: includes/admin-pages/page-notifications.php:26
 msgid "Admin Screen URL"
 msgstr "管理畫面 URL"
 
-#: includes/admin-pages/page-notifications.php:29
-msgid "Additional Confirmation Request Content"
-msgstr "補充確認要求內容"
-
-#: includes/admin-pages/page-notifications.php:30
+#: includes/admin-pages/page-notifications.php:28
 msgid "Resubmission Count"
 msgstr "再申請次數"
 
-#: includes/admin-pages/page-notifications.php:31
+#: includes/admin-pages/page-notifications.php:29
 msgid "Site Name"
 msgstr "網站名稱"
 
-#: includes/admin-pages/page-notifications.php:33 includes/admin-pages/page-notifications.php:57
+#: includes/admin-pages/page-notifications.php:31
+#: includes/admin-pages/page-notifications.php:55
 msgid "Email Notifications"
 msgstr "通知郵件設定"
 
-#: includes/admin-pages/page-notifications.php:40
+#: includes/admin-pages/page-notifications.php:38
 msgid "The test email was sent."
 msgstr "已寄出測試郵件。"
 
-#: includes/admin-pages/page-notifications.php:42
+#: includes/admin-pages/page-notifications.php:40
 msgid "Failed to send the test email. Please check the sending settings."
 msgstr "測試郵件傳送失敗。請檢查寄送設定。"
 
-#: includes/admin-pages/page-notifications.php:44
+#: includes/admin-pages/page-notifications.php:42
 msgid "Please enter a valid email address."
 msgstr "請輸入有效的電子郵件地址。"
 
-#: includes/admin-pages/page-notifications.php:57
+#: includes/admin-pages/page-notifications.php:55
 msgid "Configure sender and recipient settings for applicant and admin notification emails."
 msgstr "設定申請者與管理者通知郵件的寄件者與收件者。"
 
-#: includes/admin-pages/page-notifications.php:60
+#: includes/admin-pages/page-notifications.php:58
 msgid "Admin Recipients"
 msgstr "管理者收件者"
 
-#: includes/admin-pages/page-notifications.php:65 includes/admin-pages/page-notifications.php:69
+#: includes/admin-pages/page-notifications.php:63
+#: includes/admin-pages/page-notifications.php:67
 msgid "To specify multiple recipients, separate them with commas. Example: info@example.com, staff@example.com"
 msgstr "指定多個收件者時，請以逗號分隔。範例：info@example.com, staff@example.com"
 
-#: includes/admin-pages/page-notifications.php:76
+#: includes/admin-pages/page-notifications.php:74
 msgid "Sending Settings"
 msgstr "寄送設定"
 
-#: includes/admin-pages/page-notifications.php:76
-msgid ""
-"Configure sender and sending method for notification emails. If SMTP is not used, emails are sent using WordPress "
-"default mail."
+#: includes/admin-pages/page-notifications.php:74
+msgid "Configure sender and sending method for notification emails. If SMTP is not used, emails are sent using WordPress default mail."
 msgstr "設定通知郵件的寄件者與寄送方式。若不使用 SMTP，郵件會透過 WordPress 預設郵件功能寄送。"
 
-#: includes/admin-pages/page-notifications.php:79
+#: includes/admin-pages/page-notifications.php:77
 msgid "Sending Method"
 msgstr "寄送方式"
 
-#: includes/admin-pages/page-notifications.php:81
+#: includes/admin-pages/page-notifications.php:79
 msgid "WordPress Default Mail"
 msgstr "WordPress 預設郵件"
 
-#: includes/admin-pages/page-notifications.php:82
+#: includes/admin-pages/page-notifications.php:80
 msgid "SMTP"
 msgstr "SMTP"
 
-#: includes/admin-pages/page-notifications.php:85
+#: includes/admin-pages/page-notifications.php:83
 msgid "From Name"
 msgstr "寄件者名稱"
 
-#: includes/admin-pages/page-notifications.php:88
+#: includes/admin-pages/page-notifications.php:86
 msgid "From Email Address"
 msgstr "寄件者電子郵件地址"
 
-#: includes/admin-pages/page-notifications.php:90
+#: includes/admin-pages/page-notifications.php:88
 msgid "When using SMTP, set an email address that is allowed to send from the SMTP account."
 msgstr "使用 SMTP 時，請設定允許由該 SMTP 帳號寄送的電子郵件地址。"
 
-#: includes/admin-pages/page-notifications.php:92
+#: includes/admin-pages/page-notifications.php:90
 msgid "SMTP Host"
 msgstr "SMTP 主機"
 
-#: includes/admin-pages/page-notifications.php:95
+#: includes/admin-pages/page-notifications.php:93
 msgid "SMTP Port"
 msgstr "SMTP 連接埠"
 
-#: includes/admin-pages/page-notifications.php:97
+#: includes/admin-pages/page-notifications.php:95
 msgid "Usually use TLS (587) or SSL (465)."
 msgstr "通常使用 TLS（587）或 SSL（465）。"
 
-#: includes/admin-pages/page-notifications.php:99
+#: includes/admin-pages/page-notifications.php:97
 msgid "Encryption"
 msgstr "加密"
 
-#: includes/admin-pages/page-notifications.php:107
+#: includes/admin-pages/page-notifications.php:105
 msgid "Use SMTP authentication"
 msgstr "使用 SMTP 驗證"
 
-#: includes/admin-pages/page-notifications.php:109
+#: includes/admin-pages/page-notifications.php:107
 msgid "SMTP Username"
 msgstr "SMTP 使用者名稱"
 
-#: includes/admin-pages/page-notifications.php:112
+#: includes/admin-pages/page-notifications.php:110
 msgid "SMTP Password"
 msgstr "SMTP 密碼"
 
-#: includes/admin-pages/page-notifications.php:113
+#: includes/admin-pages/page-notifications.php:111
 msgid "Saved (enter only to change)"
 msgstr "已儲存（只有變更時才輸入）"
 
-#: includes/admin-pages/page-notifications.php:114
+#: includes/admin-pages/page-notifications.php:112
 msgid "The saved password is not displayed. Enter a value only when changing it."
 msgstr "已儲存的密碼不會顯示。只有要變更時才輸入。"
 
-#: includes/admin-pages/page-notifications.php:118
+#: includes/admin-pages/page-notifications.php:116
 msgid "Test Send"
 msgstr "測試寄送"
 
-#: includes/admin-pages/page-notifications.php:119
-msgid ""
-"Send a test email using the current sending settings. The test email does not include application data or personal "
-"information."
+#: includes/admin-pages/page-notifications.php:117
+msgid "Send a test email using the current sending settings. The test email does not include application data or personal information."
 msgstr "使用目前的寄送設定傳送測試郵件。測試郵件不包含申請資料或個人資訊。"
 
-#: includes/admin-pages/page-notifications.php:120
+#: includes/admin-pages/page-notifications.php:118
 msgid "Test Recipient Email Address"
 msgstr "測試收件者電子郵件地址"
 
-#: includes/admin-pages/page-notifications.php:123
+#: includes/admin-pages/page-notifications.php:121
 msgid "Send Test Email"
 msgstr "寄送測試郵件"
 
-#: includes/admin-pages/page-notifications.php:129
+#: includes/admin-pages/page-notifications.php:127
 msgid "Email Templates"
 msgstr "郵件範本"
 
 #: includes/admin-pages/page-notifications.php:129
-msgid ""
-"Edit notification messages such as submission receipt, review results, and additional confirmation requests by "
-"switching tabs."
-msgstr "切換分頁以編輯受付通知、審查結果、追加確認請求等通知訊息。"
-
-#: includes/admin-pages/page-notifications.php:131
 msgid "Email Template"
 msgstr "郵件範本"
 
-#: includes/admin-pages/page-notifications.php:141
+#: includes/admin-pages/page-notifications.php:139
 msgid "Subject"
 msgstr "主旨"
 
-#: includes/admin-pages/page-notifications.php:144
+#: includes/admin-pages/page-notifications.php:142
 msgid "Body"
 msgstr "內文"
 
-#: includes/admin-pages/page-notifications.php:150 includes/admin-pages/page-notifications.php:151
+#: includes/admin-pages/page-notifications.php:148
+#: includes/admin-pages/page-notifications.php:149
 msgid "Available Variables"
 msgstr "可用變數"
 
-#: includes/admin-pages/page-notifications.php:152
+#: includes/admin-pages/page-notifications.php:150
 msgid "Copy these variables into the subject or body."
 msgstr "將這些變數複製到主旨或內文中使用。"
 
-#: includes/admin-pages/page-notifications.php:158
+#: includes/admin-pages/page-notifications.php:156
 msgid "Click a button to copy the variable."
 msgstr "點擊按鈕即可複製變數。"
 
@@ -1479,9 +1545,7 @@ msgid "Configure application form, status lookup, content review, and edit pages
 msgstr "設定各語言的申請表單、狀態查詢、內容確認與編輯頁面。"
 
 #: includes/admin-pages/page-redirects.php:18
-msgid ""
-"Selecting fixed pages is recommended. Languages without settings fall back to the Japanese setting or existing "
-"settings."
+msgid "Selecting fixed pages is recommended. Languages without settings fall back to the Japanese setting or existing settings."
 msgstr "建議選擇固定頁面。未設定的語言會回退到日文設定或既有設定。"
 
 #: includes/admin-pages/page-redirects.php:32
@@ -1529,9 +1593,7 @@ msgid "Configure the format of application numbers issued automatically for new 
 msgstr "設定新申請自動發行之申請編號的格式。"
 
 #: includes/admin-pages/page-redirects.php:76
-msgid ""
-"This setting applies only to newly submitted applications. Already issued application numbers will not change. Up to "
-"32 characters can be used."
+msgid "This setting applies only to newly submitted applications. Already issued application numbers will not change. Up to 32 characters can be used."
 msgstr "此設定只會套用於新提交的申請。已發行的申請編號不會變更。最多可使用 32 個字元。"
 
 #: includes/admin-pages/page-redirects.php:78
@@ -1562,7 +1624,8 @@ msgstr "隨機數字"
 msgid "Sequence"
 msgstr "序號"
 
-#: includes/admin-pages/page-redirects.php:151 includes/admin-pages/page-redirects.php:171
+#: includes/admin-pages/page-redirects.php:151
+#: includes/admin-pages/page-redirects.php:171
 msgid "Permission Settings"
 msgstr "權限設定"
 
@@ -1575,9 +1638,7 @@ msgid "Configure role groups that can use this plugin."
 msgstr "設定可以使用此外掛的角色群組。"
 
 #: includes/admin-pages/page-redirects.php:175
-msgid ""
-"Grant access to this plugin's admin screens to the role groups selected here. Only WordPress administrators can "
-"change permission settings."
+msgid "Grant access to this plugin's admin screens to the role groups selected here. Only WordPress administrators can change permission settings."
 msgstr "允許此處選取的角色群組存取此外掛的管理畫面。只有 WordPress 管理員可以變更權限設定。"
 
 #: includes/admin-pages/page-redirects.php:178
@@ -1605,10 +1666,7 @@ msgid "Admin-facing notes about application data, attachments, notification hist
 msgstr "關於申請資料、附件、通知紀錄與外部服務使用情形的管理者注意事項。"
 
 #: includes/admin-pages/page-redirects.php:236
-msgid ""
-"This plugin stores information entered in application forms, uploaded files, review history, notification history, "
-"and related data for receiving applications, reviewing content, sending notifications, operations, spam prevention, "
-"and troubleshooting."
+msgid "This plugin stores information entered in application forms, uploaded files, review history, notification history, and related data for receiving applications, reviewing content, sending notifications, operations, spam prevention, and troubleshooting."
 msgstr "本外掛會儲存申請表單中輸入的資訊、上傳檔案、審核履歷、通知履歷與相關資料，用於接收申請、審核內容、發送通知、系統運作、防止 spam 與故障排查。"
 
 #: includes/admin-pages/page-redirects.php:240
@@ -1628,21 +1686,15 @@ msgid "Attachments: Files uploaded during application submission or resubmission
 msgstr "附件：申請提交或再申請時上傳的檔案。"
 
 #: includes/admin-pages/page-redirects.php:245
-msgid ""
-"Review information: Review status, approval or rejection results, review messages, rejection reasons, and related "
-"information."
+msgid "Review information: Review status, approval or rejection results, review messages, rejection reasons, and related information."
 msgstr "審查資訊：審查狀態、許可或不許可結果、審查訊息、不許可理由及相關資訊。"
 
 #: includes/admin-pages/page-redirects.php:246
-msgid ""
-"Notification and sending history: Submission receipts, auto replies, admin notifications, approval notifications, "
-"rejection notifications, resubmission notifications, submission and response history, and related records."
+msgid "Notification and sending history: Submission receipts, auto replies, admin notifications, approval notifications, rejection notifications, resubmission notifications, submission and response history, and related records."
 msgstr "通知與寄送履歷：受付通知、自動回覆、管理者通知、許可通知、不許可通知、再申請通知、送出與處理履歷及相關紀錄。"
 
 #: includes/admin-pages/page-redirects.php:247
-msgid ""
-"Security-related information: Depending on settings and operations, submission times and information related to spam "
-"prevention or troubleshooting may be stored."
+msgid "Security-related information: Depending on settings and operations, submission times and information related to spam prevention or troubleshooting may be stored."
 msgstr "安全性相關資訊：依設定與運用狀況，可能會保存送出時間及垃圾送出防護或疑難排解相關資訊。"
 
 #: includes/admin-pages/page-redirects.php:252
@@ -1650,9 +1702,7 @@ msgid "Purpose of Use"
 msgstr "使用目的"
 
 #: includes/admin-pages/page-redirects.php:253
-msgid ""
-"Saved information is used for receiving applications, reviewing content, review workflows, notifications, operations,"
-" spam prevention, and troubleshooting."
+msgid "Saved information is used for receiving applications, reviewing content, review workflows, notifications, operations, spam prevention, and troubleshooting."
 msgstr "已儲存的資訊會用於接收申請、審核內容、審核流程、通知、系統運作、防止 spam 與故障排查。"
 
 #: includes/admin-pages/page-redirects.php:257
@@ -1660,15 +1710,11 @@ msgid "About External Services"
 msgstr "關於外部服務"
 
 #: includes/admin-pages/page-redirects.php:259
-msgid ""
-"When Cloudflare Turnstile is enabled, an external service verification is performed as spam protection during form "
-"submission."
+msgid "When Cloudflare Turnstile is enabled, an external service verification is performed as spam protection during form submission."
 msgstr "啟用 Cloudflare Turnstile 時，表單送出時會執行外部服務驗證作為垃圾送出防護。"
 
 #: includes/admin-pages/page-redirects.php:260
-msgid ""
-"The AI translation feature is an admin tool used to assist with translating form fields and related settings. It does"
-" not normally send applicant-submitted content to AI translation automatically."
+msgid "The AI translation feature is an admin tool used to assist with translating form fields and related settings. It does not normally send applicant-submitted content to AI translation automatically."
 msgstr "AI 翻譯功能是協助管理者翻譯表單欄位與相關設定的工具。通常不會自動將申請者提交的內容送至 AI 翻譯。"
 
 #: includes/admin-pages/page-redirects.php:261
@@ -1696,13 +1742,12 @@ msgid "Delete plugin data on uninstall"
 msgstr "解除安裝時刪除外掛資料"
 
 #: includes/admin-pages/page-redirects.php:293
-msgid ""
-"When enabled, settings data and application-related data saved by this plugin are deleted when the plugin is deleted "
-"from the WordPress admin screen. Deactivating the plugin alone does not delete data. Files in the media library and "
-"notification email template bodies are not included in automatic deletion."
+msgid "When enabled, settings data and application-related data saved by this plugin are deleted when the plugin is deleted from the WordPress admin screen. Deactivating the plugin alone does not delete data. Files in the media library and notification email template bodies are not included in automatic deletion."
 msgstr "啟用後，當外掛從 WordPress 管理畫面被刪除時，本外掛儲存的設定資料與申請相關資料會一併刪除。僅停用外掛不會刪除資料。媒體庫中的檔案與通知信範本文字不包含在自動刪除範圍內。"
 
-#: includes/admin-pages/page-security.php:9 includes/class-tcarm-admin.php:84 includes/class-tcarm-admin.php:113
+#: includes/admin-pages/page-security.php:9
+#: includes/class-tcarm-admin.php:84
+#: includes/class-tcarm-admin.php:113
 msgid "Security Settings"
 msgstr "安全設定"
 
@@ -1719,10 +1764,7 @@ msgid "Enable simple bot protection using a hidden field and submission timing"
 msgstr "使用隱藏欄位與送出時間啟用簡易機器人防護"
 
 #: includes/admin-pages/page-security.php:27
-msgid ""
-"Detect likely automated bot submissions using a hidden field that normal users cannot see and the elapsed time from "
-"form display to submission. Submissions are recorded in the blocked history when the hidden field contains a value or"
-" when the form is submitted immediately after display."
+msgid "Detect likely automated bot submissions using a hidden field that normal users cannot see and the elapsed time from form display to submission. Submissions are recorded in the blocked history when the hidden field contains a value or when the form is submitted immediately after display."
 msgstr "透過一般使用者看不到的隱藏欄位，以及從表單顯示到送出的經過時間，偵測可能的自動 bot 送出。若隱藏欄位含有值，或表單顯示後立即送出，該送出會記錄在封鎖履歷中。"
 
 #: includes/admin-pages/page-security.php:35
@@ -1730,17 +1772,15 @@ msgid "Enable short-term submission and lookup rate limits"
 msgstr "啟用短時間送出與查詢限制"
 
 #: includes/admin-pages/page-security.php:36
-msgid ""
-"Limit repeated submissions, resubmissions, and status lookups from the same IP address or email address within a "
-"short time. Limited attempts are saved to the blocked history with the reason, date and time, IP address, and minimal"
-" contact information."
+msgid "Limit repeated submissions, resubmissions, and status lookups from the same IP address or email address within a short time. Limited attempts are saved to the blocked history with the reason, date and time, IP address, and minimal contact information."
 msgstr "限制同一 IP 位址或電子郵件地址在短時間內重複送出、再申請與狀態查詢。被限制的嘗試會連同理由、日期時間、IP 位址及最少必要的聯絡資訊保存至封鎖履歷。"
 
 #: includes/admin-pages/page-security.php:44
 msgid "Cloudflare Turnstile Settings"
 msgstr "Cloudflare Turnstile 設定"
 
-#: includes/admin-pages/page-security.php:44 includes/admin-pages/page-security.php:57
+#: includes/admin-pages/page-security.php:44
+#: includes/admin-pages/page-security.php:57
 msgid "Add Turnstile verification to application, lookup, and edit forms when needed."
 msgstr "必要時在申請、查詢與編輯表單加入 Turnstile 驗證。"
 
@@ -1773,9 +1813,7 @@ msgid "Download Link Settings"
 msgstr "下載連結設定"
 
 #: includes/admin-pages/page-security.php:87
-msgid ""
-"Set the expiration time for download links issued to approved applicants. After a link expires, a new link is issued "
-"when the applicant checks the application status page again."
+msgid "Set the expiration time for download links issued to approved applicants. After a link expires, a new link is issued when the applicant checks the application status page again."
 msgstr "設定發給已許可申請者之下載連結的有效期限。連結過期後，申請者再次確認申請狀態頁時會發行新的連結。"
 
 #: includes/admin-pages/page-security.php:90
@@ -1803,9 +1841,7 @@ msgid "No expiration"
 msgstr "永不過期"
 
 #: includes/admin-pages/page-security.php:99
-msgid ""
-"30 minutes is recommended in most cases. If set to no expiration, copied download URLs may remain usable for a long "
-"time."
+msgid "30 minutes is recommended in most cases. If set to no expiration, copied download URLs may remain usable for a long time."
 msgstr "多數情況建議設定為 30 分鐘。若設定為無期限，已複製的下載 URL 可能會長時間保持可用。"
 
 #: includes/admin-pages/page-translation.php:26
@@ -1840,7 +1876,9 @@ msgstr "申請內容編輯"
 msgid "Downloads"
 msgstr "下載"
 
-#: includes/admin-pages/page-translation.php:188 includes/class-tcarm-admin.php:87 includes/class-tcarm-admin.php:116
+#: includes/admin-pages/page-translation.php:188
+#: includes/class-tcarm-admin.php:87
+#: includes/class-tcarm-admin.php:116
 msgid "Multilingual Settings"
 msgstr "多語言設定"
 
@@ -1853,9 +1891,7 @@ msgid "Select languages shown in admin multilingual input fields and AI translat
 msgstr "選擇顯示於管理畫面多語言輸入欄位與 AI 翻譯目標的語言。"
 
 #: includes/admin-pages/page-translation.php:207
-msgid ""
-"If no languages are selected, English is enabled when saving. Existing translation data for disabled languages is not"
-" deleted."
+msgid "If no languages are selected, English is enabled when saving. Existing translation data for disabled languages is not deleted."
 msgstr "若未選擇任何語言，儲存時會啟用英文。停用語言的既有翻譯資料不會被刪除。"
 
 #: includes/admin-pages/page-translation.php:215
@@ -1890,19 +1926,23 @@ msgstr "儲存多語言設定"
 msgid "Application Management"
 msgstr "申請管理"
 
-#: includes/class-tcarm-admin.php:83 includes/class-tcarm-admin.php:112
+#: includes/class-tcarm-admin.php:83
+#: includes/class-tcarm-admin.php:112
 msgid "Notification Email Settings"
 msgstr "通知郵件設定"
 
-#: includes/class-tcarm-admin.php:85 includes/class-tcarm-admin.php:114
+#: includes/class-tcarm-admin.php:85
+#: includes/class-tcarm-admin.php:114
 msgid "General Settings"
 msgstr "基本設定"
 
-#: includes/class-tcarm-admin.php:88 includes/class-tcarm-admin.php:117
+#: includes/class-tcarm-admin.php:88
+#: includes/class-tcarm-admin.php:117
 msgid "Privacy and Data Retention"
 msgstr "隱私與資料保留"
 
-#: includes/class-tcarm-admin.php:89 includes/class-tcarm-admin.php:118
+#: includes/class-tcarm-admin.php:89
+#: includes/class-tcarm-admin.php:118
 msgid "About"
 msgstr "關於"
 
@@ -1938,9 +1978,11 @@ msgstr "輸入所選 AI 服務提供者的 API 金鑰。已儲存的 API 金鑰�
 msgid "Model"
 msgstr "模型"
 
-#: includes/class-tcarm-ai-translation.php:80 includes/class-tcarm-applications.php:745
-#: includes/class-tcarm-applications.php:763 includes/class-tcarm-applications.php:796
-#: includes/class-tcarm-applications.php:931
+#: includes/class-tcarm-ai-translation.php:80
+#: includes/class-tcarm-applications.php:746
+#: includes/class-tcarm-applications.php:764
+#: includes/class-tcarm-applications.php:797
+#: includes/class-tcarm-applications.php:932
 msgid "You do not have permission."
 msgstr "你沒有權限。"
 
@@ -1956,15 +1998,18 @@ msgstr "沒有可翻譯的目標語言。"
 msgid "Failed to call the AI translation API. Please check your settings."
 msgstr "AI 翻譯 API 呼叫失敗。請檢查設定。"
 
-#: includes/class-tcarm-ai-translation.php:156 includes/class-tcarm-ai-translation.php:209
+#: includes/class-tcarm-ai-translation.php:156
+#: includes/class-tcarm-ai-translation.php:209
 msgid "Invalid target language."
 msgstr "目標語言無效。"
 
-#: includes/class-tcarm-ai-translation.php:178 includes/class-tcarm-ai-translation.php:238
+#: includes/class-tcarm-ai-translation.php:178
+#: includes/class-tcarm-ai-translation.php:238
 msgid "AI translation request failed."
 msgstr "AI 翻譯請求失敗。"
 
-#: includes/class-tcarm-ai-translation.php:183 includes/class-tcarm-ai-translation.php:243
+#: includes/class-tcarm-ai-translation.php:183
+#: includes/class-tcarm-ai-translation.php:243
 msgid "AI translation API returned an error."
 msgstr "AI 翻譯 API 回傳錯誤。"
 
@@ -1998,7 +2043,7 @@ msgstr "檔案附件已停用。"
 
 #. translators: %d: maximum number of files.
 #: includes/class-tcarm-applications.php:656
-#, python-format
+#, python-format,php-format
 msgid "You can upload up to %d files."
 msgstr "最多可上傳 %d 個檔案。"
 
@@ -2006,7 +2051,8 @@ msgstr "最多可上傳 %d 個檔案。"
 msgid "Could not create the attachment storage directory."
 msgstr "無法建立附件儲存目錄。"
 
-#: includes/class-tcarm-applications.php:668 includes/class-tcarm-applications.php:702
+#: includes/class-tcarm-applications.php:668
+#: includes/class-tcarm-applications.php:702
 msgid "Could not upload the file."
 msgstr "無法上傳檔案。"
 
@@ -2016,13 +2062,13 @@ msgstr "無法上傳此檔案類型。"
 
 #. translators: %s: comma-separated allowed file extensions.
 #: includes/class-tcarm-applications.php:679
-#, python-format
+#, python-format,php-format
 msgid "Allowed file types are: %s."
 msgstr "允許的檔案類型：%s。"
 
 #. translators: %s: maximum file size.
 #: includes/class-tcarm-applications.php:684
-#, python-format
+#, python-format,php-format
 msgid "File size must be %s or less."
 msgstr "檔案大小必須為 %s 以下。"
 
@@ -2038,43 +2084,51 @@ msgstr "需追加確認"
 msgid "Published"
 msgstr "已公開"
 
-#: includes/class-tcarm-applications.php:750 includes/class-tcarm-applications.php:801
-#: includes/class-tcarm-applications.php:936 includes/class-tcarm-shortcodes.php:50 includes/class-tcarm-shortcodes.php:55
-#: includes/class-tcarm-shortcodes.php:135 includes/class-tcarm-shortcodes.php:141 includes/class-tcarm-shortcodes.php:146
+#: includes/class-tcarm-applications.php:751
+#: includes/class-tcarm-applications.php:802
+#: includes/class-tcarm-applications.php:937
+#: includes/class-tcarm-shortcodes.php:50
+#: includes/class-tcarm-shortcodes.php:55
+#: includes/class-tcarm-shortcodes.php:135
+#: includes/class-tcarm-shortcodes.php:141
+#: includes/class-tcarm-shortcodes.php:146
 msgid "Invalid request."
 msgstr "無效的請求。"
 
-#: includes/class-tcarm-applications.php:806 includes/class-tcarm-applications.php:941
-#: includes/class-tcarm-notifications.php:268
+#: includes/class-tcarm-applications.php:807
+#: includes/class-tcarm-applications.php:942
+#: includes/class-tcarm-notifications.php:260
 msgid "Application not found."
 msgstr "找不到申請。"
 
-#: includes/class-tcarm-applications.php:824 includes/class-tcarm-applications.php:849
+#: includes/class-tcarm-applications.php:825
+#: includes/class-tcarm-applications.php:850
 msgid "You do not have permission to perform this action."
 msgstr "你沒有執行此操作的權限。"
 
-#: includes/class-tcarm-applications.php:964
+#: includes/class-tcarm-applications.php:965
 msgid "Could not update the application content."
 msgstr "無法更新申請內容。"
 
-#: includes/class-tcarm-applications.php:1119
+#: includes/class-tcarm-applications.php:1120
 msgid "Review the history of application receipt, notifications, review actions, and public integrations."
 msgstr "檢視申請受理、通知、審查操作與公開連動的履歷。"
 
-#: includes/class-tcarm-applications.php:1122
+#: includes/class-tcarm-applications.php:1123
 msgid "There is no history yet."
 msgstr "目前沒有歷史紀錄。"
 
-#: includes/class-tcarm-applications.php:1132
+#: includes/class-tcarm-applications.php:1133
 msgid "Actor: "
 msgstr "執行者："
 
-#: includes/class-tcarm-applications.php:1147 includes/class-tcarm-notifications.php:172
-#: includes/class-tcarm-notifications.php:261
+#: includes/class-tcarm-applications.php:1148
+#: includes/class-tcarm-notifications.php:164
+#: includes/class-tcarm-notifications.php:253
 msgid "Permission denied."
 msgstr "權限不足。"
 
-#: includes/class-tcarm-applications.php:1154
+#: includes/class-tcarm-applications.php:1155
 msgid "Invalid status."
 msgstr "狀態無效。"
 
@@ -2240,16 +2294,19 @@ msgstr "選擇下載檔案"
 msgid "Use this file"
 msgstr "使用此檔案"
 
-#: includes/class-tcarm-assets.php:100 includes/class-tcarm-notifications.php:114
+#: includes/class-tcarm-assets.php:100
+#: includes/class-tcarm-notifications.php:106
 msgid "Recipient: "
 msgstr "收件者: "
 
-#: includes/class-tcarm-assets.php:101 includes/class-tcarm-notifications.php:115
+#: includes/class-tcarm-assets.php:101
+#: includes/class-tcarm-notifications.php:107
 msgid "—"
 msgstr "—"
 
-#: includes/class-tcarm-notifications.php:13 includes/class-tcarm-notifications.php:25
-#: includes/class-tcarm-notifications.php:31 includes/class-tcarm-notifications.php:37
+#: includes/class-tcarm-notifications.php:13
+#: includes/class-tcarm-notifications.php:25
+#: includes/class-tcarm-notifications.php:31
 msgid "To Applicant"
 msgstr "給申請者"
 
@@ -2257,7 +2314,8 @@ msgstr "給申請者"
 msgid "Admin Reception Notice"
 msgstr "管理者受理通知"
 
-#: includes/class-tcarm-notifications.php:19 includes/class-tcarm-notifications.php:43
+#: includes/class-tcarm-notifications.php:19
+#: includes/class-tcarm-notifications.php:37
 msgid "To Administrator"
 msgstr "給管理者"
 
@@ -2270,76 +2328,74 @@ msgid "Rejection Notice"
 msgstr "不許可通知"
 
 #: includes/class-tcarm-notifications.php:34
-msgid "Additional Information Request"
-msgstr "補充資訊請求"
-
-#: includes/class-tcarm-notifications.php:40
 msgid "Resubmission Notice (Admin)"
 msgstr "重新提交通知（管理者）"
 
-#: includes/class-tcarm-notifications.php:80
+#: includes/class-tcarm-notifications.php:72
 msgid "Resend Notification Email"
 msgstr "重新寄送通知郵件"
 
-#: includes/class-tcarm-notifications.php:80
+#: includes/class-tcarm-notifications.php:72
 msgid "Resend notification emails according to the current status when the applicant or administrator did not receive them."
 msgstr "當申請者或管理者未收到通知郵件時，可依目前狀態重新寄送通知郵件。"
 
-#: includes/class-tcarm-notifications.php:83
+#: includes/class-tcarm-notifications.php:75
 msgid "There are currently no notification emails available for resend."
 msgstr "目前沒有可重新寄送的通知郵件。"
 
-#: includes/class-tcarm-notifications.php:90
+#: includes/class-tcarm-notifications.php:82
 msgid "Email to resend"
 msgstr "要重新寄送的郵件"
 
-#: includes/class-tcarm-notifications.php:98 includes/class-tcarm-notifications.php:129
+#: includes/class-tcarm-notifications.php:90
+#: includes/class-tcarm-notifications.php:121
 msgid "Recipient:"
 msgstr "收件者:"
 
-#: includes/class-tcarm-notifications.php:99 includes/class-tcarm-notifications.php:132
+#: includes/class-tcarm-notifications.php:91
+#: includes/class-tcarm-notifications.php:124
 msgid "Resend"
 msgstr "重新寄送"
 
-#: includes/class-tcarm-notifications.php:127
+#: includes/class-tcarm-notifications.php:119
 msgid "Resend notification email?"
 msgstr "要重新寄送通知郵件嗎？"
 
-#: includes/class-tcarm-notifications.php:128
+#: includes/class-tcarm-notifications.php:120
 msgid "The selected notification email will be resent. Do you want to continue?"
 msgstr "選取的通知郵件將會重新寄送。要繼續嗎？"
 
-#: includes/class-tcarm-notifications.php:129
+#: includes/class-tcarm-notifications.php:121
 msgid "Email type:"
 msgstr "郵件類型："
 
-#: includes/class-tcarm-notifications.php:182
+#: includes/class-tcarm-notifications.php:174
 msgid "Email Delivery Test"
 msgstr "郵件寄送測試"
 
-#: includes/class-tcarm-notifications.php:183
+#: includes/class-tcarm-notifications.php:175
 msgid "This is a test email for the application management system email delivery settings."
 msgstr "這是申請管理系統寄送設定的測試郵件。"
 
-#: includes/class-tcarm-notifications.php:183
+#: includes/class-tcarm-notifications.php:175
 msgid "If you received this email, the email delivery settings are working correctly."
 msgstr "若你收到這封郵件，表示郵件寄送設定運作正常。"
 
-#: includes/class-tcarm-notifications.php:286
+#: includes/class-tcarm-notifications.php:278
 msgid "Failed to resend email. No recipient is configured."
 msgstr "重新寄送郵件失敗。尚未設定收件者。"
 
-#: includes/class-tcarm-notifications.php:292
+#: includes/class-tcarm-notifications.php:284
 msgid "Email resent. Recipient:"
 msgstr "郵件已重新寄送。收件者:"
 
-#: includes/class-tcarm-notifications.php:296
+#: includes/class-tcarm-notifications.php:288
 msgid "Failed to resend email. Recipient:"
 msgstr "郵件重新寄送失敗。收件者:"
 
 #. translators: %s: consent item label.
 #: includes/class-tcarm-plugin.php:131
-#, python-format
+#, python-format,php-format
 msgid "You must agree to %s."
 msgstr "您必須同意「%s」。"
 
@@ -2349,35 +2405,39 @@ msgstr "我同意上述內容。"
 
 #. translators: %s: consent item label.
 #: includes/class-tcarm-plugin.php:159
-#, python-format
+#, python-format,php-format
 msgid "Open %s"
 msgstr "開啟「%s」"
 
-#: includes/class-tcarm-settings.php:705 includes/class-tcarm-settings.php:809
+#: includes/class-tcarm-settings.php:703
+#: includes/class-tcarm-settings.php:807
 msgid "Shortcode to place: "
 msgstr "要放置的短代碼："
 
-#: includes/class-tcarm-settings.php:713 includes/class-tcarm-settings.php:817
+#: includes/class-tcarm-settings.php:711
+#: includes/class-tcarm-settings.php:815
 msgid "Select a page"
 msgstr "選擇頁面"
 
-#: includes/class-tcarm-settings.php:721 includes/class-tcarm-settings.php:825
+#: includes/class-tcarm-settings.php:719
+#: includes/class-tcarm-settings.php:823
 msgid "Current URL: "
 msgstr "目前 URL："
 
-#: includes/class-tcarm-settings.php:723 includes/class-tcarm-settings.php:827
+#: includes/class-tcarm-settings.php:721
+#: includes/class-tcarm-settings.php:825
 msgid "Current URL: Not set"
 msgstr "目前 URL：未設定"
 
-#: includes/class-tcarm-settings.php:766
+#: includes/class-tcarm-settings.php:764
 msgid "Submitted Content Page"
 msgstr "送出內容確認頁面"
 
-#: includes/class-tcarm-settings.php:768
+#: includes/class-tcarm-settings.php:766
 msgid "Back to top link"
 msgstr "返回首頁連結"
 
-#: includes/class-tcarm-settings.php:778
+#: includes/class-tcarm-settings.php:776
 msgid "Frontend page settings language tabs"
 msgstr "前台頁面設定語言分頁"
 
@@ -2385,15 +2445,19 @@ msgstr "前台頁面設定語言分頁"
 msgid "Could not verify your input. Please wait a moment and try again."
 msgstr "無法驗證你的輸入。請稍候再試。"
 
-#: includes/class-tcarm-shortcodes.php:22 includes/class-tcarm-shortcodes.php:59 includes/class-tcarm-shortcodes.php:150
+#: includes/class-tcarm-shortcodes.php:22
+#: includes/class-tcarm-shortcodes.php:59
+#: includes/class-tcarm-shortcodes.php:150
 msgid "The submission was too fast. Please check your input and try again."
 msgstr "送出速度過快。請檢查輸入內容後再試。"
 
-#: includes/class-tcarm-shortcodes.php:29 includes/class-tcarm-shortcodes.php:67
+#: includes/class-tcarm-shortcodes.php:29
+#: includes/class-tcarm-shortcodes.php:67
 msgid "Robot prevention verification failed. Please try again."
 msgstr "機器人防護驗證失敗。請再試一次。"
 
-#: includes/class-tcarm-shortcodes.php:77 includes/class-tcarm-shortcodes.php:171
+#: includes/class-tcarm-shortcodes.php:77
+#: includes/class-tcarm-shortcodes.php:171
 msgid "Too many submissions were made. Please wait a while and try again."
 msgstr "送出次數過多。請稍候再試。"
 
@@ -2407,31 +2471,32 @@ msgstr "機器人防護驗證失敗。"
 
 #. translators: %s: field label.
 #: includes/class-tcarm-shortcodes.php:254
-#, python-format
+#, python-format,php-format
 msgid "%s is required."
 msgstr "%s 為必填。"
 
 #. translators: %s: field label.
 #: includes/class-tcarm-shortcodes.php:259
-#, python-format
+#, python-format,php-format
 msgid "The selected value for %s is invalid."
 msgstr "%s 的選取值無效。"
 
 #. translators: %s: field label.
-#: includes/class-tcarm-shortcodes.php:263 includes/class-tcarm-shortcodes.php:267
-#, python-format
+#: includes/class-tcarm-shortcodes.php:263
+#: includes/class-tcarm-shortcodes.php:267
+#, python-format,php-format
 msgid "%s has an invalid format."
 msgstr "%s 格式無效。"
 
 #. translators: %s: field label.
 #: includes/class-tcarm-shortcodes.php:271
-#, python-format
+#, python-format,php-format
 msgid "Please enter %s using numbers, hyphens, plus signs, parentheses, and spaces."
 msgstr "請使用數字、連字號、加號、括號與空格輸入 %s。"
 
 #. translators: %s: field label.
 #: includes/class-tcarm-shortcodes.php:275
-#, python-format
+#, python-format,php-format
 msgid "Please enter %s in YYYY-MM-DD format."
 msgstr "請以 YYYY-MM-DD 格式輸入 %s。"
 
@@ -2447,8 +2512,12 @@ msgstr "無法下載此檔案。"
 msgid "The download link has expired. Please check again from the application status page."
 msgstr "下載連結已過期。請從申請狀態頁面重新確認。"
 
-#: includes/class-tcarm-shortcodes.php:1002 includes/class-tcarm-shortcodes.php:1019
+#: includes/class-tcarm-shortcodes.php:1002
+#: includes/class-tcarm-shortcodes.php:1019
 #: includes/class-tcarm-shortcodes.php:1024
 msgid "File not found."
 msgstr "找不到檔案。"
 
+#: includes/admin-pages/page-notifications.php:127
+msgid "Edit notification messages such as submission receipt and review results by switching tabs."
+msgstr ""

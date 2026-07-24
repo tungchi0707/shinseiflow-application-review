@@ -11,7 +11,6 @@ trait TCARM_Admin_Page_Notifications_Trait {
             'admin' => __('Admin Submission Notification', 'shinseiflow-application-review'),
             'approved' => __('Approval Notification', 'shinseiflow-application-review'),
             'rejected' => __('Rejection Notification', 'shinseiflow-application-review'),
-            'request' => __('Additional Confirmation Request', 'shinseiflow-application-review'),
             'resubmitted' => __('Resubmission Received Notification (Admin)', 'shinseiflow-application-review'),
         );
         $template_vars = array(
@@ -26,7 +25,6 @@ trait TCARM_Admin_Page_Notifications_Trait {
             '{edit_url}' => __('Edit Resubmission URL', 'shinseiflow-application-review'),
             '{admin_url}' => __('Admin Screen URL', 'shinseiflow-application-review'),
             '{reject_reason}' => __('Rejection Reason', 'shinseiflow-application-review'),
-            '{request_note}' => __('Additional Confirmation Request Content', 'shinseiflow-application-review'),
             '{resubmit_count}' => __('Resubmission Count', 'shinseiflow-application-review'),
             '{site_name}' => __('Site Name', 'shinseiflow-application-review'),
         );
@@ -126,7 +124,7 @@ trait TCARM_Admin_Page_Notifications_Trait {
                 </div>
 
                 <div class="tcarm-panel tcarm-card-panel tcarm-settings-card tcarm-admin-card tcarm-mail-template-card">
-                    <div class="tcarm-panel-header"><h2><?php echo esc_html__('Email Templates', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Edit notification messages such as submission receipt, review results, and additional confirmation requests by switching tabs.', 'shinseiflow-application-review'); ?></p></div>
+                    <div class="tcarm-panel-header"><h2><?php echo esc_html__('Email Templates', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Edit notification messages such as submission receipt and review results by switching tabs.', 'shinseiflow-application-review'); ?></p></div>
                     <div class="tcarm-mail-template-body">
                         <div class="tcarm-template-tabs" role="tablist" aria-label="<?php echo esc_attr__('Email Template', 'shinseiflow-application-review'); ?>">
                             <?php $first_template = true; foreach ($templates as $key => $label): ?>

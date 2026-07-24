@@ -30,12 +30,6 @@ trait TCARM_Notifications_Trait {
                 'recipient_type' => 'applicant',
                 'recipient_label' => __('To Applicant', 'shinseiflow-application-review'),
             ),
-            'request' => array(
-                'label' => __('Additional Information Request', 'shinseiflow-application-review'),
-                'template' => 'request',
-                'recipient_type' => 'applicant',
-                'recipient_label' => __('To Applicant', 'shinseiflow-application-review'),
-            ),
             'resubmitted' => array(
                 'label' => __('Resubmission Notice (Admin)', 'shinseiflow-application-review'),
                 'template' => 'resubmitted',
@@ -58,8 +52,6 @@ trait TCARM_Notifications_Trait {
                 $allowed[] = 'approved';
             } elseif ($item->status === 'rejected') {
                 $allowed[] = 'rejected';
-            } elseif ($item->status === 'needs_more') {
-                $allowed[] = 'request';
             }
         }
         $allowed = array_values(array_unique($allowed));

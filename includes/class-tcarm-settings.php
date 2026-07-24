@@ -71,8 +71,6 @@ trait TCARM_Settings_Trait {
             'email_body_approved' => "Dear {applicant_name},\n\nYour application has been approved.\nApplication Number: {application_code}\n\nPlease review any applicable guidelines before use.\n\nAvailable files can be downloaded from the application status page using your application number and email address.\nApplication Status: {status_url}",
             'email_subject_rejected' => '[Application] Rejection Notice ({application_code})',
             'email_body_rejected' => "Dear {applicant_name},\n\nYour application has been rejected for the following reason.\n\nReason: {reject_reason}\n\nPlease revise the application and resubmit if appropriate.",
-            'email_subject_request' => '[Application] Additional Information Requested ({application_code})',
-            'email_body_request' => "Dear {applicant_name},\n\nWe need additional information about your application.\n\nRequest: {request_note}\n\nPlease review the request and resubmit your application or contact the administrator.\n\nApplication Status: {status_url}",
             'email_subject_resubmitted' => '[Resubmission] Application ({application_code})',
             'email_body_resubmitted' => "An application resubmission has been received.\n\nApplication Number: {application_code}\nApplicant: {applicant_name}\nEvent Name: {event_title}\nResubmission Count: {resubmit_count}\n\nPlease review it in the admin screen.",
         );

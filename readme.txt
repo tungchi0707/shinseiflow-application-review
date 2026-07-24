@@ -4,7 +4,7 @@ Tags: application form, approval workflow, review, notifications, form managemen
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.4.3.1
+Stable tag: 0.4.3.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,11 @@ Privacy Policy:
 https://policies.google.com/privacy
 
 == Changelog ==
+
+= 0.4.3.2 =
+* Removed the unused legacy inline frontend CSS method.
+* Disabled new additional information request workflow actions and related email settings.
+* Preserved existing needs-more-review statuses and request notes for backward-compatible display.
 
 = 0.4.3.1 =
 * Fixed missing admin stylesheet loading on the About ShinseiFlow page.

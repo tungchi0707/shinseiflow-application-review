@@ -134,7 +134,7 @@ trait TCARM_Shortcodes_Trait {
         if (!$item || !$this->verify_access_token($item, $token)) {
             wp_die(esc_html__('Invalid request.', 'shinseiflow-application-review'));
         }
-        if (!in_array($item->status, array('rejected', 'needs_more'), true)) {
+        if ($item->status !== 'rejected') {
             wp_die(esc_html__('This application cannot be edited.', 'shinseiflow-application-review'));
         }
         if (!isset($_POST['tcarm_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['tcarm_nonce'])), 'tcarm_frontend_edit_' . $item->application_code)) {
@@ -716,7 +716,7 @@ trait TCARM_Shortcodes_Trait {
 
     private function render_edit_form($item) {
         $token = $this->current_lookup_token_for_item($item);
-        if (!in_array($item->status, array('rejected', 'needs_more'), true)) {
+        if ($item->status !== 'rejected') {
             return '<div class="tcarm-front tcarm-frontend tcarm-front--edit"><div class="tcarm-message tcarm-front-notice tcarm-front-notice--error tcarm-error tcarm-alert tcarm-alert-error">' . esc_html($this->t('edit.cannot_edit', 'This application cannot be edited at this time.')) . '</div>' . wp_kses($this->render_application_summary($item, true), $this->frontend_shortcode_allowed_tags()) . '</div>';
         }
         $errors = get_transient('tcarm_edit_errors_' . $item->application_code);
@@ -1045,7 +1045,7 @@ trait TCARM_Shortcodes_Trait {
         if ($context !== 'view' && $item->status !== 'rejected' && $this->get_frontend_page_url('view', false)) {
             $buttons[] = '<a class="tcarm-button tcarm-front-button tcarm-front-button--primary" href="' . esc_url($this->build_frontend_url('view', $item->application_code, $token)) . '">' . esc_html($this->t('common.view_submitted_content', 'View submitted content')) . '</a>';
         }
-        if (in_array($item->status, array('rejected', 'needs_more'), true) && $context !== 'edit' && $this->get_frontend_page_url('edit', false)) {
+        if ($item->status === 'rejected' && $context !== 'edit' && $this->get_frontend_page_url('edit', false)) {
             $buttons[] = '<a class="tcarm-button tcarm-front-button tcarm-front-button--primary tcarm-front-button--resubmit" href="' . esc_url($this->build_frontend_url('edit', $item->application_code, $token)) . '">' . esc_html($this->t('common.edit_and_resubmit', 'Edit and resubmit')) . '</a>';
         }
         if ($context !== 'status') {

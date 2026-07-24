@@ -732,6 +732,7 @@ trait TCARM_Applications_Trait {
     public static function review_statuses() {
         $statuses = self::statuses();
         unset($statuses['published']);
+        unset($statuses['needs_more']);
         return $statuses;
     }
 
@@ -1165,8 +1166,6 @@ trait TCARM_Applications_Trait {
         );
         if ($new_status === 'rejected') {
             $data['reject_reason'] = $review_message;
-        } elseif ($new_status === 'needs_more') {
-            $data['request_note'] = $review_message;
         }
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Required plugin-owned custom application table status update; WordPress core APIs do not apply.
         $wpdb->update(self::table_name(), $data, array('id' => $id), $this->application_db_formats_for($data), array('%d'));
@@ -1178,9 +1177,9 @@ trait TCARM_Applications_Trait {
                 do_action('tcarm_application_approved', $id, $item);
             }
         }
-        if ($item && in_array($new_status, array('approved', 'rejected', 'needs_more'), true)) {
+        if ($item && in_array($new_status, array('approved', 'rejected'), true)) {
             $this->append_application_history($id, $new_status);
-            $template_key = $new_status === 'approved' ? 'approved' : ($new_status === 'rejected' ? 'rejected' : 'request');
+            $template_key = $new_status === 'approved' ? 'approved' : 'rejected';
             $this->send_template_email($item->contact_email, $template_key, $item);
         }
         wp_safe_redirect(admin_url('admin.php?page=tcarm_applications&action=view&id=' . $id . '&updated=1'));
