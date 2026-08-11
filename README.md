@@ -4,13 +4,11 @@
 
 [English](README.md) | [日本語](README_ja.md) | [繁體中文](README_zh-Hant.md)
 
----
-
 ## Overview
 
 ShinseiFlow is an open-source WordPress plugin for receiving applications, reviewing submissions, managing approval decisions, sending notifications, and providing approved downloads within your own WordPress site.
 
-It is designed for organizations that need more than a simple contact form. ShinseiFlow supports the application lifecycle, from submission and review to approval, rejection, resubmission, and applicant follow-up.
+It is designed for organizations that need more than a simple contact form. ShinseiFlow supports the full application lifecycle, from submission and review to approval, rejection, additional information requests, resubmission, and applicant follow-up.
 
 ## Who is ShinseiFlow for?
 
@@ -36,6 +34,7 @@ ShinseiFlow focuses on what happens after submission:
 
 - Review applications in the WordPress admin
 - Approve or reject applications
+- Request additional information when needed
 - Send workflow-based notification emails
 - Let applicants check their current status
 - Allow revisions and resubmissions
@@ -45,16 +44,20 @@ ShinseiFlow focuses on what happens after submission:
 ## Key Features
 
 - Customizable application forms
+- Multiple field types and Consent items
+- Section-based form organization
 - Multi-step application flow
 - Application review and approval workflow
 - Approval and rejection management
+- Additional information request workflow
 - Applicant status lookup
 - Revision and resubmission support
 - Email notification templates
 - Approved file downloads
 - Cloudflare Turnstile support
 - Built-in anti-spam protections
-- Multilingual frontend labels and messages
+- Multilingual application forms, Consent items, frontend labels, and messages
+- AI-assisted translation for configurable form content
 - Display customization options
 - Privacy and data retention settings
 - Application history and audit timeline
@@ -69,7 +72,7 @@ ShinseiFlow focuses on what happens after submission:
 
 1. Upload the plugin folder to `/wp-content/plugins/`, or install it through the WordPress admin.
 2. Activate **ShinseiFlow – Application Review & Approval Workflow**.
-3. Configure the application form, email templates, security settings, and frontend pages.
+3. Configure the application form, email templates, security settings, languages, and frontend pages.
 4. Add the required shortcodes to your WordPress pages.
 
 ## Shortcodes
@@ -81,25 +84,23 @@ ShinseiFlow focuses on what happens after submission:
 
 ## Documentation and Support
 
-- Project website: https://labs.tungchi.jp/shinseiflow/
-- Documentation: https://labs.tungchi.jp/shinseiflow/docs/
-- Support: https://labs.tungchi.jp/shinseiflow/support/
-- Issue reports: https://labs.tungchi.jp/shinseiflow/issues/
-
-Some pages may currently display temporary content while the website is being prepared.
+Project website: https://labs.tungchi.jp/shinseiflow/  
+Documentation: https://labs.tungchi.jp/shinseiflow/docs/  
+Support: https://labs.tungchi.jp/shinseiflow/support/  
+Issue reports: https://labs.tungchi.jp/shinseiflow/issues/
 
 ## Project Status
 
-Current version: **0.4.3.1**
-
-- Plugin Check: no errors found
+- Current version: 0.4.3.26
 - WordPress.org submission candidate
 - English-first source strings
 - Japanese and Traditional Chinese language packs included
+- Multilingual form and Consent content supported
+- AI-assisted translation available for configurable form content
 
 ## Development Philosophy
 
-ShinseiFlow is designed with long-term maintainability, usability, privacy, and WordPress compatibility in mind.
+ShinseiFlow is designed with long-term maintainability, usability, privacy, security, and WordPress compatibility in mind.
 
 AI is used as a development assistant, while feature planning, architecture, testing, security review, usability decisions, and release quality are reviewed manually.
 
