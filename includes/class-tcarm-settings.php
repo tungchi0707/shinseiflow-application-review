@@ -62,6 +62,7 @@ trait TCARM_Settings_Trait {
             'ai_model' => 'gpt-4o-mini',
             'openai_api_key' => '',
             'ai_translation_model' => 'gpt-5.4',
+            'base_language' => self::get_default_base_language(),
             'enabled_languages' => self::get_default_enabled_languages(),
             'email_subject_received' => '[Application] Application Received ({application_code})',
             'email_body_received' => "Dear {applicant_name},\n\nYour application has been received.\nApplication Number: {application_code}\n\nWe will contact you again after reviewing your application.",
@@ -105,7 +106,7 @@ trait TCARM_Settings_Trait {
         $security_partial = $partial && !empty($input['_security_settings']);
         $out = array();
         foreach ($defaults as $key => $value) {
-            if (in_array($key, array('consent_items', 'download_files', 'frontend_pages_by_lang', 'application_number_rule', 'enabled_languages'), true)) {
+            if (in_array($key, array('consent_items', 'download_files', 'frontend_pages_by_lang', 'application_number_rule', 'base_language', 'enabled_languages'), true)) {
                 continue;
             }
             $fallback = $partial ? (isset($base[$key]) ? $base[$key] : $value) : $value;
@@ -200,8 +201,13 @@ trait TCARM_Settings_Trait {
         $out['download_files'] = isset($input['download_files']) ? $this->sanitize_download_files($input['download_files'], $fallback_downloads) : $fallback_downloads;
         $fallback_application_number_rule = isset($base['application_number_rule']) && is_array($base['application_number_rule']) ? $base['application_number_rule'] : self::default_application_number_rule();
         $out['application_number_rule'] = isset($input['application_number_rule']) ? $this->sanitize_application_number_rule($input['application_number_rule']) : $this->sanitize_application_number_rule($fallback_application_number_rule);
+        $fallback_base_language = isset($base['base_language']) ? $base['base_language'] : self::get_default_base_language();
+        $out['base_language'] = isset($input['base_language']) ? self::sanitize_base_language($input['base_language']) : self::sanitize_base_language($fallback_base_language);
         $fallback_enabled_languages = isset($base['enabled_languages']) && is_array($base['enabled_languages']) ? $base['enabled_languages'] : self::get_default_enabled_languages();
         $out['enabled_languages'] = isset($input['enabled_languages']) ? self::sanitize_enabled_languages($input['enabled_languages']) : self::sanitize_enabled_languages($fallback_enabled_languages);
+        if (!in_array($out['base_language'], $out['enabled_languages'], true)) {
+            $out['enabled_languages'][] = $out['base_language'];
+        }
         self::apply_tcarm_role_capabilities(isset($out['allowed_roles']) ? $out['allowed_roles'] : array('administrator'));
         return $out;
     }
@@ -297,6 +303,26 @@ trait TCARM_Settings_Trait {
             while (isset($out[$key])) {
                 $key = $base_key . '_' . $suffix++;
             }
+            $fallback_item = isset($fallback[$raw_key]) && is_array($fallback[$raw_key]) ? $fallback[$raw_key] : array();
+            $submitted_translations = isset($item['translations']) && is_array($item['translations']) ? $item['translations'] : array();
+            $fallback_translations = isset($fallback_item['translations']) && is_array($fallback_item['translations']) ? $fallback_item['translations'] : array();
+            $translations = array();
+            foreach (self::supported_languages() as $lang_code => $lang_label) {
+                if ($lang_code === 'ja') {
+                    continue;
+                }
+                if (array_key_exists($lang_code, $submitted_translations) && is_array($submitted_translations[$lang_code])) {
+                    $src = $submitted_translations[$lang_code];
+                } else {
+                    $src = isset($fallback_translations[$lang_code]) && is_array($fallback_translations[$lang_code]) ? $fallback_translations[$lang_code] : array();
+                }
+                $translations[$lang_code] = array(
+                    'label' => isset($src['label']) ? sanitize_text_field($src['label']) : '',
+                    'body' => isset($src['body']) ? sanitize_textarea_field($src['body']) : '',
+                    'checkbox_text' => isset($src['checkbox_text']) ? sanitize_text_field($src['checkbox_text']) : '',
+                    'link_text' => isset($src['link_text']) ? sanitize_text_field($src['link_text']) : '',
+                );
+            }
             $out[$key] = array(
                 'label' => $label,
                 'enabled' => !empty($item['enabled']) ? '1' : '0',
@@ -307,6 +333,7 @@ trait TCARM_Settings_Trait {
                 'checkbox_text' => isset($item['checkbox_text']) ? sanitize_text_field($item['checkbox_text']) : 'I agree to the content.',
                 'link_url' => isset($item['link_url']) ? esc_url_raw($item['link_url']) : '',
                 'link_text' => isset($item['link_text']) ? sanitize_text_field($item['link_text']) : '',
+                'translations' => $translations,
             );
             $i++;
         }
@@ -447,13 +474,47 @@ trait TCARM_Settings_Trait {
         return $out;
     }
 
+    private function request_section_ids() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Settings API options.php verifies the tcarm_fields_group nonce before invoking this registered sanitize callback; each nested value is sanitized below.
+        $request_sections = isset($_POST[self::OPTION_SECTIONS]) ? wp_unslash($_POST[self::OPTION_SECTIONS]) : array();
+        if (!is_array($request_sections)) {
+            return array();
+        }
+
+        $section_ids = array();
+        foreach ($request_sections as $raw_key => $section) {
+            if (!is_array($section)) {
+                continue;
+            }
+            $delete = isset($section['_delete']) && !is_array($section['_delete']) ? sanitize_text_field($section['_delete']) : '0';
+            if ($delete === '1') {
+                continue;
+            }
+            $label = isset($section['label']) ? sanitize_text_field($section['label']) : '';
+            if ($label === '') {
+                continue;
+            }
+            $key = sanitize_key($raw_key);
+            if ($key === '' || strpos($key, 'new_') === 0) {
+                $key = isset($section['id']) ? sanitize_key($section['id']) : '';
+            }
+            if ($key !== '') {
+                $section_ids[$key] = true;
+            }
+        }
+
+        return array_keys($section_ids);
+    }
+
     public function sanitize_fields($input) {
         $defaults = self::default_fields();
         $sections = self::get_sections();
+        $request_section_ids = $this->request_section_ids();
+        $valid_section_ids = array_values(array_unique(array_merge($request_section_ids, array_keys($sections))));
         $current_fields = get_option(self::OPTION_FIELDS, array());
         $current_fields = is_array($current_fields) ? $current_fields : array();
         $out = array();
-        $allowed_types = array('text', 'textarea', 'email', 'url', 'tel', 'date', 'checkbox', 'file', 'dropdown');
+        $allowed_types = array('text', 'textarea', 'email', 'url', 'tel', 'date', 'checkbox_group', 'radio', 'file', 'dropdown');
         if (!is_array($input) || empty($input)) {
             return array();
         }
@@ -484,12 +545,12 @@ trait TCARM_Settings_Trait {
                 $type = 'text';
             }
             $section = isset($field['section']) ? sanitize_key($field['section']) : 'event';
-            if (!isset($sections[$section])) {
-                $section_keys = array_keys($sections);
-                $section = !empty($section_keys) ? $section_keys[0] : 'event';
+            if (!in_array($section, $valid_section_ids, true)) {
+                $section = !empty($valid_section_ids) ? $valid_section_ids[0] : 'event';
             }
             $choices = array();
-            if ($type === 'dropdown' && !empty($field['choices']) && is_array($field['choices'])) {
+            if (in_array($type, array('dropdown', 'radio', 'checkbox_group'), true) && !empty($field['choices']) && is_array($field['choices'])) {
+                $choice_values = array();
                 foreach ($field['choices'] as $choice) {
                     if (!is_array($choice)) {
                         continue;
@@ -508,6 +569,20 @@ trait TCARM_Settings_Trait {
                     if ($choice_value === '') {
                         continue;
                     }
+                    if (isset($choice_values[$choice_value])) {
+                        $field_identifier = $label !== '' ? $label : $key;
+                        add_settings_error(
+                            self::OPTION_FIELDS,
+                            'tcarm_duplicate_choice_value_' . $key,
+                            sprintf(
+                                /* translators: %s: field label or key. */
+                                __('Choice values must be unique within each field. Duplicate value found in %s.', 'shinseiflow-application-review'),
+                                $field_identifier
+                            )
+                        );
+                        return $current_fields;
+                    }
+                    $choice_values[$choice_value] = true;
                     $choices[] = array(
                         'label' => $choice_label,
                         'value' => $choice_value,
@@ -607,7 +682,11 @@ trait TCARM_Settings_Trait {
                 'checkbox_text' => 'I agree to the content.',
                 'link_url' => '',
                 'link_text' => '',
+                'translations' => array(),
             ));
+            if (!isset($item['translations']) || !is_array($item['translations'])) {
+                $item['translations'] = array();
+            }
             if ($key === 'usage_guidelines' && empty($item['link_url']) && !empty($settings['terms_url'])) {
                 $item['link_url'] = $settings['terms_url'];
             }

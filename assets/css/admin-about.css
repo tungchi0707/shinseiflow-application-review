@@ -1,0 +1,163 @@
+/* About ShinseiFlow page. */
+.tcarm-admin-page .tcarm-about-page {
+  max-width: 1120px;
+  margin: 0 auto 32px;
+}
+.tcarm-admin-page .tcarm-about-hero,
+.tcarm-admin-page .tcarm-about-section {
+  border: 1px solid var(--tcarm-admin-border);
+  border-radius: 8px;
+  background: var(--tcarm-admin-card);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+.tcarm-admin-page .tcarm-about-section--plain {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+.tcarm-admin-page .tcarm-about-hero {
+  margin-bottom: 22px;
+  padding: 32px;
+}
+.tcarm-admin-page .tcarm-about-wordmark {
+  margin: 0;
+  color: var(--tcarm-admin-text);
+  font-family: "M PLUS U", "Arial Black", Arial, sans-serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+.tcarm-admin-page .tcarm-about-hero h2 {
+  margin: 12px 0 8px;
+  color: var(--tcarm-admin-text);
+  font-size: 21px;
+  line-height: 1.4;
+}
+.tcarm-admin-page .tcarm-about-version,
+.tcarm-admin-page .tcarm-about-description {
+  color: var(--tcarm-admin-muted);
+}
+.tcarm-admin-page .tcarm-about-version {
+  margin: 0;
+  font-weight: 600;
+}
+.tcarm-admin-page .tcarm-about-description {
+  max-width: 760px;
+  margin: 16px 0 0;
+  line-height: 1.7;
+}
+.tcarm-admin-page .tcarm-about-section {
+  margin-bottom: 22px;
+  padding: 24px;
+}
+.tcarm-admin-page .tcarm-about-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+.tcarm-admin-page .tcarm-about-section-heading > .dashicons {
+  color: var(--tcarm-primary);
+}
+.tcarm-admin-page .tcarm-about-section h2 {
+  margin: 0;
+  color: var(--tcarm-admin-text);
+  font-size: 18px;
+  line-height: 1.4;
+}
+.tcarm-admin-page .tcarm-about-section p {
+  max-width: 760px;
+  color: var(--tcarm-admin-muted);
+  line-height: 1.7;
+}
+.tcarm-admin-page .tcarm-about-resource-grid,
+.tcarm-admin-page .tcarm-about-details-grid {
+  display: grid;
+  gap: 14px;
+}
+.tcarm-admin-page .tcarm-about-resource-grid,
+.tcarm-admin-page .tcarm-about-details-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.tcarm-admin-page .tcarm-about-resource-card {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 20px;
+  align-items: center;
+  gap: 12px;
+  min-height: 92px;
+  padding: 18px;
+  border: 1px solid var(--tcarm-admin-border);
+  border-radius: 8px;
+  background: var(--tcarm-admin-card);
+  color: var(--tcarm-admin-text);
+  text-decoration: none;
+}
+.tcarm-admin-page .tcarm-about-resource-card:hover,
+.tcarm-admin-page .tcarm-about-resource-card:focus {
+  border-color: var(--tcarm-primary);
+  color: var(--tcarm-admin-text);
+}
+.tcarm-admin-page .tcarm-about-resource-card > .dashicons:first-child {
+  color: var(--tcarm-primary);
+}
+.tcarm-admin-page .tcarm-about-resource-card > .dashicons:last-child {
+  color: var(--tcarm-admin-muted);
+}
+.tcarm-admin-page .tcarm-about-resource-content strong,
+.tcarm-admin-page .tcarm-about-resource-content span {
+  display: block;
+}
+.tcarm-admin-page .tcarm-about-resource-content strong {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.tcarm-admin-page .tcarm-about-resource-content span {
+  color: var(--tcarm-admin-muted);
+  line-height: 1.55;
+}
+.tcarm-admin-page .tcarm-about-support {
+  background: #f4f8f4;
+}
+.tcarm-admin-page .tcarm-about-support .button {
+  margin-top: 4px;
+}
+.tcarm-admin-page .tcarm-about-details {
+  margin: 0;
+}
+.tcarm-admin-page .tcarm-about-details > div {
+  display: grid;
+  grid-template-columns: minmax(100px, .45fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--tcarm-admin-border-soft);
+}
+.tcarm-admin-page .tcarm-about-details > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.tcarm-admin-page .tcarm-about-details dt {
+  color: var(--tcarm-admin-muted);
+  font-weight: 600;
+}
+.tcarm-admin-page .tcarm-about-details dd {
+  margin: 0;
+  color: var(--tcarm-admin-text);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 782px) {
+  .tcarm-admin-page .tcarm-about-hero,
+  .tcarm-admin-page .tcarm-about-section {
+    padding: 22px;
+  }
+  .tcarm-admin-page .tcarm-about-resource-grid,
+  .tcarm-admin-page .tcarm-about-details-grid {
+    grid-template-columns: 1fr;
+  }
+  .tcarm-admin-page .tcarm-about-wordmark {
+    font-size: 29px;
+  }
+}

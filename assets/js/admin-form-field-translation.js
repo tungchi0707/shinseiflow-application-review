@@ -1,6 +1,8 @@
 (function(){
                 var tcarmFormFieldAiTranslate = window.tcarmFormFieldAiTranslate || {};
                 var tcarmFormFieldAiI18n = tcarmFormFieldAiTranslate.i18n || window.tcarmAdminI18n || {};
+                var tcarmFormFieldBaseLanguage = tcarmFormFieldAiTranslate.baseLanguage || 'en';
+                var tcarmFormFieldTargetLanguages = Array.isArray(tcarmFormFieldAiTranslate.targetLanguages) ? tcarmFormFieldAiTranslate.targetLanguages : [];
 
                 function t(key, fallback){
                     return typeof tcarmFormFieldAiI18n[key] === 'string' && tcarmFormFieldAiI18n[key] !== '' ? tcarmFormFieldAiI18n[key] : fallback;
@@ -15,7 +17,7 @@
 
                 function getTcarmActiveFormFieldLang(card){
                     var activeTab = card.querySelector('.tcarm-form-field-lang-tab.is-active');
-                    return activeTab ? activeTab.getAttribute('data-tcarm-form-field-lang') : 'ja';
+                    return activeTab ? activeTab.getAttribute('data-tcarm-form-field-lang') : tcarmFormFieldBaseLanguage;
                 }
 
                 function updateTcarmFormFieldAiButton(card){
@@ -23,7 +25,7 @@
                     var button = document.getElementById('tcarm-form-field-ai-translate-button');
                     if (!action || !button) return;
                     var lang = getTcarmActiveFormFieldLang(card);
-                    var show = lang && lang !== 'ja';
+                    var show = tcarmFormFieldTargetLanguages.indexOf(lang) !== -1;
                     action.hidden = !show;
                     button.disabled = !show;
                     if (!show) {
@@ -38,31 +40,38 @@
                     updateTcarmFormFieldAiButton(card);
                     button.addEventListener('click', function(){
                         var targetLang = getTcarmActiveFormFieldLang(card);
-                        if (!targetLang || targetLang === 'ja') {
+                        if (!targetLang || tcarmFormFieldTargetLanguages.indexOf(targetLang) === -1) {
                             setTcarmFormFieldAiMessage(t('aiSelectTargetLanguage', 'Please select the target language.'), 'error');
                             return;
                         }
 
                         var source = {};
-                        card.querySelectorAll('[data-tcarm-field-translation-input="1"][data-tcarm-field-translation-lang="' + targetLang + '"]').forEach(function(targetInput){
+                        var emptyTargetCount = 0;
+                        card.querySelectorAll('[data-tcarm-field-language-input="1"][data-tcarm-field-language="' + targetLang + '"]').forEach(function(targetInput){
                             var key = targetInput.getAttribute('data-tcarm-field-translation-key');
-                            var sourceInput = null;
-                            if (key) {
-                                card.querySelectorAll('[data-tcarm-field-ja-source="1"]').forEach(function(input){
-                                    if (!sourceInput && input.getAttribute('data-tcarm-field-translation-key') === key) {
-                                        sourceInput = input;
-                                    }
-                                });
+                            if (!key || (targetInput.value || '').trim() !== '') {
+                                return;
                             }
-                            var sourceValue = sourceInput ? (sourceInput.value || '').trim() : (targetInput.getAttribute('data-tcarm-field-source') || '').trim();
-                            if (!key || (targetInput.value || '').trim() !== '' || sourceValue === '') {
+                            emptyTargetCount++;
+                            var sourceInput = null;
+                            card.querySelectorAll('[data-tcarm-field-language-input="1"][data-tcarm-field-language="' + tcarmFormFieldBaseLanguage + '"]').forEach(function(input){
+                                if (!sourceInput && input.getAttribute('data-tcarm-field-translation-key') === key) {
+                                    sourceInput = input;
+                                }
+                            });
+                            var sourceValue = sourceInput ? (sourceInput.value || '').trim() : '';
+                            if (sourceValue === '') {
                                 return;
                             }
                             source[key] = sourceValue;
                         });
 
-                        if (!Object.keys(source).length) {
+                        if (!emptyTargetCount) {
                             setTcarmFormFieldAiMessage(t('aiNoEmptyTargets', 'There are no empty fields to translate.'), 'error');
+                            return;
+                        }
+                        if (Object.keys(source).length === 0) {
+                            setTcarmFormFieldAiMessage(t('aiSourceEmpty', 'The source language fields are empty. Enter content in the base language before translating.'), 'error');
                             return;
                         }
 
@@ -92,7 +101,7 @@
                             var translations = json.data.translations || {};
                             var filled = 0;
                             Object.keys(translations[targetLang] || {}).forEach(function(key){
-                                card.querySelectorAll('[data-tcarm-field-translation-input="1"][data-tcarm-field-translation-lang="' + targetLang + '"]').forEach(function(input){
+                                card.querySelectorAll('[data-tcarm-field-language-input="1"][data-tcarm-field-language="' + targetLang + '"]').forEach(function(input){
                                     if (input.getAttribute('data-tcarm-field-translation-key') === key && (input.value || '').trim() === '') {
                                         input.value = translations[targetLang][key] || '';
                                         input.dispatchEvent(new Event('change', {bubbles:true}));

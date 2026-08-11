@@ -17,6 +17,7 @@ trait TCARM_Plugin_Core_Trait {
     public static function activate() {
         global $wpdb;
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        $installed_db_version = get_option('tcarm_db_version');
         $charset_collate = $wpdb->get_charset_collate();
         $table = self::table_name();
         $sql = "CREATE TABLE {$table} (
@@ -97,10 +98,33 @@ trait TCARM_Plugin_Core_Trait {
             add_option(self::OPTION_SECTIONS, self::default_sections());
         }
         if (!get_option(self::OPTION_TRANSLATIONS)) {
-            add_option(self::OPTION_TRANSLATIONS, array('ja' => self::default_translation_strings()));
+            add_option(self::OPTION_TRANSLATIONS, array(
+                'ja' => self::default_japanese_translation_strings(),
+                'en' => self::default_translation_strings(),
+                'zh-Hant' => self::default_traditional_chinese_translation_strings(),
+                'zh-Hans' => self::default_simplified_chinese_translation_strings(),
+                'ko' => self::default_korean_translation_strings(),
+            ));
         }
-        update_option('tcarm_db_version', self::DB_VERSION);
+        $translation_migration_complete = true;
+        if ($installed_db_version !== false && (string) $installed_db_version !== '' && version_compare((string) $installed_db_version, '0.1.59', '<')) {
+            $translation_migration_complete = self::migrate_japanese_translation_defaults();
+        }
+        if ($translation_migration_complete && $installed_db_version !== false && (string) $installed_db_version !== '' && version_compare((string) $installed_db_version, '0.1.60', '<')) {
+            $translation_migration_complete = self::migrate_new_language_translation_defaults();
+        }
+        if ($translation_migration_complete && $installed_db_version !== false && (string) $installed_db_version !== '' && version_compare((string) $installed_db_version, self::DB_VERSION, '<')) {
+            $translation_migration_complete = self::migrate_base_language_setting();
+        }
+        if ($translation_migration_complete) {
+            update_option('tcarm_db_version', self::DB_VERSION);
+        }
         self::apply_tcarm_role_capabilities();
+        self::schedule_pending_upload_cleanup();
+    }
+
+    public static function deactivate() {
+        self::unschedule_pending_upload_cleanup();
     }
 
     public function maybe_upgrade() {
@@ -121,6 +145,7 @@ trait TCARM_Plugin_Core_Trait {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Consent values are read only inside frontend submit flows that verify the form nonce before validation.
         $posted = isset($_POST['tcarm_consents']) && is_array($_POST['tcarm_consents']) ? array_map('sanitize_text_field', wp_unslash($_POST['tcarm_consents'])) : array();
         foreach (self::get_consent_items() as $key => $item) {
+            $item = $this->apply_consent_translation($item);
             $show_checkbox = isset($item['show_checkbox']) ? $item['show_checkbox'] === '1' : true;
             if ($item['enabled'] !== '1' || !$show_checkbox || $item['required'] !== '1') {
                 continue;
@@ -141,7 +166,7 @@ trait TCARM_Plugin_Core_Trait {
         $visible = array();
         foreach ($items as $key => $item) {
             if ($item['enabled'] === '1') {
-                $visible[$key] = $item;
+                $visible[$key] = $this->apply_consent_translation($item);
             }
         }
         if (!$visible) {

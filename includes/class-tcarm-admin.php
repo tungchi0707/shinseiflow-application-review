@@ -117,7 +117,7 @@ trait TCARM_Admin_Trait {
             'tcarm_privacy_settings' => __('Privacy and Data Retention', 'shinseiflow-application-review'),
             'shinseiflow-about' => __('About', 'shinseiflow-application-review'),
         );
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin tab state; value is sanitized and allowlisted against registered tabs.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing; value is sanitized and allowlisted, and no state change occurs.
         $current = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : 'tcarm_dashboard';
         if (!isset($tabs[$current])) {
             $current = 'tcarm_dashboard';

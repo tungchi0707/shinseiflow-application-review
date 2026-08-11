@@ -82,6 +82,7 @@ trait TCARM_AI_Translation_Trait {
         check_ajax_referer('tcarm_ai_translate_strings', 'nonce');
 
         $settings = self::get_settings();
+        $base_language = self::get_base_language($settings);
         $provider = $this->get_ai_provider($settings);
         $api_key = $this->get_ai_api_key($settings);
         if ($api_key === '') {
@@ -90,7 +91,7 @@ trait TCARM_AI_Translation_Trait {
 
         $target_lang = isset($_POST['target_lang']) ? sanitize_text_field(wp_unslash((string) $_POST['target_lang'])) : '';
         $allowed_targets = array_keys(self::get_enabled_languages(false));
-        $allowed_targets = array_values(array_diff($allowed_targets, array('ja')));
+        $allowed_targets = array_values(array_diff($allowed_targets, array($base_language)));
         if (!in_array($target_lang, $allowed_targets, true)) {
             wp_send_json_error(array('message' => __('There are no target languages for translation.', 'shinseiflow-application-review')), 400);
         }
@@ -105,7 +106,8 @@ trait TCARM_AI_Translation_Trait {
             }
             $key = sanitize_text_field((string) $key);
             $key = substr($key, 0, 120);
-            $value = sanitize_text_field((string) $value);
+            $is_consent_body = strpos($key, 'consent:') === 0 && substr($key, -5) === ':body';
+            $value = $is_consent_body ? sanitize_textarea_field((string) $value) : sanitize_text_field((string) $value);
             $value = function_exists('mb_substr') ? mb_substr($value, 0, 2000) : substr($value, 0, 2000);
             $total_length += function_exists('mb_strlen') ? mb_strlen($value) : strlen($value);
             if ($total_length > 20000) {
@@ -116,13 +118,13 @@ trait TCARM_AI_Translation_Trait {
             }
         }
         if (empty($clean_source)) {
-            wp_send_json_error(array('message' => __('There are no empty fields to translate.', 'shinseiflow-application-review')), 400);
+            wp_send_json_error(array('message' => __('The source language fields are empty. Enter source content before translating.', 'shinseiflow-application-review')), 400);
         }
 
         $model = $this->get_ai_model($settings);
         $translations = $provider === 'gemini'
-            ? $this->translate_with_gemini($api_key, $model, $clean_source, $target_lang)
-            : $this->translate_with_openai($api_key, $model, $clean_source, $target_lang);
+            ? $this->translate_with_gemini($api_key, $model, $clean_source, $target_lang, $base_language)
+            : $this->translate_with_openai($api_key, $model, $clean_source, $target_lang, $base_language);
         if (is_wp_error($translations)) {
             wp_send_json_error(array('message' => __('Failed to call the AI translation API. Please check your settings.', 'shinseiflow-application-review')), 500);
         }
@@ -132,6 +134,7 @@ trait TCARM_AI_Translation_Trait {
 
     private function ai_target_language_labels($target_lang) {
         $all_targets = array(
+            'ja' => 'Japanese',
             'en' => 'English',
             'zh-Hant' => 'Traditional Chinese written for general Chinese readers, using zh-Hant script',
             'zh-Hans' => 'Simplified Chinese written for general Chinese readers, using zh-Hans script',
@@ -140,27 +143,40 @@ trait TCARM_AI_Translation_Trait {
         return isset($all_targets[$target_lang]) ? array($target_lang => $all_targets[$target_lang]) : array();
     }
 
-    private function ai_translation_prompt_payload($source, $target_lang) {
+    private function ai_source_language_label($source_language) {
+        $all_sources = array(
+            'ja' => 'Japanese',
+            'en' => 'English',
+            'zh-Hant' => 'Traditional Chinese written using zh-Hant script',
+            'zh-Hans' => 'Simplified Chinese written using zh-Hans script',
+            'ko' => 'Korean',
+        );
+        return isset($all_sources[$source_language]) ? $all_sources[$source_language] : 'English';
+    }
+
+    private function ai_translation_prompt_payload($source, $target_lang, $source_language) {
         $targets = $this->ai_target_language_labels($target_lang);
         return array(
             'target_languages' => $targets,
-            'source_language' => 'ja',
+            'source_language' => $source_language,
             'source_strings' => $source,
             'required_json_shape' => array_fill_keys(array_keys($targets), new stdClass()),
         );
     }
 
-    private function translate_with_openai($api_key, $model, $source, $target_lang = '') {
+    private function translate_with_openai($api_key, $model, $source, $target_lang = '', $source_language = 'en') {
         $targets = $this->ai_target_language_labels($target_lang);
         if (empty($targets)) {
             return new WP_Error('tcarm_ai_target_error', __('Invalid target language.', 'shinseiflow-application-review'));
         }
-        $system = 'You translate Japanese website UI labels for an application management system. Return only valid JSON. Preserve keys exactly. Do not add explanations. Keep translations concise and natural for form labels, buttons, placeholders, and short messages.';
+        $source_label = $this->ai_source_language_label($source_language);
+        $target_label = reset($targets);
+        $system = sprintf('You translate website UI labels for an application management system from %1$s into %2$s. Return only valid JSON. Preserve keys exactly. Do not add explanations. Keep translations concise and natural for form labels, buttons, placeholders, and short messages.', $source_label, $target_label);
         $body = array(
             'model' => $model,
             'input' => array(
                 array('role' => 'system', 'content' => $system),
-                array('role' => 'user', 'content' => wp_json_encode($this->ai_translation_prompt_payload($source, $target_lang), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)),
+                array('role' => 'user', 'content' => wp_json_encode($this->ai_translation_prompt_payload($source, $target_lang, $source_language), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)),
             ),
             'temperature' => 0.2,
         );
@@ -203,12 +219,14 @@ trait TCARM_AI_Translation_Trait {
         return $this->parse_ai_translation_json($text, $source, array_keys($targets));
     }
 
-    private function translate_with_gemini($api_key, $model, $source, $target_lang = '') {
+    private function translate_with_gemini($api_key, $model, $source, $target_lang = '', $source_language = 'en') {
         $targets = $this->ai_target_language_labels($target_lang);
         if (empty($targets)) {
             return new WP_Error('tcarm_ai_target_error', __('Invalid target language.', 'shinseiflow-application-review'));
         }
-        $prompt = "Translate Japanese website UI labels for an application management system. Return only valid JSON. Preserve keys exactly. Do not add explanations.\n\n" . wp_json_encode($this->ai_translation_prompt_payload($source, $target_lang), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $source_label = $this->ai_source_language_label($source_language);
+        $target_label = reset($targets);
+        $prompt = sprintf("Translate website UI labels for an application management system from %1\$s into %2\$s. Return only valid JSON. Preserve keys exactly. Do not add explanations.\n\n", $source_label, $target_label) . wp_json_encode($this->ai_translation_prompt_payload($source, $target_lang, $source_language), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         $body = array(
             'contents' => array(
                 array(
@@ -276,7 +294,8 @@ trait TCARM_AI_Translation_Trait {
             }
             foreach ($source as $key => $value) {
                 if (isset($decoded[$lang][$key])) {
-                    $out[$lang][$key] = sanitize_text_field((string) $decoded[$lang][$key]);
+                    $is_consent_body = strpos($key, 'consent:') === 0 && substr($key, -5) === ':body';
+                    $out[$lang][$key] = $is_consent_body ? sanitize_textarea_field((string) $decoded[$lang][$key]) : sanitize_text_field((string) $decoded[$lang][$key]);
                 }
             }
         }

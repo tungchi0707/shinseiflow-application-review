@@ -13,14 +13,17 @@
     return prefix + '_' + Date.now().toString(36) + '_' + Math.floor(Math.random()*9999).toString(36);
   }
   function renumberFields($scope){
-    $scope.find('.tcarm-mini-field-card:visible').each(function(index){
+    $scope.find('> .tcarm-section-group-body > .tcarm-mini-field-card').each(function(index){
       $(this).find('.tcarm-mini-sort').val((index + 1) * 10);
     });
   }
   function renumberSections(){
-    $('.tcarm-section-group:visible').each(function(index){
-      $(this).find('.tcarm-section-sort').val((index + 1) * 10);
-      renumberFields($(this));
+    $('.tcarm-sortable-sections > .tcarm-section-group').each(function(index){
+      var $group = $(this);
+      var sectionKey = $group.data('section');
+      $group.find('> .tcarm-section-group-body > .tcarm-mini-field-card .tcarm-field-section-input').val(sectionKey);
+      $group.find('> summary .tcarm-section-sort').val((index + 1) * 10);
+      renumberFields($group);
     });
   }
   function renumberConsents(){
@@ -80,23 +83,31 @@
       '<div class="tcarm-mini-field-card is-enabled" data-field="'+id+'">'+
         '<div class="tcarm-mini-field-title">'+
           '<span class="tcarm-field-drag" title="'+escAttr(t('dragToSort', 'Drag to reorder'))+'" aria-hidden="true">\u2630</span><input class="tcarm-mini-sort" type="hidden" name="'+name+'[sort_order]" value="999">'+
-          '<div class="tcarm-mini-name"><strong>'+escHtml(t('newField', 'New field'))+'</strong><code>'+fieldKey+'</code></div>'+
           '<label class="tcarm-switch"><input type="checkbox" name="'+name+'[enabled]" value="1" checked><span></span></label>'+
+          '<div class="tcarm-mini-name"><strong>'+escHtml(t('newField', 'New field'))+'</strong><code>'+fieldKey+'</code></div>'+
         '</div>'+
+        '<div class="tcarm-mini-field-editor">'+
         '<div class="tcarm-mini-field-controls">'+
           '<input class="tcarm-field-section-input" type="hidden" name="'+name+'[section]" value="'+sectionKey+'">'+
           '<input type="hidden" name="'+name+'[key]" value="'+fieldKey+'">'+
-          '<label>'+escHtml(t('type', 'Type'))+'<select name="'+name+'[type]"><option value="text">'+escHtml(t('textType', 'Text'))+'</option><option value="textarea">'+escHtml(t('textareaType', 'Textarea'))+'</option><option value="email">'+escHtml(t('emailType', 'Email'))+'</option><option value="url">URL</option><option value="tel">'+escHtml(t('phoneType', 'Phone number'))+'</option><option value="date">'+escHtml(t('dateType', 'Date'))+'</option><option value="checkbox">'+escHtml(t('checkboxType', 'Checkbox'))+'</option><option value="file">'+escHtml(t('fileUploadType', 'File upload'))+'</option><option value="dropdown">'+escHtml(t('dropdownType', 'Dropdown'))+'</option></select></label>'+
-          '<label>'+escHtml(t('label', 'Display label'))+'<input type="text" name="'+name+'[label]" value="'+escAttr(t('newField', 'New field'))+'"></label>'+
-          '<label>'+escHtml(t('placeholder', 'Placeholder'))+'<input type="text" name="'+name+'[placeholder]" value="" placeholder="'+escAttr(t('placeholderExample', 'Example: Enter placeholder text'))+'"></label>'+
-          '<label>'+escHtml(t('description', 'Description'))+'<input type="text" name="'+name+'[description]" value="" placeholder="'+escAttr(t('descriptionExample', 'Example: Enter helper text'))+'"></label>'+
+          '<div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-main">'+
+            '<label class="tcarm-field-control-type">'+escHtml(t('type', 'Type'))+'<select name="'+name+'[type]"><option value="text">'+escHtml(t('textType', 'Text'))+'</option><option value="textarea">'+escHtml(t('textareaType', 'Textarea'))+'</option><option value="email">'+escHtml(t('emailType', 'Email'))+'</option><option value="url">URL</option><option value="tel">'+escHtml(t('phoneType', 'Phone number'))+'</option><option value="date">'+escHtml(t('dateType', 'Date'))+'</option><option value="checkbox_group">'+escHtml(t('checkboxGroupType', 'Checkbox'))+'</option><option value="radio">'+escHtml(t('radioType', 'Radio Button Group'))+'</option><option value="file">'+escHtml(t('fileUploadType', 'File upload'))+'</option><option value="dropdown">'+escHtml(t('dropdownType', 'Dropdown'))+'</option></select></label>'+
+            '<label class="tcarm-field-control-label">'+escHtml(t('label', 'Display label'))+'<input type="text" name="'+name+'[label]" value="'+escAttr(t('newField', 'New field'))+'"></label>'+
+          '</div>'+
+          '<div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-placeholder">'+
+            '<label class="tcarm-field-control-placeholder">'+escHtml(t('placeholder', 'Placeholder'))+'<input type="text" name="'+name+'[placeholder]" value="" placeholder="'+escAttr(t('placeholderExample', 'Example: Enter placeholder text'))+'"></label>'+
+          '</div>'+
+          '<div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-description">'+
+            '<label class="tcarm-field-control-description">'+escHtml(t('description', 'Description'))+'<input type="text" name="'+name+'[description]" value="" placeholder="'+escAttr(t('descriptionExample', 'Example: Enter helper text'))+'"></label>'+
+          '</div>'+
         '</div>'+
         '<div class="tcarm-mini-field-flags">'+
-          '<label><input type="checkbox" name="'+name+'[required]" value="1"> '+escHtml(t('required', 'Required'))+'</label>'+
+          '<label class="tcarm-field-control-required"><input type="checkbox" name="'+name+'[required]" value="1"> '+escHtml(t('required', 'Required'))+'</label>'+
+        '</div>'+
         '</div>'+
         '<div class="tcarm-dropdown-settings">'+
-          '<div class="tcarm-dropdown-settings-title">'+escHtml(t('dropdownChoices', 'Dropdown choices'))+'</div>'+
-          '<p class="description">'+escHtml(t('dropdownChoiceHelp', 'Set display labels and saved values. A blank first option is shown automatically as the placeholder.'))+'</p>'+
+          '<div class="tcarm-dropdown-settings-title">'+escHtml(t('dropdownChoices', 'Dropdown Choices'))+'</div>'+
+          '<p class="description">'+escHtml(t('dropdownChoiceHelp', 'Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder.'))+'</p>'+
           '<div class="tcarm-dropdown-choice-list">'+
             '<div class="tcarm-dropdown-choice-row"><input type="text" name="'+name+'[choices][0][label]" value="" placeholder="'+escAttr(t('displayName', 'Display name'))+'"><input type="text" name="'+name+'[choices][0][value]" value="" placeholder="'+escAttr(t('savedValue', 'Saved value'))+'"><button type="button" class="button tcarm-remove-dropdown-choice">'+escHtml(t('remove', 'Delete'))+'</button></div>'+
           '</div>'+
@@ -170,9 +181,12 @@
     $cards.each(function(){
       var $card = $(this);
       var type = $card.find('select[name$="[type]"]').val();
-      var isDropdown = type === 'dropdown';
-      $card.toggleClass('is-dropdown', isDropdown);
-      $card.find('> .tcarm-dropdown-settings').toggle(isDropdown);
+      var isChoiceField = type === 'dropdown' || type === 'radio' || type === 'checkbox_group';
+      var $settings = $card.find('> .tcarm-dropdown-settings');
+      $card.toggleClass('is-dropdown', isChoiceField);
+      $settings.toggle(isChoiceField);
+      $settings.find('.tcarm-dropdown-settings-title').text(type === 'radio' ? t('radioChoices', 'Radio Button Choices') : (type === 'checkbox_group' ? t('checkboxGroupChoices', 'Checkbox Choices') : t('dropdownChoices', 'Dropdown Choices')));
+      $settings.find('> .description').text(type === 'radio' ? t('radioChoiceHelp', 'Set the display labels and saved values for the radio buttons.') : (type === 'checkbox_group' ? t('checkboxGroupChoiceHelp', 'Set the display labels and saved values for the checkboxes.') : t('dropdownChoiceHelp', 'Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder.')));
     });
   }
   function updateConsentRequiredState($scope){
@@ -193,6 +207,18 @@
   }
   function dropdownChoiceRow(name, index){
     return '<div class="tcarm-dropdown-choice-row"><input type="text" name="'+name+'[choices]['+index+'][label]" value="" placeholder="'+escAttr(t('displayName', 'Display name'))+'"><input type="text" name="'+name+'[choices]['+index+'][value]" value="" placeholder="'+escAttr(t('savedValue', 'Saved value'))+'"><button type="button" class="button tcarm-remove-dropdown-choice">'+escHtml(t('remove', 'Delete'))+'</button></div>';
+  }
+  function nextDropdownChoiceIndex($settings){
+    var next = parseInt($settings.attr('data-next-choice-index'), 10);
+    if (isNaN(next)) {
+      next = 0;
+      $settings.find('.tcarm-dropdown-choice-row input[name*="[choices]"]').each(function(){
+        var match = String($(this).attr('name') || '').match(/\[choices\]\[(\d+)\]\[(?:label|value)\]$/);
+        if (match) next = Math.max(next, parseInt(match[1], 10) + 1);
+      });
+    }
+    $settings.attr('data-next-choice-index', next + 1);
+    return next;
   }
   function deleteMarkerBin(){
     var $form = $('.tcarm-form-settings-form').first();
@@ -220,6 +246,9 @@
     initSortables();
     toggleDropdownSettings($(document));
     updateConsentRequiredState($(document));
+    $('.tcarm-form-settings-form').off('submit.tcarmFormOrder').on('submit.tcarmFormOrder', function(){
+      renumberSections();
+    });
     $(document).on('click', '.tcarm-add-section-main', function(e){
       e.preventDefault();
       var $panel = $('.tcarm-section-add-panel:not(.tcarm-consent-add-panel)');
@@ -258,7 +287,7 @@
       var $card = $(this).closest('.tcarm-mini-field-card');
       var nameAttr = $card.find('input[name$="[label]"]').attr('name') || '';
       var baseName = nameAttr.replace(/\[label\]$/, '');
-      var index = $settings.find('.tcarm-dropdown-choice-row').length;
+      var index = nextDropdownChoiceIndex($settings);
       $settings.find('.tcarm-dropdown-choice-list').append(dropdownChoiceRow(baseName, index));
     });
     $(document).on('click', '.tcarm-remove-dropdown-choice', function(e){

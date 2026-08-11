@@ -4,7 +4,7 @@ Tags: application form, approval workflow, review, notifications, form managemen
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.4.3.2
+Stable tag: 0.4.3.26
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,148 @@ Privacy Policy:
 https://policies.google.com/privacy
 
 == Changelog ==
+
+= 0.4.3.26 =
+
+* Added multilingual Consent item fields.
+* Added AI translation support for Consent content.
+* Added language-aware Consent rendering with base-language fallback.
+* Preserved existing Consent behavior and data compatibility.
+
+= 0.4.3.25 =
+
+* Fixed AI field translation being blocked by optional empty source fields.
+* Empty optional source values are now skipped while valid sources continue translating.
+* Preserved existing translations and AI provider behavior.
+
+= 0.4.3.24 =
+
+* Improved spacing between frontend form fields.
+* Kept help text visually grouped with its control.
+* Stacked radio and checkbox group choices vertically.
+* Preserved all existing form behavior.
+
+= 0.4.3.23 =
+
+* Refined field editor proportions and spacing.
+* Standardized labels above controls.
+* Expanded placeholder and description fields to full width.
+* Preserved all existing settings behavior.
+
+= 0.4.3.22 =
+
+* Added missing translator comments for placeholder strings.
+* Normalized PHP file line endings.
+* Clarified nonce verification context for safe request reads.
+* Documented required direct database access for custom tables.
+* Preserved all existing behavior and data structures.
+
+= 0.4.3.21 =
+
+* Refined the field editor column proportions for better use of space.
+* Standardized field labels above their controls.
+* Expanded placeholder and description controls to full width.
+* Preserved all existing field settings and behavior.
+
+= 0.4.3.20 =
+
+* Unified the field editor layout for saved and newly added fields.
+* Improved field settings spacing and required-control alignment.
+* Limited the form settings editor to a responsive 1000px content width.
+* Improved usability on laptops and narrow admin screens.
+* Preserved all existing field settings and saving behavior.
+
+= 0.4.3.19 =
+
+* Fixed fields being reassigned when new sections and fields were saved in the same request.
+* Added a final section and field order synchronization before saving form settings.
+* Ensured frontend section order follows the configured section order.
+* Preserved the existing sections, fields, and database structure.
+
+= 0.4.3.18 =
+
+* Removed the legacy Single Checkbox field type.
+* Renamed Checkbox Group to Checkbox in the field type interface.
+* Preserved checkbox choices, array storage, validation, and the independent consent system.
+* Updated Japanese and Traditional Chinese language resources.
+
+= 0.4.3.17 =
+
+* Added updated Japanese and Traditional Chinese language resources for the new field types and validation messages.
+* Renamed field type labels to distinguish Single Checkbox, Checkbox Group, and Radio Button Group.
+* Localized frontend validation messages and Yes/No display values.
+* Added missing JavaScript localization strings for Radio Button Group and Checkbox Group.
+* Preserved existing field type keys, stored data, and database schema.
+
+= 0.4.3.15 =
+
+* Added configurable checkbox group fields.
+* Checkbox groups reuse the existing choices structure and store selected values as arrays.
+* Added unique choice value validation for dropdown, radio, and checkbox group fields.
+* Added server-side array allowlist validation, confirmation handling, display formatting, and edit/resubmission restoration.
+* Preserved the existing single checkbox behavior.
+
+= 0.4.3.14 =
+* Added configurable radio button fields.
+* Radio fields reuse the existing dropdown choices structure and scalar value storage.
+* Added server-side allowlist validation and edit/resubmission state restoration.
+* Fixed duplicate choice indexes after deleting and adding option rows.
+
+= 0.4.3.13 =
+* Added a configurable base language for AI translation.
+* New installations select the base language from the WordPress locale, with English fallback.
+* Fixed translation tools being permanently tied to Japanese.
+* Preserved all existing translation and form data when changing the base language.
+
+= 0.4.3.12 =
+* Added complete Traditional Chinese, Simplified Chinese, and Korean default translation strings.
+* New installations now initialize all five supported language defaults.
+* Existing empty or missing values for the three newly supported defaults are safely populated without overwriting customized translations.
+
+= 0.4.3.11 =
+* Added correct Japanese default translations for frontend translation strings.
+* Prevented English source defaults from filling Japanese translation fields.
+* Added a one-time migration that preserves custom Japanese translations while replacing unchanged English defaults.
+
+= 0.4.3.10 =
+* Cleaned up request-created attachments when a rejected application update fails.
+* Avoided a shared upload email rate-limit bucket when no valid contact email is available.
+* Stopped pending upload cleanup when the storage root is a symbolic link.
+
+= 0.4.3.9 =
+* Completed field, consent, Turnstile, and upload rate-limit checks before storing pending uploads.
+* Revalidated required consent items before initial and edited applications are saved.
+* Added precise failed-request upload cleanup and scheduled cleanup for pending files older than 24 hours.
+
+= 0.4.3.8 =
+* Moved application history parsing, writing, and timeline rendering to a dedicated PHP trait.
+* Preserved the existing history schema, event keys, compatibility fallbacks, and output behavior.
+* No functional or UI behavior was changed.
+
+= 0.4.3.7 =
+* Moved the Privacy and Data Retention admin page rendering to a dedicated PHP trait.
+* Preserved the existing Settings API, option, lifecycle, and page output behavior.
+* No functional or UI behavior was changed.
+
+= 0.4.3.6 =
+* Moved application number generation and rule processing to a dedicated PHP trait.
+* Preserved all existing methods, settings, and application number behavior.
+* No functional or UI behavior was changed.
+
+= 0.4.3.5 =
+* Loaded admin JavaScript only on the ShinseiFlow pages where it is required.
+* Loaded the WordPress Media Library and sortable dependency only on pages that use them.
+* Preserved existing functionality and UI behavior.
+
+= 0.4.3.4 =
+* Moved the About ShinseiFlow admin page styles to a dedicated stylesheet.
+* Loaded the About stylesheet only on the About page.
+* No functional or visual behavior was changed.
+
+= 0.4.3.3 =
+* Removed a no-op resource hints callback and an orphaned category color rules script.
+* Removed an unused category color option constant, dashboard count query, and admin table CSS selector.
+* Preserved legacy application statuses, saved data, and uninstall cleanup behavior.
 
 = 0.4.3.2 =
 * Removed the unused legacy inline frontend CSS method.

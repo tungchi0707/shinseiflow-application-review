@@ -8,6 +8,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
         $fields = self::get_fields();
         $sections = self::get_sections();
         $consent_items = self::get_consent_items();
+        $settings = self::get_settings();
         $type_labels = array(
             'text' => __('Text', 'shinseiflow-application-review'),
             'textarea' => __('Textarea', 'shinseiflow-application-review'),
@@ -15,11 +16,14 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
             'url' => 'URL',
             'tel' => __('Phone Number', 'shinseiflow-application-review'),
             'date' => __('Date', 'shinseiflow-application-review'),
-            'checkbox' => __('Checkbox', 'shinseiflow-application-review'),
+            'checkbox_group' => __('Checkbox', 'shinseiflow-application-review'),
+            'radio' => __('Radio Button Group', 'shinseiflow-application-review'),
             'file' => __('File Upload', 'shinseiflow-application-review'),
             'dropdown' => __('Dropdown', 'shinseiflow-application-review'),
         );
         $supported_languages = self::supported_languages();
+        $base_language = self::get_base_language($settings);
+        $base_language_label = isset($supported_languages[$base_language]) ? $supported_languages[$base_language] : $supported_languages['en'];
         $enabled_languages = self::get_enabled_languages(false);
         $form_languages = array('ja' => $supported_languages['ja']);
         foreach ($enabled_languages as $lang => $label) {
@@ -29,6 +33,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
         }
         $translation_languages = $enabled_languages;
         unset($translation_languages['ja']);
+        $target_languages = array_values(array_diff(array_keys($enabled_languages), array($base_language)));
         wp_enqueue_script('tcarm-admin-form-field-translation', self::plugin_url() . 'assets/js/admin-form-field-translation.js', array(), self::VERSION, true);
         wp_localize_script(
             'tcarm-admin-form-field-translation',
@@ -36,6 +41,9 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
             array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce'   => wp_create_nonce('tcarm_ai_translate_strings'),
+                'baseLanguage' => $base_language,
+                'baseLanguageLabel' => $base_language_label,
+                'targetLanguages' => $target_languages,
                 'i18n'    => array(
                     'aiSelectTargetLanguage' => __('Please select the target language.', 'shinseiflow-application-review'),
                     'aiNoEmptyTargets' => __('There are no empty fields to translate.', 'shinseiflow-application-review'),
@@ -43,6 +51,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                     'aiFailed' => __('AI translation failed.', 'shinseiflow-application-review'),
                     'aiFilledCurrentLanguage' => __('Translations were inserted into empty fields in the current language tab. Please review before saving.', 'shinseiflow-application-review'),
                     'aiNoFillableTargets' => __('There were no empty fields available for translation.', 'shinseiflow-application-review'),
+                    'aiSourceEmpty' => __('The source language fields are empty. Enter content in the base language before translating.', 'shinseiflow-application-review'),
                 ),
             )
         );
@@ -61,7 +70,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
         ?>
             <form method="post" action="options.php" class="tcarm-form-settings-form">
                 <?php settings_fields('tcarm_fields_group'); ?>
-                <div class="tcarm-panel tcarm-card-panel tcarm-full-panel">
+                <div class="tcarm-panel tcarm-card-panel tcarm-full-panel tcarm-form-settings-editor-panel">
                     <div class="tcarm-panel-header">
                         <div class="tcarm-panel-title-block">
                             <h2><?php echo esc_html__('Application Form Fields', 'shinseiflow-application-review'); ?></h2>
@@ -78,11 +87,17 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                 <?php $i++; endforeach; ?>
                             </div>
                             <div class="tcarm-ai-translate-action" id="tcarm-form-field-ai-translate-action" hidden>
-                                <button type="button" class="button button-secondary" id="tcarm-form-field-ai-translate-button"><?php echo esc_html__('Translate from Japanese', 'shinseiflow-application-review'); ?></button>
+                                <button type="button" class="button button-secondary" id="tcarm-form-field-ai-translate-button"><?php
+                                /* translators: %s: name of the language used as the AI translation source. */
+                                echo esc_html(sprintf(__('Translate from %s', 'shinseiflow-application-review'), $base_language_label));
+                                ?></button>
                                 <span class="spinner" id="tcarm-form-field-ai-translate-spinner"></span>
                             </div>
                         </div>
-                        <p class="description"><?php echo esc_html__('Japanese is the primary form configuration. Other languages only set section names, display labels, placeholders, and descriptions for the same field structure.', 'shinseiflow-application-review'); ?></p>
+                        <p class="description"><?php
+                        /* translators: %s: name of the language used as the AI translation source. */
+                        echo esc_html(sprintf(__('%s is used as the AI translation source. Japanese remains the primary form data structure for compatibility, and changing the source language does not move or overwrite form data.', 'shinseiflow-application-review'), $base_language_label));
+                        ?></p>
                         <p class="tcarm-ai-translate-message" id="tcarm-form-field-ai-translate-message" aria-live="polite"></p>
                     </div>
                     <div class="tcarm-form-field-lang-panel is-active" data-tcarm-form-field-panel="ja">
@@ -102,7 +117,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                     </div>
                                     <div class="tcarm-section-summary-actions">
                                         <input class="tcarm-section-sort" type="hidden" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][sort_order]" value="<?php echo esc_attr($section['sort_order']); ?>">
-                                        <input type="hidden" class="tcarm-section-label-input" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][label]" value="<?php echo esc_attr($section['label']); ?>">
+                                        <input type="hidden" class="tcarm-section-label-input" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr('section__' . $section_key . '__label'); ?>" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][label]" value="<?php echo esc_attr($section['label']); ?>">
                                         <input type="hidden" class="tcarm-delete-section-input" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][_delete]" value="0">
                                         <button type="button" class="tcarm-icon-button tcarm-delete-section" title="<?php echo esc_attr__('Delete Section', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Delete Section', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('delete'), $this->admin_icon_svg_allowed_tags()); ?></button>
                                     </div>
@@ -111,7 +126,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                 <div class="tcarm-section-group-body tcarm-sortable-fields">
                                     <?php if (!empty($grouped[$section_key])): ?>
                                         <?php foreach ($grouped[$section_key] as $key => $field): ?>
-                                            <div class="<?php echo esc_attr('tcarm-mini-field-card ' . ($field['enabled'] === '1' ? 'is-enabled' : 'is-disabled') . (isset($field['type']) && $field['type'] === 'dropdown' ? ' is-dropdown' : '')); ?>" data-field="<?php echo esc_attr($key); ?>">
+                                            <div class="<?php echo esc_attr('tcarm-mini-field-card ' . ($field['enabled'] === '1' ? 'is-enabled' : 'is-disabled') . (isset($field['type']) && in_array($field['type'], array('dropdown', 'radio', 'checkbox_group'), true) ? ' is-dropdown' : '')); ?>" data-field="<?php echo esc_attr($key); ?>">
                                                 <div class="tcarm-mini-field-title">
                                                     <span class="tcarm-field-drag" title="<?php echo esc_attr__('Drag to reorder', 'shinseiflow-application-review'); ?>" aria-hidden="true">☰</span><input class="tcarm-mini-sort" type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][sort_order]" value="<?php echo esc_attr($field['sort_order']); ?>">
                                                     <label class="tcarm-switch"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][enabled]" value="1" <?php checked($field['enabled'], '1'); ?>><span></span></label>
@@ -120,33 +135,37 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                                         <code><?php echo esc_html($key); ?></code>
                                                     </div>
                                                 </div>
+                                                <div class="tcarm-mini-field-editor">
                                                 <div class="tcarm-mini-field-controls">
                                                     <input class="tcarm-field-section-input" type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][section]" value="<?php echo esc_attr($section_key); ?>">
                                                     <div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-main">
-                                                        <label><?php echo esc_html__('Type', 'shinseiflow-application-review'); ?>
+                                                        <label class="tcarm-field-control-type"><?php echo esc_html__('Type', 'shinseiflow-application-review'); ?>
                                                             <select name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][type]">
                                                                 <?php foreach ($type_labels as $type => $label): ?><option value="<?php echo esc_attr($type); ?>" <?php selected($field['type'], $type); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?>
                                                             </select>
                                                         </label>
-                                                        <label><?php echo esc_html__('Display Label', 'shinseiflow-application-review'); ?>
-                                                            <input type="text" data-tcarm-field-ja-source="1" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__label'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][label]" value="<?php echo esc_attr($field['label']); ?>">
+                                                        <label class="tcarm-field-control-label"><?php echo esc_html__('Display Label', 'shinseiflow-application-review'); ?>
+                                                            <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__label'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][label]" value="<?php echo esc_attr($field['label']); ?>">
                                                         </label>
-                                                        <label><?php echo esc_html__('Placeholder', 'shinseiflow-application-review'); ?>
-                                                            <input type="text" data-tcarm-field-ja-source="1" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__placeholder'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][placeholder]" value="<?php echo esc_attr(isset($field['placeholder']) ? $field['placeholder'] : ''); ?>" placeholder="<?php echo esc_attr__('Example: Enter placeholder text', 'shinseiflow-application-review'); ?>">
+                                                    </div>
+                                                    <div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-placeholder">
+                                                        <label class="tcarm-field-control-placeholder"><?php echo esc_html__('Placeholder', 'shinseiflow-application-review'); ?>
+                                                            <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__placeholder'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][placeholder]" value="<?php echo esc_attr(isset($field['placeholder']) ? $field['placeholder'] : ''); ?>" placeholder="<?php echo esc_attr__('Example: Enter placeholder text', 'shinseiflow-application-review'); ?>">
                                                         </label>
                                                     </div>
                                                     <div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-description">
-                                                        <label><?php echo esc_html__('Description', 'shinseiflow-application-review'); ?>
-                                                            <input type="text" data-tcarm-field-ja-source="1" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__description'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][description]" value="<?php echo esc_attr(isset($field['description']) ? $field['description'] : ''); ?>" placeholder="<?php echo esc_attr__('Example: Enter helper text', 'shinseiflow-application-review'); ?>">
+                                                        <label class="tcarm-field-control-description"><?php echo esc_html__('Description', 'shinseiflow-application-review'); ?>
+                                                            <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__description'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][description]" value="<?php echo esc_attr(isset($field['description']) ? $field['description'] : ''); ?>" placeholder="<?php echo esc_attr__('Example: Enter helper text', 'shinseiflow-application-review'); ?>">
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="tcarm-mini-field-flags">
-                                                    <label><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][required]" value="1" <?php checked($field['required'], '1'); ?>> <?php echo esc_html__('Required', 'shinseiflow-application-review'); ?></label>
+                                                    <label class="tcarm-field-control-required"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][required]" value="1" <?php checked($field['required'], '1'); ?>> <?php echo esc_html__('Required', 'shinseiflow-application-review'); ?></label>
+                                                </div>
                                                 </div>
                                                 <div class="tcarm-dropdown-settings">
-                                                    <div class="tcarm-dropdown-settings-title"><?php echo esc_html__('Dropdown Choices', 'shinseiflow-application-review'); ?></div>
-                                                    <p class="description"><?php echo esc_html__('Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder.', 'shinseiflow-application-review'); ?></p>
+                                                    <div class="tcarm-dropdown-settings-title"><?php echo esc_html(isset($field['type']) && $field['type'] === 'radio' ? __('Radio Button Choices', 'shinseiflow-application-review') : (isset($field['type']) && $field['type'] === 'checkbox_group' ? __('Checkbox Choices', 'shinseiflow-application-review') : __('Dropdown Choices', 'shinseiflow-application-review'))); ?></div>
+                                                    <p class="description"><?php echo esc_html(isset($field['type']) && $field['type'] === 'radio' ? __('Set the display labels and saved values for the radio buttons.', 'shinseiflow-application-review') : (isset($field['type']) && $field['type'] === 'checkbox_group' ? __('Set the display labels and saved values for the checkboxes.', 'shinseiflow-application-review') : __('Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder.', 'shinseiflow-application-review'))); ?></p>
                                                     <div class="tcarm-dropdown-choice-list">
                                                         <?php $dropdown_choices = !empty($field['choices']) && is_array($field['choices']) ? $field['choices'] : array(array('label' => '', 'value' => '')); ?>
                                                         <?php foreach ($dropdown_choices as $choice_index => $choice): ?>
@@ -207,6 +226,8 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                             <div class="tcarm-field-translation-list">
                                 <?php foreach ($sections as $section_key => $section):
                                     $section_tr = isset($section['translations'][$lang]) && is_array($section['translations'][$lang]) ? $section['translations'][$lang] : array();
+                                    $section_base_tr = $base_language !== 'ja' && isset($section['translations'][$base_language]) && is_array($section['translations'][$base_language]) ? $section['translations'][$base_language] : array();
+                                    $section_source_label = $base_language === 'ja' ? $section['label'] : (isset($section_base_tr['label']) ? $section_base_tr['label'] : '');
                                     $section_base_name = self::OPTION_SECTIONS . '[' . $section_key . '][translations][' . $lang . ']';
                                 ?>
                                     <div class="tcarm-field-translation-section">
@@ -215,34 +236,39 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                             <div class="tcarm-field-translation-source">
                                                 <strong><?php echo esc_html__('Section Name', 'shinseiflow-application-review'); ?></strong>
                                                 <code><?php echo esc_html($section_key); ?></code>
-                                                <span class="description"><?php echo esc_html__('Japanese:', 'shinseiflow-application-review'); ?><?php echo esc_html($section['label']); ?></span>
+                                                <span class="description"><?php
+                                                /* translators: %s: name of the source language shown for this section. */
+                                                echo esc_html(sprintf(__('Source (%s):', 'shinseiflow-application-review'), $base_language_label));
+                                                ?><?php echo esc_html($section_source_label); ?></span>
                                             </div>
                                             <div class="tcarm-section-translation-control">
                                                 <label><?php echo esc_html__('Translated Section Name', 'shinseiflow-application-review'); ?>
-                                                    <input type="text" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr('section__' . $section_key . '__label'); ?>" data-tcarm-field-source="<?php echo esc_attr($section['label']); ?>" name="<?php echo esc_attr($section_base_name); ?>[label]" value="<?php echo esc_attr(isset($section_tr['label']) ? $section_tr['label'] : ''); ?>" placeholder="<?php echo esc_attr($section['label']); ?>">
+                                                    <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr('section__' . $section_key . '__label'); ?>" name="<?php echo esc_attr($section_base_name); ?>[label]" value="<?php echo esc_attr(isset($section_tr['label']) ? $section_tr['label'] : ''); ?>" placeholder="<?php echo esc_attr($section['label']); ?>">
                                                 </label>
                                             </div>
                                         </div>
                                         <?php if (!empty($grouped[$section_key])): ?>
                                             <?php foreach ($grouped[$section_key] as $key => $field):
                                                 $tr = isset($field['translations'][$lang]) && is_array($field['translations'][$lang]) ? $field['translations'][$lang] : array();
+                                                $base_tr = $base_language !== 'ja' && isset($field['translations'][$base_language]) && is_array($field['translations'][$base_language]) ? $field['translations'][$base_language] : array();
+                                                $field_source_label = $base_language === 'ja' ? $field['label'] : (isset($base_tr['label']) ? $base_tr['label'] : '');
                                                 $base_name = self::OPTION_FIELDS . '[' . $key . '][translations][' . $lang . ']';
                                             ?>
                                                 <div class="tcarm-field-translation-row">
                                                     <div class="tcarm-field-translation-source">
-                                                        <strong><?php echo esc_html($field['label']); ?></strong>
+                                                        <strong><?php echo esc_html($field_source_label); ?></strong>
                                                         <code><?php echo esc_html($key); ?></code>
                                                         <span class="description"><?php echo esc_html__('Field type:', 'shinseiflow-application-review'); ?><?php echo esc_html(isset($type_labels[$field['type']]) ? $type_labels[$field['type']] : $field['type']); ?></span>
                                                     </div>
                                                     <div class="tcarm-field-translation-controls">
                                                         <label><?php echo esc_html__('Translated Display Label', 'shinseiflow-application-review'); ?>
-                                                            <input type="text" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__label'); ?>" data-tcarm-field-source="<?php echo esc_attr($field['label']); ?>" name="<?php echo esc_attr($base_name); ?>[label]" value="<?php echo esc_attr(isset($tr['label']) ? $tr['label'] : ''); ?>" placeholder="<?php echo esc_attr($field['label']); ?>">
+                                                            <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__label'); ?>" name="<?php echo esc_attr($base_name); ?>[label]" value="<?php echo esc_attr(isset($tr['label']) ? $tr['label'] : ''); ?>" placeholder="<?php echo esc_attr($field['label']); ?>">
                                                         </label>
                                                         <label><?php echo esc_html__('Translated Placeholder', 'shinseiflow-application-review'); ?>
-                                                            <input type="text" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__placeholder'); ?>" data-tcarm-field-source="<?php echo esc_attr(isset($field['placeholder']) ? $field['placeholder'] : ''); ?>" name="<?php echo esc_attr($base_name); ?>[placeholder]" value="<?php echo esc_attr(isset($tr['placeholder']) ? $tr['placeholder'] : ''); ?>" placeholder="<?php echo esc_attr(isset($field['placeholder']) ? $field['placeholder'] : ''); ?>">
+                                                            <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__placeholder'); ?>" name="<?php echo esc_attr($base_name); ?>[placeholder]" value="<?php echo esc_attr(isset($tr['placeholder']) ? $tr['placeholder'] : ''); ?>" placeholder="<?php echo esc_attr(isset($field['placeholder']) ? $field['placeholder'] : ''); ?>">
                                                         </label>
                                                         <label><?php echo esc_html__('Translated Description', 'shinseiflow-application-review'); ?>
-                                                            <textarea data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__description'); ?>" data-tcarm-field-source="<?php echo esc_attr(isset($field['description']) ? $field['description'] : ''); ?>" name="<?php echo esc_attr($base_name); ?>[description]" rows="2" placeholder="<?php echo esc_attr(isset($field['description']) ? $field['description'] : ''); ?>"><?php echo esc_textarea(isset($tr['description']) ? $tr['description'] : ''); ?></textarea>
+                                                            <textarea data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__description'); ?>" name="<?php echo esc_attr($base_name); ?>[description]" rows="2" placeholder="<?php echo esc_attr(isset($field['description']) ? $field['description'] : ''); ?>"><?php echo esc_textarea(isset($tr['description']) ? $tr['description'] : ''); ?></textarea>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -256,7 +282,7 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="tcarm-panel tcarm-card-panel tcarm-full-panel tcarm-consent-panel">
+                <div class="tcarm-form-field-lang-panel is-active tcarm-panel tcarm-card-panel tcarm-full-panel tcarm-consent-panel" data-tcarm-form-field-panel="ja">
                     <div class="tcarm-panel-header">
                         <div class="tcarm-panel-title-block">
                             <h2><?php echo esc_html__('Consent Item Settings', 'shinseiflow-application-review'); ?></h2>
@@ -283,24 +309,24 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                         <div class="tcarm-section-summary-actions">
                                             <input class="tcarm-consent-sort" type="hidden" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][sort_order]" value="<?php echo esc_attr($consent['sort_order']); ?>">
                                             <input type="hidden" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][id]" value="<?php echo esc_attr($consent_key); ?>">
-                                            <input type="hidden" class="tcarm-consent-label-input" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][label]" value="<?php echo esc_attr($consent['label']); ?>">
+                                            <input type="hidden" class="tcarm-consent-label-input" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':label'); ?>" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][label]" value="<?php echo esc_attr($consent['label']); ?>">
                                             <input type="hidden" class="tcarm-delete-consent-input" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][_delete]" value="0">
                                             <button type="button" class="tcarm-icon-button tcarm-delete-consent" title="<?php echo esc_attr__('Delete Consent Item', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Delete Consent Item', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('delete'), $this->admin_icon_svg_allowed_tags()); ?></button>
                                         </div>
                                     </summary>
                                     <div class="tcarm-section-group-body tcarm-consent-body">
                                         <label class="tcarm-consent-textarea-label"><?php echo esc_html__('Consent Text to Display', 'shinseiflow-application-review'); ?>
-                                            <textarea name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][body]" rows="8" placeholder="<?php echo esc_attr__('Enter consent text or an explanation. Leave blank if you only use a URL.', 'shinseiflow-application-review'); ?>"><?php echo esc_textarea($consent['body']); ?></textarea>
+                                            <textarea data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':body'); ?>" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][body]" rows="8" placeholder="<?php echo esc_attr__('Enter consent text or an explanation. Leave blank if you only use a URL.', 'shinseiflow-application-review'); ?>"><?php echo esc_textarea($consent['body']); ?></textarea>
                                         </label>
                                         <div class="tcarm-consent-fields-row">
                                             <label class="tcarm-consent-checkbox-text"><?php echo esc_html__('Checkbox Text', 'shinseiflow-application-review'); ?>
-                                                <input type="text" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][checkbox_text]" value="<?php echo esc_attr($consent['checkbox_text']); ?>" placeholder="<?php echo esc_attr__('Example: I agree to the terms.', 'shinseiflow-application-review'); ?>">
+                                                <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':checkbox_text'); ?>" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][checkbox_text]" value="<?php echo esc_attr($consent['checkbox_text']); ?>" placeholder="<?php echo esc_attr__('Example: I agree to the terms.', 'shinseiflow-application-review'); ?>">
                                             </label>
                                             <label>URL
                                                 <input type="url" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][link_url]" value="<?php echo esc_attr(isset($consent['link_url']) ? $consent['link_url'] : ''); ?>" placeholder="<?php echo esc_attr__('https://... or /privacy/', 'shinseiflow-application-review'); ?>">
                                             </label>
                                             <label><?php echo esc_html__('Link Text', 'shinseiflow-application-review'); ?>
-                                                <input type="text" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][link_text]" value="<?php echo esc_attr(isset($consent['link_text']) ? $consent['link_text'] : ''); ?>" placeholder="<?php echo esc_attr__('Example: Open document', 'shinseiflow-application-review'); ?>">
+                                                <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':link_text'); ?>" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[consent_items][<?php echo esc_attr($consent_key); ?>][link_text]" value="<?php echo esc_attr(isset($consent['link_text']) ? $consent['link_text'] : ''); ?>" placeholder="<?php echo esc_attr__('Example: Open document', 'shinseiflow-application-review'); ?>">
                                             </label>
                                         </div>
                                         <div class="tcarm-consent-check-options">
@@ -320,6 +346,48 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                         </div>
                     </div>
                 </div>
+                <?php foreach ($translation_languages as $lang => $label): ?>
+                    <div class="tcarm-form-field-lang-panel tcarm-panel tcarm-card-panel tcarm-full-panel tcarm-consent-panel" data-tcarm-form-field-panel="<?php echo esc_attr($lang); ?>">
+                        <div class="tcarm-panel-header">
+                            <div class="tcarm-panel-title-block">
+                                <h2><?php echo esc_html__('Consent Item Settings', 'shinseiflow-application-review'); ?></h2>
+                                <p><?php echo esc_html__('Manage consent items shown at the bottom of the application form. Large cards are shown as consent sections, and each card body is displayed with scrolling on the frontend.', 'shinseiflow-application-review'); ?></p>
+                            </div>
+                        </div>
+                        <div class="tcarm-field-translation-list">
+                            <?php foreach ($consent_items as $consent_key => $consent):
+                                $consent_tr = isset($consent['translations'][$lang]) && is_array($consent['translations'][$lang]) ? $consent['translations'][$lang] : array();
+                                $consent_base_tr = $base_language !== 'ja' && isset($consent['translations'][$base_language]) && is_array($consent['translations'][$base_language]) ? $consent['translations'][$base_language] : array();
+                                $consent_source_label = $base_language === 'ja' ? $consent['label'] : (isset($consent_base_tr['label']) ? $consent_base_tr['label'] : '');
+                                $consent_base_name = self::OPTION_SETTINGS . '[consent_items][' . $consent_key . '][translations][' . $lang . ']';
+                            ?>
+                                <div class="tcarm-field-translation-section">
+                                    <h3><?php echo esc_html($consent['label']); ?></h3>
+                                    <div class="tcarm-field-translation-row">
+                                        <div class="tcarm-field-translation-source">
+                                            <strong><?php echo esc_html($consent_source_label); ?></strong>
+                                            <code><?php echo esc_html($consent_key); ?></code>
+                                        </div>
+                                        <div class="tcarm-field-translation-controls">
+                                            <label><?php echo esc_html__('Translated Display Label', 'shinseiflow-application-review'); ?>
+                                                <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':label'); ?>" name="<?php echo esc_attr($consent_base_name); ?>[label]" value="<?php echo esc_attr(isset($consent_tr['label']) ? $consent_tr['label'] : ''); ?>" placeholder="<?php echo esc_attr($consent['label']); ?>">
+                                            </label>
+                                            <label><?php echo esc_html__('Consent Text to Display', 'shinseiflow-application-review'); ?>
+                                                <textarea data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':body'); ?>" name="<?php echo esc_attr($consent_base_name); ?>[body]" rows="8" placeholder="<?php echo esc_attr($consent['body']); ?>"><?php echo esc_textarea(isset($consent_tr['body']) ? $consent_tr['body'] : ''); ?></textarea>
+                                            </label>
+                                            <label><?php echo esc_html__('Checkbox Text', 'shinseiflow-application-review'); ?>
+                                                <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':checkbox_text'); ?>" name="<?php echo esc_attr($consent_base_name); ?>[checkbox_text]" value="<?php echo esc_attr(isset($consent_tr['checkbox_text']) ? $consent_tr['checkbox_text'] : ''); ?>" placeholder="<?php echo esc_attr($consent['checkbox_text']); ?>">
+                                            </label>
+                                            <label><?php echo esc_html__('Link Text', 'shinseiflow-application-review'); ?>
+                                                <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-input="1" data-tcarm-field-translation-lang="<?php echo esc_attr($lang); ?>" data-tcarm-field-translation-key="<?php echo esc_attr('consent:' . $consent_key . ':link_text'); ?>" name="<?php echo esc_attr($consent_base_name); ?>[link_text]" value="<?php echo esc_attr(isset($consent_tr['link_text']) ? $consent_tr['link_text'] : ''); ?>" placeholder="<?php echo esc_attr(isset($consent['link_text']) ? $consent['link_text'] : ''); ?>">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
                 <?php submit_button(__('Save Form Settings', 'shinseiflow-application-review')); ?>
             </form>
         </div>

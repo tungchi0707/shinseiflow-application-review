@@ -206,6 +206,10 @@
   width: 100%;
 }
 
+.tcarm-front .tcarm-section-fields {
+  gap: 1.5rem;
+}
+
 /* Steps */
 .tcarm-front .tcarm-front-steps {
   display: grid;
@@ -435,6 +439,26 @@
   line-height: 1.7;
 }
 
+.tcarm-front .tcarm-section-fields > .tcarm-front-field {
+  min-width: 0;
+}
+
+.tcarm-front .tcarm-section-fields > .tcarm-front-field .tcarm-field-help {
+  margin-top: .35rem !important;
+}
+
+.tcarm-front .tcarm-section-fields > .tcarm-front-field .tcarm-field-help + .tcarm-field-help {
+  margin-top: .25rem !important;
+}
+
+.tcarm-front .tcarm-section-fields > .tcarm-front-field .tcarm-field-error {
+  margin-top: .35rem;
+}
+
+.tcarm-front .tcarm-section-fields > .tcarm-front-field .tcarm-field-help + .tcarm-field-error {
+  margin-top: .3rem;
+}
+
 .tcarm-front .tcarm-checkbox-field,
 .tcarm-front .tcarm-choice-group {
   display: inline-flex;
@@ -443,6 +467,34 @@
   font-size: .95em;
   font-weight: 400;
   line-height: 1.7;
+}
+
+.tcarm-front .tcarm-section-fields .tcarm-checkbox-group-field,
+.tcarm-front .tcarm-section-fields .tcarm-radio-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: .55rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.tcarm-front .tcarm-section-fields .tcarm-checkbox-group-choice,
+.tcarm-front .tcarm-section-fields .tcarm-radio-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  min-width: 0;
+  margin: 0 !important;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.tcarm-front .tcarm-section-fields .tcarm-checkbox-group-choice > input,
+.tcarm-front .tcarm-section-fields .tcarm-radio-choice > input {
+  flex: 0 0 auto;
+  margin: .38em 0 0 !important;
 }
 
 .tcarm-front input[type=checkbox],

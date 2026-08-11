@@ -1,34 +1,25 @@
+# Japanese translations for ShinseiFlow – Application Review & Approval Workflow 0.4.3.16.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the ShinseiFlow – Application Review & Approval Workflow 0.4.3.16
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: ShinseiFlow – Application Review & Approval Workflow 0.4.3\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shinseiflow-application-review\n"
-"Last-Translator: \n"
-"Language-Team: Japanese\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-22 03:21+0000\n"
-"PO-Revision-Date: 2026-07-22 03:21+0000\n"
+"Project-Id-Version: ShinseiFlow – Application Review & Approval Workflow "
+"0.4.3.16\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shinseiflow-"
+"application-review\n"
+"POT-Creation-Date: 2026-08-05 00:27+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.18.0\n"
-
-#. Plugin Name of the plugin
-#: shinseiflow-application-review.php
-#: includes/admin-pages/page-about.php:86
-msgid "ShinseiFlow – Application Review & Approval Workflow"
-msgstr "ShinseiFlow – 申請審査・承認ワークフロー"
-
-#. Description of the plugin
-#: shinseiflow-application-review.php
-msgid "Create application forms, review submissions, manage approval workflows, and notify applicants from WordPress."
-msgstr "WordPress で申請フォーム、申請内容の確認、承認ワークフロー、申請者への通知を管理します。"
-
-#. Author of the plugin
-#: shinseiflow-application-review.php
-#: includes/admin-pages/page-about.php:85
-msgid "Casper Yeh"
-msgstr "Casper Yeh"
 
 #: includes/admin-pages/page-about.php:12
 msgid "Documentation"
@@ -82,8 +73,12 @@ msgid "Version"
 msgstr "バージョン"
 
 #: includes/admin-pages/page-about.php:45
-msgid "Build application forms, review submissions, manage approval workflows, send notifications, and provide approved downloads in WordPress."
-msgstr "WordPress で申請フォームの作成、申請内容の審査、承認ワークフローの管理、通知の送信、承認済みファイルのダウンロード提供を行えます。"
+msgid ""
+"Build application forms, review submissions, manage approval workflows, send "
+"notifications, and provide approved downloads in WordPress."
+msgstr ""
+"WordPress で申請フォームの作成、申請内容の審査、承認ワークフローの管理、通知"
+"の送信、承認済みファイルのダウンロード提供を行えます。"
 
 #: includes/admin-pages/page-about.php:51
 msgid "Resources"
@@ -95,16 +90,27 @@ msgid "Support Development"
 msgstr "開発を支援"
 
 #: includes/admin-pages/page-about.php:73
-msgid "ShinseiFlow is developed and maintained as an independent open-source project."
-msgstr "ShinseiFlow は、独立したオープンソースプロジェクトとして開発・保守されています。"
+msgid ""
+"ShinseiFlow is developed and maintained as an independent open-source "
+"project."
+msgstr ""
+"ShinseiFlow は、独立したオープンソースプロジェクトとして開発・保守されていま"
+"す。"
 
 #: includes/admin-pages/page-about.php:74
-msgid "If ShinseiFlow has been helpful to you, you can support its continued development."
+msgid ""
+"If ShinseiFlow has been helpful to you, you can support its continued "
+"development."
 msgstr "ShinseiFlow がお役に立ちましたら、継続的な開発をご支援いただけます。"
 
 #: includes/admin-pages/page-about.php:82
 msgid "Credits"
 msgstr "クレジット"
+
+#. Author of the plugin
+#: shinseiflow-application-review.php includes/admin-pages/page-about.php:85
+msgid "Casper Yeh"
+msgstr "Casper Yeh"
 
 #: includes/admin-pages/page-about.php:85
 msgid "Developer"
@@ -114,26 +120,43 @@ msgstr "開発者"
 msgid "Plugin"
 msgstr "プラグイン"
 
-#: includes/admin-pages/page-about.php:88
-msgid "License"
-msgstr "ライセンス"
+#. Plugin Name of the plugin
+#: shinseiflow-application-review.php includes/admin-pages/page-about.php:86
+msgid "ShinseiFlow – Application Review & Approval Workflow"
+msgstr "ShinseiFlow – 申請審査・承認ワークフロー"
+
+#. Description of the plugin
+#: shinseiflow-application-review.php
+msgid ""
+"Create application forms, review submissions, manage approval workflows, and "
+"notify applicants from WordPress."
+msgstr ""
+"WordPress で申請フォーム、申請内容の確認、承認ワークフロー、申請者への通知を"
+"管理します。"
 
 #: includes/admin-pages/page-about.php:88
 msgid "GPL-2.0-or-later"
 msgstr "GPL-2.0-or-later"
+
+#: includes/admin-pages/page-about.php:88
+msgid "License"
+msgstr "ライセンス"
 
 #: includes/admin-pages/page-about.php:95
 msgid "Acknowledgements"
 msgstr "謝辞"
 
 #: includes/admin-pages/page-about.php:97
-msgid "ShinseiFlow is built on WordPress and made possible by the open-source community."
-msgstr "ShinseiFlow は WordPress を基盤とし、オープンソースコミュニティの支えによって実現しています。"
+msgid ""
+"ShinseiFlow is built on WordPress and made possible by the open-source "
+"community."
+msgstr ""
+"ShinseiFlow は WordPress を基盤とし、オープンソースコミュニティの支えによって"
+"実現しています。"
 
 #: includes/admin-pages/page-application-detail.php:26
 #: includes/admin-pages/page-application-detail.php:59
-#: includes/admin-pages/page-dashboard.php:23
-#: includes/class-tcarm-admin.php:80
+#: includes/admin-pages/page-dashboard.php:23 includes/class-tcarm-admin.php:80
 #: includes/class-tcarm-admin.php:109
 msgid "Applications"
 msgstr "申請一覧"
@@ -160,13 +183,13 @@ msgstr "削除済みの申請のみ完全に削除できます。"
 
 #: includes/admin-pages/page-application-detail.php:47
 #: includes/admin-pages/page-application-detail.php:125
-#: includes/class-tcarm-assets.php:99
+#: includes/class-tcarm-assets.php:197
 msgid "Please select applications to permanently delete."
 msgstr "完全に削除する申請を選択してください。"
 
 #. translators: %d: number of deleted applications.
 #: includes/admin-pages/page-application-detail.php:50
-#, python-format,php-format
+#, php-format
 msgid "%d applications were permanently deleted."
 msgstr "%d件の申請を完全に削除しました。"
 
@@ -193,6 +216,17 @@ msgid "Delete Application"
 msgstr "削除 申請"
 
 #: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
+#: includes/admin-pages/page-application-detail.php:273
+msgid "Actions"
+msgstr "操作"
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:224
+msgid "Applicant"
+msgstr "申請者"
+
+#: includes/admin-pages/page-application-detail.php:75
 #: includes/admin-pages/page-application-detail.php:384
 msgid "Application Date"
 msgstr "申請日"
@@ -205,35 +239,24 @@ msgid "Application Number"
 msgstr "申請番号"
 
 #: includes/admin-pages/page-application-detail.php:75
+msgid "Edit"
+msgstr "編集"
+
+#: includes/admin-pages/page-application-detail.php:75
+#: includes/admin-pages/page-application-detail.php:273
+#: includes/admin-pages/page-form-settings.php:15
+#: includes/class-tcarm-assets.php:145
+msgid "Email"
+msgstr "メールアドレス"
+
+#: includes/admin-pages/page-application-detail.php:75
 #: includes/admin-pages/page-notifications.php:21
 msgid "Event Name"
 msgstr "イベント名"
 
 #: includes/admin-pages/page-application-detail.php:75
-#: includes/admin-pages/page-application-detail.php:224
-msgid "Applicant"
-msgstr "申請者"
-
-#: includes/admin-pages/page-application-detail.php:75
-#: includes/admin-pages/page-application-detail.php:273
-#: includes/admin-pages/page-form-settings.php:14
-#: includes/class-tcarm-assets.php:52
-msgid "Email"
-msgstr "メールアドレス"
-
-#: includes/admin-pages/page-application-detail.php:75
 msgid "Status"
 msgstr "ステータス"
-
-#: includes/admin-pages/page-application-detail.php:75
-msgid "Edit"
-msgstr "編集"
-
-#: includes/admin-pages/page-application-detail.php:75
-#: includes/admin-pages/page-application-detail.php:224
-#: includes/admin-pages/page-application-detail.php:273
-msgid "Actions"
-msgstr "操作"
 
 #: includes/admin-pages/page-application-detail.php:78
 msgid "There is no application data yet."
@@ -242,7 +265,7 @@ msgstr "申請データはまだありません。"
 #. translators: %d: resubmission count.
 #: includes/admin-pages/page-application-detail.php:91
 #: includes/admin-pages/page-application-detail.php:391
-#, python-format,php-format
+#, php-format
 msgid "%d times"
 msgstr "%d回"
 
@@ -252,7 +275,7 @@ msgid "Details"
 msgstr "詳細"
 
 #: includes/admin-pages/page-application-detail.php:124
-#: includes/class-tcarm-assets.php:98
+#: includes/class-tcarm-assets.php:196
 msgid "Please select applications to delete."
 msgstr "削除する申請を選択してください。"
 
@@ -261,29 +284,33 @@ msgid "Delete this application?"
 msgstr "この申請を削除しますか？"
 
 #: includes/admin-pages/page-application-detail.php:138
-msgid "The selected applications will be moved to deleted items."
-msgstr "選択した申請は削除済みに移動されます。"
+msgid ""
+"Deleted applications can be restored later. This action does not permanently "
+"delete application data."
+msgstr ""
+"削除済みの申請は後で復元できます。この操作では申請データは完全には削除されま"
+"せん。"
 
 #: includes/admin-pages/page-application-detail.php:138
-msgid "Deleted applications can be restored later. This action does not permanently delete application data."
-msgstr "削除済みの申請は後で復元できます。この操作では申請データは完全には削除されません。"
+msgid "The selected applications will be moved to deleted items."
+msgstr "選択した申請は削除済みに移動されます。"
 
 #: includes/admin-pages/page-application-detail.php:140
 #: includes/admin-pages/page-application-detail.php:161
 #: includes/admin-pages/page-application-detail.php:179
 #: includes/admin-pages/page-application-detail.php:197
 #: includes/admin-pages/page-application-detail.php:364
-#: includes/admin-pages/page-form-settings.php:198
-#: includes/class-tcarm-applications.php:367
+#: includes/admin-pages/page-form-settings.php:207
+#: includes/class-tcarm-applications.php:379
 #: includes/class-tcarm-notifications.php:123
 msgid "Cancel"
 msgstr "キャンセル"
 
 #: includes/admin-pages/page-application-detail.php:141
 #: includes/admin-pages/page-application-detail.php:287
-#: includes/admin-pages/page-form-settings.php:156
+#: includes/admin-pages/page-form-settings.php:165
 #: includes/admin-pages/page-redirects.php:138
-#: includes/class-tcarm-assets.php:68
+#: includes/class-tcarm-assets.php:166
 msgid "Delete"
 msgstr "削除"
 
@@ -305,8 +332,9 @@ msgid "Permanently delete this application?"
 msgstr "この申請を完全に削除しますか？"
 
 #: includes/admin-pages/page-application-detail.php:177
-msgid "This application will be permanently deleted."
-msgstr "この申請は完全に削除されます。"
+#: includes/admin-pages/page-application-detail.php:195
+msgid "Do you want to continue?"
+msgstr "続行しますか？"
 
 #: includes/admin-pages/page-application-detail.php:177
 #: includes/admin-pages/page-application-detail.php:195
@@ -314,9 +342,8 @@ msgid "This action cannot be undone."
 msgstr "この操作は取り消せません。"
 
 #: includes/admin-pages/page-application-detail.php:177
-#: includes/admin-pages/page-application-detail.php:195
-msgid "Do you want to continue?"
-msgstr "続行しますか？"
+msgid "This application will be permanently deleted."
+msgstr "この申請は完全に削除されます。"
 
 #: includes/admin-pages/page-application-detail.php:180
 #: includes/admin-pages/page-application-detail.php:198
@@ -338,12 +365,12 @@ msgid "Deleted Applications"
 msgstr "削除済みの申請"
 
 #: includes/admin-pages/page-application-detail.php:213
-msgid "Review and restore applications moved to deleted items. The data has not been permanently deleted."
-msgstr "削除済み項目へ移動された申請を確認し、復元できます。データは完全には削除されていません。"
-
-#: includes/admin-pages/page-application-detail.php:224
-msgid "Original Status"
-msgstr "元のステータス"
+msgid ""
+"Review and restore applications moved to deleted items. The data has not "
+"been permanently deleted."
+msgstr ""
+"削除済み項目へ移動された申請を確認し、復元できます。データは完全には削除され"
+"ていません。"
 
 #: includes/admin-pages/page-application-detail.php:224
 msgid "Deleted At"
@@ -352,6 +379,10 @@ msgstr "削除日時"
 #: includes/admin-pages/page-application-detail.php:224
 msgid "Deleted By"
 msgstr "削除者"
+
+#: includes/admin-pages/page-application-detail.php:224
+msgid "Original Status"
+msgstr "元のステータス"
 
 #: includes/admin-pages/page-application-detail.php:227
 msgid "There are no deleted applications."
@@ -363,23 +394,20 @@ msgstr "ブロックされた送信"
 
 #. translators: %d: number of blocked submissions in the past 7 days.
 #: includes/admin-pages/page-application-detail.php:271
-#, python-format,php-format
-msgid "Past 7 days: %d. Only minimal contact information is stored to help follow up on false positives."
-msgstr "過去7日間：%d件。誤検知の確認に必要な最小限の連絡先情報のみ保存されます。"
+#, php-format
+msgid ""
+"Past 7 days: %d. Only minimal contact information is stored to help follow "
+"up on false positives."
+msgstr ""
+"過去7日間：%d件。誤検知の確認に必要な最小限の連絡先情報のみ保存されます。"
 
 #: includes/admin-pages/page-application-detail.php:273
 msgid "Date and Time"
 msgstr "日時"
 
 #: includes/admin-pages/page-application-detail.php:273
-#: includes/admin-pages/page-form-settings.php:126
-#: includes/class-tcarm-assets.php:49
-msgid "Type"
-msgstr "種類"
-
-#: includes/admin-pages/page-application-detail.php:273
-msgid "Reason"
-msgstr "理由"
+msgid "IP"
+msgstr "IP"
 
 #: includes/admin-pages/page-application-detail.php:273
 msgid "Name"
@@ -390,8 +418,14 @@ msgid "Phone"
 msgstr "電話番号"
 
 #: includes/admin-pages/page-application-detail.php:273
-msgid "IP"
-msgstr "IP"
+msgid "Reason"
+msgstr "理由"
+
+#: includes/admin-pages/page-application-detail.php:273
+#: includes/admin-pages/page-form-settings.php:135
+#: includes/class-tcarm-assets.php:142
+msgid "Type"
+msgstr "種類"
 
 #: includes/admin-pages/page-application-detail.php:276
 msgid "There is no blocked history yet."
@@ -403,7 +437,7 @@ msgstr "申請が見つかりません"
 
 #. translators: %s: application code.
 #: includes/admin-pages/page-application-detail.php:307
-#, python-format,php-format
+#, php-format
 msgid "Application Details: %s"
 msgstr "申請詳細：%s"
 
@@ -420,7 +454,8 @@ msgid "The notification email was resent."
 msgstr "通知メールを再送信しました。"
 
 #: includes/admin-pages/page-application-detail.php:329
-msgid "Failed to resend the notification email. Please check the email settings."
+msgid ""
+"Failed to resend the notification email. Please check the email settings."
 msgstr "通知メールを再送信できませんでした。メール設定を確認してください。"
 
 #: includes/admin-pages/page-application-detail.php:331
@@ -440,7 +475,8 @@ msgid "Application Content"
 msgstr "申請内容"
 
 #: includes/admin-pages/page-application-detail.php:350
-msgid "Displayed according to the sections and order configured in Form Settings."
+msgid ""
+"Displayed according to the sections and order configured in Form Settings."
 msgstr "フォーム設定で設定されたセクションと並び順に従って表示されます。"
 
 #: includes/admin-pages/page-application-detail.php:352
@@ -452,23 +488,25 @@ msgid "Application Content Edit Actions"
 msgstr "申請内容の編集操作"
 
 #: includes/admin-pages/page-application-detail.php:362
-msgid "You are editing the application content. Changes are not applied until you save."
+msgid ""
+"You are editing the application content. Changes are not applied until you "
+"save."
 msgstr "申請内容を編集中です。保存するまで変更は反映されません。"
 
 #: includes/admin-pages/page-application-detail.php:365
-#: includes/admin-pages/page-form-settings.php:199
-#: includes/class-tcarm-applications.php:366
-#: includes/class-tcarm-assets.php:42
+#: includes/admin-pages/page-form-settings.php:208
+#: includes/class-tcarm-applications.php:378
+#: includes/class-tcarm-assets.php:135
 msgid "Save"
 msgstr "保存"
 
 #: includes/admin-pages/page-application-detail.php:379
-msgid "Review Summary"
-msgstr "審査概要"
-
-#: includes/admin-pages/page-application-detail.php:379
 msgid "Check the current status and publication status."
 msgstr "現在のステータスと公開状況を確認します。"
+
+#: includes/admin-pages/page-application-detail.php:379
+msgid "Review Summary"
+msgstr "審査概要"
 
 #: includes/admin-pages/page-application-detail.php:382
 #: includes/admin-pages/page-notifications.php:22
@@ -506,12 +544,13 @@ msgid "Select approve or reject based on the review result."
 msgstr "審査結果に応じて、許可または不許可を選択してください。"
 
 #: includes/admin-pages/page-application-detail.php:422
-msgid "Message to Applicant"
-msgstr "申請者へのメッセージ"
+msgid ""
+"Enter the message to send to the applicant, such as the rejection reason."
+msgstr "不許可理由など、申請者に送信するメッセージを入力します。"
 
 #: includes/admin-pages/page-application-detail.php:422
-msgid "Enter the message to send to the applicant, such as the rejection reason."
-msgstr "不許可理由など、申請者に送信するメッセージを入力します。"
+msgid "Message to Applicant"
+msgstr "申請者へのメッセージ"
 
 #: includes/admin-pages/page-application-detail.php:424
 msgid "Approve"
@@ -521,8 +560,7 @@ msgstr "許可"
 msgid "Reject"
 msgstr "不許可"
 
-#: includes/admin-pages/page-dashboard.php:9
-#: includes/class-tcarm-admin.php:79
+#: includes/admin-pages/page-dashboard.php:9 includes/class-tcarm-admin.php:79
 #: includes/class-tcarm-admin.php:108
 msgid "Home"
 msgstr "ホーム"
@@ -532,8 +570,12 @@ msgid "Application Review & Approval Workflow"
 msgstr "申請審査・承認ワークフロー"
 
 #: includes/admin-pages/page-dashboard.php:15
-msgid "A WordPress plugin for managing application submissions, review workflows, notifications, and applicant communication."
-msgstr "申請の受付、審査ワークフロー、通知、申請者とのコミュニケーションを管理する WordPress プラグインです。"
+msgid ""
+"A WordPress plugin for managing application submissions, review workflows, "
+"notifications, and applicant communication."
+msgstr ""
+"申請の受付、審査ワークフロー、通知、申請者とのコミュニケーションを管理する "
+"WordPress プラグインです。"
 
 #: includes/admin-pages/page-dashboard.php:17
 msgid "View Applications"
@@ -545,13 +587,13 @@ msgstr "フォーム設定へ移動"
 
 #: includes/admin-pages/page-dashboard.php:24
 #: includes/admin-pages/page-display-customize.php:66
-#: includes/class-tcarm-applications.php:724
+#: includes/class-tcarm-applications.php:868
 msgid "Pending Review"
 msgstr "審査待ち"
 
 #: includes/admin-pages/page-dashboard.php:25
 #: includes/admin-pages/page-display-customize.php:67
-#: includes/class-tcarm-applications.php:725
+#: includes/class-tcarm-applications.php:869
 msgid "Approved"
 msgstr "許可済み"
 
@@ -564,12 +606,12 @@ msgid "Review shortcode pages and destination URLs."
 msgstr "ショートコードページと遷移先 URL を確認します。"
 
 #: includes/admin-pages/page-dashboard.php:42
-#: includes/class-tcarm-settings.php:762
+#: includes/class-tcarm-settings.php:783
 msgid "Application Form Page"
 msgstr "申請フォームページ"
 
 #: includes/admin-pages/page-dashboard.php:43
-#: includes/class-tcarm-settings.php:763
+#: includes/class-tcarm-settings.php:784
 msgid "Application Status Page"
 msgstr "申請状況ページ"
 
@@ -578,18 +620,22 @@ msgid "Application Review Page"
 msgstr "申請内容確認ページ"
 
 #: includes/admin-pages/page-dashboard.php:45
-#: includes/class-tcarm-settings.php:765
+#: includes/class-tcarm-settings.php:786
 msgid "Edit and Resubmit Page"
 msgstr "修正再申請ページ"
 
 #: includes/admin-pages/page-dashboard.php:46
-#: includes/class-tcarm-settings.php:766
+msgid "Back to Top link"
+msgstr "トップへ戻るリンク"
+
+#: includes/admin-pages/page-dashboard.php:46
+#: includes/class-tcarm-settings.php:787
 msgid "Top Page"
 msgstr "トップページ"
 
-#: includes/admin-pages/page-dashboard.php:46
-msgid "Back to Top link"
-msgstr "トップへ戻るリンク"
+#: includes/admin-pages/page-dashboard.php:51
+msgid "Current URL"
+msgstr "現在の URL"
 
 #: includes/admin-pages/page-dashboard.php:51
 msgid "Item"
@@ -598,10 +644,6 @@ msgstr "項目"
 #: includes/admin-pages/page-dashboard.php:51
 msgid "Shortcode / Purpose"
 msgstr "ショートコード / 用途"
-
-#: includes/admin-pages/page-dashboard.php:51
-msgid "Current URL"
-msgstr "現在の URL"
 
 #: includes/admin-pages/page-dashboard.php:61
 msgid "Not set"
@@ -739,19 +781,19 @@ msgid "Input Field"
 msgstr "入力欄"
 
 #: includes/admin-pages/page-display-customize.php:44
-#: includes/admin-pages/page-form-settings.php:13
-#: includes/class-tcarm-assets.php:51
+#: includes/admin-pages/page-form-settings.php:14
+#: includes/class-tcarm-assets.php:144
 msgid "Textarea"
 msgstr "テキストエリア"
 
 #: includes/admin-pages/page-display-customize.php:45
-#: includes/class-tcarm-applications.php:391
+#: includes/class-tcarm-applications.php:410
 msgid "Select"
 msgstr "選択"
 
 #: includes/admin-pages/page-display-customize.php:46
-#: includes/admin-pages/page-form-settings.php:18
-#: includes/class-tcarm-assets.php:55
+#: includes/admin-pages/page-form-settings.php:19
+#: includes/class-tcarm-assets.php:148
 msgid "Checkbox"
 msgstr "チェックボックス"
 
@@ -820,7 +862,7 @@ msgid "Application Number Label"
 msgstr "申請番号ラベル"
 
 #: includes/admin-pages/page-display-customize.php:68
-#: includes/class-tcarm-applications.php:726
+#: includes/class-tcarm-applications.php:870
 msgid "Rejected"
 msgstr "不許可"
 
@@ -915,33 +957,34 @@ msgid "Application Details Page"
 msgstr "申請詳細ページ"
 
 #: includes/admin-pages/page-display-customize.php:95
-#: includes/class-tcarm-applications.php:1120
+#: includes/class-tcarm-application-history.php:150
 msgid "Submission and Response History"
 msgstr "送信・対応履歴"
 
 #: includes/admin-pages/page-display-customize.php:106
-msgid "Purpose"
-msgstr "用途"
-
-#: includes/admin-pages/page-display-customize.php:106
 msgid "CSS Class"
 msgstr "CSS クラス"
+
+#: includes/admin-pages/page-display-customize.php:106
+msgid "Purpose"
+msgstr "用途"
 
 #: includes/admin-pages/page-display-customize.php:114
 msgid "CSS Example"
 msgstr "CSS 例"
 
 #: includes/admin-pages/page-display-customize.php:134
-#: includes/admin-pages/page-display-customize.php:138
-#: includes/admin-pages/page-display-customize.php:174
-#: includes/class-tcarm-admin.php:86
-#: includes/class-tcarm-admin.php:115
-msgid "Display Customization"
-msgstr "表示カスタマイズ"
+msgid ""
+"Configure CSS applied to frontend pages and this plugin's admin screens."
+msgstr ""
+"フロントエンドページとこのプラグインの管理画面に適用する CSS を設定します。"
 
 #: includes/admin-pages/page-display-customize.php:134
-msgid "Configure CSS applied to frontend pages and this plugin's admin screens."
-msgstr "フロントエンドページとこのプラグインの管理画面に適用する CSS を設定します。"
+#: includes/admin-pages/page-display-customize.php:138
+#: includes/admin-pages/page-display-customize.php:174
+#: includes/class-tcarm-admin.php:86 includes/class-tcarm-admin.php:115
+msgid "Display Customization"
+msgstr "表示カスタマイズ"
 
 #: includes/admin-pages/page-display-customize.php:139
 msgid "Frontend"
@@ -952,16 +995,24 @@ msgid "Frontend Custom CSS"
 msgstr "フロントエンドカスタム CSS"
 
 #: includes/admin-pages/page-display-customize.php:145
-msgid "Enter CSS applied to frontend pages such as the application form, status page, and download file display."
-msgstr "申請フォーム、状況確認ページ、ダウンロードファイル表示などのフロントエンドページに適用する CSS を入力します。"
+msgid ""
+"Enter CSS applied to frontend pages such as the application form, status "
+"page, and download file display."
+msgstr ""
+"申請フォーム、状況確認ページ、ダウンロードファイル表示などのフロントエンド"
+"ページに適用する CSS を入力します。"
 
 #: includes/admin-pages/page-display-customize.php:149
 msgid "Admin Custom CSS"
 msgstr "管理画面カスタム CSS"
 
 #: includes/admin-pages/page-display-customize.php:151
-msgid "Enter CSS applied only to this plugin's admin screens. It is not applied to the entire WordPress admin area."
-msgstr "このプラグインの管理画面にのみ適用する CSS を入力します。WordPress 管理画面全体には適用されません。"
+msgid ""
+"Enter CSS applied only to this plugin's admin screens. It is not applied to "
+"the entire WordPress admin area."
+msgstr ""
+"このプラグインの管理画面にのみ適用する CSS を入力します。WordPress 管理画面全"
+"体には適用されません。"
 
 #: includes/admin-pages/page-display-customize.php:155
 #: includes/admin-pages/page-display-customize.php:157
@@ -969,32 +1020,44 @@ msgid "CSS Class List"
 msgstr "CSS クラス一覧"
 
 #: includes/admin-pages/page-display-customize.php:158
-msgid "Main CSS classes available for custom CSS. You can reference them while editing CSS on the left."
-msgstr "カスタム CSS で使用できる主な CSS クラスです。左側で CSS を編集する際に参照できます。"
+msgid ""
+"Main CSS classes available for custom CSS. You can reference them while "
+"editing CSS on the left."
+msgstr ""
+"カスタム CSS で使用できる主な CSS クラスです。左側で CSS を編集する際に参照で"
+"きます。"
 
 #: includes/admin-pages/page-display-customize.php:185
 #: includes/admin-pages/page-download-files.php:98
 #: includes/admin-pages/page-notifications.php:162
+#: includes/admin-pages/page-privacy.php:22
 #: includes/admin-pages/page-redirects.php:55
-#: includes/admin-pages/page-redirects.php:221
 #: includes/admin-pages/page-security.php:105
 msgid "Save Settings"
 msgstr "設定を保存"
 
 #: includes/admin-pages/page-download-files.php:13
+msgid ""
+"Configure files that approved applicants can download from the application "
+"status page."
+msgstr ""
+"許可済みの申請者が申請状況ページからダウンロードできるファイルを設定します。"
+
+#: includes/admin-pages/page-download-files.php:13
 #: includes/admin-pages/page-download-files.php:87
-#: includes/class-tcarm-admin.php:82
-#: includes/class-tcarm-admin.php:111
+#: includes/class-tcarm-admin.php:82 includes/class-tcarm-admin.php:111
 msgid "Download File Settings"
 msgstr "ダウンロードファイル設定"
 
-#: includes/admin-pages/page-download-files.php:13
-msgid "Configure files that approved applicants can download from the application status page."
-msgstr "許可済みの申請者が申請状況ページからダウンロードできるファイルを設定します。"
-
 #: includes/admin-pages/page-download-files.php:15
-msgid "Display names and descriptions are shown in the frontend download area. File URLs are not shown directly on the frontend and are served only after the download process validates them."
-msgstr "表示名と説明はフロントエンドのダウンロードエリアに表示されます。ファイル URL はフロントエンドに直接表示されず、ダウンロード処理で検証された後にのみ提供されます。"
+msgid ""
+"Display names and descriptions are shown in the frontend download area. File "
+"URLs are not shown directly on the frontend and are served only after the "
+"download process validates them."
+msgstr ""
+"表示名と説明はフロントエンドのダウンロードエリアに表示されます。ファイル URL "
+"はフロントエンドに直接表示されず、ダウンロード処理で検証された後にのみ提供さ"
+"れます。"
 
 #: includes/admin-pages/page-download-files.php:31
 msgid "+ Add File"
@@ -1005,7 +1068,7 @@ msgid "Delete file setting"
 msgstr "ファイル設定を削除"
 
 #: includes/admin-pages/page-download-files.php:61
-#: includes/admin-pages/page-form-settings.php:154
+#: includes/admin-pages/page-form-settings.php:163
 msgid "Display Name"
 msgstr "表示名"
 
@@ -1014,13 +1077,15 @@ msgid "Example: Document (Color)"
 msgstr "例：資料（カラー）"
 
 #: includes/admin-pages/page-download-files.php:63
-#: includes/admin-pages/page-form-settings.php:139
-#: includes/class-tcarm-assets.php:61
+#: includes/admin-pages/page-form-settings.php:148
+#: includes/class-tcarm-assets.php:155
 msgid "Description"
 msgstr "説明"
 
 #: includes/admin-pages/page-download-files.php:64
-msgid "Example: A document that can be used for printed materials, websites, and related purposes."
+msgid ""
+"Example: A document that can be used for printed materials, websites, and "
+"related purposes."
 msgstr "例：印刷物、ウェブサイト、関連用途で使用できる資料。"
 
 #: includes/admin-pages/page-download-files.php:65
@@ -1040,8 +1105,12 @@ msgid "Clear"
 msgstr "クリア"
 
 #: includes/admin-pages/page-download-files.php:73
-msgid "When selected from the media library, the attachment ID is retained. Attachment ID:"
-msgstr "メディアライブラリから選択した場合、添付ファイル ID が保持されます。添付ファイル ID："
+msgid ""
+"When selected from the media library, the attachment ID is retained. "
+"Attachment ID:"
+msgstr ""
+"メディアライブラリから選択した場合、添付ファイル ID が保持されます。添付ファ"
+"イル ID："
 
 #: includes/admin-pages/page-download-files.php:75
 msgid "Enabled"
@@ -1055,280 +1124,346 @@ msgstr "フロントエンドに表示"
 msgid "Sort Order"
 msgstr "並び順"
 
-#: includes/admin-pages/page-form-settings.php:12
-#: includes/class-tcarm-assets.php:50
+#: includes/admin-pages/page-form-settings.php:13
+#: includes/class-tcarm-assets.php:143
 msgid "Text"
 msgstr "テキスト"
 
-#: includes/admin-pages/page-form-settings.php:16
+#: includes/admin-pages/page-form-settings.php:17
 msgid "Phone Number"
 msgstr "電話番号"
 
-#: includes/admin-pages/page-form-settings.php:17
+#: includes/admin-pages/page-form-settings.php:18
 #: includes/admin-pages/page-redirects.php:122
-#: includes/class-tcarm-assets.php:54
+#: includes/class-tcarm-assets.php:147
 msgid "Date"
 msgstr "日付"
 
-#: includes/admin-pages/page-form-settings.php:19
+#: includes/admin-pages/page-form-settings.php:20
+#: includes/class-tcarm-assets.php:149
+msgid "Radio Button Group"
+msgstr "ラジオボタングループ"
+
+#: includes/admin-pages/page-form-settings.php:21
 msgid "File Upload"
 msgstr "ファイルアップロード"
 
-#: includes/admin-pages/page-form-settings.php:20
-#: includes/class-tcarm-assets.php:57
+#: includes/admin-pages/page-form-settings.php:22
+#: includes/class-tcarm-assets.php:151
 msgid "Dropdown"
 msgstr "ドロップダウン"
 
-#: includes/admin-pages/page-form-settings.php:40
-#: includes/admin-pages/page-translation.php:179
-#: includes/class-tcarm-assets.php:102
+#: includes/admin-pages/page-form-settings.php:48
+#: includes/admin-pages/page-translation.php:187
+#: includes/class-tcarm-assets.php:200
 msgid "Please select the target language."
 msgstr "対象言語を選択してください。"
 
-#: includes/admin-pages/page-form-settings.php:41
-#: includes/admin-pages/page-translation.php:180
-#: includes/class-tcarm-ai-translation.php:119
-#: includes/class-tcarm-assets.php:103
+#: includes/admin-pages/page-form-settings.php:49
+#: includes/admin-pages/page-translation.php:188
+#: includes/class-tcarm-assets.php:201
 msgid "There are no empty fields to translate."
 msgstr "翻訳できる空欄がありません。"
 
-#: includes/admin-pages/page-form-settings.php:42
-#: includes/admin-pages/page-translation.php:181
-#: includes/class-tcarm-assets.php:104
+#: includes/admin-pages/page-form-settings.php:50
+#: includes/admin-pages/page-translation.php:189
+#: includes/class-tcarm-assets.php:202
 msgid "Translating..."
 msgstr "翻訳中..."
 
-#: includes/admin-pages/page-form-settings.php:43
-#: includes/admin-pages/page-translation.php:182
-#: includes/class-tcarm-assets.php:105
+#: includes/admin-pages/page-form-settings.php:51
+#: includes/admin-pages/page-translation.php:190
+#: includes/class-tcarm-assets.php:203
 msgid "AI translation failed."
 msgstr "AI 翻訳に失敗しました。"
 
-#: includes/admin-pages/page-form-settings.php:44
-#: includes/admin-pages/page-translation.php:183
-#: includes/class-tcarm-assets.php:106
-msgid "Translations were inserted into empty fields in the current language tab. Please review before saving."
+#: includes/admin-pages/page-form-settings.php:52
+#: includes/admin-pages/page-translation.php:191
+#: includes/class-tcarm-assets.php:204
+msgid ""
+"Translations were inserted into empty fields in the current language tab. "
+"Please review before saving."
 msgstr "現在の言語タブの空欄に翻訳を挿入しました。保存前に確認してください。"
 
-#: includes/admin-pages/page-form-settings.php:45
-#: includes/admin-pages/page-translation.php:184
-#: includes/class-tcarm-assets.php:107
+#: includes/admin-pages/page-form-settings.php:53
+#: includes/admin-pages/page-translation.php:192
+#: includes/class-tcarm-assets.php:205
 msgid "There were no empty fields available for translation."
 msgstr "翻訳を挿入できる空欄がありませんでした。"
 
-#: includes/admin-pages/page-form-settings.php:60
-#: includes/class-tcarm-admin.php:81
-#: includes/class-tcarm-admin.php:110
+#: includes/admin-pages/page-form-settings.php:54
+#: includes/admin-pages/page-translation.php:193
+msgid ""
+"The source language fields are empty. Enter content in the base language "
+"before translating."
+msgstr ""
+"翻訳元言語の項目が空です。翻訳する前に基準言語の内容を入力してください。"
+
+#: includes/admin-pages/page-form-settings.php:69
+#: includes/class-tcarm-admin.php:81 includes/class-tcarm-admin.php:110
 msgid "Form Settings"
 msgstr "フォーム設定"
 
-#: includes/admin-pages/page-form-settings.php:67
+#: includes/admin-pages/page-form-settings.php:76
 msgid "Application Form Fields"
 msgstr "申請フォーム項目"
 
-#: includes/admin-pages/page-form-settings.php:68
-msgid "Large cards are form sections, and small cards are individual fields. They are arranged to match the frontend flow with earlier items on the left."
-msgstr "大きなカードはフォームセクション、小さなカードは個別の項目です。フロントエンドの流れに合わせ、左側ほど前の項目になるよう配置されます。"
+#: includes/admin-pages/page-form-settings.php:77
+msgid ""
+"Large cards are form sections, and small cards are individual fields. They "
+"are arranged to match the frontend flow with earlier items on the left."
+msgstr ""
+"大きなカードはフォームセクション、小さなカードは個別の項目です。フロントエン"
+"ドの流れに合わせ、左側ほど前の項目になるよう配置されます。"
 
-#: includes/admin-pages/page-form-settings.php:75
+#: includes/admin-pages/page-form-settings.php:84
 msgid "Form Field Language Switcher"
 msgstr "フォーム項目言語切り替え"
 
-#: includes/admin-pages/page-form-settings.php:81
-#: includes/admin-pages/page-translation.php:225
-msgid "Translate from Japanese"
-msgstr "日本語から翻訳"
+#: includes/admin-pages/page-form-settings.php:90
+#: includes/admin-pages/page-translation.php:246
+#, php-format
+msgid "Translate from %s"
+msgstr "%sから翻訳"
 
-#: includes/admin-pages/page-form-settings.php:85
-msgid "Japanese is the primary form configuration. Other languages only set section names, display labels, placeholders, and descriptions for the same field structure."
-msgstr "日本語が主要なフォーム設定です。他の言語では同じ項目構造に対して、セクション名、表示ラベル、プレースホルダー、説明のみを設定します。"
+#: includes/admin-pages/page-form-settings.php:94
+#, php-format
+msgid ""
+"%s is used as the AI translation source. Japanese remains the primary form "
+"data structure for compatibility, and changing the source language does not "
+"move or overwrite form data."
+msgstr ""
+"%sをAI翻訳の翻訳元として使用します。互換性維持のため、フォームデータ構造では"
+"引き続き日本語が主要言語として扱われます。翻訳元言語を変更しても、フォーム"
+"データが移動または上書きされることはありません。"
 
-#: includes/admin-pages/page-form-settings.php:91
+#: includes/admin-pages/page-form-settings.php:100
 msgid "No form fields have been configured yet."
 msgstr "フォーム項目はまだ設定されていません。"
 
-#: includes/admin-pages/page-form-settings.php:97
-#: includes/admin-pages/page-form-settings.php:116
-#: includes/admin-pages/page-form-settings.php:276
-#: includes/class-tcarm-assets.php:47
+#: includes/admin-pages/page-form-settings.php:106
+#: includes/admin-pages/page-form-settings.php:125
+#: includes/admin-pages/page-form-settings.php:289
+#: includes/class-tcarm-assets.php:140
 msgid "Drag to reorder"
 msgstr "ドラッグして並び替え"
 
-#: includes/admin-pages/page-form-settings.php:100
-#: includes/admin-pages/page-form-settings.php:189
+#: includes/admin-pages/page-form-settings.php:109
+#: includes/admin-pages/page-form-settings.php:198
 msgid "Edit Section Name"
 msgstr "セクション名を編集"
 
-#: includes/admin-pages/page-form-settings.php:107
+#: includes/admin-pages/page-form-settings.php:116
 msgid "Delete Section"
 msgstr "セクションを削除"
 
-#: includes/admin-pages/page-form-settings.php:131
+#: includes/admin-pages/page-form-settings.php:140
 msgid "Display Label"
 msgstr "表示ラベル"
 
-#: includes/admin-pages/page-form-settings.php:134
-#: includes/class-tcarm-assets.php:59
+#: includes/admin-pages/page-form-settings.php:143
+#: includes/class-tcarm-assets.php:153
 msgid "Placeholder"
 msgstr "プレースホルダー"
 
-#: includes/admin-pages/page-form-settings.php:135
-#: includes/class-tcarm-assets.php:60
+#: includes/admin-pages/page-form-settings.php:144
+#: includes/class-tcarm-assets.php:154
 msgid "Example: Enter placeholder text"
 msgstr "例：プレースホルダーテキストを入力"
 
-#: includes/admin-pages/page-form-settings.php:140
-#: includes/class-tcarm-assets.php:62
+#: includes/admin-pages/page-form-settings.php:149
+#: includes/class-tcarm-assets.php:156
 msgid "Example: Enter helper text"
 msgstr "例：補足説明を入力"
 
-#: includes/admin-pages/page-form-settings.php:145
-#: includes/admin-pages/page-form-settings.php:308
-#: includes/class-tcarm-assets.php:63
+#: includes/admin-pages/page-form-settings.php:154
+#: includes/admin-pages/page-form-settings.php:321
+#: includes/class-tcarm-assets.php:157
 msgid "Required"
 msgstr "必須"
 
-#: includes/admin-pages/page-form-settings.php:148
+#: includes/admin-pages/page-form-settings.php:157
+#: includes/class-tcarm-assets.php:162
+msgid "Checkbox Choices"
+msgstr "チェックボックスの選択肢"
+
+#: includes/admin-pages/page-form-settings.php:157
+#: includes/class-tcarm-assets.php:158
 msgid "Dropdown Choices"
 msgstr "ドロップダウン選択肢"
 
-#: includes/admin-pages/page-form-settings.php:149
-msgid "Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder."
-msgstr "フロントエンドに表示するラベルと保存される値を設定します。最初の空白オプションはプレースホルダーとして自動的に表示されます。"
+#: includes/admin-pages/page-form-settings.php:157
+#: includes/class-tcarm-assets.php:160
+msgid "Radio Button Choices"
+msgstr "ラジオボタンの選択肢"
 
-#: includes/admin-pages/page-form-settings.php:155
+#: includes/admin-pages/page-form-settings.php:158
+#: includes/class-tcarm-assets.php:163
+msgid "Set the display labels and saved values for the checkboxes."
+msgstr "チェックボックスの表示ラベルと保存値を設定します。"
+
+#: includes/admin-pages/page-form-settings.php:158
+#: includes/class-tcarm-assets.php:161
+msgid "Set the display labels and saved values for the radio buttons."
+msgstr "ラジオボタンの表示ラベルと保存値を設定します。"
+
+#: includes/admin-pages/page-form-settings.php:158
+#: includes/class-tcarm-assets.php:159
+msgid ""
+"Set the display labels shown on the frontend and the saved values. A blank "
+"first option is shown automatically as the placeholder."
+msgstr ""
+"フロントエンドに表示するラベルと保存される値を設定します。最初の空白オプショ"
+"ンはプレースホルダーとして自動的に表示されます。"
+
+#: includes/admin-pages/page-form-settings.php:164
 msgid "Saved Value"
 msgstr "保存値"
 
-#: includes/admin-pages/page-form-settings.php:160
+#: includes/admin-pages/page-form-settings.php:169
 msgid "+ Add Choice"
 msgstr "+ 選択肢を追加"
 
-#: includes/admin-pages/page-form-settings.php:164
+#: includes/admin-pages/page-form-settings.php:173
 msgid "Delete Field"
 msgstr "項目を削除"
 
-#: includes/admin-pages/page-form-settings.php:169
-#: includes/admin-pages/page-form-settings.php:251
-#: includes/class-tcarm-assets.php:74
+#: includes/admin-pages/page-form-settings.php:178
+#: includes/admin-pages/page-form-settings.php:264
+#: includes/class-tcarm-assets.php:172
 msgid "This section does not have any fields yet."
 msgstr "このセクションにはまだ項目がありません。"
 
-#: includes/admin-pages/page-form-settings.php:171
+#: includes/admin-pages/page-form-settings.php:180
 msgid "+ Add Field"
 msgstr "+ 項目を追加"
 
-#: includes/admin-pages/page-form-settings.php:178
+#: includes/admin-pages/page-form-settings.php:187
 msgid "Add a New Section"
 msgstr "新しいセクションを追加"
 
-#: includes/admin-pages/page-form-settings.php:179
-msgid "Click the button to generate a section ID automatically. Editors only need to edit the section name."
-msgstr "ボタンをクリックするとセクション ID が自動生成されます。編集者はセクション名のみ編集してください。"
+#: includes/admin-pages/page-form-settings.php:188
+msgid ""
+"Click the button to generate a section ID automatically. Editors only need "
+"to edit the section name."
+msgstr ""
+"ボタンをクリックするとセクション ID が自動生成されます。編集者はセクション名"
+"のみ編集してください。"
 
-#: includes/admin-pages/page-form-settings.php:181
-#: includes/admin-pages/page-form-settings.php:319
+#: includes/admin-pages/page-form-settings.php:190
+#: includes/admin-pages/page-form-settings.php:332
 msgid "+ Add Section"
 msgstr "+ セクションを追加"
 
-#: includes/admin-pages/page-form-settings.php:190
-#: includes/class-tcarm-assets.php:45
+#: includes/admin-pages/page-form-settings.php:199
+#: includes/class-tcarm-assets.php:138
 msgid "Close"
 msgstr "閉じる"
 
-#: includes/admin-pages/page-form-settings.php:193
-#: includes/admin-pages/page-form-settings.php:216
+#: includes/admin-pages/page-form-settings.php:202
+#: includes/admin-pages/page-form-settings.php:227
 msgid "Section Name"
 msgstr "セクション名"
 
-#: includes/admin-pages/page-form-settings.php:218
-msgid "Japanese:"
-msgstr "日本語："
+#: includes/admin-pages/page-form-settings.php:229
+#, php-format
+msgid "Source (%s):"
+msgstr "翻訳元（%s）："
 
-#: includes/admin-pages/page-form-settings.php:221
+#: includes/admin-pages/page-form-settings.php:232
 msgid "Translated Section Name"
 msgstr "翻訳後のセクション名"
 
-#: includes/admin-pages/page-form-settings.php:235
+#: includes/admin-pages/page-form-settings.php:248
 msgid "Field type:"
 msgstr "項目タイプ："
 
-#: includes/admin-pages/page-form-settings.php:238
+#: includes/admin-pages/page-form-settings.php:251
 msgid "Translated Display Label"
 msgstr "翻訳後の表示ラベル"
 
-#: includes/admin-pages/page-form-settings.php:241
+#: includes/admin-pages/page-form-settings.php:254
 msgid "Translated Placeholder"
 msgstr "翻訳後のプレースホルダー"
 
-#: includes/admin-pages/page-form-settings.php:244
+#: includes/admin-pages/page-form-settings.php:257
 msgid "Translated Description"
 msgstr "翻訳後の説明"
 
-#: includes/admin-pages/page-form-settings.php:262
+#: includes/admin-pages/page-form-settings.php:275
 msgid "Consent Item Settings"
 msgstr "同意項目設定"
 
-#: includes/admin-pages/page-form-settings.php:263
-msgid "Manage consent items shown at the bottom of the application form. Large cards are shown as consent sections, and each card body is displayed with scrolling on the frontend."
-msgstr "申請フォーム下部に表示する同意項目を管理します。大きなカードは同意セクションとして表示され、各カード本文はフロントエンドでスクロール表示されます。"
+#: includes/admin-pages/page-form-settings.php:276
+msgid ""
+"Manage consent items shown at the bottom of the application form. Large "
+"cards are shown as consent sections, and each card body is displayed with "
+"scrolling on the frontend."
+msgstr ""
+"申請フォーム下部に表示する同意項目を管理します。大きなカードは同意セクション"
+"として表示され、各カード本文はフロントエンドでスクロール表示されます。"
 
-#: includes/admin-pages/page-form-settings.php:270
+#: includes/admin-pages/page-form-settings.php:283
 msgid "No consent items have been configured yet."
 msgstr "同意項目はまだ設定されていません。"
 
-#: includes/admin-pages/page-form-settings.php:280
+#: includes/admin-pages/page-form-settings.php:293
 msgid "Edit Consent Item Name"
 msgstr "同意項目名を編集"
 
-#: includes/admin-pages/page-form-settings.php:288
+#: includes/admin-pages/page-form-settings.php:301
 msgid "Delete Consent Item"
 msgstr "同意項目を削除"
 
-#: includes/admin-pages/page-form-settings.php:292
+#: includes/admin-pages/page-form-settings.php:305
 msgid "Consent Text to Display"
 msgstr "表示する同意文"
 
-#: includes/admin-pages/page-form-settings.php:293
-#: includes/class-tcarm-assets.php:86
-msgid "Enter consent text or an explanation. Leave blank if you only use a URL."
+#: includes/admin-pages/page-form-settings.php:306
+#: includes/class-tcarm-assets.php:184
+msgid ""
+"Enter consent text or an explanation. Leave blank if you only use a URL."
 msgstr "同意文または説明を入力します。URL のみを使用する場合は空欄にします。"
 
-#: includes/admin-pages/page-form-settings.php:296
+#: includes/admin-pages/page-form-settings.php:309
 msgid "Checkbox Text"
 msgstr "チェックボックス文言"
 
-#: includes/admin-pages/page-form-settings.php:297
+#: includes/admin-pages/page-form-settings.php:310
 msgid "Example: I agree to the terms."
 msgstr "例：規約に同意します。"
 
-#: includes/admin-pages/page-form-settings.php:300
-#: includes/class-tcarm-assets.php:81
+#: includes/admin-pages/page-form-settings.php:313
+#: includes/class-tcarm-assets.php:179
 msgid "https://... or /privacy/"
 msgstr "https://... または /privacy/"
 
-#: includes/admin-pages/page-form-settings.php:302
+#: includes/admin-pages/page-form-settings.php:315
 msgid "Link Text"
 msgstr "リンクテキスト"
 
-#: includes/admin-pages/page-form-settings.php:303
+#: includes/admin-pages/page-form-settings.php:316
 msgid "Example: Open document"
 msgstr "例：資料を開く"
 
-#: includes/admin-pages/page-form-settings.php:307
-#: includes/class-tcarm-assets.php:84
+#: includes/admin-pages/page-form-settings.php:320
+#: includes/class-tcarm-assets.php:182
 msgid "Show consent checkbox"
 msgstr "同意チェックボックスを表示"
 
-#: includes/admin-pages/page-form-settings.php:316
+#: includes/admin-pages/page-form-settings.php:329
 msgid "Add a New Consent Section"
 msgstr "新しい同意セクションを追加"
 
-#: includes/admin-pages/page-form-settings.php:317
-msgid "Add items as needed for terms, privacy handling, consent to publish submitted content, and related confirmations."
-msgstr "利用規約、個人情報の取扱い、提出内容の公開同意、関連する確認事項など、必要に応じて項目を追加してください。"
+#: includes/admin-pages/page-form-settings.php:330
+msgid ""
+"Add items as needed for terms, privacy handling, consent to publish "
+"submitted content, and related confirmations."
+msgstr ""
+"利用規約、個人情報の取扱い、提出内容の公開同意、関連する確認事項など、必要に"
+"応じて項目を追加してください。"
 
-#: includes/admin-pages/page-form-settings.php:323
+#: includes/admin-pages/page-form-settings.php:336
 msgid "Save Form Settings"
 msgstr "フォーム設定を保存"
 
@@ -1403,11 +1538,14 @@ msgid "Failed to send the test email. Please check the sending settings."
 msgstr "テストメールを送信できませんでした。送信設定を確認してください。"
 
 #: includes/admin-pages/page-notifications.php:42
+#: includes/class-tcarm-assets.php:262
 msgid "Please enter a valid email address."
 msgstr "有効なメールアドレスを入力してください。"
 
 #: includes/admin-pages/page-notifications.php:55
-msgid "Configure sender and recipient settings for applicant and admin notification emails."
+msgid ""
+"Configure sender and recipient settings for applicant and admin notification "
+"emails."
 msgstr "申請者および管理者向け通知メールの送信者・受信者設定を行います。"
 
 #: includes/admin-pages/page-notifications.php:58
@@ -1416,16 +1554,24 @@ msgstr "管理者宛先"
 
 #: includes/admin-pages/page-notifications.php:63
 #: includes/admin-pages/page-notifications.php:67
-msgid "To specify multiple recipients, separate them with commas. Example: info@example.com, staff@example.com"
-msgstr "複数の受信者を指定する場合はカンマで区切ってください。例：info@example.com, staff@example.com"
+msgid ""
+"To specify multiple recipients, separate them with commas. Example: "
+"info@example.com, staff@example.com"
+msgstr ""
+"複数の受信者を指定する場合はカンマで区切ってください。例：info@example.com, "
+"staff@example.com"
+
+#: includes/admin-pages/page-notifications.php:74
+msgid ""
+"Configure sender and sending method for notification emails. If SMTP is not "
+"used, emails are sent using WordPress default mail."
+msgstr ""
+"通知メールの送信者と送信方法を設定します。SMTP を使用しない場合は、WordPress "
+"標準のメール機能で送信されます。"
 
 #: includes/admin-pages/page-notifications.php:74
 msgid "Sending Settings"
 msgstr "送信設定"
-
-#: includes/admin-pages/page-notifications.php:74
-msgid "Configure sender and sending method for notification emails. If SMTP is not used, emails are sent using WordPress default mail."
-msgstr "通知メールの送信者と送信方法を設定します。SMTP を使用しない場合は、WordPress 標準のメール機能で送信されます。"
 
 #: includes/admin-pages/page-notifications.php:77
 msgid "Sending Method"
@@ -1448,8 +1594,12 @@ msgid "From Email Address"
 msgstr "送信元メールアドレス"
 
 #: includes/admin-pages/page-notifications.php:88
-msgid "When using SMTP, set an email address that is allowed to send from the SMTP account."
-msgstr "SMTP を使用する場合は、SMTP アカウントで送信が許可されているメールアドレスを設定してください。"
+msgid ""
+"When using SMTP, set an email address that is allowed to send from the SMTP "
+"account."
+msgstr ""
+"SMTP を使用する場合は、SMTP アカウントで送信が許可されているメールアドレスを"
+"設定してください。"
 
 #: includes/admin-pages/page-notifications.php:90
 msgid "SMTP Host"
@@ -1484,16 +1634,22 @@ msgid "Saved (enter only to change)"
 msgstr "保存済み（変更時のみ入力）"
 
 #: includes/admin-pages/page-notifications.php:112
-msgid "The saved password is not displayed. Enter a value only when changing it."
-msgstr "保存済みのパスワードは表示されません。変更する場合のみ入力してください。"
+msgid ""
+"The saved password is not displayed. Enter a value only when changing it."
+msgstr ""
+"保存済みのパスワードは表示されません。変更する場合のみ入力してください。"
 
 #: includes/admin-pages/page-notifications.php:116
 msgid "Test Send"
 msgstr "テスト送信"
 
 #: includes/admin-pages/page-notifications.php:117
-msgid "Send a test email using the current sending settings. The test email does not include application data or personal information."
-msgstr "現在の送信設定でテストメールを送信します。テストメールには申請データや個人情報は含まれません。"
+msgid ""
+"Send a test email using the current sending settings. The test email does "
+"not include application data or personal information."
+msgstr ""
+"現在の送信設定でテストメールを送信します。テストメールには申請データや個人情"
+"報は含まれません。"
 
 #: includes/admin-pages/page-notifications.php:118
 msgid "Test Recipient Email Address"
@@ -1502,6 +1658,12 @@ msgstr "テスト送信先メールアドレス"
 #: includes/admin-pages/page-notifications.php:121
 msgid "Send Test Email"
 msgstr "テストメールを送信"
+
+#: includes/admin-pages/page-notifications.php:127
+msgid ""
+"Edit notification messages such as submission receipt and review results by "
+"switching tabs."
+msgstr "タブを切り替えて、申請受付や審査結果などの通知メッセージを編集します。"
 
 #: includes/admin-pages/page-notifications.php:127
 msgid "Email Templates"
@@ -1532,28 +1694,194 @@ msgstr "これらの変数を件名または本文にコピーして使用しま
 msgid "Click a button to copy the variable."
 msgstr "ボタンをクリックすると変数をコピーできます。"
 
+#: includes/admin-pages/page-privacy.php:9
+msgid "Personal Information and Data Storage"
+msgstr "個人情報とデータ保存"
+
+#: includes/admin-pages/page-privacy.php:33
+msgid "About Personal Information and Data Storage"
+msgstr "個人情報とデータ保存について"
+
+#: includes/admin-pages/page-privacy.php:34
+msgid ""
+"Admin-facing notes about application data, attachments, notification "
+"history, and external service usage."
+msgstr ""
+"申請データ、添付ファイル、通知履歴、外部サービスの利用に関する管理者向けの注"
+"意事項です。"
+
+#: includes/admin-pages/page-privacy.php:37
+msgid ""
+"This plugin stores information entered in application forms, uploaded files, "
+"review history, notification history, and related data for receiving "
+"applications, reviewing content, sending notifications, operations, spam "
+"prevention, and troubleshooting."
+msgstr ""
+"このプラグインは、申請の受付、内容確認、通知送信、運用、スパム防止、トラブル"
+"シューティングのため、申請フォームに入力された情報、アップロードされたファイ"
+"ル、審査履歴、通知履歴、および関連データを保存します。"
+
+#: includes/admin-pages/page-privacy.php:41
+msgid "Main Information Stored"
+msgstr "保存される主な情報"
+
+#: includes/admin-pages/page-privacy.php:43
+msgid ""
+"Applicant information: Information entered or selected by the applicant "
+"based on Form Settings."
+msgstr "申請者情報：フォーム設定に基づき、申請者が入力または選択した情報です。"
+
+#: includes/admin-pages/page-privacy.php:44
+msgid ""
+"Application content information: Content entered or selected by the "
+"applicant based on Form Settings."
+msgstr ""
+"申請内容情報：フォーム設定に基づき、申請者が入力または選択した内容です。"
+
+#: includes/admin-pages/page-privacy.php:45
+msgid ""
+"Attachments: Files uploaded during application submission or resubmission."
+msgstr "添付ファイル：申請または再申請時にアップロードされたファイルです。"
+
+#: includes/admin-pages/page-privacy.php:46
+msgid ""
+"Review information: Review status, approval or rejection results, review "
+"messages, rejection reasons, and related information."
+msgstr ""
+"審査情報：審査ステータス、許可・不許可の結果、審査メッセージ、不許可理由、関"
+"連情報です。"
+
+#: includes/admin-pages/page-privacy.php:47
+msgid ""
+"Notification and sending history: Submission receipts, auto replies, admin "
+"notifications, approval notifications, rejection notifications, resubmission "
+"notifications, submission and response history, and related records."
+msgstr ""
+"通知および送信履歴：受付通知、自動返信、管理者通知、許可通知、不許可通知、再"
+"申請通知、送信・対応履歴、関連記録です。"
+
+#: includes/admin-pages/page-privacy.php:48
+msgid ""
+"Security-related information: Depending on settings and operations, "
+"submission times and information related to spam prevention or "
+"troubleshooting may be stored."
+msgstr ""
+"セキュリティ関連情報：設定や運用状況に応じて、送信時刻やスパム対策・トラブル"
+"シューティングに関する情報が保存される場合があります。"
+
+#: includes/admin-pages/page-privacy.php:53
+msgid "Purpose of Use"
+msgstr "利用目的"
+
+#: includes/admin-pages/page-privacy.php:54
+msgid ""
+"Saved information is used for receiving applications, reviewing content, "
+"review workflows, notifications, operations, spam prevention, and "
+"troubleshooting."
+msgstr ""
+"保存された情報は、申請の受付、内容確認、審査ワークフロー、通知、運用、スパム"
+"防止、トラブルシューティングに使用されます。"
+
+#: includes/admin-pages/page-privacy.php:58
+msgid "About External Services"
+msgstr "外部サービスについて"
+
+#: includes/admin-pages/page-privacy.php:60
+msgid ""
+"When Cloudflare Turnstile is enabled, an external service verification is "
+"performed as spam protection during form submission."
+msgstr ""
+"Cloudflare Turnstile を有効にすると、フォーム送信時のスパム対策として外部サー"
+"ビスによる検証が行われます。"
+
+#: includes/admin-pages/page-privacy.php:61
+msgid ""
+"The AI translation feature is an admin tool used to assist with translating "
+"form fields and related settings. It does not normally send applicant-"
+"submitted content to AI translation automatically."
+msgstr ""
+"AI 翻訳機能は、フォーム項目や関連設定の翻訳を補助する管理者向けツールです。通"
+"常、申請者が送信した内容を自動的に AI 翻訳へ送信することはありません。"
+
+#: includes/admin-pages/page-privacy.php:62
+msgid ""
+"Analytics services such as Google Analytics may be used separately depending "
+"on site settings."
+msgstr ""
+"サイト設定に応じて、Google Analytics などの解析サービスを別途使用する場合があ"
+"ります。"
+
+#: includes/admin-pages/page-privacy.php:67
+msgid "Sample Text for Privacy Policy"
+msgstr "プライバシーポリシー用サンプル文"
+
+#: includes/admin-pages/page-privacy.php:69
+msgid ""
+"This text is an example. The actual privacy policy should be reviewed and "
+"adjusted by the site operator."
+msgstr ""
+"この文章は例です。実際のプライバシーポリシーはサイト運営者が確認し、調整して"
+"ください。"
+
+#: includes/admin-pages/page-privacy.php:85
+msgid "Data Deletion on Uninstall"
+msgstr "アンインストール時のデータ削除"
+
+#: includes/admin-pages/page-privacy.php:86
+msgid ""
+"Configure whether data saved by this plugin should be deleted when the "
+"plugin is deleted."
+msgstr ""
+"このプラグインを削除したときに、保存されたデータを削除するかどうかを設定しま"
+"す。"
+
+#: includes/admin-pages/page-privacy.php:92
+msgid "Delete plugin data on uninstall"
+msgstr "アンインストール時にプラグインデータを削除"
+
+#: includes/admin-pages/page-privacy.php:94
+msgid ""
+"When enabled, settings data and application-related data saved by this "
+"plugin are deleted when the plugin is deleted from the WordPress admin "
+"screen. Deactivating the plugin alone does not delete data. Files in the "
+"media library and notification email template bodies are not included in "
+"automatic deletion."
+msgstr ""
+"有効化すると、WordPress 管理画面からプラグインを削除した際に、このプラグイン"
+"が保存した設定データと申請関連データが削除されます。プラグインを停止しただけ"
+"ではデータは削除されません。メディアライブラリ内のファイルと通知メールテンプ"
+"レート本文は自動削除の対象に含まれません。"
+
 #: includes/admin-pages/page-redirects.php:9
 msgid "Basic Settings"
 msgstr "基本設定"
 
 #: includes/admin-pages/page-redirects.php:16
+msgid ""
+"Configure application form, status lookup, content review, and edit pages "
+"for each language."
+msgstr "各言語の申請フォーム、状況確認、内容確認、編集ページを設定します。"
+
+#: includes/admin-pages/page-redirects.php:16
 msgid "Frontend Page Settings"
 msgstr "フロントエンドページ設定"
 
-#: includes/admin-pages/page-redirects.php:16
-msgid "Configure application form, status lookup, content review, and edit pages for each language."
-msgstr "各言語の申請フォーム、状況確認、内容確認、編集ページを設定します。"
-
 #: includes/admin-pages/page-redirects.php:18
-msgid "Selecting fixed pages is recommended. Languages without settings fall back to the Japanese setting or existing settings."
-msgstr "固定ページを選択することを推奨します。設定のない言語は、日本語設定または既存設定にフォールバックします。"
+msgid ""
+"Selecting fixed pages is recommended. Languages without settings fall back "
+"to the Japanese setting or existing settings."
+msgstr ""
+"固定ページを選択することを推奨します。設定のない言語は、日本語設定または既存"
+"設定にフォールバックします。"
 
 #: includes/admin-pages/page-redirects.php:32
 msgid "Attachment Settings"
 msgstr "添付ファイル設定"
 
 #: includes/admin-pages/page-redirects.php:32
-msgid "Common rules for attachments that can be uploaded through the application form."
+msgid ""
+"Common rules for attachments that can be uploaded through the application "
+"form."
 msgstr "申請フォームからアップロードできる添付ファイルの共通ルールです。"
 
 #: includes/admin-pages/page-redirects.php:35
@@ -1565,12 +1893,12 @@ msgid "Allowed Extensions"
 msgstr "許可する拡張子"
 
 #: includes/admin-pages/page-redirects.php:38
-msgid "Specify values separated by commas. Example:"
-msgstr "値はカンマ区切りで指定してください。例："
-
-#: includes/admin-pages/page-redirects.php:38
 msgid ". For safety, svg, html, php, and similar file types cannot be used."
 msgstr "。安全のため、svg、html、php などのファイル形式は使用できません。"
+
+#: includes/admin-pages/page-redirects.php:38
+msgid "Specify values separated by commas. Example:"
+msgstr "値はカンマ区切りで指定してください。例："
 
 #: includes/admin-pages/page-redirects.php:40
 msgid "Maximum File Size"
@@ -1589,12 +1917,18 @@ msgid "Application Number Settings"
 msgstr "申請番号設定"
 
 #: includes/admin-pages/page-redirects.php:73
-msgid "Configure the format of application numbers issued automatically for new submissions."
+msgid ""
+"Configure the format of application numbers issued automatically for new "
+"submissions."
 msgstr "新規申請時に自動発行される申請番号の形式を設定します。"
 
 #: includes/admin-pages/page-redirects.php:76
-msgid "This setting applies only to newly submitted applications. Already issued application numbers will not change. Up to 32 characters can be used."
-msgstr "この設定は新規申請にのみ適用されます。発行済みの申請番号は変更されません。最大 32 文字まで使用できます。"
+msgid ""
+"This setting applies only to newly submitted applications. Already issued "
+"application numbers will not change. Up to 32 characters can be used."
+msgstr ""
+"この設定は新規申請にのみ適用されます。発行済みの申請番号は変更されません。最"
+"大 32 文字まで使用できます。"
 
 #: includes/admin-pages/page-redirects.php:78
 msgid "Preview"
@@ -1638,8 +1972,12 @@ msgid "Configure role groups that can use this plugin."
 msgstr "このプラグインを使用できる権限グループを設定します。"
 
 #: includes/admin-pages/page-redirects.php:175
-msgid "Grant access to this plugin's admin screens to the role groups selected here. Only WordPress administrators can change permission settings."
-msgstr "ここで選択した権限グループに、このプラグインの管理画面へのアクセスを許可します。権限設定を変更できるのは WordPress 管理者のみです。"
+msgid ""
+"Grant access to this plugin's admin screens to the role groups selected "
+"here. Only WordPress administrators can change permission settings."
+msgstr ""
+"ここで選択した権限グループに、このプラグインの管理画面へのアクセスを許可しま"
+"す。権限設定を変更できるのは WordPress 管理者のみです。"
 
 #: includes/admin-pages/page-redirects.php:178
 msgid "Role groups that can use this plugin"
@@ -1650,151 +1988,81 @@ msgid "Administrators can always use this plugin."
 msgstr "管理者は常にこのプラグインを使用できます。"
 
 #: includes/admin-pages/page-redirects.php:197
-msgid "The plugin-specific capability is removed from unselected role groups. Administrators are always enabled for safety."
-msgstr "選択されていない権限グループからは、このプラグイン専用の権限が削除されます。安全のため、管理者は常に有効です。"
+msgid ""
+"The plugin-specific capability is removed from unselected role groups. "
+"Administrators are always enabled for safety."
+msgstr ""
+"選択されていない権限グループからは、このプラグイン専用の権限が削除されます。"
+"安全のため、管理者は常に有効です。"
 
-#: includes/admin-pages/page-redirects.php:208
-msgid "Personal Information and Data Storage"
-msgstr "個人情報とデータ保存"
-
-#: includes/admin-pages/page-redirects.php:232
-msgid "About Personal Information and Data Storage"
-msgstr "個人情報とデータ保存について"
-
-#: includes/admin-pages/page-redirects.php:233
-msgid "Admin-facing notes about application data, attachments, notification history, and external service usage."
-msgstr "申請データ、添付ファイル、通知履歴、外部サービスの利用に関する管理者向けの注意事項です。"
-
-#: includes/admin-pages/page-redirects.php:236
-msgid "This plugin stores information entered in application forms, uploaded files, review history, notification history, and related data for receiving applications, reviewing content, sending notifications, operations, spam prevention, and troubleshooting."
-msgstr "このプラグインは、申請の受付、内容確認、通知送信、運用、スパム防止、トラブルシューティングのため、申請フォームに入力された情報、アップロードされたファイル、審査履歴、通知履歴、および関連データを保存します。"
-
-#: includes/admin-pages/page-redirects.php:240
-msgid "Main Information Stored"
-msgstr "保存される主な情報"
-
-#: includes/admin-pages/page-redirects.php:242
-msgid "Applicant information: Information entered or selected by the applicant based on Form Settings."
-msgstr "申請者情報：フォーム設定に基づき、申請者が入力または選択した情報です。"
-
-#: includes/admin-pages/page-redirects.php:243
-msgid "Application content information: Content entered or selected by the applicant based on Form Settings."
-msgstr "申請内容情報：フォーム設定に基づき、申請者が入力または選択した内容です。"
-
-#: includes/admin-pages/page-redirects.php:244
-msgid "Attachments: Files uploaded during application submission or resubmission."
-msgstr "添付ファイル：申請または再申請時にアップロードされたファイルです。"
-
-#: includes/admin-pages/page-redirects.php:245
-msgid "Review information: Review status, approval or rejection results, review messages, rejection reasons, and related information."
-msgstr "審査情報：審査ステータス、許可・不許可の結果、審査メッセージ、不許可理由、関連情報です。"
-
-#: includes/admin-pages/page-redirects.php:246
-msgid "Notification and sending history: Submission receipts, auto replies, admin notifications, approval notifications, rejection notifications, resubmission notifications, submission and response history, and related records."
-msgstr "通知および送信履歴：受付通知、自動返信、管理者通知、許可通知、不許可通知、再申請通知、送信・対応履歴、関連記録です。"
-
-#: includes/admin-pages/page-redirects.php:247
-msgid "Security-related information: Depending on settings and operations, submission times and information related to spam prevention or troubleshooting may be stored."
-msgstr "セキュリティ関連情報：設定や運用状況に応じて、送信時刻やスパム対策・トラブルシューティングに関する情報が保存される場合があります。"
-
-#: includes/admin-pages/page-redirects.php:252
-msgid "Purpose of Use"
-msgstr "利用目的"
-
-#: includes/admin-pages/page-redirects.php:253
-msgid "Saved information is used for receiving applications, reviewing content, review workflows, notifications, operations, spam prevention, and troubleshooting."
-msgstr "保存された情報は、申請の受付、内容確認、審査ワークフロー、通知、運用、スパム防止、トラブルシューティングに使用されます。"
-
-#: includes/admin-pages/page-redirects.php:257
-msgid "About External Services"
-msgstr "外部サービスについて"
-
-#: includes/admin-pages/page-redirects.php:259
-msgid "When Cloudflare Turnstile is enabled, an external service verification is performed as spam protection during form submission."
-msgstr "Cloudflare Turnstile を有効にすると、フォーム送信時のスパム対策として外部サービスによる検証が行われます。"
-
-#: includes/admin-pages/page-redirects.php:260
-msgid "The AI translation feature is an admin tool used to assist with translating form fields and related settings. It does not normally send applicant-submitted content to AI translation automatically."
-msgstr "AI 翻訳機能は、フォーム項目や関連設定の翻訳を補助する管理者向けツールです。通常、申請者が送信した内容を自動的に AI 翻訳へ送信することはありません。"
-
-#: includes/admin-pages/page-redirects.php:261
-msgid "Analytics services such as Google Analytics may be used separately depending on site settings."
-msgstr "サイト設定に応じて、Google Analytics などの解析サービスを別途使用する場合があります。"
-
-#: includes/admin-pages/page-redirects.php:266
-msgid "Sample Text for Privacy Policy"
-msgstr "プライバシーポリシー用サンプル文"
-
-#: includes/admin-pages/page-redirects.php:268
-msgid "This text is an example. The actual privacy policy should be reviewed and adjusted by the site operator."
-msgstr "この文章は例です。実際のプライバシーポリシーはサイト運営者が確認し、調整してください。"
-
-#: includes/admin-pages/page-redirects.php:284
-msgid "Data Deletion on Uninstall"
-msgstr "アンインストール時のデータ削除"
-
-#: includes/admin-pages/page-redirects.php:285
-msgid "Configure whether data saved by this plugin should be deleted when the plugin is deleted."
-msgstr "このプラグインを削除したときに、保存されたデータを削除するかどうかを設定します。"
-
-#: includes/admin-pages/page-redirects.php:291
-msgid "Delete plugin data on uninstall"
-msgstr "アンインストール時にプラグインデータを削除"
-
-#: includes/admin-pages/page-redirects.php:293
-msgid "When enabled, settings data and application-related data saved by this plugin are deleted when the plugin is deleted from the WordPress admin screen. Deactivating the plugin alone does not delete data. Files in the media library and notification email template bodies are not included in automatic deletion."
-msgstr "有効化すると、WordPress 管理画面からプラグインを削除した際に、このプラグインが保存した設定データと申請関連データが削除されます。プラグインを停止しただけではデータは削除されません。メディアライブラリ内のファイルと通知メールテンプレート本文は自動削除の対象に含まれません。"
-
-#: includes/admin-pages/page-security.php:9
-#: includes/class-tcarm-admin.php:84
+#: includes/admin-pages/page-security.php:9 includes/class-tcarm-admin.php:84
 #: includes/class-tcarm-admin.php:113
 msgid "Security Settings"
 msgstr "セキュリティ設定"
 
 #: includes/admin-pages/page-security.php:18
-msgid "Spam Protection Settings"
-msgstr "スパム対策設定"
+msgid ""
+"Basic settings to help prevent automated form posts and repeated submissions "
+"in a short time."
+msgstr "自動送信や短時間の連続送信を防ぐための基本設定です。"
 
 #: includes/admin-pages/page-security.php:18
-msgid "Basic settings to help prevent automated form posts and repeated submissions in a short time."
-msgstr "自動送信や短時間の連続送信を防ぐための基本設定です。"
+msgid "Spam Protection Settings"
+msgstr "スパム対策設定"
 
 #: includes/admin-pages/page-security.php:26
 msgid "Enable simple bot protection using a hidden field and submission timing"
 msgstr "隠し項目と送信時間による簡易 bot 対策を有効化"
 
 #: includes/admin-pages/page-security.php:27
-msgid "Detect likely automated bot submissions using a hidden field that normal users cannot see and the elapsed time from form display to submission. Submissions are recorded in the blocked history when the hidden field contains a value or when the form is submitted immediately after display."
-msgstr "通常の利用者には見えない隠し項目と、フォーム表示から送信までの経過時間を使って、自動 bot 送信の可能性を検知します。隠し項目に値が入っている場合や、表示直後に送信された場合は、ブロック履歴に記録されます。"
+msgid ""
+"Detect likely automated bot submissions using a hidden field that normal "
+"users cannot see and the elapsed time from form display to submission. "
+"Submissions are recorded in the blocked history when the hidden field "
+"contains a value or when the form is submitted immediately after display."
+msgstr ""
+"通常の利用者には見えない隠し項目と、フォーム表示から送信までの経過時間を使っ"
+"て、自動 bot 送信の可能性を検知します。隠し項目に値が入っている場合や、表示直"
+"後に送信された場合は、ブロック履歴に記録されます。"
 
 #: includes/admin-pages/page-security.php:35
 msgid "Enable short-term submission and lookup rate limits"
 msgstr "短時間の送信・照会制限を有効化"
 
 #: includes/admin-pages/page-security.php:36
-msgid "Limit repeated submissions, resubmissions, and status lookups from the same IP address or email address within a short time. Limited attempts are saved to the blocked history with the reason, date and time, IP address, and minimal contact information."
-msgstr "同じ IP アドレスまたはメールアドレスからの短時間の連続送信、再申請、状況確認を制限します。制限された試行は、理由、日時、IP アドレス、最小限の連絡先情報とともにブロック履歴へ保存されます。"
+msgid ""
+"Limit repeated submissions, resubmissions, and status lookups from the same "
+"IP address or email address within a short time. Limited attempts are saved "
+"to the blocked history with the reason, date and time, IP address, and "
+"minimal contact information."
+msgstr ""
+"同じ IP アドレスまたはメールアドレスからの短時間の連続送信、再申請、状況確認"
+"を制限します。制限された試行は、理由、日時、IP アドレス、最小限の連絡先情報と"
+"ともにブロック履歴へ保存されます。"
+
+#: includes/admin-pages/page-security.php:44
+#: includes/admin-pages/page-security.php:57
+msgid ""
+"Add Turnstile verification to application, lookup, and edit forms when "
+"needed."
+msgstr ""
+"必要に応じて、申請・状況確認・編集フォームに Turnstile 認証を追加します。"
 
 #: includes/admin-pages/page-security.php:44
 msgid "Cloudflare Turnstile Settings"
 msgstr "Cloudflare Turnstile 設定"
-
-#: includes/admin-pages/page-security.php:44
-#: includes/admin-pages/page-security.php:57
-msgid "Add Turnstile verification to application, lookup, and edit forms when needed."
-msgstr "必要に応じて、申請・状況確認・編集フォームに Turnstile 認証を追加します。"
 
 #: includes/admin-pages/page-security.php:53
 msgid "Enable Turnstile verification"
 msgstr "Turnstile 認証を有効化"
 
 #: includes/admin-pages/page-security.php:54
-msgid "ON"
-msgstr "ON"
-
-#: includes/admin-pages/page-security.php:54
 msgid "OFF"
 msgstr "OFF"
+
+#: includes/admin-pages/page-security.php:54
+msgid "ON"
+msgstr "ON"
 
 #: includes/admin-pages/page-security.php:63
 msgid "Turnstile Scope"
@@ -1813,8 +2081,14 @@ msgid "Download Link Settings"
 msgstr "ダウンロードリンク設定"
 
 #: includes/admin-pages/page-security.php:87
-msgid "Set the expiration time for download links issued to approved applicants. After a link expires, a new link is issued when the applicant checks the application status page again."
-msgstr "許可済み申請者に発行するダウンロードリンクの有効期限を設定します。リンクの期限が切れた後は、申請者が申請状況ページを再確認した際に新しいリンクが発行されます。"
+msgid ""
+"Set the expiration time for download links issued to approved applicants. "
+"After a link expires, a new link is issued when the applicant checks the "
+"application status page again."
+msgstr ""
+"許可済み申請者に発行するダウンロードリンクの有効期限を設定します。リンクの期"
+"限が切れた後は、申請者が申請状況ページを再確認した際に新しいリンクが発行され"
+"ます。"
 
 #: includes/admin-pages/page-security.php:90
 msgid "Download Link Expiration"
@@ -1841,8 +2115,12 @@ msgid "No expiration"
 msgstr "期限なし"
 
 #: includes/admin-pages/page-security.php:99
-msgid "30 minutes is recommended in most cases. If set to no expiration, copied download URLs may remain usable for a long time."
-msgstr "通常は 30 分を推奨します。無期限に設定すると、コピーされたダウンロード URL が長時間利用可能なままになる場合があります。"
+msgid ""
+"30 minutes is recommended in most cases. If set to no expiration, copied "
+"download URLs may remain usable for a long time."
+msgstr ""
+"通常は 30 分を推奨します。無期限に設定すると、コピーされたダウンロード URL が"
+"長時間利用可能なままになる場合があります。"
 
 #: includes/admin-pages/page-translation.php:26
 msgid "Common Buttons"
@@ -1876,49 +2154,74 @@ msgstr "申請内容修正"
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: includes/admin-pages/page-translation.php:188
-#: includes/class-tcarm-admin.php:87
-#: includes/class-tcarm-admin.php:116
+#: includes/admin-pages/page-translation.php:194
+msgid "Save the base language setting before using AI translation."
+msgstr "AI翻訳を使用する前に、基準言語の設定を保存してください。"
+
+#: includes/admin-pages/page-translation.php:198
+#: includes/class-tcarm-admin.php:87 includes/class-tcarm-admin.php:116
 msgid "Multilingual Settings"
 msgstr "多言語設定"
 
-#: includes/admin-pages/page-translation.php:195
+#: includes/admin-pages/page-translation.php:205
 msgid "Display Language Settings"
 msgstr "表示言語設定"
 
-#: includes/admin-pages/page-translation.php:196
-msgid "Select languages shown in admin multilingual input fields and AI translation targets."
+#: includes/admin-pages/page-translation.php:206
+msgid ""
+"Select languages shown in admin multilingual input fields and AI translation "
+"targets."
 msgstr "管理画面の多言語入力欄および AI 翻訳対象に表示する言語を選択します。"
 
-#: includes/admin-pages/page-translation.php:207
-msgid "If no languages are selected, English is enabled when saving. Existing translation data for disabled languages is not deleted."
-msgstr "言語が選択されていない場合、保存時に英語が有効になります。無効化した言語の既存翻訳データは削除されません。"
+#: includes/admin-pages/page-translation.php:210
+msgid "Base Language (Translation Source)"
+msgstr "基準言語（翻訳元）"
 
-#: includes/admin-pages/page-translation.php:215
-msgid "Translation String Settings"
-msgstr "翻訳文字列設定"
+#: includes/admin-pages/page-translation.php:217
+msgid ""
+"This setting only selects the source language used by AI translation. It "
+"does not move, delete, or overwrite translation content. The base language "
+"must remain enabled."
+msgstr ""
+"この設定は、AI翻訳で使用する翻訳元言語のみを選択します。翻訳内容を移動、削"
+"除、上書きすることはありません。基準言語は有効にしておく必要があります。"
 
-#: includes/admin-pages/page-translation.php:215
+#: includes/admin-pages/page-translation.php:228
+msgid ""
+"If no languages are selected, English is enabled when saving. Existing "
+"translation data for disabled languages is not deleted."
+msgstr ""
+"言語が選択されていない場合、保存時に英語が有効になります。無効化した言語の既"
+"存翻訳データは削除されません。"
+
+#: includes/admin-pages/page-translation.php:236
 msgid "Configure the text shown on the frontend according to the shortcode"
 msgstr "ショートコードに応じてフロントエンドに表示されるテキストを設定します"
 
-#: includes/admin-pages/page-translation.php:215
+#: includes/admin-pages/page-translation.php:236
+msgid "Translation String Settings"
+msgstr "翻訳文字列設定"
+
+#: includes/admin-pages/page-translation.php:236
 msgid "parameter."
 msgstr "パラメーター。"
 
-#: includes/admin-pages/page-translation.php:217
+#: includes/admin-pages/page-translation.php:238
 msgid "Empty items fall back to the English default strings."
 msgstr "空欄の場合は英語のデフォルト文言が使用されます。"
 
-#: includes/admin-pages/page-translation.php:219
+#: includes/admin-pages/page-translation.php:240
 msgid "Translation Language Switcher"
 msgstr "翻訳対象言語の切り替え"
 
-#: includes/admin-pages/page-translation.php:231
-msgid "There are no target languages for translation. Enable target languages in Display Language Settings."
-msgstr "翻訳対象の言語がありません。表示言語設定で対象言語を有効にしてください。"
+#: includes/admin-pages/page-translation.php:252
+msgid ""
+"There are no target languages for translation. Enable target languages in "
+"Display Language Settings."
+msgstr ""
+"翻訳対象の言語がありません。表示言語設定で対象言語を有効にしてください。"
 
-#: includes/admin-pages/page-translation.php:256
+#: includes/admin-pages/page-translation.php:277
 msgid "Save Multilingual Settings"
 msgstr "多言語設定を保存"
 
@@ -1926,23 +2229,19 @@ msgstr "多言語設定を保存"
 msgid "Application Management"
 msgstr "申請管理"
 
-#: includes/class-tcarm-admin.php:83
-#: includes/class-tcarm-admin.php:112
+#: includes/class-tcarm-admin.php:83 includes/class-tcarm-admin.php:112
 msgid "Notification Email Settings"
 msgstr "通知メール設定"
 
-#: includes/class-tcarm-admin.php:85
-#: includes/class-tcarm-admin.php:114
+#: includes/class-tcarm-admin.php:85 includes/class-tcarm-admin.php:114
 msgid "General Settings"
 msgstr "基本設定"
 
-#: includes/class-tcarm-admin.php:88
-#: includes/class-tcarm-admin.php:117
+#: includes/class-tcarm-admin.php:88 includes/class-tcarm-admin.php:117
 msgid "Privacy and Data Retention"
 msgstr "プライバシーとデータ保持"
 
-#: includes/class-tcarm-admin.php:89
-#: includes/class-tcarm-admin.php:118
+#: includes/class-tcarm-admin.php:89 includes/class-tcarm-admin.php:118
 msgid "About"
 msgstr "このプラグインについて"
 
@@ -1955,8 +2254,11 @@ msgid "AI Translation Settings"
 msgstr "AI 翻訳設定"
 
 #: includes/class-tcarm-ai-translation.php:14
-msgid "Configure the AI provider, API key, and model used by translation helper tools."
-msgstr "翻訳補助ツールで使用する AI プロバイダー、API キー、モデルを設定します。"
+msgid ""
+"Configure the AI provider, API key, and model used by translation helper "
+"tools."
+msgstr ""
+"翻訳補助ツールで使用する AI プロバイダー、API キー、モデルを設定します。"
 
 #: includes/class-tcarm-ai-translation.php:17
 msgid "AI Provider"
@@ -1971,338 +2273,378 @@ msgid "Configured (enter only to change)"
 msgstr "設定済み（変更時のみ入力）"
 
 #: includes/class-tcarm-ai-translation.php:25
-msgid "Enter the API key for the selected AI provider. Saved API keys are not displayed."
-msgstr "選択した AI プロバイダーの API キーを入力してください。保存済みの API キーは表示されません。"
+msgid ""
+"Enter the API key for the selected AI provider. Saved API keys are not "
+"displayed."
+msgstr ""
+"選択した AI プロバイダーの API キーを入力してください。保存済みの API キーは"
+"表示されません。"
 
 #: includes/class-tcarm-ai-translation.php:27
 msgid "Model"
 msgstr "モデル"
 
 #: includes/class-tcarm-ai-translation.php:80
-#: includes/class-tcarm-applications.php:746
-#: includes/class-tcarm-applications.php:764
-#: includes/class-tcarm-applications.php:797
-#: includes/class-tcarm-applications.php:932
+#: includes/class-tcarm-applications.php:890
+#: includes/class-tcarm-applications.php:908
+#: includes/class-tcarm-applications.php:941
+#: includes/class-tcarm-applications.php:1076
 msgid "You do not have permission."
 msgstr "権限がありません。"
 
-#: includes/class-tcarm-ai-translation.php:88
+#: includes/class-tcarm-ai-translation.php:89
 msgid "Please configure the API key for the selected AI provider."
 msgstr "選択した AI プロバイダーの API キーを設定してください。"
 
-#: includes/class-tcarm-ai-translation.php:95
+#: includes/class-tcarm-ai-translation.php:96
 msgid "There are no target languages for translation."
 msgstr "翻訳対象の言語がありません。"
 
-#: includes/class-tcarm-ai-translation.php:127
+#: includes/class-tcarm-ai-translation.php:120
+msgid ""
+"The source language fields are empty. Enter source content before "
+"translating."
+msgstr "翻訳元言語の項目が空です。翻訳する前に翻訳元の内容を入力してください。"
+
+#: includes/class-tcarm-ai-translation.php:128
 msgid "Failed to call the AI translation API. Please check your settings."
 msgstr "AI 翻訳 API の呼び出しに失敗しました。設定を確認してください。"
 
-#: includes/class-tcarm-ai-translation.php:156
-#: includes/class-tcarm-ai-translation.php:209
+#: includes/class-tcarm-ai-translation.php:169
+#: includes/class-tcarm-ai-translation.php:224
 msgid "Invalid target language."
 msgstr "対象言語が不正です。"
 
-#: includes/class-tcarm-ai-translation.php:178
-#: includes/class-tcarm-ai-translation.php:238
+#: includes/class-tcarm-ai-translation.php:193
+#: includes/class-tcarm-ai-translation.php:255
 msgid "AI translation request failed."
 msgstr "AI 翻訳リクエストに失敗しました。"
 
-#: includes/class-tcarm-ai-translation.php:183
-#: includes/class-tcarm-ai-translation.php:243
+#: includes/class-tcarm-ai-translation.php:198
+#: includes/class-tcarm-ai-translation.php:260
 msgid "AI translation API returned an error."
 msgstr "AI 翻訳 API がエラーを返しました。"
 
-#: includes/class-tcarm-ai-translation.php:268
+#: includes/class-tcarm-ai-translation.php:285
 msgid "Could not read the AI translation result. Please try again."
 msgstr "AI 翻訳結果を読み取れませんでした。もう一度お試しください。"
 
-#: includes/class-tcarm-applications.php:314
+#: includes/class-tcarm-application-history.php:150
+msgid ""
+"Review the history of application receipt, notifications, review actions, "
+"and public integrations."
+msgstr "申請受付、通知、審査操作、公開連携の履歴を確認します。"
+
+#: includes/class-tcarm-application-history.php:153
+msgid "There is no history yet."
+msgstr "履歴はまだありません。"
+
+#: includes/class-tcarm-application-history.php:163
+msgid "Actor: "
+msgstr "実行者："
+
+#: includes/class-tcarm-applications.php:326
 msgid "Consent Items"
 msgstr "同意項目"
 
-#: includes/class-tcarm-applications.php:314
+#: includes/class-tcarm-applications.php:326
 msgid "Consent items confirmed when the application was submitted."
 msgstr "申請時に確認された同意項目です。"
 
-#: includes/class-tcarm-applications.php:320
-msgid "Agreed"
-msgstr "同意済み"
-
-#: includes/class-tcarm-applications.php:320
+#: includes/class-tcarm-applications.php:332
 msgid " (Optional)"
 msgstr "（任意）"
 
-#: includes/class-tcarm-applications.php:400
-msgid "The current file will be replaced only if you select a new file. If no file is selected, the current file is kept."
-msgstr "新しいファイルを選択した場合のみ現在のファイルを置き換えます。ファイルを選択しない場合、現在のファイルは保持されます。"
+#: includes/class-tcarm-applications.php:332
+msgid "Agreed"
+msgstr "同意済み"
 
-#: includes/class-tcarm-applications.php:651
+#: includes/class-tcarm-applications.php:419
+msgid ""
+"The current file will be replaced only if you select a new file. If no file "
+"is selected, the current file is kept."
+msgstr ""
+"新しいファイルを選択した場合のみ現在のファイルを置き換えます。ファイルを選択"
+"しない場合、現在のファイルは保持されます。"
+
+#: includes/class-tcarm-applications.php:717
 msgid "File attachments are disabled."
 msgstr "ファイル添付は無効です。"
 
 #. translators: %d: maximum number of files.
-#: includes/class-tcarm-applications.php:656
-#, python-format,php-format
+#: includes/class-tcarm-applications.php:722
+#, php-format
 msgid "You can upload up to %d files."
 msgstr "アップロードできるファイルは最大 %d 件です。"
 
-#: includes/class-tcarm-applications.php:663
+#: includes/class-tcarm-applications.php:729
 msgid "Could not create the attachment storage directory."
 msgstr "添付ファイル保存用ディレクトリを作成できませんでした。"
 
-#: includes/class-tcarm-applications.php:668
-#: includes/class-tcarm-applications.php:702
+#: includes/class-tcarm-applications.php:734
+#: includes/class-tcarm-applications.php:768
 msgid "Could not upload the file."
 msgstr "ファイルをアップロードできませんでした。"
 
-#: includes/class-tcarm-applications.php:674
+#: includes/class-tcarm-applications.php:740
 msgid "This file type cannot be uploaded."
 msgstr "このファイル形式はアップロードできません。"
 
 #. translators: %s: comma-separated allowed file extensions.
-#: includes/class-tcarm-applications.php:679
-#, python-format,php-format
+#: includes/class-tcarm-applications.php:745
+#, php-format
 msgid "Allowed file types are: %s."
 msgstr "アップロード可能なファイル形式：%s。"
 
 #. translators: %s: maximum file size.
-#: includes/class-tcarm-applications.php:684
-#, python-format,php-format
+#: includes/class-tcarm-applications.php:750
+#, php-format
 msgid "File size must be %s or less."
 msgstr "ファイルサイズは %s 以下にしてください。"
 
-#: includes/class-tcarm-applications.php:688
-msgid "Could not verify the file type. Please upload an allowed image or PDF file."
-msgstr "ファイル形式を確認できませんでした。許可された画像または PDF ファイルをアップロードしてください。"
+#: includes/class-tcarm-applications.php:754
+msgid ""
+"Could not verify the file type. Please upload an allowed image or PDF file."
+msgstr ""
+"ファイル形式を確認できませんでした。許可された画像または PDF ファイルをアップ"
+"ロードしてください。"
 
-#: includes/class-tcarm-applications.php:727
+#: includes/class-tcarm-applications.php:871
 msgid "Additional Information Requested"
 msgstr "追加確認依頼"
 
-#: includes/class-tcarm-applications.php:728
+#: includes/class-tcarm-applications.php:872
 msgid "Published"
 msgstr "公開済み"
 
-#: includes/class-tcarm-applications.php:751
-#: includes/class-tcarm-applications.php:802
-#: includes/class-tcarm-applications.php:937
-#: includes/class-tcarm-shortcodes.php:50
-#: includes/class-tcarm-shortcodes.php:55
-#: includes/class-tcarm-shortcodes.php:135
-#: includes/class-tcarm-shortcodes.php:141
-#: includes/class-tcarm-shortcodes.php:146
+#: includes/class-tcarm-applications.php:895
+#: includes/class-tcarm-applications.php:946
+#: includes/class-tcarm-applications.php:1081
+#: includes/class-tcarm-shortcodes.php:64
+#: includes/class-tcarm-shortcodes.php:69
+#: includes/class-tcarm-shortcodes.php:149
+#: includes/class-tcarm-shortcodes.php:155
+#: includes/class-tcarm-shortcodes.php:160
 msgid "Invalid request."
 msgstr "不正なリクエストです。"
 
-#: includes/class-tcarm-applications.php:807
-#: includes/class-tcarm-applications.php:942
+#: includes/class-tcarm-applications.php:951
+#: includes/class-tcarm-applications.php:1086
 #: includes/class-tcarm-notifications.php:260
 msgid "Application not found."
 msgstr "申請が見つかりません。"
 
-#: includes/class-tcarm-applications.php:825
-#: includes/class-tcarm-applications.php:850
+#: includes/class-tcarm-applications.php:969
+#: includes/class-tcarm-applications.php:994
 msgid "You do not have permission to perform this action."
 msgstr "この操作を実行する権限がありません。"
 
-#: includes/class-tcarm-applications.php:965
+#: includes/class-tcarm-applications.php:1109
+#: includes/class-tcarm-shortcodes.php:212
 msgid "Could not update the application content."
 msgstr "申請内容を更新できませんでした。"
 
-#: includes/class-tcarm-applications.php:1120
-msgid "Review the history of application receipt, notifications, review actions, and public integrations."
-msgstr "申請受付、通知、審査操作、公開連携の履歴を確認します。"
-
 #: includes/class-tcarm-applications.php:1123
-msgid "There is no history yet."
-msgstr "履歴はまだありません。"
-
-#: includes/class-tcarm-applications.php:1133
-msgid "Actor: "
-msgstr "実行者："
-
-#: includes/class-tcarm-applications.php:1148
 #: includes/class-tcarm-notifications.php:164
 #: includes/class-tcarm-notifications.php:253
 msgid "Permission denied."
 msgstr "権限がありません。"
 
-#: includes/class-tcarm-applications.php:1155
+#: includes/class-tcarm-applications.php:1130
 msgid "Invalid status."
 msgstr "ステータスが不正です。"
 
 #: includes/class-tcarm-assets.php:14
 msgid ""
-"Deactivating the plugin will not delete saved application data, uploaded files, review information, or settings.\n"
+"Deactivating the plugin will not delete saved application data, uploaded "
+"files, review information, or settings.\n"
 "\n"
 "This information may include personal data and application details.\n"
 "\n"
-"If you want to delete data, enable data deletion under Privacy and Data Retention before deleting the plugin.\n"
+"If you want to delete data, enable data deletion under Privacy and Data "
+"Retention before deleting the plugin.\n"
 "\n"
 "Do you want to deactivate the plugin?"
 msgstr ""
-"プラグインを無効化しても、保存された申請データ、アップロード済みファイル、審査情報、設定は削除されません。\n"
+"プラグインを無効化しても、保存された申請データ、アップロード済みファイル、審"
+"査情報、設定は削除されません。\n"
 "\n"
 "これらの情報には、個人データや申請内容が含まれる場合があります。\n"
 "\n"
-"データを削除する場合は、プラグインを削除する前に「個人情報とデータ保存」でデータ削除を有効にしてください。\n"
+"データを削除する場合は、プラグインを削除する前に「個人情報とデータ保存」で"
+"データ削除を有効にしてください。\n"
 "\n"
 "プラグインを無効化しますか？"
 
-#: includes/class-tcarm-assets.php:43
+#: includes/class-tcarm-assets.php:136
 msgid "Please save your changes."
 msgstr "変更を保存してください。"
 
-#: includes/class-tcarm-assets.php:44
+#: includes/class-tcarm-assets.php:137
 msgid "Menu"
 msgstr "メニュー"
 
-#: includes/class-tcarm-assets.php:46
+#: includes/class-tcarm-assets.php:139
 msgid "Show description"
 msgstr "説明を表示"
 
-#: includes/class-tcarm-assets.php:48
+#: includes/class-tcarm-assets.php:141
 msgid "New field"
 msgstr "新しい項目"
 
-#: includes/class-tcarm-assets.php:53
+#: includes/class-tcarm-assets.php:146
 msgid "Phone number"
 msgstr "電話番号"
 
-#: includes/class-tcarm-assets.php:56
+#: includes/class-tcarm-assets.php:150
 msgid "File upload"
 msgstr "ファイルアップロード"
 
-#: includes/class-tcarm-assets.php:58
+#: includes/class-tcarm-assets.php:152
 msgid "Display label"
 msgstr "表示ラベル"
 
-#: includes/class-tcarm-assets.php:64
-msgid "Dropdown choices"
-msgstr "ドロップダウン選択肢"
-
-#: includes/class-tcarm-assets.php:65
-msgid "Set display labels and saved values. A blank first option is shown automatically as the placeholder."
-msgstr "表示ラベルと保存値を設定します。先頭の空白選択肢はプレースホルダーとして自動表示されます。"
-
-#: includes/class-tcarm-assets.php:66
+#: includes/class-tcarm-assets.php:164
 msgid "Display name"
 msgstr "表示名"
 
-#: includes/class-tcarm-assets.php:67
+#: includes/class-tcarm-assets.php:165
 msgid "Saved value"
 msgstr "保存値"
 
-#: includes/class-tcarm-assets.php:69
+#: includes/class-tcarm-assets.php:167
 msgid "Add choice"
 msgstr "選択肢を追加"
 
-#: includes/class-tcarm-assets.php:70
+#: includes/class-tcarm-assets.php:168
 msgid "Delete field"
 msgstr "項目を削除"
 
-#: includes/class-tcarm-assets.php:71
+#: includes/class-tcarm-assets.php:169
 msgid "New section"
 msgstr "新しいセクション"
 
-#: includes/class-tcarm-assets.php:72
+#: includes/class-tcarm-assets.php:170
 msgid "Edit section name"
 msgstr "セクション名を編集"
 
-#: includes/class-tcarm-assets.php:73
+#: includes/class-tcarm-assets.php:171
 msgid "Delete section"
 msgstr "セクションを削除"
 
-#: includes/class-tcarm-assets.php:75
+#: includes/class-tcarm-assets.php:173
 msgid "Add field"
 msgstr "項目を追加"
 
-#: includes/class-tcarm-assets.php:76
+#: includes/class-tcarm-assets.php:174
 msgid "New consent item"
 msgstr "新しい同意項目"
 
-#: includes/class-tcarm-assets.php:77
+#: includes/class-tcarm-assets.php:175
 msgid "Edit consent item name"
 msgstr "同意項目名を編集"
 
-#: includes/class-tcarm-assets.php:78
+#: includes/class-tcarm-assets.php:176
 msgid "Delete consent item"
 msgstr "同意項目を削除"
 
-#: includes/class-tcarm-assets.php:79
+#: includes/class-tcarm-assets.php:177
 msgid "Checkbox text"
 msgstr "チェックボックス文言"
 
-#: includes/class-tcarm-assets.php:80
+#: includes/class-tcarm-assets.php:178
 msgid "I agree to the terms."
 msgstr "規約に同意します。"
 
-#: includes/class-tcarm-assets.php:82
+#: includes/class-tcarm-assets.php:180
 msgid "Link text"
 msgstr "リンクテキスト"
 
-#: includes/class-tcarm-assets.php:83
+#: includes/class-tcarm-assets.php:181
 msgid "Example: Terms of Use"
 msgstr "例：利用規約"
 
-#: includes/class-tcarm-assets.php:85
+#: includes/class-tcarm-assets.php:183
 msgid "Consent text to display"
 msgstr "表示する同意文"
 
-#: includes/class-tcarm-assets.php:87
+#: includes/class-tcarm-assets.php:185
 msgid "Section name"
 msgstr "セクション名"
 
-#: includes/class-tcarm-assets.php:88
+#: includes/class-tcarm-assets.php:186
 msgid "Consent item name"
 msgstr "同意項目名"
 
-#: includes/class-tcarm-assets.php:89
+#: includes/class-tcarm-assets.php:187
 msgid "Delete this field?"
 msgstr "この項目を削除しますか？"
 
-#: includes/class-tcarm-assets.php:90
+#: includes/class-tcarm-assets.php:188
 msgid "Delete this section?"
 msgstr "このセクションを削除しますか？"
 
-#: includes/class-tcarm-assets.php:91
+#: includes/class-tcarm-assets.php:189
 msgid "Fields in this section will also be deleted. Continue?"
 msgstr "このセクション内の項目も削除されます。続行しますか？"
 
-#: includes/class-tcarm-assets.php:92
+#: includes/class-tcarm-assets.php:190
 msgid "Delete this consent item?"
 msgstr "この同意項目を削除しますか？"
 
-#: includes/class-tcarm-assets.php:93
+#: includes/class-tcarm-assets.php:191
 msgid "Please enter a section name."
 msgstr "セクション名を入力してください。"
 
-#: includes/class-tcarm-assets.php:94
+#: includes/class-tcarm-assets.php:192
 msgid "Please copy this"
 msgstr "これをコピーしてください"
 
-#: includes/class-tcarm-assets.php:95
+#: includes/class-tcarm-assets.php:193
 msgid " was copied."
 msgstr "をコピーしました。"
 
-#: includes/class-tcarm-assets.php:96
+#: includes/class-tcarm-assets.php:194
 msgid "Select download file"
 msgstr "ダウンロードファイルを選択"
 
-#: includes/class-tcarm-assets.php:97
+#: includes/class-tcarm-assets.php:195
 msgid "Use this file"
 msgstr "このファイルを使用"
 
-#: includes/class-tcarm-assets.php:100
+#: includes/class-tcarm-assets.php:198
 #: includes/class-tcarm-notifications.php:106
 msgid "Recipient: "
 msgstr "送信先: "
 
-#: includes/class-tcarm-assets.php:101
+#: includes/class-tcarm-assets.php:199
 #: includes/class-tcarm-notifications.php:107
 msgid "—"
 msgstr "—"
+
+#: includes/class-tcarm-assets.php:258
+msgid "Please complete this required field."
+msgstr "この必須項目を入力してください。"
+
+#: includes/class-tcarm-assets.php:259
+msgid "Please select this checkbox."
+msgstr "このチェックボックスを選択してください。"
+
+#: includes/class-tcarm-assets.php:260
+msgid "Please select an option."
+msgstr "選択肢を1つ選んでください。"
+
+#: includes/class-tcarm-assets.php:261
+msgid "Please select at least one option."
+msgstr "少なくとも1つの選択肢を選んでください。"
+
+#: includes/class-tcarm-assets.php:263
+msgid "Please enter a valid URL."
+msgstr "有効なURLを入力してください。"
+
+#: includes/class-tcarm-assets.php:264
+msgid "Please enter a valid phone number."
+msgstr "有効な電話番号を入力してください。"
 
 #: includes/class-tcarm-notifications.php:13
 #: includes/class-tcarm-notifications.php:25
@@ -2336,8 +2678,12 @@ msgid "Resend Notification Email"
 msgstr "通知メール再送信"
 
 #: includes/class-tcarm-notifications.php:72
-msgid "Resend notification emails according to the current status when the applicant or administrator did not receive them."
-msgstr "申請者または管理者が通知メールを受信できなかった場合、現在の状態に応じた通知メールを再送信できます。"
+msgid ""
+"Resend notification emails according to the current status when the "
+"applicant or administrator did not receive them."
+msgstr ""
+"申請者または管理者が通知メールを受信できなかった場合、現在の状態に応じた通知"
+"メールを再送信できます。"
 
 #: includes/class-tcarm-notifications.php:75
 msgid "There are currently no notification emails available for resend."
@@ -2362,7 +2708,8 @@ msgid "Resend notification email?"
 msgstr "通知メールを再送信しますか？"
 
 #: includes/class-tcarm-notifications.php:120
-msgid "The selected notification email will be resent. Do you want to continue?"
+msgid ""
+"The selected notification email will be resent. Do you want to continue?"
 msgstr "選択した通知メールを再送信します。よろしいですか？"
 
 #: includes/class-tcarm-notifications.php:121
@@ -2374,12 +2721,17 @@ msgid "Email Delivery Test"
 msgstr "送信設定テストメール"
 
 #: includes/class-tcarm-notifications.php:175
-msgid "This is a test email for the application management system email delivery settings."
-msgstr "これは申請管理システムのメール送信設定を確認するためのテストメールです。"
+msgid ""
+"If you received this email, the email delivery settings are working "
+"correctly."
+msgstr "このメールを受信できていれば、メール送信設定は正常に動作しています。"
 
 #: includes/class-tcarm-notifications.php:175
-msgid "If you received this email, the email delivery settings are working correctly."
-msgstr "このメールを受信できていれば、メール送信設定は正常に動作しています。"
+msgid ""
+"This is a test email for the application management system email delivery "
+"settings."
+msgstr ""
+"これは申請管理システムのメール送信設定を確認するためのテストメールです。"
 
 #: includes/class-tcarm-notifications.php:278
 msgid "Failed to resend email. No recipient is configured."
@@ -2394,130 +2746,139 @@ msgid "Failed to resend email. Recipient:"
 msgstr "メールの再送信に失敗しました。送信先:"
 
 #. translators: %s: consent item label.
-#: includes/class-tcarm-plugin.php:131
-#, python-format,php-format
+#: includes/class-tcarm-plugin.php:155
+#, php-format
 msgid "You must agree to %s."
 msgstr "%sへの同意が必要です。"
 
-#: includes/class-tcarm-plugin.php:155
+#: includes/class-tcarm-plugin.php:179
 msgid "I agree to the content."
 msgstr "内容に同意します。"
 
 #. translators: %s: consent item label.
-#: includes/class-tcarm-plugin.php:159
-#, python-format,php-format
+#: includes/class-tcarm-plugin.php:183
+#, php-format
 msgid "Open %s"
 msgstr "%sを開く"
 
-#: includes/class-tcarm-settings.php:703
-#: includes/class-tcarm-settings.php:807
+#. translators: %s: field label or key.
+#: includes/class-tcarm-settings.php:525
+#, php-format
+msgid ""
+"Choice values must be unique within each field. Duplicate value found in %s."
+msgstr ""
+"各フィールド内で選択肢の値は一意である必要があります。%s に重複する値がありま"
+"す。"
+
+#: includes/class-tcarm-settings.php:724 includes/class-tcarm-settings.php:828
 msgid "Shortcode to place: "
 msgstr "配置するショートコード："
 
-#: includes/class-tcarm-settings.php:711
-#: includes/class-tcarm-settings.php:815
+#: includes/class-tcarm-settings.php:732 includes/class-tcarm-settings.php:836
 msgid "Select a page"
 msgstr "ページを選択"
 
-#: includes/class-tcarm-settings.php:719
-#: includes/class-tcarm-settings.php:823
+#: includes/class-tcarm-settings.php:740 includes/class-tcarm-settings.php:844
 msgid "Current URL: "
 msgstr "現在の URL："
 
-#: includes/class-tcarm-settings.php:721
-#: includes/class-tcarm-settings.php:825
+#: includes/class-tcarm-settings.php:742 includes/class-tcarm-settings.php:846
 msgid "Current URL: Not set"
 msgstr "現在の URL：未設定"
 
-#: includes/class-tcarm-settings.php:764
+#: includes/class-tcarm-settings.php:785
 msgid "Submitted Content Page"
 msgstr "提出内容確認ページ"
 
-#: includes/class-tcarm-settings.php:766
+#: includes/class-tcarm-settings.php:787
 msgid "Back to top link"
 msgstr "トップへ戻るリンク"
 
-#: includes/class-tcarm-settings.php:776
+#: includes/class-tcarm-settings.php:797
 msgid "Frontend page settings language tabs"
 msgstr "フロントエンドページ設定の言語タブ"
 
-#: includes/class-tcarm-shortcodes.php:18
+#: includes/class-tcarm-shortcodes.php:21
 msgid "Could not verify your input. Please wait a moment and try again."
 msgstr "入力内容を確認できませんでした。少し待ってからもう一度お試しください。"
 
-#: includes/class-tcarm-shortcodes.php:22
-#: includes/class-tcarm-shortcodes.php:59
-#: includes/class-tcarm-shortcodes.php:150
+#: includes/class-tcarm-shortcodes.php:25
+#: includes/class-tcarm-shortcodes.php:73
+#: includes/class-tcarm-shortcodes.php:164
 msgid "The submission was too fast. Please check your input and try again."
 msgstr "送信が速すぎます。入力内容を確認してもう一度お試しください。"
 
-#: includes/class-tcarm-shortcodes.php:29
-#: includes/class-tcarm-shortcodes.php:67
+#: includes/class-tcarm-shortcodes.php:31
+#: includes/class-tcarm-shortcodes.php:81
 msgid "Robot prevention verification failed. Please try again."
 msgstr "ロボット申請防止の確認に失敗しました。もう一度お試しください。"
 
-#: includes/class-tcarm-shortcodes.php:77
-#: includes/class-tcarm-shortcodes.php:171
+#: includes/class-tcarm-shortcodes.php:39
+#: includes/class-tcarm-shortcodes.php:91
+#: includes/class-tcarm-shortcodes.php:175
+#: includes/class-tcarm-shortcodes.php:195
 msgid "Too many submissions were made. Please wait a while and try again."
 msgstr "送信回数が多すぎます。しばらく待ってからもう一度お試しください。"
 
-#: includes/class-tcarm-shortcodes.php:138
+#: includes/class-tcarm-shortcodes.php:152
 msgid "This application cannot be edited."
 msgstr "この申請は編集できません。"
 
-#: includes/class-tcarm-shortcodes.php:153
+#: includes/class-tcarm-shortcodes.php:167
 msgid "Robot prevention verification failed."
 msgstr "ロボット申請防止の確認に失敗しました。"
 
 #. translators: %s: field label.
-#: includes/class-tcarm-shortcodes.php:254
-#, python-format,php-format
+#: includes/class-tcarm-shortcodes.php:343
+#, php-format
 msgid "%s is required."
 msgstr "%sは必須です。"
 
 #. translators: %s: field label.
-#: includes/class-tcarm-shortcodes.php:259
-#, python-format,php-format
+#: includes/class-tcarm-shortcodes.php:348
+#: includes/class-tcarm-shortcodes.php:352
+#, php-format
 msgid "The selected value for %s is invalid."
 msgstr "%s の選択値が不正です。"
 
 #. translators: %s: field label.
-#: includes/class-tcarm-shortcodes.php:263
-#: includes/class-tcarm-shortcodes.php:267
-#, python-format,php-format
+#: includes/class-tcarm-shortcodes.php:356
+#: includes/class-tcarm-shortcodes.php:360
+#, php-format
 msgid "%s has an invalid format."
 msgstr "%s の形式が不正です。"
 
 #. translators: %s: field label.
-#: includes/class-tcarm-shortcodes.php:271
-#, python-format,php-format
-msgid "Please enter %s using numbers, hyphens, plus signs, parentheses, and spaces."
+#: includes/class-tcarm-shortcodes.php:364
+#, php-format
+msgid ""
+"Please enter %s using numbers, hyphens, plus signs, parentheses, and spaces."
 msgstr "%s は数字、ハイフン、プラス記号、括弧、スペースで入力してください。"
 
 #. translators: %s: field label.
-#: includes/class-tcarm-shortcodes.php:275
-#, python-format,php-format
+#: includes/class-tcarm-shortcodes.php:368
+#, php-format
 msgid "Please enter %s in YYYY-MM-DD format."
 msgstr "%s は YYYY-MM-DD 形式で入力してください。"
 
-#: includes/class-tcarm-shortcodes.php:540
+#: includes/class-tcarm-shortcodes.php:636
 msgid "No form fields have been configured."
 msgstr "フォーム項目が設定されていません。"
 
-#: includes/class-tcarm-shortcodes.php:993
+#: includes/class-tcarm-shortcodes.php:1118
 msgid "This file cannot be downloaded."
 msgstr "このファイルはダウンロードできません。"
 
-#: includes/class-tcarm-shortcodes.php:997
-msgid "The download link has expired. Please check again from the application status page."
-msgstr "ダウンロードリンクの有効期限が切れています。申請状況ページから再度確認してください。"
+#: includes/class-tcarm-shortcodes.php:1122
+msgid ""
+"The download link has expired. Please check again from the application "
+"status page."
+msgstr ""
+"ダウンロードリンクの有効期限が切れています。申請状況ページから再度確認してく"
+"ださい。"
 
-#: includes/class-tcarm-shortcodes.php:1002
-#: includes/class-tcarm-shortcodes.php:1019
-#: includes/class-tcarm-shortcodes.php:1024
+#: includes/class-tcarm-shortcodes.php:1127
+#: includes/class-tcarm-shortcodes.php:1144
+#: includes/class-tcarm-shortcodes.php:1149
 msgid "File not found."
 msgstr "ファイルが見つかりません。"
-
-#: includes/admin-pages/page-notifications.php:127
-msgid "Edit notification messages such as submission receipt and review results by switching tabs."
-msgstr ""

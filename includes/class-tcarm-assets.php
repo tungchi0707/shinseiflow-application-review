@@ -19,25 +19,118 @@ trait TCARM_Assets_Trait {
             );
         }
 
-        if (strpos($hook, 'tcarm') !== false || $hook === 'toplevel_page_tcarm_dashboard' || strpos($hook, 'shinseiflow-about') !== false) {
+        $is_dashboard_page = $hook === 'toplevel_page_tcarm_dashboard';
+        $is_applications_page = str_ends_with($hook, '_page_tcarm_applications');
+        $is_form_settings_page = str_ends_with($hook, '_page_tcarm_form_settings');
+        $is_download_settings_page = str_ends_with($hook, '_page_tcarm_download_files_settings');
+        $is_mail_settings_page = str_ends_with($hook, '_page_tcarm_mail_settings');
+        $is_security_settings_page = str_ends_with($hook, '_page_tcarm_security_settings');
+        $is_general_settings_page = str_ends_with($hook, '_page_tcarm_settings');
+        $is_display_customize_page = str_ends_with($hook, '_page_tcarm_display_customize');
+        $is_translation_settings_page = str_ends_with($hook, '_page_tcarm_translation_settings');
+        $is_privacy_settings_page = str_ends_with($hook, '_page_tcarm_privacy_settings');
+        $is_about_page = strpos($hook, 'shinseiflow-about') !== false;
+        $is_registered_admin_page = $is_dashboard_page
+            || $is_applications_page
+            || $is_form_settings_page
+            || $is_download_settings_page
+            || $is_mail_settings_page
+            || $is_security_settings_page
+            || $is_general_settings_page
+            || $is_display_customize_page
+            || $is_translation_settings_page
+            || $is_privacy_settings_page
+            || $is_about_page;
+        $is_panel_page = $is_registered_admin_page && !$is_about_page;
+        $has_fixed_savebar = $is_form_settings_page
+            || $is_download_settings_page
+            || $is_mail_settings_page
+            || $is_security_settings_page
+            || $is_general_settings_page
+            || $is_display_customize_page
+            || $is_translation_settings_page
+            || $is_privacy_settings_page;
+        $is_application_detail_page = false;
+        if ($is_applications_page) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin asset detection; values are sanitized and do not modify data.
+            $application_action = isset($_GET['action']) ? sanitize_key(wp_unslash($_GET['action'])) : '';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin asset detection; the application id is normalized before use.
+            $application_id = isset($_GET['id']) ? absint(wp_unslash($_GET['id'])) : 0;
+            $is_application_detail_page = $application_action === 'view' && $application_id > 0;
+        }
+
+        if (strpos($hook, 'tcarm') !== false || $hook === 'toplevel_page_tcarm_dashboard' || $is_about_page) {
             wp_enqueue_style('tcarm-admin', self::plugin_url() . 'assets/css/admin.css', array(), self::VERSION);
+            if ($is_about_page) {
+                wp_enqueue_style(
+                    'tcarm-admin-about',
+                    self::plugin_url() . 'assets/css/admin-about.css',
+                    array('tcarm-admin'),
+                    self::VERSION
+                );
+            }
             $settings = self::get_settings();
             $admin_custom_css = isset($settings['admin_custom_css']) ? trim((string) $settings['admin_custom_css']) : '';
             if ($admin_custom_css !== '') {
-                wp_add_inline_style('tcarm-admin', $admin_custom_css);
+                $admin_custom_css_handle = $is_about_page ? 'tcarm-admin-about' : 'tcarm-admin';
+                wp_add_inline_style($admin_custom_css_handle, $admin_custom_css);
             }
-            wp_enqueue_media();
-            wp_enqueue_script('jquery-ui-sortable');
-            $admin_scripts = array(
-                'tcarm-admin-download-files' => 'assets/js/admin-download-files.js',
-                'tcarm-admin-form-settings' => 'assets/js/admin-form-settings.js',
-                'tcarm-admin-card-tooltips' => 'assets/js/admin-card-tooltips.js',
-                'tcarm-admin-material-ui' => 'assets/js/admin-material-ui.js',
-                'tcarm-admin-fixed-savebar' => 'assets/js/admin-fixed-savebar.js',
-                'tcarm-admin-image-lightbox' => 'assets/js/admin-image-lightbox.js',
-                'tcarm-admin-mobile-nav' => 'assets/js/admin-mobile-nav.js',
-                'tcarm-admin-application-number-rules' => 'assets/js/admin-application-number-rules.js',
-            );
+
+            if ($is_download_settings_page) {
+                wp_enqueue_media();
+            }
+
+            $admin_scripts = array();
+            if ($is_download_settings_page) {
+                $admin_scripts['tcarm-admin-download-files'] = array(
+                    'path' => 'assets/js/admin-download-files.js',
+                    'dependencies' => array('jquery', 'jquery-ui-sortable'),
+                );
+            }
+            if ($is_form_settings_page || $is_mail_settings_page || $is_general_settings_page || $is_display_customize_page) {
+                $form_settings_dependencies = array('jquery');
+                if ($is_form_settings_page) {
+                    $form_settings_dependencies[] = 'jquery-ui-sortable';
+                }
+                $admin_scripts['tcarm-admin-form-settings'] = array(
+                    'path' => 'assets/js/admin-form-settings.js',
+                    'dependencies' => $form_settings_dependencies,
+                );
+            }
+            if ($is_panel_page) {
+                $admin_scripts['tcarm-admin-card-tooltips'] = array(
+                    'path' => 'assets/js/admin-card-tooltips.js',
+                    'dependencies' => array('jquery'),
+                );
+                $admin_scripts['tcarm-admin-material-ui'] = array(
+                    'path' => 'assets/js/admin-material-ui.js',
+                    'dependencies' => array('jquery'),
+                );
+            }
+            if ($has_fixed_savebar) {
+                $admin_scripts['tcarm-admin-fixed-savebar'] = array(
+                    'path' => 'assets/js/admin-fixed-savebar.js',
+                    'dependencies' => array('jquery'),
+                );
+            }
+            if ($is_application_detail_page) {
+                $admin_scripts['tcarm-admin-image-lightbox'] = array(
+                    'path' => 'assets/js/admin-image-lightbox.js',
+                    'dependencies' => array('jquery'),
+                );
+            }
+            if ($is_registered_admin_page) {
+                $admin_scripts['tcarm-admin-mobile-nav'] = array(
+                    'path' => 'assets/js/admin-mobile-nav.js',
+                    'dependencies' => array(),
+                );
+            }
+            if ($is_general_settings_page) {
+                $admin_scripts['tcarm-admin-application-number-rules'] = array(
+                    'path' => 'assets/js/admin-application-number-rules.js',
+                    'dependencies' => array('jquery', 'jquery-ui-sortable'),
+                );
+            }
             $admin_script_data = array(
                 'save' => __('Save', 'shinseiflow-application-review'),
                 'unsavedChanges' => __('Please save your changes.', 'shinseiflow-application-review'),
@@ -52,7 +145,8 @@ trait TCARM_Assets_Trait {
                 'emailType' => __('Email', 'shinseiflow-application-review'),
                 'phoneType' => __('Phone number', 'shinseiflow-application-review'),
                 'dateType' => __('Date', 'shinseiflow-application-review'),
-                'checkboxType' => __('Checkbox', 'shinseiflow-application-review'),
+                'checkboxGroupType' => __('Checkbox', 'shinseiflow-application-review'),
+                'radioType' => __('Radio Button Group', 'shinseiflow-application-review'),
                 'fileUploadType' => __('File upload', 'shinseiflow-application-review'),
                 'dropdownType' => __('Dropdown', 'shinseiflow-application-review'),
                 'label' => __('Display label', 'shinseiflow-application-review'),
@@ -61,8 +155,12 @@ trait TCARM_Assets_Trait {
                 'description' => __('Description', 'shinseiflow-application-review'),
                 'descriptionExample' => __('Example: Enter helper text', 'shinseiflow-application-review'),
                 'required' => __('Required', 'shinseiflow-application-review'),
-                'dropdownChoices' => __('Dropdown choices', 'shinseiflow-application-review'),
-                'dropdownChoiceHelp' => __('Set display labels and saved values. A blank first option is shown automatically as the placeholder.', 'shinseiflow-application-review'),
+                'dropdownChoices' => __('Dropdown Choices', 'shinseiflow-application-review'),
+                'dropdownChoiceHelp' => __('Set the display labels shown on the frontend and the saved values. A blank first option is shown automatically as the placeholder.', 'shinseiflow-application-review'),
+                'radioChoices' => __('Radio Button Choices', 'shinseiflow-application-review'),
+                'radioChoiceHelp' => __('Set the display labels and saved values for the radio buttons.', 'shinseiflow-application-review'),
+                'checkboxGroupChoices' => __('Checkbox Choices', 'shinseiflow-application-review'),
+                'checkboxGroupChoiceHelp' => __('Set the display labels and saved values for the checkboxes.', 'shinseiflow-application-review'),
                 'displayName' => __('Display name', 'shinseiflow-application-review'),
                 'savedValue' => __('Saved value', 'shinseiflow-application-review'),
                 'remove' => __('Delete', 'shinseiflow-application-review'),
@@ -106,15 +204,15 @@ trait TCARM_Assets_Trait {
                 'aiFilledCurrentLanguage' => __('Translations were inserted into empty fields in the current language tab. Please review before saving.', 'shinseiflow-application-review'),
                 'aiNoFillableTargets' => __('There were no empty fields available for translation.', 'shinseiflow-application-review'),
             );
-            foreach ($admin_scripts as $handle => $path) {
-                wp_enqueue_script($handle, self::plugin_url() . $path, array('jquery', 'jquery-ui-sortable'), self::VERSION, true);
+            foreach ($admin_scripts as $handle => $script) {
+                wp_enqueue_script($handle, self::plugin_url() . $script['path'], $script['dependencies'], self::VERSION, true);
                 wp_add_inline_script(
                     $handle,
                     'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($admin_script_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ');',
                     'before'
                 );
             }
-            if (in_array($hook, array('shinseiflow-application-review_page_tcarm_security_settings', 'tcarm_dashboard_page_tcarm_security_settings'), true) || strpos($hook, 'tcarm_security_settings') !== false) {
+            if ($is_security_settings_page) {
                 wp_enqueue_script('tcarm-admin-security', self::plugin_url() . 'assets/js/admin-security.js', array('jquery'), self::VERSION, true);
             }
         }
@@ -153,10 +251,19 @@ trait TCARM_Assets_Trait {
             wp_add_inline_style('tcarm-frontend', $frontend_custom_css);
         }
         wp_enqueue_script('tcarm-frontend-validation', self::plugin_url() . 'assets/js/frontend-validation.js', array(), self::VERSION, true);
-    }
-
-    public function frontend_resource_hints($urls, $relation_type) {
-        return $urls;
+        wp_localize_script(
+            'tcarm-frontend-validation',
+            'tcarmFrontendValidationI18n',
+            array(
+                'requiredField' => __('Please complete this required field.', 'shinseiflow-application-review'),
+                'requiredCheckbox' => __('Please select this checkbox.', 'shinseiflow-application-review'),
+                'requiredRadioGroup' => __('Please select an option.', 'shinseiflow-application-review'),
+                'requiredCheckboxGroup' => __('Please select at least one option.', 'shinseiflow-application-review'),
+                'invalidEmail' => __('Please enter a valid email address.', 'shinseiflow-application-review'),
+                'invalidUrl' => __('Please enter a valid URL.', 'shinseiflow-application-review'),
+                'invalidPhone' => __('Please enter a valid phone number.', 'shinseiflow-application-review'),
+            )
+        );
     }
 
 }

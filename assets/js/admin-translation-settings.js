@@ -1,6 +1,8 @@
 (function(){
             var tcarmAiTranslate = window.tcarmAiTranslate || {};
             var tcarmAiI18n = tcarmAiTranslate.i18n || window.tcarmAdminI18n || {};
+            var tcarmBaseLanguage = tcarmAiTranslate.baseLanguage || 'en';
+            var tcarmTargetLanguages = Array.isArray(tcarmAiTranslate.targetLanguages) ? tcarmAiTranslate.targetLanguages : [];
 
             function t(key, fallback){
                 return typeof tcarmAiI18n[key] === 'string' && tcarmAiI18n[key] !== '' ? tcarmAiI18n[key] : fallback;
@@ -15,7 +17,24 @@
 
             function getTcarmActiveTranslationLang(){
                 var activeTab = document.querySelector('.tcarm-translation-lang-tab.is-active');
-                return activeTab ? activeTab.getAttribute('data-tcarm-translation-lang') : 'ja';
+                return activeTab ? activeTab.getAttribute('data-tcarm-translation-lang') : tcarmBaseLanguage;
+            }
+
+            function isTcarmBaseLanguageUnsaved(){
+                var select = document.getElementById('tcarm-base-language-select');
+                return !!select && select.value !== tcarmBaseLanguage;
+            }
+
+            function syncTcarmBaseLanguageControls(){
+                var select = document.getElementById('tcarm-base-language-select');
+                if (!select) return;
+                var hiddenEnabled = document.getElementById('tcarm-base-language-enabled');
+                if (hiddenEnabled) hiddenEnabled.value = select.value;
+                document.querySelectorAll('[data-tcarm-enabled-language]').forEach(function(checkbox){
+                    var isSelectedBase = checkbox.getAttribute('data-tcarm-enabled-language') === select.value;
+                    checkbox.disabled = isSelectedBase;
+                    if (isSelectedBase) checkbox.checked = true;
+                });
             }
 
             function updateTcarmAiTranslateButton(){
@@ -23,11 +42,12 @@
                 var button = document.getElementById('tcarm-ai-translate-button');
                 if (!action || !button) return;
                 var lang = getTcarmActiveTranslationLang();
-                var hasTargets = !!tcarmAiTranslate.hasTargets;
-                var show = hasTargets && lang && lang !== 'ja';
+                var show = tcarmTargetLanguages.indexOf(lang) !== -1;
                 action.hidden = !show;
-                button.disabled = !show;
-                if (!show) {
+                button.disabled = !show || isTcarmBaseLanguageUnsaved();
+                if (isTcarmBaseLanguageUnsaved()) {
+                    setTcarmAiMessage(t('aiBaseLanguageUnsaved', 'Save the base language setting before using AI translation.'), 'error');
+                } else if (!show) {
                     setTcarmAiMessage('', '');
                 }
             }
@@ -39,31 +59,44 @@
                 updateTcarmAiTranslateButton();
                 button.addEventListener('click', function(){
                     var targetLang = getTcarmActiveTranslationLang();
-                    if (!targetLang || targetLang === 'ja') {
+                    if (isTcarmBaseLanguageUnsaved()) {
+                        setTcarmAiMessage(t('aiBaseLanguageUnsaved', 'Save the base language setting before using AI translation.'), 'error');
+                        return;
+                    }
+                    if (!targetLang || tcarmTargetLanguages.indexOf(targetLang) === -1) {
                         setTcarmAiMessage(t('aiSelectTargetLanguage', 'Please select the target language.'), 'error');
                         return;
                     }
 
                     var source = {};
+                    var emptyTargetCount = 0;
+                    var emptySourceCount = 0;
                     document.querySelectorAll('[data-tcarm-translation-input="1"][data-tcarm-translation-lang="' + targetLang + '"]').forEach(function(targetInput){
                         var key = targetInput.getAttribute('data-tcarm-translation-key');
                         if (!key || (targetInput.value || '').trim() !== '') {
                             return;
                         }
+                        emptyTargetCount++;
                         var sourceInput = null;
-                        document.querySelectorAll('[data-tcarm-translation-input="1"][data-tcarm-translation-lang="ja"]').forEach(function(input){
+                        document.querySelectorAll('[data-tcarm-translation-input="1"][data-tcarm-translation-lang="' + tcarmBaseLanguage + '"]').forEach(function(input){
                             if (!sourceInput && input.getAttribute('data-tcarm-translation-key') === key) {
                                 sourceInput = input;
                             }
                         });
-                        var sourceValue = sourceInput ? (sourceInput.value || '').trim() : (targetInput.getAttribute('data-tcarm-translation-source') || '').trim();
-                        if (sourceValue !== '') {
-                            source[key] = sourceValue;
+                        var sourceValue = sourceInput ? (sourceInput.value || '').trim() : '';
+                        if (sourceValue === '') {
+                            emptySourceCount++;
+                            return;
                         }
+                        source[key] = sourceValue;
                     });
 
-                    if (!Object.keys(source).length) {
+                    if (!emptyTargetCount) {
                         setTcarmAiMessage(t('aiNoEmptyTargets', 'There are no empty fields to translate.'), 'error');
+                        return;
+                    }
+                    if (emptySourceCount > 0) {
+                        setTcarmAiMessage(t('aiSourceEmpty', 'The source language fields are empty. Enter content in the base language before translating.'), 'error');
                         return;
                     }
                     button.disabled = true;
@@ -137,7 +170,17 @@
                     });
                 });
             }
+            function initTcarmBaseLanguageControls(){
+                var select = document.getElementById('tcarm-base-language-select');
+                if (!select) return;
+                syncTcarmBaseLanguageControls();
+                select.addEventListener('change', function(){
+                    syncTcarmBaseLanguageControls();
+                    updateTcarmAiTranslateButton();
+                });
+            }
             function initTcarmTranslationPage(){
+                initTcarmBaseLanguageControls();
                 initTcarmTranslationTabs();
                 initTcarmAiTranslate();
             }

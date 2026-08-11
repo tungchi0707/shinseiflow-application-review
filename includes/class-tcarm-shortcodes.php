@@ -4,6 +4,9 @@ if (!defined('ABSPATH')) {
 }
 
 trait TCARM_Shortcodes_Trait {
+    private $invalid_radio_fields = array();
+    private $invalid_checkbox_group_fields = array();
+
     public function shortcode_application_form($atts = array()) {
         $this->set_current_form_options_from_shortcode($atts);
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Step only selects the frontend form state; confirm submissions verify the frontend nonce immediately below.
@@ -23,12 +26,23 @@ trait TCARM_Shortcodes_Trait {
             }
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Full form payload is sanitized by sanitize_application_data() immediately after nonce verification.
             $data = $this->sanitize_application_data($_POST);
-            $file_errors = $this->process_file_uploads($data);
-            $errors = array_merge($this->validate_application_data($data), $file_errors, $this->validate_consent_items_from_post());
+            $errors = array_merge($this->validate_application_data($data, false), $this->validate_consent_items_from_post());
             if ($this->turnstile_enabled_for('form') && !$this->verify_turnstile_response()) {
                 $errors[] = __('Robot prevention verification failed. Please try again.', 'shinseiflow-application-review');
             }
             if ($errors) {
+                return $this->render_frontend_form($data, $errors);
+            }
+            $request_uploads = array();
+            if ($this->request_has_new_file_uploads() && !$this->check_frontend_upload_rate_limit($data)) {
+                $this->log_blocked_submission('Application submission', 'upload_rate_limit', 'Repeated file uploads in a short time', $data);
+                return $this->render_frontend_form($data, array(__('Too many submissions were made. Please wait a while and try again.', 'shinseiflow-application-review')));
+            }
+            $file_errors = $this->process_file_uploads($data, 0, $request_uploads);
+            $errors = array_merge($this->validate_application_data($data), $file_errors);
+            if ($errors) {
+                $this->cleanup_request_uploads($request_uploads);
+                $this->clear_request_upload_values($data, $request_uploads);
                 return $this->render_frontend_form($data, $errors);
             }
             return $this->render_confirm($data);
@@ -60,7 +74,7 @@ trait TCARM_Shortcodes_Trait {
         }
         // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Full form payload is sanitized by sanitize_application_data() immediately after nonce verification.
         $data = $this->sanitize_application_data($_POST);
-        $errors = $this->validate_application_data($data);
+        $errors = array_merge($this->validate_application_data($data), $this->validate_consent_items_from_post());
         if ($this->turnstile_enabled_for('form')) {
             $verified = isset($_POST['tcarm_turnstile_verified']) ? sanitize_text_field(wp_unslash($_POST['tcarm_turnstile_verified'])) : '';
             if (!$verified || !wp_verify_nonce($verified, 'tcarm_turnstile_verified_' . $this->application_data_hash($data))) {
@@ -152,11 +166,20 @@ trait TCARM_Shortcodes_Trait {
         if ($this->turnstile_enabled_for('edit') && !$this->verify_turnstile_response()) {
             wp_die(esc_html__('Robot prevention verification failed.', 'shinseiflow-application-review'));
         }
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Edit payload is sanitized by sanitize_application_data() immediately after application-specific nonce verification.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Application-specific nonce is verified above; the full edit payload is sanitized by sanitize_application_data().
         $data = $this->sanitize_application_data($_POST);
-        $file_errors = $this->process_file_uploads($data, (int) $item->id);
-        $errors = array_merge($this->validate_application_data($data), $file_errors);
+        $request_uploads = array();
+        $errors = array_merge($this->validate_application_data($data, false), $this->validate_consent_items_from_post());
+        if (!$errors && $this->request_has_new_file_uploads() && !$this->check_frontend_upload_rate_limit($data)) {
+            $this->log_blocked_submission('Resubmission', 'upload_rate_limit', 'Repeated file uploads in a short time', $data);
+            $errors[] = __('Too many submissions were made. Please wait a while and try again.', 'shinseiflow-application-review');
+        }
+        if (!$errors) {
+            $file_errors = $this->process_file_uploads($data, (int) $item->id, $request_uploads);
+            $errors = array_merge($this->validate_application_data($data), $file_errors);
+        }
         if ($errors) {
+            $this->cleanup_request_uploads($request_uploads);
             set_transient('tcarm_edit_errors_' . $item->application_code, $errors, 60);
             $edit_error_args = array('tcarm_edit_error' => '1', 'tcarm_token' => rawurlencode($token));
             $edit_lang = isset($_POST['tcarm_lang']) ? $this->normalize_language_code(sanitize_text_field(wp_unslash($_POST['tcarm_lang']))) : '';
@@ -167,6 +190,7 @@ trait TCARM_Shortcodes_Trait {
             exit;
         }
         if (!$this->check_rate_limit_if_enabled('edit_ip', $this->get_request_ip(), 5, 30 * MINUTE_IN_SECONDS)) {
+            $this->cleanup_request_uploads($request_uploads);
             $this->log_blocked_submission('Resubmission', 'rate_limit', 'Repeated submissions in a short time', $data);
             wp_die(esc_html__('Too many submissions were made. Please wait a while and try again.', 'shinseiflow-application-review'));
         }
@@ -182,7 +206,18 @@ trait TCARM_Shortcodes_Trait {
         ));
         $filtered_update = self::filter_db_data($update);
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Required plugin-owned custom application table resubmission update; WordPress core APIs do not apply.
-        $wpdb->update(self::table_name(), $filtered_update, array('id' => (int) $item->id), $this->application_db_formats_for($filtered_update), array('%d'));
+        $updated_rows = $wpdb->update(self::table_name(), $filtered_update, array('id' => (int) $item->id), $this->application_db_formats_for($filtered_update), array('%d'));
+        if ($updated_rows === false) {
+            $this->cleanup_request_uploads($request_uploads);
+            set_transient('tcarm_edit_errors_' . $item->application_code, array(__('Could not update the application content.', 'shinseiflow-application-review')), 60);
+            $edit_error_args = array('tcarm_edit_error' => '1', 'tcarm_token' => rawurlencode($token));
+            $edit_lang = isset($_POST['tcarm_lang']) ? $this->normalize_language_code(sanitize_text_field(wp_unslash($_POST['tcarm_lang']))) : '';
+            if ($this->should_add_lang_query($edit_lang)) {
+                $edit_error_args['lang'] = $edit_lang;
+            }
+            wp_safe_redirect(add_query_arg($edit_error_args, remove_query_arg(array('tcarm_edit_updated', 'tcarm_submitted', 'tcarm_code', 'code', 'token'))));
+            exit;
+        }
         self::flush_application_cache();
         $updated = $this->get_application((int) $item->id);
         if ($updated) {
@@ -205,14 +240,60 @@ trait TCARM_Shortcodes_Trait {
         return trim($honeypot_value) !== '';
     }
 
+    private function check_frontend_upload_rate_limit($data) {
+        $email = isset($data['contact_email']) ? sanitize_email((string) $data['contact_email']) : '';
+        if (!$this->check_rate_limit_if_enabled('upload_ip', $this->get_request_ip(), 5, 10 * MINUTE_IN_SECONDS)) {
+            return false;
+        }
+        if ($email === '' || !is_email($email)) {
+            return true;
+        }
+        return $this->check_rate_limit_if_enabled('upload_email', strtolower($email), 3, 10 * MINUTE_IN_SECONDS);
+    }
+
     private function sanitize_application_data($source) {
         $fields = self::get_fields();
         $data = array();
+        $this->invalid_radio_fields = array();
+        $this->invalid_checkbox_group_fields = array();
         foreach ($fields as $key => $field) {
-            $raw = isset($source[$key]) ? wp_unslash($source[$key]) : '';
+            $has_raw_value = is_array($source) && array_key_exists($key, $source);
+            $raw = $has_raw_value ? wp_unslash($source[$key]) : '';
             $type = isset($field['type']) ? $field['type'] : 'text';
-            if ($type === 'checkbox') {
-                $data[$key] = !empty($source[$key]) ? '1' : '0';
+            if ($type === 'checkbox_group') {
+                $data[$key] = array();
+                if (!$has_raw_value) {
+                    continue;
+                }
+                if (!is_array($raw)) {
+                    $this->invalid_checkbox_group_fields[$key] = true;
+                    continue;
+                }
+                $choices = $this->dropdown_choice_values($field);
+                if (count($raw) > count($choices)) {
+                    $this->invalid_checkbox_group_fields[$key] = true;
+                }
+                foreach ($raw as $raw_value) {
+                    if (!is_string($raw_value)) {
+                        $this->invalid_checkbox_group_fields[$key] = true;
+                        continue;
+                    }
+                    $choice_value = sanitize_title($raw_value);
+                    if (!in_array($choice_value, $choices, true)) {
+                        $this->invalid_checkbox_group_fields[$key] = true;
+                        continue;
+                    }
+                    if (!in_array($choice_value, $data[$key], true)) {
+                        $data[$key][] = $choice_value;
+                    }
+                }
+            } elseif ($type === 'radio') {
+                if (is_array($raw)) {
+                    $this->invalid_radio_fields[$key] = true;
+                    $data[$key] = '';
+                } else {
+                    $data[$key] = sanitize_title($raw);
+                }
             } elseif ($type === 'dropdown') {
                 $data[$key] = sanitize_title($raw);
             } elseif ($type === 'file') {
@@ -234,19 +315,27 @@ trait TCARM_Shortcodes_Trait {
         return $data;
     }
 
-    private function validate_application_data($data) {
+    private function validate_application_data($data, $validate_file_fields = true) {
         $errors = array();
         $fields = self::get_fields();
         foreach ($fields as $key => $field) {
             $field = $this->apply_field_translation($field);
+            $type = isset($field['type']) ? $field['type'] : 'text';
+            $invalid_radio_value = $type === 'radio' && !empty($this->invalid_radio_fields[$key]);
+            $invalid_checkbox_group_value = $type === 'checkbox_group' && !empty($this->invalid_checkbox_group_fields[$key]);
             if (isset($field['enabled']) && $field['enabled'] !== '1') {
+                continue;
+            }
+            if (!$validate_file_fields && $type === 'file') {
                 continue;
             }
             if ($field['required'] === '1') {
                 $is_empty = empty($data[$key]);
-                if (isset($field['type']) && $field['type'] === 'checkbox') {
-                    $is_empty = ((string) $data[$key] !== '1');
-                } elseif (isset($field['type']) && $field['type'] === 'file') {
+                if ($type === 'checkbox_group') {
+                    $is_empty = !is_array($data[$key]) || empty($data[$key]);
+                } elseif ($type === 'radio' && $invalid_radio_value) {
+                    $is_empty = false;
+                } elseif ($type === 'file') {
                     $is_empty = empty($this->decode_file_attachments(isset($data[$key]) ? $data[$key] : ''));
                 }
                 if ($is_empty) {
@@ -254,7 +343,11 @@ trait TCARM_Shortcodes_Trait {
                     $errors[] = sprintf(__('%s is required.', 'shinseiflow-application-review'), $field['label']);
                 }
             }
-            if (!empty($data[$key]) && isset($field['type']) && $field['type'] === 'dropdown' && !in_array((string) $data[$key], $this->dropdown_choice_values($field), true)) {
+            if ($invalid_radio_value || (!empty($data[$key]) && in_array($type, array('dropdown', 'radio'), true) && !in_array((string) $data[$key], $this->dropdown_choice_values($field), true))) {
+                /* translators: %s: field label. */
+                $errors[] = sprintf(__('The selected value for %s is invalid.', 'shinseiflow-application-review'), $field['label']);
+            }
+            if ($invalid_checkbox_group_value || ($type === 'checkbox_group' && (!is_array($data[$key]) || count($data[$key]) > count($this->dropdown_choice_values($field)) || array_diff($data[$key], $this->dropdown_choice_values($field))))) {
                 /* translators: %s: field label. */
                 $errors[] = sprintf(__('The selected value for %s is invalid.', 'shinseiflow-application-review'), $field['label']);
             }
@@ -379,6 +472,7 @@ trait TCARM_Shortcodes_Trait {
             'for' => true,
         );
         $tags['input'] = array(
+            'id' => true,
             'class' => true,
             'type' => true,
             'name' => true,
@@ -391,6 +485,8 @@ trait TCARM_Shortcodes_Trait {
             'multiple' => true,
             'accept' => true,
             'data-tcarm-validate' => true,
+            'data-tcarm-required' => true,
+            'aria-required' => true,
         );
         $tags['textarea'] = array(
             'class' => true,
@@ -499,7 +595,7 @@ trait TCARM_Shortcodes_Trait {
         foreach (self::get_consent_items() as $consent_key => $consent) {
             $show_checkbox = isset($consent['show_checkbox']) ? $consent['show_checkbox'] === '1' : true;
             if ($consent['enabled'] === '1' && $show_checkbox) {
-                $enabled_consents[$consent_key] = $consent;
+                $enabled_consents[$consent_key] = $this->apply_consent_translation($consent);
             }
         }
         if ($enabled_consents): ?>
@@ -567,6 +663,12 @@ trait TCARM_Shortcodes_Trait {
     private function render_form_sections($fields, $data) {
         $sections = self::get_sections();
         $grouped = array();
+        foreach ($sections as $section_key => $section) {
+            if (isset($section['enabled']) && $section['enabled'] !== '1') {
+                continue;
+            }
+            $grouped[self::normalize_section_key($section_key)] = array();
+        }
         foreach ($fields as $key => $field) {
             if (isset($field['enabled']) && $field['enabled'] !== '1') {
                 continue;
@@ -581,7 +683,11 @@ trait TCARM_Shortcodes_Trait {
             $grouped[$section][$key] = $field;
         }
         ob_start();
-        foreach ($grouped as $section => $section_fields): ?>
+        foreach ($grouped as $section => $section_fields):
+            if (empty($section_fields)) {
+                continue;
+            }
+            ?>
             <section class="tcarm-front-section tcarm-form-section tcarm-front-section--<?php echo esc_attr($section); ?> tcarm-form-section-<?php echo esc_attr($section); ?>">
                 <h2 class="tcarm-front-section-title tcarm-form-section-title"><?php echo esc_html($this->translated_section_label($section)); ?></h2>
                 <div class="tcarm-front-section-body tcarm-section-fields">
@@ -604,15 +710,38 @@ trait TCARM_Shortcodes_Trait {
         $type = $type ? $type : (isset($field['type']) ? $field['type'] : 'text');
         $required = $field['required'] === '1';
         $placeholder = isset($field['placeholder']) ? $field['placeholder'] : '';
-        $validation_type = in_array($type, array('email', 'url', 'tel', 'date'), true) ? $type : ($type === 'checkbox' ? 'checkbox' : ($type === 'dropdown' ? 'select' : 'text'));
+        $validation_type = in_array($type, array('email', 'url', 'tel', 'date'), true) ? $type : ($type === 'dropdown' ? 'select' : 'text');
         ob_start();
         ?>
         <div class="<?php echo esc_attr('tcarm-front-field tcarm-field tcarm-form-field' . ($required ? ' tcarm-form-field-required' : '') . ' tcarm-front-field--' . $type . ' tcarm-field-' . $key); ?>">
             <label class="tcarm-front-label tcarm-form-label"><?php echo esc_html($field['label']); ?><?php if ($required): ?> <span class="tcarm-required tcarm-front-required tcarm-required-mark">*</span><?php endif; ?></label>
             <?php if ($type === 'textarea'): ?>
                 <textarea class="tcarm-front-textarea tcarm-form-control" name="<?php echo esc_attr($key); ?>" rows="5" placeholder="<?php echo esc_attr($placeholder); ?>" data-tcarm-validate="text"<?php if ($required): ?> required<?php endif; ?>><?php echo esc_textarea($value); ?></textarea>
-            <?php elseif ($type === 'checkbox'): ?>
-                <span class="tcarm-checkbox-field tcarm-choice-group"><input class="tcarm-front-checkbox tcarm-choice-item" type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" data-tcarm-validate="checkbox" <?php checked((string) $value, '1'); ?><?php if ($required): ?> required<?php endif; ?>> <?php echo esc_html($field['label']); ?></span>
+            <?php elseif ($type === 'checkbox_group'): ?>
+                <?php
+                static $checkbox_group_instance = 0;
+                $checkbox_group_instance++;
+                $checkbox_group_values = array();
+                if (is_array($value)) {
+                    foreach ($value as $selected_value) {
+                        if (is_string($selected_value)) {
+                            $checkbox_group_values[] = $selected_value;
+                        }
+                    }
+                }
+                ?>
+                <span class="tcarm-checkbox-group-field tcarm-choice-group">
+                    <?php foreach ($this->dropdown_choices($field) as $choice_index => $choice): $choice_id = 'tcarm-checkbox-group-' . sanitize_html_class($key) . '-' . $checkbox_group_instance . '-' . $choice_index; ?>
+                        <label class="tcarm-checkbox-group-choice" for="<?php echo esc_attr($choice_id); ?>"><input id="<?php echo esc_attr($choice_id); ?>" class="tcarm-front-checkbox tcarm-choice-item" type="checkbox" name="<?php echo esc_attr($key); ?>[]" value="<?php echo esc_attr($choice['value']); ?>" data-tcarm-validate="checkbox_group"<?php if ($required): ?> data-tcarm-required="1" aria-required="true"<?php endif; ?> <?php checked(in_array((string) $choice['value'], $checkbox_group_values, true)); ?>> <?php echo esc_html($choice['label']); ?></label>
+                    <?php endforeach; ?>
+                </span>
+            <?php elseif ($type === 'radio'): ?>
+                <?php static $radio_group_instance = 0; $radio_group_instance++; $radio_value = is_scalar($value) ? (string) $value : ''; ?>
+                <span class="tcarm-radio-field tcarm-choice-group">
+                    <?php foreach ($this->dropdown_choices($field) as $choice_index => $choice): $choice_id = 'tcarm-radio-' . sanitize_html_class($key) . '-' . $radio_group_instance . '-' . $choice_index; ?>
+                        <label class="tcarm-radio-choice" for="<?php echo esc_attr($choice_id); ?>"><input id="<?php echo esc_attr($choice_id); ?>" class="tcarm-front-radio tcarm-choice-item" type="radio" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($choice['value']); ?>" data-tcarm-validate="radio" <?php checked($radio_value, (string) $choice['value']); ?><?php if ($required && $choice_index === 0): ?> required<?php endif; ?>> <?php echo esc_html($choice['label']); ?></label>
+                    <?php endforeach; ?>
+                </span>
             <?php elseif ($type === 'dropdown'): ?>
                 <select class="tcarm-front-select tcarm-form-control tcarm-choice-group" name="<?php echo esc_attr($key); ?>" data-tcarm-validate="select"<?php if ($required): ?> required<?php endif; ?>>
                     <option value=""><?php echo esc_html($this->t('common.select_placeholder', 'Select')); ?></option>
@@ -648,8 +777,14 @@ trait TCARM_Shortcodes_Trait {
             </div>
             <?php echo wp_kses($this->render_frontend_steps('confirm'), $this->frontend_shortcode_allowed_tags()); ?>
             <?php echo wp_kses($this->render_application_confirm_cards((object) $data), $this->frontend_shortcode_allowed_tags()); ?>
-            <?php foreach ($fields as $key => $field): ?>
-                <input type="hidden" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr(isset($data[$key]) ? $data[$key] : ''); ?>">
+            <?php foreach ($fields as $key => $field): $hidden_value = isset($data[$key]) ? $data[$key] : ''; ?>
+                <?php if (isset($field['type']) && $field['type'] === 'checkbox_group'): ?>
+                    <?php if (is_array($hidden_value)): foreach ($hidden_value as $selected_value): ?>
+                        <input type="hidden" name="<?php echo esc_attr($key); ?>[]" value="<?php echo esc_attr($selected_value); ?>">
+                    <?php endforeach; endif; ?>
+                <?php else: ?>
+                    <input type="hidden" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($hidden_value); ?>">
+                <?php endif; ?>
             <?php endforeach; ?>
             <?php foreach (self::get_consent_items() as $consent_key => $consent): $show_checkbox = isset($consent['show_checkbox']) ? $consent['show_checkbox'] === '1' : true; if ($consent['enabled'] !== '1' || !$show_checkbox) { continue; } ?>
                 <input type="hidden" name="tcarm_consents[<?php echo esc_attr($consent_key); ?>]" value="1">
@@ -1296,105 +1431,4 @@ trait TCARM_Shortcodes_Trait {
         return $item;
     }
 
-    private function generate_application_code() {
-        $settings = self::get_settings();
-        $rule = isset($settings['application_number_rule']) && is_array($settings['application_number_rule']) ? $settings['application_number_rule'] : self::default_application_number_rule();
-        $base_sequence = $this->next_application_sequence_base();
-
-        for ($attempt = 0; $attempt < 10; $attempt++) {
-            $code = $this->build_application_code_from_rule($rule, $base_sequence + $attempt);
-            if ($code !== '' && !$this->application_code_exists($code)) {
-                return $code;
-            }
-        }
-
-        $timestamp = current_time('timestamp');
-        $fallback_prefix = 'APP-' . gmdate('Ymd', $timestamp) . '-' . gmdate('His', $timestamp) . '-';
-        for ($attempt = 0; $attempt < 10; $attempt++) {
-            $code = $fallback_prefix . $this->random_digits(4);
-            if (!$this->application_code_exists($code)) {
-                return $code;
-            }
-        }
-
-        return substr($fallback_prefix . $this->random_digits(8), 0, 32);
-    }
-
-    private function build_application_code_from_rule($rule, $sequence) {
-        $parts = array();
-        foreach ($rule as $row) {
-            if (!is_array($row) || empty($row['type'])) {
-                continue;
-            }
-
-            if ($row['type'] === 'fixed') {
-                $value = isset($row['value']) ? preg_replace('/[^A-Za-z0-9_-]/', '', (string) $row['value']) : '';
-                if ($value !== '') {
-                    $parts[] = substr($value, 0, 16);
-                }
-            } elseif ($row['type'] === 'symbol') {
-                $parts[] = isset($row['value']) && $row['value'] === '_' ? '_' : '-';
-            } elseif ($row['type'] === 'date') {
-                $format = isset($row['format']) && in_array($row['format'], array('Ymd', 'Ym', 'Y'), true) ? $row['format'] : 'Ymd';
-                $parts[] = gmdate($format, current_time('timestamp'));
-            } elseif ($row['type'] === 'random_letters') {
-                $length = isset($row['length']) ? max(1, min(8, absint($row['length']))) : 2;
-                $parts[] = $this->random_letters($length);
-            } elseif ($row['type'] === 'random_numbers') {
-                $length = isset($row['length']) ? max(1, min(8, absint($row['length']))) : 2;
-                $parts[] = $this->random_digits($length);
-            } elseif ($row['type'] === 'sequence') {
-                $length = isset($row['length']) ? max(1, min(12, absint($row['length']))) : 6;
-                $parts[] = str_pad((string) max(1, (int) $sequence), $length, '0', STR_PAD_LEFT);
-            }
-        }
-
-        $code = implode('', $parts);
-        return preg_match('/^[A-Za-z0-9_-]{1,32}$/', $code) ? $code : '';
-    }
-
-    private function next_application_sequence_base() {
-        global $wpdb;
-        $cache_key = self::application_cache_key(array('next_sequence_base'));
-        $found = false;
-        $cached = wp_cache_get($cache_key, self::application_cache_group(), false, $found);
-        if ($found) {
-            return (int) $cached;
-        }
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin-owned custom application table sequence lookup with object cache.
-        $max_id = (int) $wpdb->get_var($wpdb->prepare("SELECT MAX(id) FROM %i", self::table_name()));
-        wp_cache_set($cache_key, $max_id + 1, self::application_cache_group(), self::application_cache_ttl());
-        return $max_id + 1;
-    }
-
-    private function application_code_exists($code) {
-        global $wpdb;
-        $cache_key = self::application_cache_key(array('application_code_exists', $code));
-        $found = false;
-        $cached = wp_cache_get($cache_key, self::application_cache_group(), false, $found);
-        if ($found) {
-            return (bool) $cached;
-        }
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin-owned custom application table code existence check with object cache.
-        $exists = (bool) $wpdb->get_var($wpdb->prepare("SELECT id FROM %i WHERE application_code = %s LIMIT %d", self::table_name(), $code, 1));
-        wp_cache_set($cache_key, $exists, self::application_cache_group(), self::application_cache_ttl());
-        return $exists;
-    }
-
-    private function random_letters($length) {
-        $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $out = '';
-        for ($i = 0; $i < $length; $i++) {
-            $out .= $letters[wp_rand(0, strlen($letters) - 1)];
-        }
-        return $out;
-    }
-
-    private function random_digits($length) {
-        $out = '';
-        for ($i = 0; $i < $length; $i++) {
-            $out .= (string) wp_rand(0, 9);
-        }
-        return $out;
-    }
 }

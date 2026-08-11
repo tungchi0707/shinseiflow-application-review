@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ShinseiFlow – Application Review & Approval Workflow
  * Description: Create application forms, review submissions, manage approval workflows, and notify applicants from WordPress.
- * Version: 0.4.3.2
+ * Version: 0.4.3.26
  * Requires at least: 6.5
  * Requires PHP: 8.0
  * Author: Casper Yeh
@@ -26,6 +26,8 @@ require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-assets.php';
 require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-settings.php';
 require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-translations.php';
 require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-ai-translation.php';
+require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-application-number.php';
+require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-application-history.php';
 require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-shortcodes.php';
 require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-applications.php';
 require_once TCARM_PLUGIN_DIR . 'includes/class-tcarm-notifications.php';
@@ -37,20 +39,21 @@ require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-download-files.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-display-customize.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-security.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-redirects.php';
+require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-privacy.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-application-detail.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-about.php';
 
 final class TCARM_Plugin {
-    const VERSION = '0.4.3.2';
-    const DB_VERSION = '0.1.58';
+    const VERSION = '0.4.3.26';
+    const DB_VERSION = '0.1.61';
     const CAPABILITY = 'manage_tcarm_applications';
     const OPTION_SETTINGS = 'tcarm_settings';
     const OPTION_FIELDS = 'tcarm_form_fields';
     const OPTION_SECTIONS = 'tcarm_form_sections';
     const OPTION_TRANSLATIONS = 'tcarm_translation_strings';
-    const OPTION_CATEGORY_COLOR_RULES = 'tcarm_category_color_rules';
     const TABLE = 'tcarm_applications';
     const BLOCKED_TABLE = 'tcarm_blocked_submissions';
+    const PENDING_UPLOAD_CLEANUP_HOOK = 'tcarm_cleanup_pending_uploads';
 
     private static $instance = null;
     private $current_tcarm_upload_subdir = '';
@@ -64,6 +67,8 @@ final class TCARM_Plugin {
     use TCARM_Settings_Trait;
     use TCARM_Translations_Trait;
     use TCARM_AI_Translation_Trait;
+    use TCARM_Application_Number_Trait;
+    use TCARM_Application_History_Trait;
     use TCARM_Shortcodes_Trait;
     use TCARM_Applications_Trait;
     use TCARM_Notifications_Trait;
@@ -75,6 +80,7 @@ final class TCARM_Plugin {
     use TCARM_Admin_Page_Display_Customize_Trait;
     use TCARM_Admin_Page_Security_Trait;
     use TCARM_Admin_Page_Redirects_Trait;
+    use TCARM_Admin_Page_Privacy_Trait;
     use TCARM_Admin_Page_Applications_Trait;
     use TCARM_Admin_Page_About_Trait;
 
@@ -87,6 +93,8 @@ final class TCARM_Plugin {
 
     private function __construct() {
         add_action('init', array($this, 'handle_frontend_submit'));
+        add_action('init', array(__CLASS__, 'schedule_pending_upload_cleanup'));
+        add_action(self::PENDING_UPLOAD_CLEANUP_HOOK, array($this, 'cleanup_stale_pending_uploads'));
         add_action('template_redirect', array($this, 'handle_file_download'), 0);
         add_action('template_redirect', array($this, 'handle_frontend_lookup_redirect'), 1);
         add_action('admin_menu', array($this, 'register_admin_menu'));
@@ -112,7 +120,6 @@ final class TCARM_Plugin {
         add_shortcode('tcarm_edit', array($this, 'shortcode_application_edit'));
         add_action('admin_enqueue_scripts', array($this, 'admin_assets'));
         add_action('wp_enqueue_scripts', array($this, 'frontend_assets'));
-        add_filter('wp_resource_hints', array($this, 'frontend_resource_hints'), 10, 2);
     }
 
     public static function plugin_dir() {
@@ -125,4 +132,5 @@ final class TCARM_Plugin {
 }
 
 register_activation_hook(__FILE__, array('TCARM_Plugin', 'activate'));
+register_deactivation_hook(__FILE__, array('TCARM_Plugin', 'deactivate'));
 add_action('plugins_loaded', array('TCARM_Plugin', 'instance'));

@@ -153,7 +153,12 @@ trait TCARM_Admin_Page_Translation_Trait {
     public function render_translation_settings_page() {
         $settings = self::get_settings();
         $supported_languages = self::supported_languages();
+        $base_language = self::get_base_language($settings);
+        $base_language_label = isset($supported_languages[$base_language]) ? $supported_languages[$base_language] : $supported_languages['en'];
         $enabled_language_keys = self::sanitize_enabled_languages(isset($settings['enabled_languages']) ? $settings['enabled_languages'] : self::get_default_enabled_languages());
+        if (!in_array($base_language, $enabled_language_keys, true)) {
+            $enabled_language_keys[] = $base_language;
+        }
         $enabled_languages = array();
         foreach ($enabled_language_keys as $lang) {
             if (isset($supported_languages[$lang])) {
@@ -164,7 +169,7 @@ trait TCARM_Admin_Page_Translation_Trait {
         if (empty($translation_languages)) {
             $translation_languages = array('en' => $supported_languages['en']);
         }
-        $target_languages = array_diff(array_keys($translation_languages), array('ja'));
+        $target_languages = array_diff(array_keys($translation_languages), array($base_language));
         $strings = $this->get_translation_strings();
         $groups = $this->translation_groups();
         wp_enqueue_script('tcarm-admin-translation-settings', self::plugin_url() . 'assets/js/admin-translation-settings.js', array(), self::VERSION, true);
@@ -175,6 +180,9 @@ trait TCARM_Admin_Page_Translation_Trait {
                 'ajaxUrl'    => admin_url('admin-ajax.php'),
                 'nonce'      => wp_create_nonce('tcarm_ai_translate_strings'),
                 'hasTargets' => !empty($target_languages),
+                'baseLanguage' => $base_language,
+                'baseLanguageLabel' => $base_language_label,
+                'targetLanguages' => array_values($target_languages),
                 'i18n'       => array(
                     'aiSelectTargetLanguage' => __('Please select the target language.', 'shinseiflow-application-review'),
                     'aiNoEmptyTargets' => __('There are no empty fields to translate.', 'shinseiflow-application-review'),
@@ -182,6 +190,8 @@ trait TCARM_Admin_Page_Translation_Trait {
                     'aiFailed' => __('AI translation failed.', 'shinseiflow-application-review'),
                     'aiFilledCurrentLanguage' => __('Translations were inserted into empty fields in the current language tab. Please review before saving.', 'shinseiflow-application-review'),
                     'aiNoFillableTargets' => __('There were no empty fields available for translation.', 'shinseiflow-application-review'),
+                    'aiSourceEmpty' => __('The source language fields are empty. Enter content in the base language before translating.', 'shinseiflow-application-review'),
+                    'aiBaseLanguageUnsaved' => __('Save the base language setting before using AI translation.', 'shinseiflow-application-review'),
                 ),
             )
         );
@@ -196,10 +206,21 @@ trait TCARM_Admin_Page_Translation_Trait {
                         <p><?php echo esc_html__('Select languages shown in admin multilingual input fields and AI translation targets.', 'shinseiflow-application-review'); ?></p>
                     </div>
                     <div class="tcarm-settings-card-body">
+                        <div class="tcarm-settings-row-list">
+                            <label class="tcarm-settings-field"><?php echo esc_html__('Base Language (Translation Source)', 'shinseiflow-application-review'); ?>
+                                <select id="tcarm-base-language-select" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[base_language]">
+                                    <?php foreach ($supported_languages as $lang => $label): ?>
+                                        <option value="<?php echo esc_attr($lang); ?>" <?php selected($base_language, $lang); ?>><?php echo esc_html($label); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <input type="hidden" id="tcarm-base-language-enabled" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[enabled_languages][]" value="<?php echo esc_attr($base_language); ?>">
+                                <span class="description"><?php echo esc_html__('This setting only selects the source language used by AI translation. It does not move, delete, or overwrite translation content. The base language must remain enabled.', 'shinseiflow-application-review'); ?></span>
+                            </label>
+                        </div>
                         <div class="tcarm-settings-inline-options">
                             <?php foreach ($supported_languages as $lang => $label): ?>
                                 <label>
-                                    <input type="checkbox" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[enabled_languages][]" value="<?php echo esc_attr($lang); ?>" <?php checked(in_array($lang, $enabled_language_keys, true)); ?>>
+                                    <input type="checkbox" data-tcarm-enabled-language="<?php echo esc_attr($lang); ?>" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[enabled_languages][]" value="<?php echo esc_attr($lang); ?>" <?php checked(in_array($lang, $enabled_language_keys, true)); ?> <?php disabled($lang, $base_language); ?>>
                                     <?php echo esc_html($label); ?>
                                 </label>
                             <?php endforeach; ?>
@@ -222,7 +243,10 @@ trait TCARM_Admin_Page_Translation_Trait {
                                 <?php $i++; endforeach; ?>
                             </div>
                             <div class="tcarm-ai-translate-action" id="tcarm-ai-translate-action" hidden>
-                                <button type="button" class="button button-secondary" id="tcarm-ai-translate-button"><?php echo esc_html__('Translate from Japanese', 'shinseiflow-application-review'); ?></button>
+                                <button type="button" class="button button-secondary" id="tcarm-ai-translate-button"><?php
+                                /* translators: %s: name of the language used as the AI translation source. */
+                                echo esc_html(sprintf(__('Translate from %s', 'shinseiflow-application-review'), $base_language_label));
+                                ?></button>
                                 <span class="spinner" id="tcarm-ai-translate-spinner"></span>
                             </div>
                         </div>

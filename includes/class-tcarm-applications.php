@@ -31,13 +31,16 @@ trait TCARM_Applications_Trait {
     }
 
     private function application_value($item, $key) {
+        $extra = is_object($item) ? $this->get_application_extra_data($item) : array();
+        if (isset($extra[$key]) && is_array($extra[$key])) {
+            return $extra[$key];
+        }
         if (is_object($item) && isset($item->{$key})) {
             return $item->{$key};
         }
         if (is_array($item) && isset($item[$key])) {
             return $item[$key];
         }
-        $extra = is_object($item) ? $this->get_application_extra_data($item) : array();
         return isset($extra[$key]) ? $extra[$key] : '';
     }
 
@@ -80,11 +83,20 @@ trait TCARM_Applications_Trait {
     }
 
     private function format_field_value($value, $field) {
-        if (isset($field['type']) && $field['type'] === 'dropdown') {
-            return $this->dropdown_choice_label($value, $field);
+        if (isset($field['type']) && $field['type'] === 'checkbox_group') {
+            if (!is_array($value) || empty($value)) {
+                return '';
+            }
+            $labels = array();
+            foreach ($value as $selected_value) {
+                if (is_string($selected_value)) {
+                    $labels[] = $this->dropdown_choice_label($selected_value, $field);
+                }
+            }
+            return implode(', ', $labels);
         }
-        if (isset($field['type']) && $field['type'] === 'checkbox') {
-            return ((string) $value === '1') ? 'Yes' : 'No';
+        if (isset($field['type']) && in_array($field['type'], array('dropdown', 'radio'), true)) {
+            return $this->dropdown_choice_label($value, $field);
         }
         if (isset($field['type']) && $field['type'] === 'file') {
             $attachments = $this->decode_file_attachments($value);
@@ -285,7 +297,7 @@ trait TCARM_Applications_Trait {
             echo '<div class="tcarm-admin-application-section-body"><dl class="tcarm-admin-field-list">';
             foreach ($section['fields'] as $field_key => $field) {
                 $value = $this->application_value($item, $field_key);
-                $is_empty = ($value === '' || $value === null);
+                $is_empty = ($value === '' || $value === null || (is_array($value) && empty($value)));
                 if (isset($field['type']) && $field['type'] === 'file') {
                     $is_empty = empty($this->decode_file_attachments($value));
                     $value_html = $is_empty ? '—' : $this->render_file_value_html($value);
@@ -384,8 +396,15 @@ trait TCARM_Applications_Trait {
             <div class="tcarm-admin-edit-control">
                 <?php if ($type === 'textarea'): ?>
                     <textarea id="tcarm-admin-edit-<?php echo esc_attr($key); ?>" name="<?php echo esc_attr($key); ?>" rows="5" placeholder="<?php echo esc_attr($placeholder); ?>"<?php if ($required): ?> required="<?php echo esc_attr('required'); ?>"<?php endif; ?>><?php echo esc_textarea($value); ?></textarea>
-                <?php elseif ($type === 'checkbox'): ?>
-                    <label class="tcarm-admin-edit-checkbox"><input id="tcarm-admin-edit-<?php echo esc_attr($key); ?>" type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked((string) $value, '1'); ?><?php if ($required): ?> required="<?php echo esc_attr('required'); ?>"<?php endif; ?>> <?php echo esc_html($label); ?></label>
+                <?php elseif ($type === 'checkbox_group'): ?>
+                    <?php $checkbox_group_values = is_array($value) ? $value : array(); ?>
+                    <?php foreach ($this->dropdown_choices($field) as $choice_index => $choice): $choice_id = 'tcarm-admin-edit-' . $key . '-' . $choice_index; ?>
+                        <label class="tcarm-admin-edit-checkbox" for="<?php echo esc_attr($choice_id); ?>"><input id="<?php echo esc_attr($choice_id); ?>" type="checkbox" name="<?php echo esc_attr($key); ?>[]" value="<?php echo esc_attr($choice['value']); ?>" <?php checked(in_array((string) $choice['value'], $checkbox_group_values, true)); ?>> <?php echo esc_html($choice['label']); ?></label>
+                    <?php endforeach; ?>
+                <?php elseif ($type === 'radio'): ?>
+                    <?php foreach ($this->dropdown_choices($field) as $choice_index => $choice): $choice_id = 'tcarm-admin-edit-' . $key . ($choice_index === 0 ? '' : '-' . $choice_index); ?>
+                        <label class="tcarm-admin-edit-radio" for="<?php echo esc_attr($choice_id); ?>"><input id="<?php echo esc_attr($choice_id); ?>" type="radio" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($choice['value']); ?>" <?php checked((string) $value, (string) $choice['value']); ?><?php if ($required && $choice_index === 0): ?> required="<?php echo esc_attr('required'); ?>"<?php endif; ?>> <?php echo esc_html($choice['label']); ?></label>
+                    <?php endforeach; ?>
                 <?php elseif ($type === 'dropdown'): ?>
                     <select id="tcarm-admin-edit-<?php echo esc_attr($key); ?>" name="<?php echo esc_attr($key); ?>"<?php if ($required): ?> required="<?php echo esc_attr('required'); ?>"<?php endif; ?>>
                         <option value=""><?php echo esc_html__('Select', 'shinseiflow-application-review'); ?></option>
@@ -633,7 +652,54 @@ trait TCARM_Applications_Trait {
         return $normalized;
     }
 
-    private function process_file_uploads(&$data, $application_id = 0) {
+    private function request_has_new_file_uploads() {
+        foreach (self::get_fields() as $key => $field) {
+            if ((isset($field['enabled']) && $field['enabled'] !== '1') || (isset($field['type']) ? $field['type'] : '') !== 'file') {
+                continue;
+            }
+            foreach ($this->normalize_files_array($key) as $file) {
+                if (isset($file['error']) && (int) $file['error'] !== UPLOAD_ERR_NO_FILE) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private function cleanup_request_uploads($uploads) {
+        $upload_dir = wp_upload_dir();
+        $storage_root = realpath(trailingslashit($upload_dir['basedir']) . 'tcarm-applications');
+        if (!$storage_root) {
+            return;
+        }
+        $storage_root = rtrim(str_replace('\\', '/', $storage_root), '/');
+        foreach ($uploads as $upload) {
+            $path = isset($upload['file']) ? (string) $upload['file'] : '';
+            if ($path === '' || is_link($path) || !is_file($path)) {
+                continue;
+            }
+            $real_path = realpath($path);
+            if (!$real_path || is_link($path) || !is_file($real_path)) {
+                continue;
+            }
+            $real_path = str_replace('\\', '/', $real_path);
+            if (strpos($real_path, $storage_root . '/') !== 0) {
+                continue;
+            }
+            wp_delete_file($real_path);
+        }
+    }
+
+    private function clear_request_upload_values(&$data, $uploads) {
+        foreach ($uploads as $upload) {
+            $field_key = isset($upload['field_key']) ? (string) $upload['field_key'] : '';
+            if ($field_key !== '' && array_key_exists($field_key, $data)) {
+                $data[$field_key] = '';
+            }
+        }
+    }
+
+    private function process_file_uploads(&$data, $application_id = 0, &$request_uploads = array()) {
         $fields = self::get_fields();
         $settings = $this->upload_settings();
         $errors = array();
@@ -702,6 +768,10 @@ trait TCARM_Applications_Trait {
                     $errors[] = $field['label'] . '：' . __('Could not upload the file.', 'shinseiflow-application-review');
                     continue;
                 }
+                $request_uploads[] = array(
+                    'field_key' => $key,
+                    'file' => isset($moved['file']) ? (string) $moved['file'] : '',
+                );
                 $attachments[] = array(
                     'name' => $original_name,
                     'original_name' => $original_name,
@@ -717,6 +787,80 @@ trait TCARM_Applications_Trait {
             }
         }
         return $errors;
+    }
+
+    public static function schedule_pending_upload_cleanup() {
+        if (!wp_next_scheduled(self::PENDING_UPLOAD_CLEANUP_HOOK)) {
+            wp_schedule_event(time() + HOUR_IN_SECONDS, 'daily', self::PENDING_UPLOAD_CLEANUP_HOOK);
+        }
+    }
+
+    public static function unschedule_pending_upload_cleanup() {
+        wp_clear_scheduled_hook(self::PENDING_UPLOAD_CLEANUP_HOOK);
+    }
+
+    public function cleanup_stale_pending_uploads() {
+        $upload_dir = wp_upload_dir();
+        $storage_root_path = trailingslashit($upload_dir['basedir']) . 'tcarm-applications';
+        if (is_link($storage_root_path)) {
+            return;
+        }
+        $storage_root = realpath($storage_root_path);
+        if (!$storage_root || is_link($storage_root)) {
+            return;
+        }
+        $storage_root = rtrim(str_replace('\\', '/', $storage_root), '/');
+        $pending_dirs = glob($storage_root . '/*/*/pending', GLOB_ONLYDIR);
+        if (!is_array($pending_dirs)) {
+            return;
+        }
+        $cutoff = time() - DAY_IN_SECONDS;
+        foreach ($pending_dirs as $pending_dir) {
+            if (is_link($pending_dir)) {
+                continue;
+            }
+            $real_pending_dir = realpath($pending_dir);
+            if (!$real_pending_dir || is_link($pending_dir) || !is_dir($real_pending_dir)) {
+                continue;
+            }
+            $real_pending_dir = rtrim(str_replace('\\', '/', $real_pending_dir), '/');
+            $relative = ltrim(substr($real_pending_dir, strlen($storage_root)), '/');
+            if (strpos($real_pending_dir, $storage_root . '/') !== 0 || !preg_match('#^[0-9]{4}/[0-9]{2}/pending$#', $relative)) {
+                continue;
+            }
+            try {
+                $files = new FilesystemIterator($real_pending_dir, FilesystemIterator::SKIP_DOTS);
+            } catch (UnexpectedValueException $e) {
+                continue;
+            }
+            foreach ($files as $file_info) {
+                try {
+                    $name = $file_info->getFilename();
+                    if ($name === '.htaccess' || $name === 'index.html' || $file_info->isLink() || !$file_info->isFile()) {
+                        continue;
+                    }
+                    $path = $file_info->getPathname();
+                    if (is_link($path) || !is_file($path)) {
+                        continue;
+                    }
+                    $modified = @filemtime($path);
+                    if ($modified === false || $modified >= $cutoff) {
+                        continue;
+                    }
+                    $real_path = realpath($path);
+                    if (!$real_path || is_link($path) || !is_file($real_path)) {
+                        continue;
+                    }
+                    $real_path = str_replace('\\', '/', $real_path);
+                    if (dirname($real_path) !== $real_pending_dir || strpos($real_path, $real_pending_dir . '/') !== 0) {
+                        continue;
+                    }
+                    wp_delete_file($real_path);
+                } catch (RuntimeException $e) {
+                    continue;
+                }
+            }
+        }
     }
 
     public static function statuses() {
@@ -919,7 +1063,7 @@ trait TCARM_Applications_Trait {
             'updated_at' => current_time('mysql'),
         );
         foreach ($data as $key => $value) {
-            if (!isset($allowed_columns[$key]) || isset($protected[$key])) {
+            if (!isset($allowed_columns[$key]) || isset($protected[$key]) || is_array($value)) {
                 continue;
             }
             $update[$key] = $value;
@@ -974,175 +1118,6 @@ trait TCARM_Applications_Trait {
         exit;
     }
 
-    private function application_history_labels() {
-        return array(
-            'application_received' => 'Application received',
-            'applicant_auto_reply_sent' => 'Applicant auto-reply email sent',
-            'admin_notification_sent' => 'Admin notification email sent',
-            'approved' => 'Approved',
-            'rejected' => 'Rejected',
-            'needs_more' => 'Additional Information Requested',
-            'resubmitted' => 'Resubmitted',
-            'published_related_info' => 'Legacy extension action',
-            'file_downloaded' => 'File downloaded',
-            'moved_to_deleted' => 'Moved to deleted applications',
-            'restored_from_deleted' => 'Restored from deleted applications',
-        );
-    }
-
-    private function get_history_actor_label($actor = '') {
-        $actor = trim((string) $actor);
-        if ($actor !== '') {
-            return $actor;
-        }
-        if (is_user_logged_in()) {
-            $user = wp_get_current_user();
-            if ($user && $user->exists()) {
-                return $user->display_name ? $user->display_name : $user->user_login;
-            }
-        }
-        return '';
-    }
-
-    private function get_application_history($item) {
-        $history = array();
-        if ($item && isset($item->history_json) && !empty($item->history_json)) {
-            $decoded = json_decode($item->history_json, true);
-            if (is_array($decoded)) {
-                $history = $decoded;
-            }
-        }
-        $labels = $this->application_history_labels();
-        $normalized = array();
-        $has_received = false;
-        foreach ($history as $entry) {
-            if (!is_array($entry)) {
-                continue;
-            }
-            $key = isset($entry['key']) ? sanitize_key($entry['key']) : '';
-            $datetime = isset($entry['datetime']) ? sanitize_text_field($entry['datetime']) : '';
-            $content = isset($entry['content']) ? sanitize_text_field($entry['content']) : '';
-            $actor = isset($entry['actor']) ? sanitize_text_field($entry['actor']) : '';
-            if ($content === '' && $key !== '' && isset($labels[$key])) {
-                $content = $labels[$key];
-            }
-            if ($key === 'application_received') {
-                $has_received = true;
-            }
-            if ($datetime === '' || $content === '') {
-                continue;
-            }
-            $normalized[] = array(
-                'key' => $key,
-                'datetime' => $datetime,
-                'content' => $content,
-                'actor' => $actor,
-            );
-        }
-        if (!$has_received && $item && !empty($item->created_at)) {
-            array_unshift($normalized, array(
-                'key' => 'application_received',
-                'datetime' => $item->created_at,
-                'content' => 'Application received',
-                'actor' => 'Applicant',
-            ));
-        }
-        usort($normalized, function($a, $b) {
-            return strcmp($a['datetime'], $b['datetime']);
-        });
-        return $normalized;
-    }
-
-    private function append_application_history($application_id, $key, $actor = '') {
-        $application_id = absint($application_id);
-        if (!$application_id) {
-            return;
-        }
-        $labels = $this->application_history_labels();
-        if (!isset($labels[$key])) {
-            return;
-        }
-        $item = $this->get_application($application_id);
-        $history = array();
-        if ($item && isset($item->history_json) && !empty($item->history_json)) {
-            $decoded = json_decode($item->history_json, true);
-            if (is_array($decoded)) {
-                $history = $decoded;
-            }
-        }
-        $history[] = array(
-            'key' => $key,
-            'datetime' => current_time('mysql'),
-            'content' => $labels[$key],
-            'actor' => $this->get_history_actor_label($actor),
-        );
-        global $wpdb;
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Required plugin-owned custom application table history update; WordPress core APIs do not apply.
-        $wpdb->update(self::table_name(), array(
-            'history_json' => wp_json_encode($history),
-        ), array('id' => $application_id), array('%s'), array('%d'));
-        self::flush_application_cache();
-    }
-
-    private function append_application_history_entry($application_id, $key, $content, $actor = '') {
-        $application_id = absint($application_id);
-        $content = sanitize_text_field((string) $content);
-        if (!$application_id || $content === '') {
-            return;
-        }
-        $item = $this->get_application($application_id);
-        $history = array();
-        if ($item && isset($item->history_json) && !empty($item->history_json)) {
-            $decoded = json_decode($item->history_json, true);
-            if (is_array($decoded)) {
-                $history = $decoded;
-            }
-        }
-        $history[] = array(
-            'key' => sanitize_key($key),
-            'datetime' => current_time('mysql'),
-            'content' => $content,
-            'actor' => $this->get_history_actor_label($actor),
-        );
-        global $wpdb;
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Required plugin-owned custom application table history update; WordPress core APIs do not apply.
-        $wpdb->update(self::table_name(), array(
-            'history_json' => wp_json_encode($history),
-        ), array('id' => $application_id), array('%s'), array('%d'));
-        self::flush_application_cache();
-    }
-
-    private function render_application_history_timeline($item) {
-        $history = $this->get_application_history($item);
-        ob_start();
-        ?>
-        <div class="tcarm-panel tcarm-card-panel tcarm-history-card tcarm-admin-card">
-            <div class="tcarm-panel-header"><h2 class="tcarm-admin-card-title"><?php echo esc_html__('Submission and Response History', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Review the history of application receipt, notifications, review actions, and public integrations.', 'shinseiflow-application-review'); ?></p></div>
-            <div class="tcarm-detail-side-inner">
-                <?php if (empty($history)): ?>
-                    <p class="tcarm-history-empty"><?php echo esc_html__('There is no history yet.', 'shinseiflow-application-review'); ?></p>
-                <?php else: ?>
-                    <div class="tcarm-history-timeline">
-                        <?php foreach ($history as $entry): ?>
-                            <div class="tcarm-history-item">
-                                <span class="tcarm-history-dot" aria-hidden="true"></span>
-                                <div class="tcarm-history-date"><?php echo esc_html($entry['datetime']); ?></div>
-                                <div class="tcarm-history-content">
-                                    <?php echo esc_html($entry['content']); ?>
-                                    <?php if (!empty($entry['actor'])): ?>
-                                        <span class="tcarm-history-actor"><?php echo esc_html__('Actor: ', 'shinseiflow-application-review'); ?><?php echo esc_html($entry['actor']); ?></span>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        <?php
-        return ob_get_clean();
-    }
-
     public function handle_admin_status() {
         if (!$this->current_user_can_manage_tcarm()) {
             wp_die(esc_html__('Permission denied.', 'shinseiflow-application-review'));
@@ -1195,10 +1170,10 @@ trait TCARM_Applications_Trait {
         if ($found) {
             return $cached;
         }
-        $counts = array('total' => 0, 'pending' => 0, 'approved' => 0, 'published' => 0);
+        $counts = array('total' => 0, 'pending' => 0, 'approved' => 0);
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin-owned custom application table count with object cache.
         $counts['total'] = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM %i", $table));
-        foreach (array('pending', 'approved', 'published') as $status) {
+        foreach (array('pending', 'approved') as $status) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin-owned custom application table status count with object cache.
             $counts[$status] = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM %i WHERE status = %s", $table, $status));
         }
@@ -1329,7 +1304,9 @@ trait TCARM_Applications_Trait {
 
     private static function filter_db_data($data) {
         $allowed = array_flip(self::application_db_columns());
-        return array_intersect_key($data, $allowed);
+        return array_filter(array_intersect_key($data, $allowed), function($value) {
+            return !is_array($value);
+        });
     }
 
     private function application_db_formats_for($data) {
