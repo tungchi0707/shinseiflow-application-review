@@ -36,7 +36,7 @@ ShinseiFlow focuses on what happens after submission:
 - Approve or reject applications
 - Request additional information when needed
 - Send workflow-based notification emails
-- Let applicants check their current status
+- Let applicants check their current status and submitted content
 - Allow revisions and resubmissions
 - Provide downloadable files after approval
 - Preserve application history and status changes
@@ -84,10 +84,9 @@ ShinseiFlow focuses on what happens after submission:
 
 ## Documentation and Support
 
-Project website: https://labs.tungchi.jp/shinseiflow/  
-Documentation: https://labs.tungchi.jp/shinseiflow/docs/  
-Support: https://labs.tungchi.jp/shinseiflow/support/  
-Issue reports: https://labs.tungchi.jp/shinseiflow/issues/
+Project website, documentation, support information, and issue reporting:
+
+https://labs.tungchi.jp/shinseiflow/
 
 ## Project Status
 
