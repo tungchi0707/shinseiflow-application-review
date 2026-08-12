@@ -93,7 +93,7 @@ https://labs.tungchi.jp/shinseiflow/
 
 ## 專案狀態
 
-- 目前版本：0.4.3.26
+- 目前版本：0.4.3.27
 - WordPress.org 送審候選版本
 - 以英文作為原始字串基準
 - 內含日文與繁體中文語言包
@@ -108,13 +108,13 @@ ShinseiFlow 以長期維護、操作體驗、隱私、安全性與 WordPress 相
 
 目標不是單純生成程式碼，而是打造穩定、可維護，並能實際應用在 WordPress 網站中的外掛。
 
-## 支持開發
+## 支持專案
 
 ShinseiFlow 是由個人獨立開發與維護的開源專案。
 
 若此外掛對你或你的組織有所幫助，可以透過以下頁面支持後續維護、文件整理、WordPress 相容性更新與未來改善：
 
-https://labs.tungchi.jp/support-development/
+https://labs.tungchi.jp/support-the-project/
 
 支持完全出於自願。ShinseiFlow 將持續以免費開源外掛的形式提供。
 

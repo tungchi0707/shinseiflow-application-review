@@ -90,7 +90,7 @@ https://labs.tungchi.jp/shinseiflow/
 
 ## Project Status
 
-- Current version: 0.4.3.26
+- Current version: 0.4.3.27
 - WordPress.org submission candidate
 - English-first source strings
 - Japanese and Traditional Chinese language packs included
@@ -105,13 +105,13 @@ AI is used as a development assistant, while feature planning, architecture, tes
 
 The goal is not simply to generate code, but to build a stable, maintainable, and practical WordPress plugin.
 
-## Support Development
+## Support the Project
 
 ShinseiFlow is independently developed and maintained as an open-source project.
 
 If ShinseiFlow has been helpful to you or your organization, you can support continued maintenance, documentation, WordPress compatibility updates, and future improvements:
 
-https://labs.tungchi.jp/support-development/
+https://labs.tungchi.jp/support-the-project/
 
 Support is completely optional. ShinseiFlow remains free and open source.
 
