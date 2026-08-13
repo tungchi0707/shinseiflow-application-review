@@ -6,32 +6,11 @@ if (!defined('ABSPATH')) {
 trait TCARM_Admin_Page_About_Trait {
     public function render_about_page() {
         $links = array(
-            'documentation' => array(
-                'url' => 'https://labs.tungchi.jp/shinseiflow/docs/',
-                'icon' => 'dashicons-media-document',
-                'title' => __('Documentation', 'shinseiflow-application-review'),
-                'description' => __('Read setup guidance and usage documentation.', 'shinseiflow-application-review'),
-            ),
-            'website' => array(
+            'resources' => array(
                 'url' => 'https://labs.tungchi.jp/shinseiflow/',
-                'icon' => 'dashicons-admin-site-alt3',
-                'title' => __('Project Website', 'shinseiflow-application-review'),
-                'description' => __('Learn more about ShinseiFlow and its workflow.', 'shinseiflow-application-review'),
-            ),
-            'support' => array(
-                'url' => 'https://labs.tungchi.jp/shinseiflow/support/',
-                'icon' => 'dashicons-sos',
-                'title' => __('Support', 'shinseiflow-application-review'),
-                'description' => __('Find help with setup and everyday use.', 'shinseiflow-application-review'),
-            ),
-            'issues' => array(
-                'url' => 'https://labs.tungchi.jp/shinseiflow/issues/',
-                'icon' => 'dashicons-warning',
-                'title' => __('Report an Issue', 'shinseiflow-application-review'),
-                'description' => __('Share a bug report or improvement suggestion.', 'shinseiflow-application-review'),
             ),
             'development' => array(
-                'url' => 'https://labs.tungchi.jp/support-development/',
+                'url' => 'https://labs.tungchi.jp/support-the-project/',
             ),
         );
 
@@ -45,33 +24,21 @@ trait TCARM_Admin_Page_About_Trait {
                 <p class="tcarm-about-description"><?php echo esc_html__('Build application forms, review submissions, manage approval workflows, send notifications, and provide approved downloads in WordPress.', 'shinseiflow-application-review'); ?></p>
             </section>
 
-            <section class="tcarm-about-section tcarm-about-section--plain" aria-labelledby="tcarm-about-resources-title">
+            <section class="tcarm-about-section tcarm-about-action-card tcarm-about-card-shell" aria-labelledby="tcarm-about-resources-title">
                 <div class="tcarm-about-section-heading">
-                    <span class="dashicons dashicons-admin-links" aria-hidden="true"></span>
-                    <h2 id="tcarm-about-resources-title"><?php echo esc_html__('Resources', 'shinseiflow-application-review'); ?></h2>
+                    <span class="dashicons dashicons-media-document" aria-hidden="true"></span>
+                    <h2 id="tcarm-about-resources-title"><?php echo esc_html__('Documentation / Support', 'shinseiflow-application-review'); ?></h2>
                 </div>
-                <div class="tcarm-about-resource-grid">
-                    <?php foreach (array('documentation', 'website', 'support', 'issues') as $key): ?>
-                        <?php $resource = $links[$key]; ?>
-                        <a class="tcarm-about-resource-card" href="<?php echo esc_url($resource['url']); ?>" target="_blank" rel="noopener noreferrer">
-                            <span class="dashicons <?php echo esc_attr($resource['icon']); ?>" aria-hidden="true"></span>
-                            <span class="tcarm-about-resource-content">
-                                <strong><?php echo esc_html($resource['title']); ?></strong>
-                                <span><?php echo esc_html($resource['description']); ?></span>
-                            </span>
-                            <span class="dashicons dashicons-external" aria-hidden="true"></span>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
+                <p><?php echo esc_html__('View setup guides and usage documentation, and get support or report an issue.', 'shinseiflow-application-review'); ?></p>
+                <a class="button button-primary" href="<?php echo esc_url($links['resources']['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('View Documentation and Support', 'shinseiflow-application-review'); ?></a>
             </section>
 
-            <section class="tcarm-about-section tcarm-about-support" aria-labelledby="tcarm-about-support-title">
+            <section class="tcarm-about-section tcarm-about-action-card tcarm-about-card-shell" aria-labelledby="tcarm-about-support-title">
                 <div class="tcarm-about-section-heading">
                     <span class="dashicons dashicons-heart" aria-hidden="true"></span>
                     <h2 id="tcarm-about-support-title"><?php echo esc_html__('Support Development', 'shinseiflow-application-review'); ?></h2>
                 </div>
-                <p><?php echo esc_html__('ShinseiFlow is developed and maintained as an independent open-source project.', 'shinseiflow-application-review'); ?></p>
-                <p><?php echo esc_html__('If ShinseiFlow has been helpful to you, you can support its continued development.', 'shinseiflow-application-review'); ?></p>
+                <p><?php echo esc_html__('ShinseiFlow is an independently developed and maintained project. If ShinseiFlow has been helpful to you, please consider supporting its continued development.', 'shinseiflow-application-review'); ?></p>
                 <a class="button button-primary" href="<?php echo esc_url($links['development']['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Support Development', 'shinseiflow-application-review'); ?></a>
             </section>
 

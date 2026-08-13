@@ -4,7 +4,7 @@ Tags: application form, approval workflow, review, notifications, form managemen
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.4.3.26
+Stable tag: 0.4.3.29
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,23 @@ Privacy Policy:
 https://policies.google.com/privacy
 
 == Changelog ==
+
+= 0.4.3.29 =
+
+* Unified About-page resource and support card structure.
+* Replaced resource external-link icon with a clear action button.
+* Refined About-page card height and spacing.
+
+= 0.4.3.28 =
+
+* Unified About-page resource and support card heights.
+* Refined card spacing and vertical rhythm.
+
+= 0.4.3.27 =
+
+* Simplified About-page resource links.
+* Updated project support URL.
+* Refined resource card spacing.
 
 = 0.4.3.26 =
 

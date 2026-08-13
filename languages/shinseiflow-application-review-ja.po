@@ -53,6 +53,18 @@ msgstr "問題を報告"
 msgid "Share a bug report or improvement suggestion."
 msgstr "不具合の報告や改善提案を送信できます。"
 
+#: includes/admin-pages/page-about.php
+msgid "Documentation / Support"
+msgstr "ドキュメント / サポート"
+
+#: includes/admin-pages/page-about.php
+msgid "View setup guides and usage documentation, and get support or report an issue."
+msgstr "設定ガイドと利用方法を確認し、サポートの利用や問題の報告ができます。"
+
+#: includes/admin-pages/page-about.php
+msgid "View Documentation and Support"
+msgstr "ドキュメントとサポートを見る"
+
 #: includes/admin-pages/page-about.php:38
 msgid "About ShinseiFlow"
 msgstr "ShinseiFlow について"
@@ -102,6 +114,10 @@ msgid ""
 "If ShinseiFlow has been helpful to you, you can support its continued "
 "development."
 msgstr "ShinseiFlow がお役に立ちましたら、継続的な開発をご支援いただけます。"
+
+#: includes/admin-pages/page-about.php
+msgid "ShinseiFlow is an independently developed and maintained project. If ShinseiFlow has been helpful to you, please consider supporting its continued development."
+msgstr "ShinseiFlow は、独立して開発・保守されているプロジェクトです。ShinseiFlow がお役に立ちましたら、継続的な開発へのご支援をお願いいたします。"
 
 #: includes/admin-pages/page-about.php:82
 msgid "Credits"

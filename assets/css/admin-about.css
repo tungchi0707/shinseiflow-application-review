@@ -10,13 +10,6 @@
   background: var(--tcarm-admin-card);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 }
-.tcarm-admin-page .tcarm-about-section--plain {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  padding: 0;
-}
 .tcarm-admin-page .tcarm-about-hero {
   margin-bottom: 22px;
   padding: 32px;
@@ -74,56 +67,35 @@
   color: var(--tcarm-admin-muted);
   line-height: 1.7;
 }
-.tcarm-admin-page .tcarm-about-resource-grid,
 .tcarm-admin-page .tcarm-about-details-grid {
   display: grid;
-  gap: 14px;
-}
-.tcarm-admin-page .tcarm-about-resource-grid,
-.tcarm-admin-page .tcarm-about-details-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.tcarm-admin-page .tcarm-about-resource-card {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr) 20px;
-  align-items: center;
   gap: 12px;
-  min-height: 92px;
-  padding: 18px;
+}
+.tcarm-admin-page .tcarm-about-card-shell {
+  box-sizing: border-box;
+  height: 170px;
+  min-height: 170px;
+  padding: 20px;
   border: 1px solid var(--tcarm-admin-border);
   border-radius: 8px;
   background: var(--tcarm-admin-card);
-  color: var(--tcarm-admin-text);
-  text-decoration: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 }
-.tcarm-admin-page .tcarm-about-resource-card:hover,
-.tcarm-admin-page .tcarm-about-resource-card:focus {
-  border-color: var(--tcarm-primary);
-  color: var(--tcarm-admin-text);
+.tcarm-admin-page .tcarm-about-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-.tcarm-admin-page .tcarm-about-resource-card > .dashicons:first-child {
-  color: var(--tcarm-primary);
+.tcarm-admin-page .tcarm-about-action-card .tcarm-about-section-heading {
+  margin-bottom: 10px;
 }
-.tcarm-admin-page .tcarm-about-resource-card > .dashicons:last-child {
-  color: var(--tcarm-admin-muted);
-}
-.tcarm-admin-page .tcarm-about-resource-content strong,
-.tcarm-admin-page .tcarm-about-resource-content span {
-  display: block;
-}
-.tcarm-admin-page .tcarm-about-resource-content strong {
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-.tcarm-admin-page .tcarm-about-resource-content span {
-  color: var(--tcarm-admin-muted);
+.tcarm-admin-page .tcarm-about-action-card p {
+  margin: 0 0 8px;
   line-height: 1.55;
 }
-.tcarm-admin-page .tcarm-about-support {
-  background: #f4f8f4;
-}
-.tcarm-admin-page .tcarm-about-support .button {
-  margin-top: 4px;
+.tcarm-admin-page .tcarm-about-action-card .button {
+  margin-top: 0;
 }
 .tcarm-admin-page .tcarm-about-details {
   margin: 0;
@@ -153,9 +125,13 @@
   .tcarm-admin-page .tcarm-about-section {
     padding: 22px;
   }
-  .tcarm-admin-page .tcarm-about-resource-grid,
   .tcarm-admin-page .tcarm-about-details-grid {
     grid-template-columns: 1fr;
+  }
+  .tcarm-admin-page .tcarm-about-card-shell {
+    height: auto;
+    min-height: 0;
+    padding: 18px;
   }
   .tcarm-admin-page .tcarm-about-wordmark {
     font-size: 29px;
