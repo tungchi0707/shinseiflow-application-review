@@ -90,7 +90,7 @@ https://labs.tungchi.jp/shinseiflow/
 
 ## Project Status
 
-- Current version: 0.4.3.27
+- Current version: 0.4.3.29
 - WordPress.org submission candidate
 - English-first source strings
 - Japanese and Traditional Chinese language packs included

@@ -93,7 +93,7 @@ https://labs.tungchi.jp/shinseiflow/
 
 ## 專案狀態
 
-- 目前版本：0.4.3.27
+- 目前版本：0.4.3.29
 - WordPress.org 送審候選版本
 - 以英文作為原始字串基準
 - 內含日文與繁體中文語言包
