@@ -108,7 +108,7 @@ trait TCARM_Notifications_Trait {
         );
         wp_add_inline_script(
             'tcarm-admin-resend-email',
-            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($resend_email_i18n, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ');',
+            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($resend_email_i18n, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ');',
             'before'
         );
         ob_start();

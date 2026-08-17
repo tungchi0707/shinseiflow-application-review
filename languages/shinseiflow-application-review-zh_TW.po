@@ -244,7 +244,6 @@ msgstr "申請日期"
 
 #: includes/admin-pages/page-application-detail.php:75
 #: includes/admin-pages/page-application-detail.php:224
-#: includes/admin-pages/page-display-customize.php:65
 #: includes/admin-pages/page-notifications.php:17
 msgid "Application Number"
 msgstr "申請編號"
@@ -541,7 +540,6 @@ msgid "Last Reviewed At"
 msgstr "最後審核時間"
 
 #: includes/admin-pages/page-application-detail.php:416
-#: includes/admin-pages/page-display-customize.php:94
 msgid "Review Actions"
 msgstr "審核操作"
 
@@ -590,13 +588,11 @@ msgid "Go to Form Settings"
 msgstr "前往表單設定"
 
 #: includes/admin-pages/page-dashboard.php:24
-#: includes/admin-pages/page-display-customize.php:66
 #: includes/class-tcarm-applications.php:868
 msgid "Pending Review"
 msgstr "待審核"
 
 #: includes/admin-pages/page-dashboard.php:25
-#: includes/admin-pages/page-display-customize.php:67
 #: includes/class-tcarm-applications.php:869
 msgid "Approved"
 msgstr "已許可"
@@ -653,378 +649,41 @@ msgstr "短代碼 / 用途"
 msgid "Not set"
 msgstr "未設定"
 
-#: includes/admin-pages/page-display-customize.php:9
-msgid "Frontend Common"
-msgstr "前台共用"
-
-#: includes/admin-pages/page-display-customize.php:10
-msgid "Frontend Shortcode Wrapper"
-msgstr "前台短代碼包裝"
-
-#: includes/admin-pages/page-display-customize.php:11
-msgid "Forms and Search Forms"
-msgstr "表單與搜尋表單"
-
-#: includes/admin-pages/page-display-customize.php:12
-msgid "Cards and Sections"
-msgstr "卡片與區段"
-
-#: includes/admin-pages/page-display-customize.php:13
-msgid "Card Heading"
-msgstr "卡片標題"
-
-#: includes/admin-pages/page-display-customize.php:14
-msgid "Card Description"
-msgstr "卡片說明"
-
-#: includes/admin-pages/page-display-customize.php:16
-msgid "Page-specific Wrapper"
-msgstr "頁面專用包裝"
-
-#: includes/admin-pages/page-display-customize.php:17
 #: includes/admin-pages/page-security.php:64
 #: includes/admin-pages/page-translation.php:91
 msgid "Application Form"
 msgstr "申請表單"
 
-#: includes/admin-pages/page-display-customize.php:18
-msgid "Application Content Review"
-msgstr "申請內容確認"
-
-#: includes/admin-pages/page-display-customize.php:19
-msgid "Submission Complete Page"
-msgstr "送出完成頁面"
-
-#: includes/admin-pages/page-display-customize.php:20
-msgid "Submission Complete Page Form Frame"
-msgstr "送出完成頁面的表單框"
-
-#: includes/admin-pages/page-display-customize.php:21
-msgid "Submission Complete Section"
-msgstr "送出完成區段"
-
-#: includes/admin-pages/page-display-customize.php:22
 #: includes/admin-pages/page-translation.php:120
 msgid "Application Status"
 msgstr "申請狀態"
 
-#: includes/admin-pages/page-display-customize.php:23
-msgid "Edit and Resubmit"
-msgstr "修正再申請"
-
-#: includes/admin-pages/page-display-customize.php:24
-msgid "Edit Resubmission Complete Page"
-msgstr "編輯修正再申請完成頁面"
-
-#: includes/admin-pages/page-display-customize.php:26
-msgid "Application Flow"
-msgstr "申請流程"
-
-#: includes/admin-pages/page-display-customize.php:27
-msgid "Entire Step Area"
-msgstr "整個步驟區域"
-
-#: includes/admin-pages/page-display-customize.php:28
-msgid "Step Card Common"
-msgstr "步驟卡片共用"
-
-#: includes/admin-pages/page-display-customize.php:29
-msgid "Input Step"
-msgstr "輸入步驟"
-
-#: includes/admin-pages/page-display-customize.php:30
-msgid "Review Step"
-msgstr "確認步驟"
-
-#: includes/admin-pages/page-display-customize.php:31
-msgid "Submission Complete Step"
-msgstr "送出完成步驟"
-
-#: includes/admin-pages/page-display-customize.php:32
-msgid "Admin Review Step"
-msgstr "管理者審核步驟"
-
-#: includes/admin-pages/page-display-customize.php:33
-msgid "Current Step"
-msgstr "目前步驟"
-
-#: includes/admin-pages/page-display-customize.php:34
-msgid "Step Icon"
-msgstr "步驟圖示"
-
-#: includes/admin-pages/page-display-customize.php:35
-msgid "Step Icon Text"
-msgstr "步驟圖示文字"
-
-#: includes/admin-pages/page-display-customize.php:36
-msgid "Step Number"
-msgstr "步驟編號"
-
-#: includes/admin-pages/page-display-customize.php:37
-msgid "Step Label"
-msgstr "步驟標籤"
-
-#: includes/admin-pages/page-display-customize.php:39
-msgid "Form Field"
-msgstr "表單欄位"
-
-#: includes/admin-pages/page-display-customize.php:40
-msgid "Input Item"
-msgstr "輸入項目"
-
-#: includes/admin-pages/page-display-customize.php:41
-msgid "Label"
-msgstr "標籤"
-
-#: includes/admin-pages/page-display-customize.php:42
-msgid "Required Badge"
-msgstr "必填標章"
-
-#: includes/admin-pages/page-display-customize.php:43
-msgid "Input Field"
-msgstr "輸入欄位"
-
-#: includes/admin-pages/page-display-customize.php:44
 #: includes/admin-pages/page-form-settings.php:14
 #: includes/class-tcarm-assets.php:144
 msgid "Textarea"
 msgstr "多行文字欄位"
 
-#: includes/admin-pages/page-display-customize.php:45
 #: includes/class-tcarm-applications.php:410
 msgid "Select"
 msgstr "選擇"
 
-#: includes/admin-pages/page-display-customize.php:46
 #: includes/admin-pages/page-form-settings.php:19
 #: includes/class-tcarm-assets.php:148
 msgid "Checkbox"
 msgstr "核取方塊"
 
-#: includes/admin-pages/page-display-customize.php:47
-msgid "Supplemental Description"
-msgstr "補充說明"
-
-#: includes/admin-pages/page-display-customize.php:48
-msgid "Input Error"
-msgstr "輸入錯誤"
-
-#: includes/admin-pages/page-display-customize.php:50
-msgid "Button"
-msgstr "按鈕"
-
-#: includes/admin-pages/page-display-customize.php:51
-msgid "Button Area"
-msgstr "按鈕區域"
-
-#: includes/admin-pages/page-display-customize.php:52
-msgid "Button Common"
-msgstr "按鈕共用"
-
-#: includes/admin-pages/page-display-customize.php:53
-msgid "Primary Button"
-msgstr "主要按鈕"
-
-#: includes/admin-pages/page-display-customize.php:54
-msgid "Secondary Button"
-msgstr "次要按鈕"
-
-#: includes/admin-pages/page-display-customize.php:55
-msgid "Download Button"
-msgstr "下載按鈕"
-
-#: includes/admin-pages/page-display-customize.php:57
-msgid "Notices and Status"
-msgstr "通知與狀態"
-
-#: includes/admin-pages/page-display-customize.php:58
-msgid "Notice Box Common"
-msgstr "通知框共用"
-
-#: includes/admin-pages/page-display-customize.php:59
-msgid "Information"
-msgstr "資訊"
-
-#: includes/admin-pages/page-display-customize.php:60
-msgid "Success"
-msgstr "成功"
-
-#: includes/admin-pages/page-display-customize.php:61
-msgid "Notice"
-msgstr "通知"
-
-#: includes/admin-pages/page-display-customize.php:62
-msgid "Error"
-msgstr "錯誤"
-
-#: includes/admin-pages/page-display-customize.php:63
-msgid "Status Badge Common"
-msgstr "狀態標章共用"
-
-#: includes/admin-pages/page-display-customize.php:64
-msgid "Application Number Label"
-msgstr "申請編號標籤"
-
-#: includes/admin-pages/page-display-customize.php:68
 #: includes/class-tcarm-applications.php:870
 msgid "Rejected"
 msgstr "不許可"
 
-#: includes/admin-pages/page-display-customize.php:69
 #: includes/admin-pages/page-notifications.php:27
 msgid "Rejection Reason"
 msgstr "不許可原因"
 
-#: includes/admin-pages/page-display-customize.php:70
-msgid "Additional Confirmation Request"
-msgstr "補充確認要求"
-
-#: includes/admin-pages/page-display-customize.php:72
-msgid "Review and Application Content Display"
-msgstr "確認與申請內容顯示"
-
-#: includes/admin-pages/page-display-customize.php:73
-msgid "Review List"
-msgstr "確認列表"
-
-#: includes/admin-pages/page-display-customize.php:74
-msgid "Review Row"
-msgstr "確認列"
-
-#: includes/admin-pages/page-display-customize.php:75
-msgid "Review Label"
-msgstr "確認標籤"
-
-#: includes/admin-pages/page-display-customize.php:76
-msgid "Review Value"
-msgstr "確認值"
-
-#: includes/admin-pages/page-display-customize.php:77
-msgid "Details Table"
-msgstr "詳細資料表"
-
-#: includes/admin-pages/page-display-customize.php:79
-msgid "Files and Downloads"
-msgstr "檔案與下載"
-
-#: includes/admin-pages/page-display-customize.php:80
-msgid "Attachment List"
-msgstr "附件列表"
-
-#: includes/admin-pages/page-display-customize.php:81
-msgid "Attachment Item"
-msgstr "附件項目"
-
-#: includes/admin-pages/page-display-customize.php:82
-msgid "Attachment Image Preview"
-msgstr "附件圖片預覽"
-
-#: includes/admin-pages/page-display-customize.php:83
-msgid "Download Section"
-msgstr "下載區段"
-
-#: includes/admin-pages/page-display-customize.php:84
-msgid "Download List"
-msgstr "下載列表"
-
-#: includes/admin-pages/page-display-customize.php:85
-msgid "Download Item"
-msgstr "下載項目"
-
-#: includes/admin-pages/page-display-customize.php:86
-msgid "Download Title"
-msgstr "下載標題"
-
-#: includes/admin-pages/page-display-customize.php:87
-msgid "Download Description"
-msgstr "下載說明"
-
-#: includes/admin-pages/page-display-customize.php:89
-#: includes/admin-pages/page-display-customize.php:140
-msgid "Admin Screen"
-msgstr "管理畫面"
-
-#: includes/admin-pages/page-display-customize.php:90
-msgid "Admin Screen Wrapper"
-msgstr "管理畫面包裝"
-
-#: includes/admin-pages/page-display-customize.php:91
-msgid "Settings Card"
-msgstr "設定卡片"
-
-#: includes/admin-pages/page-display-customize.php:92
-msgid "Settings Input Row"
-msgstr "設定輸入列"
-
-#: includes/admin-pages/page-display-customize.php:93
-msgid "Application Details Page"
-msgstr "申請詳細頁面"
-
-#: includes/admin-pages/page-display-customize.php:95
 #: includes/class-tcarm-application-history.php:150
 msgid "Submission and Response History"
 msgstr "送出與回應歷史"
 
-#: includes/admin-pages/page-display-customize.php:106
-msgid "CSS Class"
-msgstr "CSS 類別"
-
-#: includes/admin-pages/page-display-customize.php:106
-msgid "Purpose"
-msgstr "用途"
-
-#: includes/admin-pages/page-display-customize.php:114
-msgid "CSS Example"
-msgstr "CSS 範例"
-
-#: includes/admin-pages/page-display-customize.php:134
-msgid ""
-"Configure CSS applied to frontend pages and this plugin's admin screens."
-msgstr "設定套用於前台頁面與此外掛管理畫面的 CSS。"
-
-#: includes/admin-pages/page-display-customize.php:134
-#: includes/admin-pages/page-display-customize.php:138
-#: includes/admin-pages/page-display-customize.php:174
-#: includes/class-tcarm-admin.php:86 includes/class-tcarm-admin.php:115
-msgid "Display Customization"
-msgstr "顯示自訂"
-
-#: includes/admin-pages/page-display-customize.php:139
-msgid "Frontend"
-msgstr "前台"
-
-#: includes/admin-pages/page-display-customize.php:143
-msgid "Frontend Custom CSS"
-msgstr "前台自訂 CSS"
-
-#: includes/admin-pages/page-display-customize.php:145
-msgid ""
-"Enter CSS applied to frontend pages such as the application form, status "
-"page, and download file display."
-msgstr "輸入套用於前台頁面的 CSS，例如申請表單、狀態頁面與下載檔案顯示區。"
-
-#: includes/admin-pages/page-display-customize.php:149
-msgid "Admin Custom CSS"
-msgstr "管理畫面自訂 CSS"
-
-#: includes/admin-pages/page-display-customize.php:151
-msgid ""
-"Enter CSS applied only to this plugin's admin screens. It is not applied to "
-"the entire WordPress admin area."
-msgstr "輸入只套用於此外掛管理畫面的 CSS。不會套用到整個 WordPress 管理後台。"
-
-#: includes/admin-pages/page-display-customize.php:155
-#: includes/admin-pages/page-display-customize.php:157
-msgid "CSS Class List"
-msgstr "CSS 類別列表"
-
-#: includes/admin-pages/page-display-customize.php:158
-msgid ""
-"Main CSS classes available for custom CSS. You can reference them while "
-"editing CSS on the left."
-msgstr "可用於自訂 CSS 的主要 CSS 類別。你可以在左側編輯 CSS 時參考。"
-
-#: includes/admin-pages/page-display-customize.php:185
 #: includes/admin-pages/page-download-files.php:98
 #: includes/admin-pages/page-notifications.php:162
 #: includes/admin-pages/page-privacy.php:22

@@ -83,7 +83,6 @@ trait TCARM_Admin_Trait {
         add_submenu_page('tcarm_dashboard', __('Notification Email Settings', 'shinseiflow-application-review'), __('Notification Email Settings', 'shinseiflow-application-review'), self::CAPABILITY, 'tcarm_mail_settings', array($this, 'render_mail_settings_page'));
         add_submenu_page('tcarm_dashboard', __('Security Settings', 'shinseiflow-application-review'), __('Security Settings', 'shinseiflow-application-review'), self::CAPABILITY, 'tcarm_security_settings', array($this, 'render_security_settings_page'));
         add_submenu_page('tcarm_dashboard', __('General Settings', 'shinseiflow-application-review'), __('General Settings', 'shinseiflow-application-review'), self::CAPABILITY, 'tcarm_settings', array($this, 'render_settings'));
-        add_submenu_page('tcarm_dashboard', __('Display Customization', 'shinseiflow-application-review'), __('Display Customization', 'shinseiflow-application-review'), self::CAPABILITY, 'tcarm_display_customize', array($this, 'render_display_customize_settings_page'));
         add_submenu_page('tcarm_dashboard', __('Multilingual Settings', 'shinseiflow-application-review'), __('Multilingual Settings', 'shinseiflow-application-review'), self::CAPABILITY, 'tcarm_translation_settings', array($this, 'render_translation_settings_page'));
         add_submenu_page('tcarm_dashboard', __('Privacy and Data Retention', 'shinseiflow-application-review'), __('Privacy and Data Retention', 'shinseiflow-application-review'), self::CAPABILITY, 'tcarm_privacy_settings', array($this, 'render_privacy_settings_page'));
         add_submenu_page('tcarm_dashboard', __('About', 'shinseiflow-application-review'), __('About', 'shinseiflow-application-review'), self::CAPABILITY, 'shinseiflow-about', array($this, 'render_about_page'));
@@ -112,7 +111,6 @@ trait TCARM_Admin_Trait {
             'tcarm_mail_settings' => __('Notification Email Settings', 'shinseiflow-application-review'),
             'tcarm_security_settings' => __('Security Settings', 'shinseiflow-application-review'),
             'tcarm_settings' => __('General Settings', 'shinseiflow-application-review'),
-            'tcarm_display_customize' => __('Display Customization', 'shinseiflow-application-review'),
             'tcarm_translation_settings' => __('Multilingual Settings', 'shinseiflow-application-review'),
             'tcarm_privacy_settings' => __('Privacy and Data Retention', 'shinseiflow-application-review'),
             'shinseiflow-about' => __('About', 'shinseiflow-application-review'),

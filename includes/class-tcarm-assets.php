@@ -13,7 +13,7 @@ trait TCARM_Assets_Trait {
                     array(
                         'message' => __("Deactivating the plugin will not delete saved application data, uploaded files, review information, or settings.\n\nThis information may include personal data and application details.\n\nIf you want to delete data, enable data deletion under Privacy and Data Retention before deleting the plugin.\n\nDo you want to deactivate the plugin?", 'shinseiflow-application-review'),
                     ),
-                    JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+                    JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
                 ) . ';',
                 'before'
             );
@@ -26,7 +26,6 @@ trait TCARM_Assets_Trait {
         $is_mail_settings_page = str_ends_with($hook, '_page_tcarm_mail_settings');
         $is_security_settings_page = str_ends_with($hook, '_page_tcarm_security_settings');
         $is_general_settings_page = str_ends_with($hook, '_page_tcarm_settings');
-        $is_display_customize_page = str_ends_with($hook, '_page_tcarm_display_customize');
         $is_translation_settings_page = str_ends_with($hook, '_page_tcarm_translation_settings');
         $is_privacy_settings_page = str_ends_with($hook, '_page_tcarm_privacy_settings');
         $is_about_page = strpos($hook, 'shinseiflow-about') !== false;
@@ -37,7 +36,6 @@ trait TCARM_Assets_Trait {
             || $is_mail_settings_page
             || $is_security_settings_page
             || $is_general_settings_page
-            || $is_display_customize_page
             || $is_translation_settings_page
             || $is_privacy_settings_page
             || $is_about_page;
@@ -47,7 +45,6 @@ trait TCARM_Assets_Trait {
             || $is_mail_settings_page
             || $is_security_settings_page
             || $is_general_settings_page
-            || $is_display_customize_page
             || $is_translation_settings_page
             || $is_privacy_settings_page;
         $is_application_detail_page = false;
@@ -69,13 +66,6 @@ trait TCARM_Assets_Trait {
                     self::VERSION
                 );
             }
-            $settings = self::get_settings();
-            $admin_custom_css = isset($settings['admin_custom_css']) ? trim((string) $settings['admin_custom_css']) : '';
-            if ($admin_custom_css !== '') {
-                $admin_custom_css_handle = $is_about_page ? 'tcarm-admin-about' : 'tcarm-admin';
-                wp_add_inline_style($admin_custom_css_handle, $admin_custom_css);
-            }
-
             if ($is_download_settings_page) {
                 wp_enqueue_media();
             }
@@ -87,7 +77,7 @@ trait TCARM_Assets_Trait {
                     'dependencies' => array('jquery', 'jquery-ui-sortable'),
                 );
             }
-            if ($is_form_settings_page || $is_mail_settings_page || $is_general_settings_page || $is_display_customize_page) {
+            if ($is_form_settings_page || $is_mail_settings_page || $is_general_settings_page) {
                 $form_settings_dependencies = array('jquery');
                 if ($is_form_settings_page) {
                     $form_settings_dependencies[] = 'jquery-ui-sortable';
@@ -208,7 +198,7 @@ trait TCARM_Assets_Trait {
                 wp_enqueue_script($handle, self::plugin_url() . $script['path'], $script['dependencies'], self::VERSION, true);
                 wp_add_inline_script(
                     $handle,
-                    'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($admin_script_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ');',
+                    'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($admin_script_data, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ');',
                     'before'
                 );
             }
@@ -245,11 +235,6 @@ trait TCARM_Assets_Trait {
 
     public function frontend_assets() {
         wp_enqueue_style('tcarm-frontend', self::plugin_url() . 'assets/css/frontend.css', array(), self::VERSION);
-        $settings = self::get_settings();
-        $frontend_custom_css = isset($settings['frontend_custom_css']) ? trim((string) $settings['frontend_custom_css']) : '';
-        if ($frontend_custom_css !== '' && $this->current_page_has_tcarm_legacy_shortcode()) {
-            wp_add_inline_style('tcarm-frontend', $frontend_custom_css);
-        }
         wp_enqueue_script('tcarm-frontend-validation', self::plugin_url() . 'assets/js/frontend-validation.js', array(), self::VERSION, true);
         wp_localize_script(
             'tcarm-frontend-validation',

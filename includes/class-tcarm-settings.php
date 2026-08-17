@@ -55,8 +55,6 @@ trait TCARM_Settings_Trait {
             'related_source_id_meta_key' => 'tcarm_source_application_id',
             'download_files' => array(),
             'download_link_expire_minutes' => '30',
-            'frontend_custom_css' => '',
-            'admin_custom_css' => '',
             'ai_provider' => 'openai',
             'ai_api_key' => '',
             'ai_model' => 'gpt-4o-mini',
@@ -116,8 +114,6 @@ trait TCARM_Settings_Trait {
                 } else {
                     $out[$key] = self::normalize_tcarm_allowed_roles($fallback);
                 }
-            } elseif (in_array($key, array('frontend_custom_css', 'admin_custom_css'), true)) {
-                $out[$key] = isset($input[$key]) ? $this->sanitize_custom_css($input[$key]) : $fallback;
             } elseif ($key === 'openai_api_key' || $key === 'ai_api_key') {
                 $incoming_key = isset($input[$key]) ? trim((string) $input[$key]) : '';
                 $out[$key] = $incoming_key !== '' ? sanitize_text_field($incoming_key) : $fallback;
@@ -131,10 +127,10 @@ trait TCARM_Settings_Trait {
                 $out[$key] = isset($input[$key]) ? sanitize_textarea_field($input[$key]) : $fallback;
             } elseif (strpos($key, 'email_subject_') === 0) {
                 $out[$key] = isset($input[$key]) ? sanitize_text_field($input[$key]) : $fallback;
-            } elseif ($key === 'from_email') {
+            } elseif (in_array($key, array('from_email', 'recipient_email'), true)) {
                 $out[$key] = isset($input[$key]) ? sanitize_email($input[$key]) : $fallback;
-            } elseif (in_array($key, array('recipient_email', 'cc_email', 'bcc_email'), true)) {
-                $out[$key] = isset($input[$key]) ? sanitize_text_field($input[$key]) : $fallback;
+            } elseif (in_array($key, array('cc_email', 'bcc_email'), true)) {
+                $out[$key] = isset($input[$key]) ? $this->sanitize_mail_address_list($input[$key]) : $fallback;
             } elseif (in_array($key, array('form_page_id', 'status_page_id', 'view_page_id', 'edit_page_id', 'top_page_id'), true)) {
                 $out[$key] = isset($input[$key]) ? (string) absint($input[$key]) : $fallback;
             } elseif (in_array($key, array('status_page_url', 'view_page_url', 'edit_page_url', 'top_page_url', 'terms_url'), true)) {
@@ -259,23 +255,6 @@ trait TCARM_Settings_Trait {
         }
 
         return !empty($out) ? $out : self::default_application_number_rule();
-    }
-
-    private function sanitize_custom_css($css) {
-        $css = (string) $css;
-        $css = wp_strip_all_tags($css);
-        $forbidden_patterns = array(
-            '/<\s*\/?\s*script\b/i',
-            '/expression\s*\(/i',
-            '/javascript\s*:/i',
-            '/vbscript\s*:/i',
-            '/data\s*:\s*text\/html/i',
-            '/@import\b/i',
-            '/behavior\s*:/i',
-            '/-moz-binding\s*:/i',
-        );
-        $css = preg_replace($forbidden_patterns, '', $css);
-        return trim($css);
     }
 
     private function sanitize_consent_items($input, $fallback = array()) {

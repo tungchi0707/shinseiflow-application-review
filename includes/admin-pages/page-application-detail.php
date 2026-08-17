@@ -126,7 +126,7 @@ trait TCARM_Admin_Page_Applications_Trait {
         );
         wp_add_inline_script(
             'tcarm-admin-application-list-actions',
-            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($application_list_i18n, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ');',
+            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($application_list_i18n, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ');',
             'before'
         );
         ob_start();
@@ -142,9 +142,6 @@ trait TCARM_Admin_Page_Applications_Trait {
                 </div>
             </div>
         </div>
-        <style>
-            .tcarm-application-list-toolbar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin:12px 0 10px}.tcarm-application-list-toolbar .subsubsub{float:none;margin:0}.tcarm-bulk-actions{margin-left:auto}.tcarm-confirm-modal{position:fixed;inset:0;z-index:100000}.tcarm-confirm-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.38)}.tcarm-confirm-modal__dialog{position:relative;width:min(480px,calc(100% - 32px));margin:12vh auto 0;background:#fff;border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,.28);padding:22px 24px}.tcarm-confirm-modal__dialog h2{margin:0 0 12px}.tcarm-confirm-modal__actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.tcarm-deleted-applications-section{margin-top:22px}.tcarm-deleted-applications-table .tcarm-status{white-space:nowrap}
-        </style>
         <?php
         return ob_get_clean();
     }

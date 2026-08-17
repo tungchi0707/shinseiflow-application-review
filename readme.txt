@@ -1,10 +1,10 @@
 === ShinseiFlow – Application Review & Approval Workflow ===
-Contributors: casperyeh
+Contributors: tungchi07
 Tags: application form, approval workflow, review, notifications, form management
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.4.3.29
+Stable tag: 0.4.3.34
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,26 @@ Privacy Policy:
 https://policies.google.com/privacy
 
 == Changelog ==
+
+= 0.4.3.34 =
+
+* Updated the WordPress.org contributor username.
+
+= 0.4.3.33 =
+
+* Hardened inline-script JSON encoding to prevent script-breakout risks while preserving existing admin behavior.
+
+= 0.4.3.32 =
+
+* Improved recipient, CC, and BCC email sanitization while preserving multi-address support.
+
+= 0.4.3.31 =
+
+* Moved application detail admin inline CSS to the enqueued admin stylesheet for WordPress.org compliance.
+
+= 0.4.3.30 =
+
+* Removed the built-in arbitrary Custom CSS settings for WordPress.org compliance.
 
 = 0.4.3.29 =
 

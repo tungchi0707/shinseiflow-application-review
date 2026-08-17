@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ShinseiFlow – Application Review & Approval Workflow
  * Description: Create application forms, review submissions, manage approval workflows, and notify applicants from WordPress.
- * Version: 0.4.3.29
+ * Version: 0.4.3.34
  * Requires at least: 6.5
  * Requires PHP: 8.0
  * Author: Casper Yeh
@@ -36,7 +36,6 @@ require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-form-settings.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-notifications.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-translation.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-download-files.php';
-require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-display-customize.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-security.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-redirects.php';
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-privacy.php';
@@ -44,7 +43,7 @@ require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-application-detail.ph
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-about.php';
 
 final class TCARM_Plugin {
-    const VERSION = '0.4.3.29';
+    const VERSION = '0.4.3.34';
     const DB_VERSION = '0.1.61';
     const CAPABILITY = 'manage_tcarm_applications';
     const OPTION_SETTINGS = 'tcarm_settings';
@@ -77,7 +76,6 @@ final class TCARM_Plugin {
     use TCARM_Admin_Page_Notifications_Trait;
     use TCARM_Admin_Page_Translation_Trait;
     use TCARM_Admin_Page_Download_Files_Trait;
-    use TCARM_Admin_Page_Display_Customize_Trait;
     use TCARM_Admin_Page_Security_Trait;
     use TCARM_Admin_Page_Redirects_Trait;
     use TCARM_Admin_Page_Privacy_Trait;

@@ -357,15 +357,6 @@
       $card.find('.tcarm-template-panel').removeClass('is-active');
       $card.find('.tcarm-template-panel[data-template-panel="'+template+'"]').addClass('is-active');
     });
-    $(document).on('click', '.tcarm-display-tab', function(e){
-      e.preventDefault();
-      var panel = $(this).data('display-panel');
-      var $card = $(this).closest('.tcarm-display-customize-card');
-      $card.find('.tcarm-display-tab').removeClass('is-active').attr('aria-selected', 'false');
-      $(this).addClass('is-active').attr('aria-selected', 'true');
-      $card.find('.tcarm-display-panel').removeClass('is-active');
-      $card.find('.tcarm-display-panel[data-display-panel="'+panel+'"]').addClass('is-active');
-    });
     $(document).on('click', '.tcarm-lang-tab', function(e){
       e.preventDefault();
       var panel = $(this).data('lang-panel');
