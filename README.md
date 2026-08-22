@@ -12,7 +12,7 @@ It is designed for organizations that need more than a simple contact form. Shin
 
 ## Who is ShinseiFlow for?
 
-ShinseiFlow is suitable for organizations and teams that want to manage structured application workflows in WordPress without relying on an external SaaS platform.
+ShinseiFlow is suitable for organizations and teams that want to manage structured application workflows directly in WordPress without relying on an external SaaS platform.
 
 ## Typical Use Cases
 
@@ -44,7 +44,9 @@ ShinseiFlow focuses on what happens after submission:
 ## Key Features
 
 - Customizable application forms
-- Multiple field types and Consent items
+- Built-in applicant name, email, and phone system fields
+- Multiple custom field types
+- Consent fields
 - Section-based form organization
 - Multi-step application flow
 - Application review and approval workflow
@@ -55,7 +57,7 @@ ShinseiFlow focuses on what happens after submission:
 - Email notification templates
 - Approved file downloads
 - Cloudflare Turnstile support
-- Built-in anti-spam protections
+- Built-in anti-spam and rate-limiting protections
 - Multilingual application forms, Consent items, frontend labels, and messages
 - AI-assisted translation for configurable form content
 - Display customization options
@@ -65,6 +67,7 @@ ShinseiFlow focuses on what happens after submission:
 ## Requirements
 
 - WordPress 6.5 or later
+- Tested up to WordPress 7.1
 - PHP 8.0 or later
 - License: GPL-2.0-or-later
 
@@ -82,6 +85,32 @@ ShinseiFlow focuses on what happens after submission:
 - `[tcarm_view]` — Application details
 - `[tcarm_edit]` — Revision and resubmission form
 
+## Multilingual Support
+
+ShinseiFlow includes its own multilingual configuration system for application forms, frontend labels, messages, Consent items, and other configurable content.
+
+The plugin is also internationalized for the standard WordPress translation system.
+
+Translation files such as `.po` and `.mo` are not bundled with the plugin package. When the plugin is published on WordPress.org, WordPress interface translations can be managed and distributed through [translate.wordpress.org](https://translate.wordpress.org/).
+
+## Optional External Services
+
+ShinseiFlow can integrate with optional external services when explicitly configured by an administrator.
+
+### Cloudflare Turnstile
+
+Cloudflare Turnstile can be enabled to provide bot protection for frontend workflows.
+
+It is disabled by default and is only loaded and used after an administrator configures the required Turnstile settings.
+
+### AI-assisted Translation
+
+Optional AI-assisted translation is available for configurable form and interface content.
+
+Supported integrations include OpenAI and Google Gemini. AI translation is only initiated by an administrator and is not used to process applicant submissions automatically.
+
+For full information about external services, transmitted data, terms, and privacy policies, see the plugin's `readme.txt`.
+
 ## Documentation and Support
 
 Project website, documentation, support information, and issue reporting:
@@ -90,12 +119,16 @@ https://labs.tungchi.jp/shinseiflow/
 
 ## Project Status
 
-- Current version: 0.4.3.29
-- WordPress.org submission candidate
-- English-first source strings
-- Japanese and Traditional Chinese language packs included
-- Multilingual form and Consent content supported
-- AI-assisted translation available for configurable form content
+- Current version: **0.4.3.48**
+- Currently under review for inclusion in the WordPress.org Plugin Directory
+- Compatible with WordPress 6.5 and later
+- Tested with WordPress 7.1
+- Internationalization-ready for WordPress.org community translations
+- Multilingual form, Consent, frontend label, and message configuration supported
+- Optional Cloudflare Turnstile integration available
+- Optional AI-assisted translation available for configurable content
+
+ShinseiFlow is under active development. Until the WordPress.org review process is complete, GitHub represents the latest development and review-candidate source.
 
 ## Development Philosophy
 
