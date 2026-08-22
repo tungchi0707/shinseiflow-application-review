@@ -28,8 +28,7 @@ trait TCARM_Admin_Page_Dashboard_Trait {
                 <div class="tcarm-panel tcarm-card-panel">
                     <div class="tcarm-panel-header"><h2><?php echo esc_html__('Frontend Page Setup Status', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Review shortcode pages and destination URLs.', 'shinseiflow-application-review'); ?></p></div>
                     <?php
-                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Status table markup escapes labels, shortcodes, and URLs before output.
-                    echo $this->render_frontend_page_status_table();
+                    $this->render_frontend_page_status_table();
                     ?>
                 </div>
             </div>
@@ -45,7 +44,6 @@ trait TCARM_Admin_Page_Dashboard_Trait {
             array(__('Edit and Resubmit Page', 'shinseiflow-application-review'), 'edit', '[tcarm_edit]'),
             array(__('Top Page', 'shinseiflow-application-review'), 'top', __('Back to Top link', 'shinseiflow-application-review')),
         );
-        ob_start();
         ?>
         <table class="widefat striped tcarm-page-status-table">
             <thead><tr class="tcarm-status-detail-item"><th><?php echo esc_html__('Item', 'shinseiflow-application-review'); ?></th><th><?php echo esc_html__('Shortcode / Purpose', 'shinseiflow-application-review'); ?></th><th><?php echo esc_html__('Current URL', 'shinseiflow-application-review'); ?></th></tr></thead>
@@ -66,7 +64,6 @@ trait TCARM_Admin_Page_Dashboard_Trait {
             </tbody>
         </table>
         <?php
-        return ob_get_clean();
     }
 
     private function admin_icon_svg($type) {

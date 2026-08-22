@@ -106,12 +106,19 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                             <div class="tcarm-empty-section"><?php echo esc_html__('No form fields have been configured yet.', 'shinseiflow-application-review'); ?></div>
                         <?php endif; ?>
                         <?php foreach ($sections as $section_key => $section): ?>
-                            <details class="tcarm-section-group" data-section="<?php echo esc_attr($section_key); ?>" open>
+                            <?php $is_system_section = $section_key === self::system_section_key(); ?>
+                            <details class="tcarm-section-group" data-section="<?php echo esc_attr($section_key); ?>"<?php if ($is_system_section): ?> data-system-section="1"<?php endif; ?> open>
                                 <summary class="tcarm-section-group-summary">
                                     <div class="tcarm-section-summary-main">
                                         <span class="tcarm-section-drag" title="<?php echo esc_attr__('Drag to reorder', 'shinseiflow-application-review'); ?>" aria-hidden="true">☰</span><span class="tcarm-section-toggle-mark" aria-hidden="true"></span>
-                                        <label class="tcarm-switch"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][enabled]" value="1" <?php checked($section['enabled'], '1'); ?>><span></span></label>
+                                        <?php if ($is_system_section): ?>
+                                            <input type="hidden" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][enabled]" value="1">
+                                            <label class="tcarm-switch"><input type="checkbox" value="1" checked disabled aria-disabled="true"><span></span></label>
+                                        <?php else: ?>
+                                            <label class="tcarm-switch"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][enabled]" value="1" <?php checked($section['enabled'], '1'); ?>><span></span></label>
+                                        <?php endif; ?>
                                         <strong class="tcarm-section-title-text"><?php echo esc_html($section['label']); ?></strong>
+                                        <?php if ($is_system_section): ?><span class="tcarm-version-pill"><?php echo esc_html__('System Section', 'shinseiflow-application-review'); ?></span><?php endif; ?>
                                         <button type="button" class="tcarm-icon-button tcarm-edit-section" title="<?php echo esc_attr__('Edit Section Name', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Edit Section Name', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('edit'), $this->admin_icon_svg_allowed_tags()); ?></button>
                                         <code><?php echo esc_html($section_key); ?></code>
                                     </div>
@@ -119,20 +126,26 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                         <input class="tcarm-section-sort" type="hidden" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][sort_order]" value="<?php echo esc_attr($section['sort_order']); ?>">
                                         <input type="hidden" class="tcarm-section-label-input" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr('section__' . $section_key . '__label'); ?>" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][label]" value="<?php echo esc_attr($section['label']); ?>">
                                         <input type="hidden" class="tcarm-delete-section-input" name="<?php echo esc_attr(self::OPTION_SECTIONS); ?>[<?php echo esc_attr($section_key); ?>][_delete]" value="0">
-                                        <button type="button" class="tcarm-icon-button tcarm-delete-section" title="<?php echo esc_attr__('Delete Section', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Delete Section', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('delete'), $this->admin_icon_svg_allowed_tags()); ?></button>
+                                        <?php if (!$is_system_section): ?><button type="button" class="tcarm-icon-button tcarm-delete-section" title="<?php echo esc_attr__('Delete Section', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Delete Section', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('delete'), $this->admin_icon_svg_allowed_tags()); ?></button><?php endif; ?>
                                     </div>
                                 </summary>
 
                                 <div class="tcarm-section-group-body tcarm-sortable-fields">
                                     <?php if (!empty($grouped[$section_key])): ?>
                                         <?php foreach ($grouped[$section_key] as $key => $field): ?>
-                                            <div class="<?php echo esc_attr('tcarm-mini-field-card ' . ($field['enabled'] === '1' ? 'is-enabled' : 'is-disabled') . (isset($field['type']) && in_array($field['type'], array('dropdown', 'radio', 'checkbox_group'), true) ? ' is-dropdown' : '')); ?>" data-field="<?php echo esc_attr($key); ?>">
+                                            <?php $is_system_field = self::is_system_field_key($key); ?>
+                                            <div class="<?php echo esc_attr('tcarm-mini-field-card ' . ($field['enabled'] === '1' ? 'is-enabled' : 'is-disabled') . (isset($field['type']) && in_array($field['type'], array('dropdown', 'radio', 'checkbox_group'), true) ? ' is-dropdown' : '')); ?>" data-field="<?php echo esc_attr($key); ?>"<?php if ($is_system_field): ?> data-system-field="1"<?php endif; ?>>
                                                 <div class="tcarm-mini-field-title">
                                                     <span class="tcarm-field-drag" title="<?php echo esc_attr__('Drag to reorder', 'shinseiflow-application-review'); ?>" aria-hidden="true">☰</span><input class="tcarm-mini-sort" type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][sort_order]" value="<?php echo esc_attr($field['sort_order']); ?>">
-                                                    <label class="tcarm-switch"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][enabled]" value="1" <?php checked($field['enabled'], '1'); ?>><span></span></label>
+                                                    <?php if ($is_system_field && $key !== 'contact_phone'): ?>
+                                                        <input type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][enabled]" value="1">
+                                                        <label class="tcarm-switch"><input type="checkbox" value="1" checked disabled aria-disabled="true"><span></span></label>
+                                                    <?php else: ?>
+                                                        <label class="tcarm-switch"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][enabled]" value="1" <?php checked($field['enabled'], '1'); ?>><span></span></label>
+                                                    <?php endif; ?>
                                                     <div class="tcarm-mini-name">
                                                         <strong><?php echo esc_html($field['label']); ?></strong>
-                                                        <code><?php echo esc_html($key); ?></code>
+                                                        <code><?php echo esc_html($key); ?></code><?php if ($is_system_field): ?> <span class="tcarm-version-pill"><?php echo esc_html__('System Field', 'shinseiflow-application-review'); ?></span><?php endif; ?>
                                                     </div>
                                                 </div>
                                                 <div class="tcarm-mini-field-editor">
@@ -140,9 +153,16 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                                     <input class="tcarm-field-section-input" type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][section]" value="<?php echo esc_attr($section_key); ?>">
                                                     <div class="tcarm-mini-field-controls-row tcarm-mini-field-controls-row-main">
                                                         <label class="tcarm-field-control-type"><?php echo esc_html__('Type', 'shinseiflow-application-review'); ?>
-                                                            <select name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][type]">
-                                                                <?php foreach ($type_labels as $type => $label): ?><option value="<?php echo esc_attr($type); ?>" <?php selected($field['type'], $type); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?>
-                                                            </select>
+                                                            <?php if ($is_system_field): ?>
+                                                                <input type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][type]" value="<?php echo esc_attr($field['type']); ?>">
+                                                                <select disabled aria-disabled="true">
+                                                                    <option value="<?php echo esc_attr($field['type']); ?>" selected><?php echo esc_html(isset($type_labels[$field['type']]) ? $type_labels[$field['type']] : $field['type']); ?></option>
+                                                                </select>
+                                                            <?php else: ?>
+                                                                <select name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][type]">
+                                                                    <?php foreach ($type_labels as $type => $label): ?><option value="<?php echo esc_attr($type); ?>" <?php selected($field['type'], $type); ?>><?php echo esc_html($label); ?></option><?php endforeach; ?>
+                                                                </select>
+                                                            <?php endif; ?>
                                                         </label>
                                                         <label class="tcarm-field-control-label"><?php echo esc_html__('Display Label', 'shinseiflow-application-review'); ?>
                                                             <input type="text" data-tcarm-field-language-input="1" data-tcarm-field-language="ja" data-tcarm-field-translation-key="<?php echo esc_attr($key . '__label'); ?>" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][label]" value="<?php echo esc_attr($field['label']); ?>">
@@ -160,7 +180,12 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                                     </div>
                                                 </div>
                                                 <div class="tcarm-mini-field-flags">
-                                                    <label class="tcarm-field-control-required"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][required]" value="1" <?php checked($field['required'], '1'); ?>> <?php echo esc_html__('Required', 'shinseiflow-application-review'); ?></label>
+                                                    <?php if ($is_system_field && $key !== 'contact_phone'): ?>
+                                                        <input type="hidden" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][required]" value="1">
+                                                        <label class="tcarm-field-control-required"><input type="checkbox" value="1" checked disabled aria-disabled="true"> <?php echo esc_html__('Required', 'shinseiflow-application-review'); ?></label>
+                                                    <?php else: ?>
+                                                        <label class="tcarm-field-control-required"><input type="checkbox" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][required]" value="1" <?php checked($field['required'], '1'); ?>> <?php echo esc_html__('Required', 'shinseiflow-application-review'); ?></label>
+                                                    <?php endif; ?>
                                                 </div>
                                                 </div>
                                                 <div class="tcarm-dropdown-settings">
@@ -178,10 +203,12 @@ trait TCARM_Admin_Page_Form_Settings_Trait {
                                                     </div>
                                                     <button type="button" class="button tcarm-add-dropdown-choice"><?php echo esc_html__('+ Add Choice', 'shinseiflow-application-review'); ?></button>
                                                 </div>
-                                                <div class="tcarm-row-actions">
-                                                    <input type="hidden" class="tcarm-delete-field-input" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][_delete]" value="0">
-                                                    <button type="button" class="tcarm-icon-button tcarm-delete-field" title="<?php echo esc_attr__('Delete Field', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Delete Field', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('delete'), $this->admin_icon_svg_allowed_tags()); ?></button>
-                                                </div>
+                                                <?php if (!$is_system_field): ?>
+                                                    <div class="tcarm-row-actions">
+                                                        <input type="hidden" class="tcarm-delete-field-input" name="<?php echo esc_attr(self::OPTION_FIELDS); ?>[<?php echo esc_attr($key); ?>][_delete]" value="0">
+                                                        <button type="button" class="tcarm-icon-button tcarm-delete-field" title="<?php echo esc_attr__('Delete Field', 'shinseiflow-application-review'); ?>" aria-label="<?php echo esc_attr__('Delete Field', 'shinseiflow-application-review'); ?>"><?php echo wp_kses($this->admin_icon_svg('delete'), $this->admin_icon_svg_allowed_tags()); ?></button>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         <?php endforeach; ?>
                                     <?php else: ?>

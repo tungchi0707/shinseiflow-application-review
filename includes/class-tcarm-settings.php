@@ -79,12 +79,120 @@ trait TCARM_Settings_Trait {
         return array();
     }
 
+    private static function system_section_key() {
+        return 'applicant';
+    }
+
+    private static function system_section_definitions() {
+        return array(
+            self::system_section_key() => array(
+                'label' => '申請者情報',
+                'enabled' => '1',
+                'sort_order' => 0,
+                'translations' => array(),
+            ),
+        );
+    }
+
+    private static function system_field_definitions() {
+        $base = array(
+            'label' => '',
+            'type' => 'text',
+            'section' => self::system_section_key(),
+            'enabled' => '1',
+            'required' => '0',
+            'public' => '0',
+            'placeholder' => '',
+            'description' => '',
+            'translations' => array(),
+            'acf_key' => '',
+            'sort_order' => 999,
+            'choices' => array(),
+            'taxonomy_enabled' => '0',
+            'taxonomy_slug' => '',
+        );
+
+        return array(
+            'applicant_name' => array_merge($base, array(
+                'label' => '氏名',
+                'type' => 'text',
+                'required' => '1',
+                'sort_order' => 10,
+            )),
+            'contact_email' => array_merge($base, array(
+                'label' => 'メールアドレス',
+                'type' => 'email',
+                'required' => '1',
+                'sort_order' => 20,
+            )),
+            'contact_phone' => array_merge($base, array(
+                'label' => '電話番号',
+                'type' => 'tel',
+                'sort_order' => 30,
+            )),
+        );
+    }
+
+    private static function is_system_field_key($key) {
+        return isset(self::system_field_definitions()[sanitize_key($key)]);
+    }
+
+    private static function normalize_system_sections($sections, $fallback_sections = array()) {
+        $sections = is_array($sections) ? $sections : array();
+        $fallback_sections = is_array($fallback_sections) ? $fallback_sections : array();
+        foreach (self::system_section_definitions() as $key => $definition) {
+            if (isset($sections[$key]) && is_array($sections[$key])) {
+                $source = $sections[$key];
+            } elseif (isset($fallback_sections[$key]) && is_array($fallback_sections[$key])) {
+                $source = $fallback_sections[$key];
+            } else {
+                $source = array();
+            }
+            $section = wp_parse_args($source, $definition);
+            $section['label'] = isset($section['label']) && $section['label'] !== '' ? $section['label'] : $definition['label'];
+            $section['enabled'] = '1';
+            $section['sort_order'] = isset($section['sort_order']) ? absint($section['sort_order']) : $definition['sort_order'];
+            $section['translations'] = isset($section['translations']) && is_array($section['translations']) ? $section['translations'] : array();
+            $sections[$key] = $section;
+        }
+        return $sections;
+    }
+
+    private static function normalize_system_fields($fields, $fallback_fields = array()) {
+        $fields = is_array($fields) ? $fields : array();
+        $fallback_fields = is_array($fallback_fields) ? $fallback_fields : array();
+        foreach (self::system_field_definitions() as $key => $definition) {
+            if (isset($fields[$key]) && is_array($fields[$key])) {
+                $source = $fields[$key];
+            } elseif (isset($fallback_fields[$key]) && is_array($fallback_fields[$key])) {
+                $source = $fallback_fields[$key];
+            } else {
+                $source = array();
+            }
+            $field = wp_parse_args($source, $definition);
+            $field['label'] = isset($field['label']) && $field['label'] !== '' ? $field['label'] : $definition['label'];
+            $field['type'] = $definition['type'];
+            $field['section'] = self::system_section_key();
+            $field['sort_order'] = isset($field['sort_order']) ? absint($field['sort_order']) : $definition['sort_order'];
+            $field['translations'] = isset($field['translations']) && is_array($field['translations']) ? $field['translations'] : array();
+            if ($key === 'contact_phone') {
+                $field['enabled'] = isset($field['enabled']) && (string) $field['enabled'] === '1' ? '1' : '0';
+                $field['required'] = isset($field['required']) && (string) $field['required'] === '1' ? '1' : '0';
+            } else {
+                $field['enabled'] = '1';
+                $field['required'] = '1';
+            }
+            $fields[$key] = $field;
+        }
+        return $fields;
+    }
+
     public static function default_fields() {
-        return array();
+        return self::system_field_definitions();
     }
 
     public static function default_sections() {
-        return array();
+        return self::system_section_definitions();
     }
 
     public function register_settings() {
@@ -406,9 +514,11 @@ trait TCARM_Settings_Trait {
 
     public function sanitize_sections($input) {
         $defaults = self::default_sections();
+        $current_sections = get_option(self::OPTION_SECTIONS, array());
+        $current_sections = is_array($current_sections) ? $current_sections : array();
         $out = array();
         if (!is_array($input)) {
-            return array();
+            return self::normalize_system_sections($out, $current_sections);
         }
         $i = 0;
         foreach ($input as $raw_key => $section) {
@@ -450,7 +560,7 @@ trait TCARM_Settings_Trait {
             );
             $i++;
         }
-        return $out;
+        return self::normalize_system_sections($out, $current_sections);
     }
 
     private function request_section_ids() {
@@ -495,11 +605,12 @@ trait TCARM_Settings_Trait {
         $out = array();
         $allowed_types = array('text', 'textarea', 'email', 'url', 'tel', 'date', 'checkbox_group', 'radio', 'file', 'dropdown');
         if (!is_array($input) || empty($input)) {
-            return array();
+            return self::normalize_system_fields(array(), $current_fields);
         }
         $i = 0;
         foreach ($input as $raw_key => $field) {
-            if (!empty($field['_delete'])) {
+            $posted_key = sanitize_key($raw_key);
+            if (!empty($field['_delete']) && !self::is_system_field_key($posted_key)) {
                 continue;
             }
             $key = sanitize_key($raw_key);
@@ -601,7 +712,7 @@ trait TCARM_Settings_Trait {
             );
             $i++;
         }
-        return !empty($out) ? $out : $defaults;
+        return self::normalize_system_fields(!empty($out) ? $out : $defaults, $current_fields);
     }
 
     public static function get_settings() {
@@ -684,9 +795,8 @@ trait TCARM_Settings_Trait {
 
     public static function get_sections() {
         $sections = get_option(self::OPTION_SECTIONS, array());
-        if (!is_array($sections)) {
-            return array();
-        }
+        $sections = is_array($sections) ? $sections : array();
+        $sections = self::normalize_system_sections($sections);
         $defaults = self::default_sections();
         foreach ($sections as $key => $section) {
             $base = array('label' => $key, 'enabled' => '1', 'sort_order' => 999, 'translations' => array());
@@ -728,9 +838,8 @@ trait TCARM_Settings_Trait {
 
     public static function get_fields() {
         $fields = get_option(self::OPTION_FIELDS, array());
-        if (!is_array($fields)) {
-            return array();
-        }
+        $fields = is_array($fields) ? $fields : array();
+        $fields = self::normalize_system_fields($fields);
         $defaults = self::default_fields();
         foreach ($fields as $key => $field) {
             $base = array('label' => $key, 'type' => 'text', 'section' => 'event', 'enabled' => '1', 'required' => '0', 'public' => '0', 'acf_key' => '', 'placeholder' => '', 'description' => '', 'translations' => array(), 'sort_order' => 999, 'choices' => array(), 'taxonomy_enabled' => '0', 'taxonomy_slug' => '');
@@ -828,7 +937,6 @@ trait TCARM_Settings_Trait {
             $supported = self::supported_languages();
             $languages = array('en' => $supported['en']);
         }
-        ob_start();
         ?>
         <div class="tcarm-lang-page-settings-card">
             <div class="tcarm-display-tabs tcarm-lang-tabs" role="tablist" aria-label="<?php echo esc_attr__('Frontend page settings language tabs', 'shinseiflow-application-review'); ?>">
@@ -851,7 +959,6 @@ trait TCARM_Settings_Trait {
             <?php $i++; endforeach; ?>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_page_select_row($label, $key, $shortcode_hint, $settings) {

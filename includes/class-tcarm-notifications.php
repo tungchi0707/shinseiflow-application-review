@@ -66,7 +66,6 @@ trait TCARM_Notifications_Trait {
 
     private function render_resend_email_card($item) {
         $options = $this->get_resend_email_options($item);
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-detail-resend-panel tcarm-admin-card">
             <div class="tcarm-panel-header"><h2><?php echo esc_html__('Resend Notification Email', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Resend notification emails according to the current status when the applicant or administrator did not receive them.', 'shinseiflow-application-review'); ?></p></div>
@@ -97,7 +96,6 @@ trait TCARM_Notifications_Trait {
             <?php echo wp_kses($this->render_resend_email_confirm_modal(), $this->resend_email_modal_allowed_html()); ?>
         <?php endif; ?>
         <?php
-        return ob_get_clean();
     }
 
     private function render_resend_email_confirm_modal() {
@@ -108,7 +106,7 @@ trait TCARM_Notifications_Trait {
         );
         wp_add_inline_script(
             'tcarm-admin-resend-email',
-            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($resend_email_i18n, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ');',
+            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($resend_email_i18n) . ');',
             'before'
         );
         ob_start();

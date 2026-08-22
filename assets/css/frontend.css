@@ -1,4 +1,12 @@
 /* v0.1.58 Frontend UI: Material-inspired quiet, elegant, 100% width layout. */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100;
+  font-display: block;
+  src: url('../fonts/material-symbols-outlined.woff2') format('woff2');
+}
+
 :root {
   --tcarm-front-primary: #0f4c63;
   --tcarm-front-primary-hover: #0b3e51;

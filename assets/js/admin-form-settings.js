@@ -52,6 +52,10 @@
         placeholder: 'tcarm-field-placeholder',
         connectWith: '.tcarm-sortable-fields',
         receive: function(event, ui){
+          if (ui.item.is('[data-system-field="1"]')) {
+            $(ui.sender).sortable('cancel');
+            return;
+          }
           var sectionKey = $(this).closest('.tcarm-section-group').data('section');
           ui.item.find('.tcarm-field-section-input').val(sectionKey);
         },
@@ -301,8 +305,9 @@
     });
     $(document).on('click', '.tcarm-delete-field', function(e){
       e.preventDefault();
-      if (!window.confirm(t('deleteFieldConfirm', 'Delete this field?'))) return;
       var $card = $(this).closest('.tcarm-mini-field-card');
+      if ($card.is('[data-system-field="1"]')) return;
+      if (!window.confirm(t('deleteFieldConfirm', 'Delete this field?'))) return;
       var $group = $card.closest('.tcarm-section-group');
       $card.find('.tcarm-delete-field-input').val('1').each(function(){ keepDeleteMarker($(this)); });
       $card.remove();
@@ -313,6 +318,7 @@
       e.preventDefault();
       e.stopPropagation();
       var $group = $(this).closest('.tcarm-section-group');
+      if ($group.is('[data-system-section="1"]') || $group.find('.tcarm-mini-field-card[data-system-field="1"]').length) return;
       var hasFields = $group.find('.tcarm-mini-field-card').length > 0;
       var message = hasFields ? t('deleteSectionWithFieldsConfirm', 'Fields in this section will also be deleted. Continue?') : t('deleteSectionConfirm', 'Delete this section?');
       if (!window.confirm(message)) return;

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ShinseiFlow – Application Review & Approval Workflow
  * Description: Create application forms, review submissions, manage approval workflows, and notify applicants from WordPress.
- * Version: 0.4.3.34
+ * Version: 0.4.3.48
  * Requires at least: 6.5
  * Requires PHP: 8.0
  * Author: Casper Yeh
@@ -43,7 +43,7 @@ require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-application-detail.ph
 require_once TCARM_PLUGIN_DIR . 'includes/admin-pages/page-about.php';
 
 final class TCARM_Plugin {
-    const VERSION = '0.4.3.34';
+    const VERSION = '0.4.3.48';
     const DB_VERSION = '0.1.61';
     const CAPABILITY = 'manage_tcarm_applications';
     const OPTION_SETTINGS = 'tcarm_settings';
@@ -59,6 +59,7 @@ final class TCARM_Plugin {
     private $tcarm_mail_in_progress = false;
     private $current_frontend_lang = '';
     private $current_frontend_show_steps = true;
+    private $turnstile_verification_result = null;
 
     use TCARM_Plugin_Core_Trait;
     use TCARM_Admin_Trait;

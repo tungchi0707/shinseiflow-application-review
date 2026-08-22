@@ -627,7 +627,6 @@ trait TCARM_Shortcodes_Trait {
             } else {
                 $buttons .= '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('status')) . '">' . esc_html($this->t('common.check_status', 'Check application status')) . '</a>';
             }
-            $buttons .= '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('top')) . '">' . esc_html($this->t('common.top', 'Back to top')) . '</a>';
             return '<div class="tcarm-front tcarm-frontend tcarm-front--result tcarm-frontend-result tcarm-complete-message"><div class="tcarm-form tcarm-front-form tcarm-complete-form">' . wp_kses($this->render_frontend_steps('complete'), $this->frontend_shortcode_allowed_tags()) . '<section class="tcarm-front-section tcarm-form-section tcarm-complete-section"><h2 class="tcarm-front-section-title tcarm-form-section-title">' . esc_html($this->t('complete.received_title', 'Application received')) . '</h2><p class="tcarm-application-number-box"><span class="tcarm-application-number-label">' . esc_html($this->t('common.application_number', 'Application Number')) . '：</span><strong class="tcarm-application-number">' . esc_html($code) . '</strong></p><p>' . esc_html($this->t('complete.received_description', 'A confirmation email has been sent. An administrator will review the content and contact you again.')) . '</p><div class="tcarm-actions tcarm-front-actions tcarm-result-actions tcarm-complete-actions">' . wp_kses($buttons, $this->frontend_shortcode_allowed_tags()) . '</div></section></div></div>';
         }
         $fields = self::get_fields();
@@ -819,14 +818,12 @@ trait TCARM_Shortcodes_Trait {
             $token = $item ? $this->current_lookup_token_for_item($item) : '';
             if (!$item) {
                 $buttons = '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('status')) . '">' . esc_html($this->t('common.recheck_status', 'Check application status again')) . '</a>';
-                $buttons .= '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('top')) . '">' . esc_html($this->t('common.top', 'Back to top')) . '</a>';
                 return '<div class="tcarm-front tcarm-frontend tcarm-front--edit tcarm-front--result">' . wp_kses($this->token_expired_notice(), $this->frontend_shortcode_allowed_tags()) . '<div class="tcarm-actions tcarm-front-actions tcarm-result-actions tcarm-complete-actions">' . wp_kses($buttons, $this->frontend_shortcode_allowed_tags()) . '</div></div>';
             }
             $buttons = '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->build_frontend_url('status', $code, $token)) . '">' . esc_html($this->t('common.back_to_status', 'Back to application status')) . '</a>';
             if ($this->get_frontend_page_url('view', false)) {
                 $buttons = '<a class="tcarm-button tcarm-front-button tcarm-front-button--primary" href="' . esc_url($this->build_frontend_url('view', $code, $token)) . '">' . esc_html($this->t('common.view_submitted_content', 'View submitted content')) . '</a>' . $buttons;
             }
-            $buttons .= '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('top')) . '">' . esc_html($this->t('common.top', 'Back to top')) . '</a>';
             return '<div class="tcarm-front tcarm-frontend tcarm-front--edit tcarm-front--result tcarm-complete-message tcarm-edit-complete-message"><div class="tcarm-form tcarm-front-form tcarm-complete-form tcarm-edit-complete-form">' . wp_kses($this->render_frontend_steps('complete'), $this->frontend_shortcode_allowed_tags()) . '<section class="tcarm-front-section tcarm-form-section tcarm-complete-section tcarm-edit-complete-section"><h2 class="tcarm-front-section-title tcarm-form-section-title">' . esc_html($this->t('complete.resubmitted_title', 'Resubmission received')) . '</h2><p class="tcarm-application-number-box"><span class="tcarm-application-number-label">' . esc_html($this->t('common.application_number', 'Application Number')) . '：</span><strong class="tcarm-application-number">' . esc_html($code) . '</strong></p><p>' . esc_html($this->t('complete.resubmitted_description', 'The content has been updated and returned to pending review.')) . '</p><div class="tcarm-actions tcarm-front-actions tcarm-result-actions tcarm-complete-actions">' . wp_kses($buttons, $this->frontend_shortcode_allowed_tags()) . '</div></section></div></div>';
         }
         $item = $this->resolve_frontend_application_from_request();
@@ -999,7 +996,6 @@ trait TCARM_Shortcodes_Trait {
                 <p><?php echo esc_html($mode === 'view' ? $this->t('status.view_empty_description', 'To view submitted content, access it from the application status page.') : $this->t('status.edit_empty_description', 'Please edit and resubmit from the application status page.')); ?></p>
                 <div class="tcarm-actions tcarm-front-actions">
                     <a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="<?php echo esc_url($this->get_frontend_page_url('status')); ?>"><?php echo esc_html($this->t('common.check_status', 'Check application status')); ?></a>
-                    <a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="<?php echo esc_url($this->get_frontend_page_url('top')); ?>"><?php echo esc_html($this->t('common.top', 'Back to top')); ?></a>
                 </div>
             </div>
         <?php else: ?>
@@ -1189,7 +1185,6 @@ trait TCARM_Shortcodes_Trait {
         if ($context === 'status') {
             $buttons[] = '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('status')) . '">' . esc_html($this->t('common.check_other_status', 'Check another application status')) . '</a>';
         }
-        $buttons[] = '<a class="tcarm-button-secondary tcarm-front-button tcarm-front-button--secondary" href="' . esc_url($this->get_frontend_page_url('top')) . '">' . esc_html($this->t('common.top', 'Back to top')) . '</a>';
         return '<div class="tcarm-actions tcarm-front-actions tcarm-status-actions">' . wp_kses(implode('', $buttons), $this->frontend_shortcode_allowed_tags()) . '</div>';
     }
 

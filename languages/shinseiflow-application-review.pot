@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ShinseiFlow – Application Review & Approval Workflow 0.4.3.18\n"
+"Project-Id-Version: ShinseiFlow – Application Review & Approval Workflow 0.4.3.46\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shinseiflow-application-review\n"
-"POT-Creation-Date: 2026-08-05 00:27+0900\n"
+"POT-Creation-Date: 2026-08-20 00:00+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,6 +13,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: GNU gettext 1.0\n"
 "X-Domain: shinseiflow-application-review\n"
+
+#: includes/admin-pages/page-form-settings.php:121
+msgid "System Section"
+msgstr ""
+
+#: includes/admin-pages/page-form-settings.php:148
+msgid "System Field"
+msgstr ""
 
 #: includes/admin-pages/page-about.php:12
 msgid "Documentation"

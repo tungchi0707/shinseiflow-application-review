@@ -5,7 +5,6 @@ if (!defined('ABSPATH')) {
 
 trait TCARM_Admin_Page_Translation_Trait {
     private function render_translation_field($lang, $key, $label, $value) {
-        ob_start();
         ?>
         <label class="tcarm-settings-field tcarm-translation-field">
             <span class="tcarm-translation-field__source">
@@ -17,7 +16,6 @@ trait TCARM_Admin_Page_Translation_Trait {
             </span>
         </label>
         <?php
-        return ob_get_clean();
     }
 
     private function translation_groups() {
@@ -229,8 +227,7 @@ trait TCARM_Admin_Page_Translation_Trait {
                     </div>
                 </div>
                 <?php
-                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- AI settings card markup is generated internally with escaped option values and attributes.
-                echo $this->render_ai_translation_settings_card($settings);
+                $this->render_ai_translation_settings_card($settings);
                 ?>
                 <div class="tcarm-panel tcarm-card-panel tcarm-settings-card tcarm-admin-card tcarm-translation-settings-card tcarm-lang-page-settings-card">
                     <div class="tcarm-panel-header"><h2><?php echo esc_html__('Translation String Settings', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Configure the text shown on the frontend according to the shortcode', 'shinseiflow-application-review'); ?> <code>lang</code> <?php echo esc_html__('parameter.', 'shinseiflow-application-review'); ?></p></div>
@@ -266,8 +263,7 @@ trait TCARM_Admin_Page_Translation_Trait {
                                         <div class="tcarm-settings-row-list tcarm-translation-field-list">
                                             <?php foreach ($keys as $key => $field_label): ?>
                                                 <?php
-                                                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Translation field markup escapes language code, key, label, and value before output.
-                                                echo $this->render_translation_field($lang, $key, $field_label, isset($strings[$lang][$key]) ? $strings[$lang][$key] : '');
+                                                $this->render_translation_field($lang, $key, $field_label, isset($strings[$lang][$key]) ? $strings[$lang][$key] : '');
                                                 ?>
                                             <?php endforeach; ?>
                                         </div>

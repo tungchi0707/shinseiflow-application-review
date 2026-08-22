@@ -108,7 +108,7 @@ trait TCARM_Admin_Page_Notifications_Trait {
                                 <input type="text" class="regular-text" autocomplete="off" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[smtp_username]" value="<?php echo esc_attr($settings['smtp_username']); ?>">
                             </label>
                             <label class="tcarm-settings-field"><?php echo esc_html__('SMTP Password', 'shinseiflow-application-review'); ?>
-                                <input type="password" class="regular-text" autocomplete="new-password" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[smtp_password]" value="" placeholder="<?php echo !empty($settings['smtp_password']) ? esc_attr__('Saved (enter only to change)', 'shinseiflow-application-review') : ''; ?>">
+                                <input type="password" class="regular-text" autocomplete="new-password" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[smtp_password]" value="" placeholder="<?php echo esc_attr(!empty($settings['smtp_password']) ? __('Saved (enter only to change)', 'shinseiflow-application-review') : ''); ?>">
                                 <span class="description"><?php echo esc_html__('The saved password is not displayed. Enter a value only when changing it.', 'shinseiflow-application-review'); ?></span>
                             </label>
                         </div>

@@ -13,10 +13,8 @@ trait TCARM_Admin_Page_Privacy_Trait {
                 <input type="hidden" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[_partial]" value="1">
 
                 <?php
-                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Privacy notice markup uses escaped text and textarea content before output.
-                echo $this->render_privacy_data_retention_notice_card();
-                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Uninstall policy markup escapes option values and labels before output.
-                echo $this->render_uninstall_data_policy_card($settings);
+                $this->render_privacy_data_retention_notice_card();
+                $this->render_uninstall_data_policy_card($settings);
                 ?>
 
                 <?php submit_button(__('Save Settings', 'shinseiflow-application-review')); ?>
@@ -26,7 +24,6 @@ trait TCARM_Admin_Page_Privacy_Trait {
     }
 
     private function render_privacy_data_retention_notice_card() {        $sample_text = "This site may collect and store information entered in application forms, contact details, uploaded files, review and notification history, and related records for receiving applications, reviewing content, sending notifications, operating the service, preventing spam, and troubleshooting.\n\nExternal services such as Cloudflare Turnstile may be used for spam prevention when enabled. AI translation tools may be used by administrators to assist with translating form fields and settings. Applicant-submitted content is not normally sent to AI translation automatically.\n\nPlease adjust this sample text to match the actual operation of your site.";
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-settings-card tcarm-admin-card tcarm-privacy-data-notice-card">
             <div class="tcarm-panel-header">
@@ -72,13 +69,11 @@ trait TCARM_Admin_Page_Privacy_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_uninstall_data_policy_card($settings) {
         $delete_data_on_uninstall = isset($settings['delete_data_on_uninstall']) ? (string) $settings['delete_data_on_uninstall'] : '0';
 
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-settings-card tcarm-admin-card tcarm-uninstall-data-policy-card">
             <div class="tcarm-panel-header">
@@ -96,6 +91,5 @@ trait TCARM_Admin_Page_Privacy_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 }

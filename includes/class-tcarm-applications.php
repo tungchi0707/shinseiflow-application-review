@@ -274,7 +274,6 @@ trait TCARM_Applications_Trait {
             $grouped[$section]['fields'][$key] = $this->apply_field_translation($field);
         }
 
-        ob_start();
         echo '<div class="tcarm-admin-application-sections">';
         foreach ($grouped as $section_key => $section) {
             if (empty($section['fields'])) {
@@ -336,14 +335,12 @@ trait TCARM_Applications_Trait {
             echo '</section>';
         }
         echo '</div>';
-        return ob_get_clean();
     }
 
     private function render_admin_application_edit_form($item) {
         $fields = self::get_fields();
         $sections = self::get_sections();
         $detail_url = admin_url('admin.php?page=tcarm_applications&action=view&id=' . absint($item->id));
-        ob_start();
         ?>
         <form id="tcarm-admin-edit-content-form" class="tcarm-admin-application-edit-form" method="post" enctype="multipart/form-data" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
             <?php wp_nonce_field('tcarm_admin_edit_application_content_' . absint($item->id)); ?>
@@ -380,7 +377,6 @@ trait TCARM_Applications_Trait {
             </div>
         </form>
         <?php
-        return ob_get_clean();
     }
 
     private function render_admin_application_edit_field($item, $key, $field) {

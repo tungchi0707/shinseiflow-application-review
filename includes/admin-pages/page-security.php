@@ -51,13 +51,13 @@ trait TCARM_Admin_Page_Security_Trait {
                                         <span class="tcarm-switch-slider" aria-hidden="true"></span>
                                         <span class="tcarm-switch-label">
                                             <span class="tcarm-switch-label-text"><?php echo esc_html__('Enable Turnstile verification', 'shinseiflow-application-review'); ?></span>
-                                            <span class="tcarm-switch-state" data-tcarm-switch-on="<?php echo esc_attr__('ON', 'shinseiflow-application-review'); ?>" data-tcarm-switch-off="<?php echo esc_attr__('OFF', 'shinseiflow-application-review'); ?>"><?php echo $settings['turnstile_enabled'] === '1' ? esc_html__('ON', 'shinseiflow-application-review') : esc_html__('OFF', 'shinseiflow-application-review'); ?></span>
+                                            <span class="tcarm-switch-state" data-tcarm-switch-on="<?php echo esc_attr__('ON', 'shinseiflow-application-review'); ?>" data-tcarm-switch-off="<?php echo esc_attr__('OFF', 'shinseiflow-application-review'); ?>"><?php echo esc_html($settings['turnstile_enabled'] === '1' ? __('ON', 'shinseiflow-application-review') : __('OFF', 'shinseiflow-application-review')); ?></span>
                                         </span>
                                     </label>
                                     <p id="tcarm_turnstile_description" class="description"><?php echo esc_html__('Add Turnstile verification to application, lookup, and edit forms when needed.', 'shinseiflow-application-review'); ?></p>
                                 </div>
                             </div>
-                            <div class="tcarm-turnstile-dependent-settings<?php echo $settings['turnstile_enabled'] === '1' ? '' : ' is-disabled'; ?>" data-tcarm-turnstile-dependent-settings aria-disabled="<?php echo $settings['turnstile_enabled'] === '1' ? 'false' : 'true'; ?>">
+                            <div class="tcarm-turnstile-dependent-settings<?php echo esc_attr($settings['turnstile_enabled'] === '1' ? '' : ' is-disabled'); ?>" data-tcarm-turnstile-dependent-settings aria-disabled="<?php echo esc_attr($settings['turnstile_enabled'] === '1' ? 'false' : 'true'); ?>">
                                 <div class="tcarm-settings-choice-content tcarm-turnstile-dependent-content">
                                     <div class="tcarm-turnstile-scope-box">
                                         <strong class="tcarm-turnstile-scope-title"><?php echo esc_html__('Turnstile Scope', 'shinseiflow-application-review'); ?></strong>

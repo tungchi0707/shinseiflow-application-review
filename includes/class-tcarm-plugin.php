@@ -218,20 +218,32 @@ trait TCARM_Plugin_Core_Trait {
         if (!$this->turnstile_enabled_for($context)) {
             return '';
         }
+        wp_enqueue_script(
+            'tcarm-cloudflare-turnstile',
+            'https://challenges.cloudflare.com/turnstile/v0/api.js',
+            array(),
+            null,
+            true
+        );
         $theme = in_array($settings['turnstile_theme'], array('auto', 'light', 'dark'), true) ? $settings['turnstile_theme'] : 'auto';
         $size = in_array($settings['turnstile_size'], array('normal', 'compact'), true) ? $settings['turnstile_size'] : 'normal';
         return '<div class="tcarm-turnstile-wrap"><div class="cf-turnstile" data-sitekey="' . esc_attr($settings['turnstile_site_key']) . '" data-theme="' . esc_attr($theme) . '" data-size="' . esc_attr($size) . '"></div></div>';
     }
 
     private function verify_turnstile_response() {
+        if ($this->turnstile_verification_result !== null) {
+            return $this->turnstile_verification_result;
+        }
         $settings = self::get_settings();
         if ($settings['turnstile_enabled'] !== '1' || empty($settings['turnstile_site_key']) || empty($settings['turnstile_secret_key'])) {
-            return true;
+            $this->turnstile_verification_result = true;
+            return $this->turnstile_verification_result;
         }
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Turnstile response is verified inside nonce-protected frontend form and lookup submit flows.
         $response = isset($_POST['cf-turnstile-response']) ? sanitize_text_field(wp_unslash($_POST['cf-turnstile-response'])) : '';
         if (empty($settings['turnstile_secret_key']) || empty($response)) {
-            return false;
+            $this->turnstile_verification_result = false;
+            return $this->turnstile_verification_result;
         }
         $verify = wp_remote_post('https://challenges.cloudflare.com/turnstile/v0/siteverify', array(
             'timeout' => 10,
@@ -242,17 +254,20 @@ trait TCARM_Plugin_Core_Trait {
             ),
         ));
         if (is_wp_error($verify)) {
-            return false;
+            $this->turnstile_verification_result = false;
+            return $this->turnstile_verification_result;
         }
         $body = json_decode(wp_remote_retrieve_body($verify), true);
-        return !empty($body['success']);
+        $this->turnstile_verification_result = !empty($body['success']);
+        return $this->turnstile_verification_result;
     }
 
     private function application_data_hash($data) {
         $fields = self::get_fields();
         $normalized = array();
         foreach ($fields as $key => $field) {
-            $normalized[$key] = isset($data[$key]) ? (string) $data[$key] : '';
+            $value = isset($data[$key]) ? $data[$key] : '';
+            $normalized[$key] = is_array($value) ? wp_json_encode($value) : (string) $value;
         }
         return md5(wp_json_encode($normalized));
     }

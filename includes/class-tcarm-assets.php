@@ -12,8 +12,7 @@ trait TCARM_Assets_Trait {
                 'window.tcarmDeactivationNotice = ' . wp_json_encode(
                     array(
                         'message' => __("Deactivating the plugin will not delete saved application data, uploaded files, review information, or settings.\n\nThis information may include personal data and application details.\n\nIf you want to delete data, enable data deletion under Privacy and Data Retention before deleting the plugin.\n\nDo you want to deactivate the plugin?", 'shinseiflow-application-review'),
-                    ),
-                    JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+                    )
                 ) . ';',
                 'before'
             );
@@ -198,7 +197,7 @@ trait TCARM_Assets_Trait {
                 wp_enqueue_script($handle, self::plugin_url() . $script['path'], $script['dependencies'], self::VERSION, true);
                 wp_add_inline_script(
                     $handle,
-                    'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($admin_script_data, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ');',
+                    'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($admin_script_data) . ');',
                     'before'
                 );
             }

@@ -2,9 +2,9 @@
 Contributors: tungchi07
 Tags: application form, approval workflow, review, notifications, form management
 Requires at least: 6.5
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 0.4.3.34
+Stable tag: 0.4.3.48
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,62 @@ Privacy Policy:
 https://policies.google.com/privacy
 
 == Changelog ==
+
+= 0.4.3.48 =
+
+* Updated WordPress compatibility information for WordPress 7.1.
+
+= 0.4.3.47 =
+
+* Removed misleading “Back to top” buttons from frontend workflow screens where more relevant navigation actions are already available.
+
+= 0.4.3.46 =
+
+* Updated System Field base labels to Japanese and refreshed the translation template.
+
+= 0.4.3.45 =
+
+* Added protected system fields for applicant name, contact email, and contact phone so core application data is stored consistently.
+
+= 0.4.3.44 =
+
+* Fixed repeated Cloudflare Turnstile verification during application status lookups.
+
+= 0.4.3.43 =
+
+* Fixed Turnstile submission hashing for multi-value application fields such as checkbox groups.
+
+= 0.4.3.42 =
+
+* Bundled Material Symbols locally for reliable frontend step icons without external font dependencies.
+
+= 0.4.3.41 =
+
+* Applied final context-specific late escaping improvements for WordPress.org review compliance.
+
+= 0.4.3.40 =
+
+* Refactored download file settings rendering for WordPress.org output escaping compliance.
+
+= 0.4.3.39 =
+
+* Refactored application number settings rendering for WordPress.org output escaping compliance.
+
+= 0.4.3.38 =
+
+* Refactored application detail admin renderers for WordPress.org output escaping compliance.
+
+= 0.4.3.37 =
+
+* Refactored additional admin settings renderers for WordPress.org output escaping compliance.
+
+= 0.4.3.36 =
+
+* Refactored additional admin renderers for WordPress.org output escaping compliance.
+
+= 0.4.3.35 =
+
+* Refactored admin confirmation modal rendering for WordPress.org output escaping compliance.
 
 = 0.4.3.34 =
 

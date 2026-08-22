@@ -101,18 +101,12 @@ trait TCARM_Admin_Page_Applications_Trait {
                 </form>
             </div>
             <?php
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Modal markup is generated internally with escaped text and fixed attributes.
-            echo $this->render_delete_confirm_modal();
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Modal markup is generated internally with escaped text and fixed attributes.
-            echo $this->render_restore_confirm_modal();
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Modal markup is generated internally with escaped text and fixed attributes.
-            echo $this->render_permanent_delete_confirm_modal();
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Modal markup is generated internally with escaped text and fixed attributes.
-            echo $this->render_bulk_permanent_delete_confirm_modal();
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Blocked log table markup escapes dynamic values before output.
-            echo $this->render_blocked_logs_card();
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Deleted applications table markup escapes dynamic values before output.
-            echo $this->render_deleted_applications_card($deleted_items);
+            $this->render_delete_confirm_modal();
+            $this->render_restore_confirm_modal();
+            $this->render_permanent_delete_confirm_modal();
+            $this->render_bulk_permanent_delete_confirm_modal();
+            $this->render_blocked_logs_card();
+            $this->render_deleted_applications_card($deleted_items);
             ?>
         </div>
         <?php
@@ -126,10 +120,9 @@ trait TCARM_Admin_Page_Applications_Trait {
         );
         wp_add_inline_script(
             'tcarm-admin-application-list-actions',
-            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($application_list_i18n, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ');',
+            'window.tcarmAdminI18n = Object.assign({}, window.tcarmAdminI18n || {}, ' . wp_json_encode($application_list_i18n) . ');',
             'before'
         );
-        ob_start();
         ?>
         <div class="tcarm-confirm-modal" id="tcarm-delete-confirm-modal" aria-hidden="true" style="display:none;">
             <div class="tcarm-confirm-modal__backdrop" data-tcarm-modal-close="delete"></div>
@@ -143,11 +136,9 @@ trait TCARM_Admin_Page_Applications_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_restore_confirm_modal() {
-        ob_start();
         ?>
         <div class="tcarm-confirm-modal" id="tcarm-restore-confirm-modal" aria-hidden="true" style="display:none;">
             <div class="tcarm-confirm-modal__backdrop" data-tcarm-modal-close="restore"></div>
@@ -161,11 +152,9 @@ trait TCARM_Admin_Page_Applications_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_permanent_delete_confirm_modal() {
-        ob_start();
         ?>
         <div class="tcarm-confirm-modal" id="tcarm-permanent-delete-confirm-modal" aria-hidden="true" style="display:none;">
             <div class="tcarm-confirm-modal__backdrop" data-tcarm-modal-close="permanent-delete"></div>
@@ -179,11 +168,9 @@ trait TCARM_Admin_Page_Applications_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_bulk_permanent_delete_confirm_modal() {
-        ob_start();
         ?>
         <div class="tcarm-confirm-modal" id="tcarm-bulk-permanent-delete-confirm-modal" aria-hidden="true" style="display:none;">
             <div class="tcarm-confirm-modal__backdrop" data-tcarm-modal-close="bulk-permanent-delete"></div>
@@ -197,11 +184,9 @@ trait TCARM_Admin_Page_Applications_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_deleted_applications_card($items) {
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-deleted-applications-section">
             <div class="tcarm-panel-header">
@@ -256,13 +241,11 @@ trait TCARM_Admin_Page_Applications_Trait {
             </table></div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_blocked_logs_card() {
         $logs = $this->get_blocked_logs(20);
         $count7 = $this->get_blocked_count(7);
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-blocked-panel">
             <div class="tcarm-panel-header"><h2><?php echo esc_html__('Blocked Submissions', 'shinseiflow-application-review'); ?></h2><p><?php /* translators: %d: number of blocked submissions in the past 7 days. */ echo esc_html(sprintf(__('Past 7 days: %d. Only minimal contact information is stored to help follow up on false positives.', 'shinseiflow-application-review'), $count7)); ?></p></div>
@@ -288,7 +271,6 @@ trait TCARM_Admin_Page_Applications_Trait {
             </table></div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function render_application_detail($id) {
@@ -352,8 +334,7 @@ trait TCARM_Admin_Page_Applications_Trait {
                         <div class="tcarm-detail-content-inner">
                             <?php if ($is_edit_content): ?>
                                 <?php
-                                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Edit form markup escapes field values, attributes, and textarea content before output.
-                                echo $this->render_admin_application_edit_form($item);
+                                $this->render_admin_application_edit_form($item);
                                 ?>
                                 <div class="tcarm-admin-edit-sticky-bar" role="region" aria-label="<?php echo esc_attr__('Application Content Edit Actions', 'shinseiflow-application-review'); ?>">
                                     <div class="tcarm-admin-edit-sticky-message"><?php echo esc_html__('You are editing the application content. Changes are not applied until you save.', 'shinseiflow-application-review'); ?></div>
@@ -364,8 +345,7 @@ trait TCARM_Admin_Page_Applications_Trait {
                                 </div>
                             <?php else: ?>
                                 <?php
-                                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Application section markup escapes applicant-provided values before output.
-                                echo $this->render_admin_application_sections($item);
+                                $this->render_admin_application_sections($item);
                                 ?>
                             <?php endif; ?>
                         </div>
@@ -425,10 +405,8 @@ trait TCARM_Admin_Page_Applications_Trait {
                         </div>
                     </div>
                     <?php
-                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Resend email card markup escapes URLs, nonces, and visible values before output.
-                    echo $this->render_resend_email_card($item);
-                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- History timeline markup escapes entry values before output.
-                    echo $this->render_application_history_timeline($item);
+                    $this->render_resend_email_card($item);
+                    $this->render_application_history_timeline($item);
                     ?>
                 </div>
             </div>

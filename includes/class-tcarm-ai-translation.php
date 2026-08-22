@@ -8,7 +8,6 @@ trait TCARM_AI_Translation_Trait {
         $provider = $this->get_ai_provider($settings);
         $model = $this->get_ai_model($settings);
         $has_key = $this->get_ai_api_key($settings) !== '';
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-settings-card tcarm-admin-card tcarm-ai-translation-settings-card">
             <div class="tcarm-panel-header"><h2><?php echo esc_html__('AI Translation Settings', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Configure the AI provider, API key, and model used by translation helper tools.', 'shinseiflow-application-review'); ?></p></div>
@@ -21,7 +20,7 @@ trait TCARM_AI_Translation_Trait {
                         </select>
                     </label>
                     <label class="tcarm-settings-field"><?php echo esc_html__('API Key', 'shinseiflow-application-review'); ?>
-                        <input type="password" class="regular-text" autocomplete="new-password" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[ai_api_key]" value="" placeholder="<?php echo $has_key ? esc_attr__('Configured (enter only to change)', 'shinseiflow-application-review') : ''; ?>">
+                        <input type="password" class="regular-text" autocomplete="new-password" name="<?php echo esc_attr(self::OPTION_SETTINGS); ?>[ai_api_key]" value="" placeholder="<?php echo esc_attr($has_key ? __('Configured (enter only to change)', 'shinseiflow-application-review') : ''); ?>">
                         <span class="description"><?php echo esc_html__('Enter the API key for the selected AI provider. Saved API keys are not displayed.', 'shinseiflow-application-review'); ?></span>
                     </label>
                     <label class="tcarm-settings-field"><?php echo esc_html__('Model', 'shinseiflow-application-review'); ?>
@@ -31,7 +30,6 @@ trait TCARM_AI_Translation_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 
     private function get_ai_provider($settings = null) {

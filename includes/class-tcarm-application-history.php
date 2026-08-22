@@ -144,7 +144,6 @@ trait TCARM_Application_History_Trait {
 
     private function render_application_history_timeline($item) {
         $history = $this->get_application_history($item);
-        ob_start();
         ?>
         <div class="tcarm-panel tcarm-card-panel tcarm-history-card tcarm-admin-card">
             <div class="tcarm-panel-header"><h2 class="tcarm-admin-card-title"><?php echo esc_html__('Submission and Response History', 'shinseiflow-application-review'); ?></h2><p><?php echo esc_html__('Review the history of application receipt, notifications, review actions, and public integrations.', 'shinseiflow-application-review'); ?></p></div>
@@ -170,6 +169,5 @@ trait TCARM_Application_History_Trait {
             </div>
         </div>
         <?php
-        return ob_get_clean();
     }
 }
